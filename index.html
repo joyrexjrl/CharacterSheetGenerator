@@ -10,85 +10,118 @@
     <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet"> 
     <link rel="stylesheet" href="resets.css">
     <link rel="stylesheet" href="mainStyle.css">
+    <link rel="stylesheet" href="oseStyle.css">
     <title>Character Generator for Table Top Games</title>
 </head>
 <body>
     <nav>
 
     </nav>
-    <section class="container">
-        <main class="ose_character_sheet">
-            <div class="front_page">
-                <div class="header_section_ose">
-
-                    <div class="character_info_logo_block_ose">
-                        <div class="character_info_section_ose">
-
-                            <div class="character_name_class_block_ose">
-                                <div class="pc_name_ose">
-                                    <div class="info_name_block_ose"><p>PC</p></div>
-                                </div>
-                                <div class="class_ose">
-                                    <div class="info_name_block_ose"><p>Class</p></div>
-                                </div>
-                                <div class="alingment_ose">
-                                    <div class="info_name_block_ose"><p>AL</p></div>
-                                </div>
-                                <div class="title_ose">
-                                    <div class="info_name_block_ose"><p>Title</p></div>
-                                </div>
-                                <div class="level_ose">
-                                    <div class="info_name_block_ose"><p>Level</p></div>
-                                </div>
-                            </div>
-
-                            <div class="sheet_descriptions_ose">
-                                <p>Character name</p>
-                                <p>Alingment: Law, Neutrality, Chaos</p>
-                                <p>Experience level</p>
-                            </div>
-
+    <!-- OSE sheet start -->
+    <section class="container ose_character_sheet">
+        <div class="ose_front_page">
+            <div class="ose_left_side">
+                <div class="ose_base_character_info">
+                    <div class="ose_character_info_grid">
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">PC</div>
+                            <div class="ose_side_info"></div>
                         </div>
-                        <img src="#" alt="ose logo" class="logo_ose">
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">Class</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">Title</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">AL</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">Level</div>
+                            <div class="ose_side_info"></div>
+                        </div>
                     </div>
+                    <div class="ose_aside_info">
+                        <p>Character name</p>
+                        <p>Alignment: Law, Neutrality, Chaos</p>
+                        <p>Experience level</p>
+                    </div>
+                </div>
 
-                    <div class="ability_saves_portrait_block_ose">
-                        <div class="ability_scores_section_ose">
-
-                            <h2>Ability Scores</h2>
-                            <div>
-                                <div class="info_name_block_ose"><p>STR</p></div>
-                                <div class="info_name_block_ose"><p>DEX</p></div>
-                                <div class="info_name_block_ose"><p>CON</p></div>
-                                <div class="info_name_block_ose"><p>INT</p></div>
-                                <div class="info_name_block_ose"><p>WIS</p></div>
-                                <div class="info_name_block_ose"><p>CHA</p></div>
+                <div class="ose_abilities_and_saves">
+                    <div class="ose_ability_scores">
+                        <h2>Ability Scores</h2>
+                        <div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">STR</div>
+                                <div class="ose_side_info"></div>
                             </div>
-
-                            <div class="sheet_descriptions_ose">
-                                <p>Melee att/damage, Open doors</p>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">DEX</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">CON</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">INT</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">WIS</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">CHA</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_aside_info">
+                                <p>Melee att./damage, Open doors</p>
                                 <p>Missle attacks, AC, Initiative</p>
                                 <p>Hit points</p>
                                 <p>Languages, Literacy</p>
                                 <p>Saves vs magic</p>
                                 <p>Reactions, #Retainers, Loyalty</p>
                             </div>
-
-                            <p><span class="bold">Ability check:</span>Roll under or equal on 1d20</p>
                         </div>
-                        <div class="saving_throws_section_ose">
-
-                            <h2>Saving Throws</h2>
-                            <div>
-                                <div class="info_name_block_ose"><p>D</p></div>
-                                <div class="info_name_block_ose"><p>W</p></div>
-                                <div class="info_name_block_ose"><p>P</p></div>
-                                <div class="info_name_block_ose"><p>B</p></div>
-                                <div class="info_name_block_ose"><p>S</p></div>
-                                <div class="info_name_block_ose"><p>±</p></div>
+                        <p>Ability check: Roll under or equal on 1d20</p>
+                    </div>
+                    <div class="ose_saving_throws">
+                        <h2>Saving Throws</h2>
+                        <div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">D</div>
+                                <div class="ose_side_info"></div>
                             </div>
-
-                            <div class="sheet_descriptions_ose">
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">W</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">P</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">B</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">S</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">±</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_aside_info">
                                 <p>Death, poison</p>
                                 <p>Magic wands</p>
                                 <p>Paralysis, petrification</p>
@@ -96,217 +129,290 @@
                                 <p>Spells, magic rods, magic staves</p>
                                 <p>WIS modifier to saves vs magic</p>
                             </div>
-                            
-                            <p><span class="bold">Saving throw:</span>Roll over or equal on 1d20</p>
                         </div>
-                        <div class="character_portrait_section_ose">
-                            <div class="portrate_box"></div>
-                            <p>Character portrait, symbol, description</p>
+                        <p>Saving throw: Roll over or equal on 1d20</p>
+                    </div>
+                </div>
+
+                <div class="ose_combat">
+                    <h2>Combat</h2>
+                    <div>
+                        <div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">HP</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">Hit points</div>
+                            </div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">AC</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">Armour class</div>
+                            </div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">Att</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">Attack bonus</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Max</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">±</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Un</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">±</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Mel</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Mis</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_aside_info">
+                                <p>Maximum hit points</p>
+                                <p>CON modifier to him points</p>
+                                <p>Unarmoured AC: 10 + DEX modifier</p>
+                                <p>DEX modifier to armour class</p>
+                                <p>STR modifier to melee att./damage</p>
+                                <p>DEX modifier to missile attacks</p>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="combat_front_page_ose">
-                    <div class="combat_abilities_skills_block_ose">
-                        <div class="combat_section_ose">
-                            <h2>Combat</h2>
-                            <div class="three_group_main_ose">
-                                <div class="three_section_layout_ose">
-                                    <p class="three_section_front_ose">HP</p>
-                                    <p class="three_section_mid_ose"></p>
-                                    <p class="three_section_end_ose">Hit points</p>
-                                </div>
-                                <div class="three_section_layout_ose">
-                                    <p class="three_section_front_ose">AC</p>
-                                    <p class="three_section_mid_ose"></p>
-                                    <p class="three_section_end_ose">Armour Class</p>
-                                </div>
-                                <div class="three_section_layout_ose">
-                                    <p class="three_section_front_ose">Att</p>
-                                    <p class="three_section_mid_ose"></p>
-                                    <p class="three_section_end_ose">Attack bonus</p>
-                                </div>
-                            </div>
-                            <div class="three_group_mid_ose">
-                                <div class="info_name_block_ose"><p>Max</p></div>
-                                <div class="info_name_block_ose"><p>±</p></div>
-                                <div class="info_name_block_ose"><p>Un</p></div>
-                                <div class="info_name_block_ose"><p>±</p></div>
-                                <div class="info_name_block_ose"><p>Mel</p></div>
-                                <div class="info_name_block_ose"><p>Mis</p></div>
-                            </div>
-                            <div class="three_group_descriptions_ose">
-                                <p>Maximum hit points</p>
-                                <p>CON modifier to hit points</p>
-                                <p>Unarmoured AC: 10 + DEX modifier</p>
-                                <p>DEX modifier to Armour Class</p>
-                                <p>STR modifier to melee att/damage</p>
-                                <p>DEX modifier to missle attacks</p>
-                            </div>
-                        </div>
-                        <div class="abilities_skills_weapons_section_ose">
-                            <h2>Abilities, Skills, Weapons</h2>
-                            <div></div>
-                        </div>
-                    </div>
+                <div class="ose_abilities_skills_weapons">
+                    <h2>Abilities, Skills, Weapons</h2>
+                    <div class="ose_list_block"></div>
+                </div>
+                
+            </div>
+            <div class="ose_right_side">
 
-                    <div class="encounters_movement_block_ose">
-                        <div class="encounters_section_ose">
-                            <h2>Encounters</h2>
-                            <div class="encounter_section_container_ose">
-                                <div>
-                                    <div class="info_name_block_ose"><p>Init</p></div>
-                                    <div class="info_name_block_ose"><p>±</p></div> 
-                                </div>
-                                <div>
-                                    <p>DEX modifier to initiative (optional)</p>
-                                    <p>CHA modifier to reaction rolls</p>
-                                </div>                                
+                <div class="ose_logo_portrait">
+                    <img src="#" alt="logo">
+                    <div class="ose_portrait_block"></div>
+                    <p>Character portrait, symbol, description</p>
+                </div>
+
+                <div class="ose_encounters">
+                    <h2>Encounters</h2>
+                    <div>
+                        <div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Init</div>
+                                <div class="ose_side_info"></div>
                             </div>
-                            
-                        </div>
-                        <div class="exploration_section_ose">
-                            <h2>Exploration</h2>
-                            <div class="encounter_section_container_ose">
-                                <div>
-                                    <div class="three_section_layout_ose">
-                                        <p class="three_section_front_ose">LD</p>
-                                        <p class="three_section_mid_ose"></p>
-                                        <p class="three_section_end_ose">-in-6</p>
-                                    </div>
-                                    <div class="three_section_layout_ose">
-                                        <p class="three_section_front_ose">OD</p>
-                                        <p class="three_section_mid_ose"></p>
-                                        <p class="three_section_end_ose">-in-6</p>
-                                    </div>
-                                    <div class="three_section_layout_ose">
-                                        <p class="three_section_front_ose">SD</p>
-                                        <p class="three_section_mid_ose"></p>
-                                        <p class="three_section_end_ose">-in-6</p>
-                                    </div>
-                                    <div class="three_section_layout_ose">
-                                        <p class="three_section_front_ose">FT</p>
-                                        <p class="three_section_mid_ose"></p>
-                                        <p class="three_section_end_ose">-in-6</p>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p>Listen at door (1-in-6 or by class)</p>
-                                    <p>Open stuck door (based on STR)</p>
-                                    <p>Find secret door (1-in-6 or by class)</p>
-                                    <p>Find room trap (1-in-6 or by class)</p>
-                                </div>                                
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">±</div>
+                                <div class="ose_side_info"></div>
                             </div>
                         </div>
-                        <div class="movement_section_ose">
-                            <div class="h2_with_description_container">
-                                <h2>Movement</h2>
-                                <p>Base mv. rate = 120, unless encumbered</p>
-                            </div>                            
-                            <div class="encounter_section_container_ose">
-                                <div>
-                                    <div class="info_name_block_ose"><p>Ov</p></div>
-                                    <div class="info_name_block_ose"><p>Ex</p></div>
-                                    <div class="info_name_block_ose"><p>En</p></div> 
-                                </div>
-                                <div>
-                                    <p>Overland: ½ base mv. rate (miles/day)</p>
-                                    <p>Exploration: base mv. rate (feet/turn)</p>
-                                    <p>Encounter: ½ base mv. rate (feet/round)</p>
-                                </div>                                
+                        <div>
+                            <div class="ose_aside_info">
+                                <p>Dex modifier to initiative (optional)</p>
+                                <p>CHA modifier to reaction rolls</p>                                
                             </div>
                         </div>
-                        <div class="languages_section_ose">
-                            <div class="h2_with_description_container">
-                                <h2>Languages</h2>
-                                <p>By class; extra langs. if INT 13+</p>
+                    </div>                    
+                </div>
+
+                <div class="ose_exporation">
+                    <h2>Exploration</h2>
+                    <div>
+                        <div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">LD</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">-in-6</div>
                             </div>
-                            <div></div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">OD</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">-in-6</div>
+                            </div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">SD</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">-in-6</div>
+                            </div>
+                            <div class="ose_three_section_block">
+                                <div class="ose_three_section_title">FT</div>
+                                <div class="ose_three_section_info"></div>
+                                <div class="ose_three_section_description">-in-6</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_aside_info">
+                                <p>Listen at door (1-in-6 or by class)</p>
+                                <p>Open stuck door (based on STR)</p>
+                                <p>Find secret door (1-in-6 or by class)</p>
+                                <p>Find room trap (1-in-6 or by class)</p>
+                            </div>
                         </div>
                     </div>
+                </div>
+
+                <div class="ose_movement">
+                    <div>
+                        <h2>Movement</h2>
+                        <p>Base mv. rate = 120, unless encumbered</p>
+                    </div>
+                    
+                    <div>
+                        <div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Ov</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">Ex</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">En</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="ose_aside_info">
+                                <p>Overland: ½ base mv. rate (miles/day)</p>
+                                <p>Exploration: base mv. rate (feet/turn)</p>  
+                                <p>Encounter: ½ base mv. rate (feet/round)</p>                              
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+
+                <div class="ose_languages">
+                    <div>
+                        <h2>Languages</h2>
+                        <p>By class; extra langs. if INT 13+</p>
+                    </div>
+                    <div class="ose_list_block"></div>
                 </div>
             </div>
-            <div class="back_page">
-                <div class="equipment_weapons_block">
+        </div>
+
+        <div class="ose_back_page">
+            <div class="ose_left_side">
+                <div class="ose_equipment">
+                    <h2>Equipment</h2>
+                    <div class="ose_list_block"></div>
+                </div>
+                <div class="ose_magic_items">
+                    <h2>Magic Items</h2>
+                    <div class="ose_list_block"></div>
+                </div>
+                <div class="ose_other_notes">
                     <div>
                         <h2>Equipment</h2>
-                        <div></div>
-                    </div>
-                    <div>
-                        <h2>Weapons & Armour</h2>
-                        <div></div>
-                    </div>
+                        <p>Spells, mounts, retainers, areas explored, clues</p>
+                    </div>                    
+                    <div class="ose_list_block"></div>
                 </div>
-                <div class="magic_items_treasure_block">
+                <div class="ose_experience">
                     <div>
-                        <h2>Magic Items</h2>
-                        <div></div>
-                    </div>
-                    <div>
-                        <h2>Treasure</h2>
-                        <div></div>
-                    </div>
-                </div>
-                <div>
-                    <div class="other_notes_block">
-                        <div>
-                            <div class="h2_with_description_container">
-                                <h2>Other Notes</h2>
-                                <p>Spells, mounts, retainers, areas explored, clues</p>
-                            </div>
-                        </div>
-                        <div></div>
-                        <div>
-                            <div class="three_group_main_ose">
-                                <div class="three_section_layout_ose">
-                                    <p class="three_section_front_ose">XP</p>
-                                    <p class="three_section_mid_ose"></p>
-                                    <p class="three_section_end_ose">Experience points</p>
-                                </div>
-                            </div>
-                            <div class="three_group_mid_ose">
-                                <div class="info_name_block_ose"><p>Next</p></div>
-                                <div class="info_name_block_ose"><p>%</p></div>
-                            </div>
-                            <div class="three_group_descriptions_ose">
-                                <p>Experience points for next level</p>
-                                <p>Prime requisite modifier to XP</p>
-                            </div>
+                        <div class="ose_three_section_block">
+                            <div class="ose_three_section_title">XP</div>
+                            <div class="ose_three_section_info"></div>
+                            <div class="ose_three_section_description">Experience points</div>
                         </div>
                     </div>
+                    <div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">Next</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">%</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <p>Experience points for next level</p>
+                        <p>Prime requisite modifier to XP</p>
+                    </div>
+                </div>
+            </div>
 
-                    <div class="coins_encumbrance_block">
+            <div class="ose_right_side">
+                <div class="ose_weapons_armour">
+                    <h2>Weapons & Armour</h2>
+                    <div class="ose_list_block"></div>
+                </div>
+                <div class="ose_treasure">
+                    <h2>Treasure</h2>
+                    <div class="ose_list_block"></div>
+                </div>
+                <div class="ose_coins">
+                    <h2>Coins</h2>
+                    <div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">PP</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">GP</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">EP</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">SP</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                        <div class="ose_side_by_side_block">
+                            <div class="ose_side_name">CP</div>
+                            <div class="ose_side_info"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ose_encumbreance">
+                    <div>
+                        <h2>Encumbrance</h2>
+                        <p>(Optional rule)</p>
+                    </div> 
+                    <div>
                         <div>
-                            <h2>Coins</h2>
-                            <div class="info_name_block_ose"><p>PP</p></div>
-                            <div class="info_name_block_ose"><p>GP</p></div>
-                            <div class="info_name_block_ose"><p>EP</p></div>
-                            <div class="info_name_block_ose"><p>SP</p></div>
-                            <div class="info_name_block_ose"><p>CP</p></div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">TR</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">EQ</div>
+                                <div class="ose_side_info"></div>
+                            </div>
+                            <div class="ose_side_by_side_block">
+                                <div class="ose_side_name">+</div>
+                                <div class="ose_side_info"></div>
+                            </div>
                         </div>
                         <div>
-                            <div class="h2_with_description_container">
-                                <h2>Encumbrance</h2>
-                                <p>(Optional rule)</p>
-                            </div>
-                            <div>
-                                <div>
-                                    <div class="info_name_block_ose"><p>TR</p></div>
-                                    <div class="info_name_block_ose"><p>EQ</p></div>
-                                    <div class="info_name_block_ose"><p>+</p></div>
-                                </div>
-                                <div>
-                                    <p>Weight of treasure & coins</p>
-                                    <p>Weight of weapons, armour & gear</p>
-                                    <p>Total weight carried (max=1600cn)</p>
-                                </div>
-                            </div>
+                            <p>Weight of treasure & coins</p>
+                            <p>Weight of weapons, armour & gear</p>
+                            <p>Total weight carried (max=1600cn)</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </main>
+        </div>
     </section>
-    
+    <!-- OSE sheet end -->
+
 </body>
 </html>
