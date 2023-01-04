@@ -1,3 +1,22 @@
 body {
     background-color: rgb(230,230,230);
 }
+
+.flex{
+    display: flex;
+}
+
+.col{
+    flex-direction: column;
+}
+
+.row{
+    flex-direction: row;
+}
+
+.container{
+    width: 95%;
+    max-width: 80%;
+    margin-inline: auto;
+    padding: 2rem;
+}

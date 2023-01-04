@@ -1,1 +1,105 @@
-/* font-family: 'Nova Square', cursive; */
+h1{
+    font-size: 2rem;
+}
+
+h2{
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+p{
+    font-size: .6rem;
+    font-style: italic;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.ose_character_sheet{
+    font-family: 'Nova Square', cursive;
+    background-color: #fff;
+}
+
+.ose_left_side{
+    width: 65%;
+}
+
+.ose_right_side{
+    width: 32%;
+}
+
+.ose_front_page,
+.ose_back_page{
+    justify-content: space-between;
+}
+
+.ose_description_info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding-left: .2rem;
+}
+
+.ose_base_character_info,
+.ose_abilities_and_saves,
+.ose_combat,
+.ose_abilities_skills_weapons,
+.ose_logo_portrait,
+.ose_encounters,
+.ose_exporation,
+.ose_movement,
+.ose_languages{
+    border: 1px solid #555;
+}
+
+.ose_side_by_side_block{
+    display: flex;
+    margin: .2rem 0;
+}
+
+.ose_side_name{
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    min-width: 30px;
+    font-size: .7rem;
+    padding: .3rem 0;
+}
+
+.ose_side_info{
+    border: 1px solid #000;
+    width: 100%;
+    min-width: 50%;
+    text-align: center;
+}
+
+.pc_grid{
+    grid-area: pc;
+}
+
+.class_grid{
+    grid-area: class;
+}
+
+.title_grid{
+    grid-area: title;
+}
+
+.al_grid{
+    grid-area: al;
+}
+
+.level_grid{
+    grid-area: level;
+}
+
+.ose_character_info_grid{
+    display: grid;
+    width: 80%;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+        "pc pc pc"
+        "class class al"
+        "title title level";
+}
