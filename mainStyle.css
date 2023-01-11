@@ -16,7 +16,9 @@ body {
 
 .container{
     width: 95%;
-    /*max-width: 70%;*/
-    margin-inline: auto;
-    padding: 2rem;
+    margin-inline: auto;    
+}
+
+.bold{
+    font-weight: bold;
 }
