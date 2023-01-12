@@ -11,10 +11,20 @@
     font-style: italic;
 }
 
+.ose_side_title_info{
+    display: flex;
+    align-items: center;
+    padding-left: .2rem;
+}
+
 .ose_character_sheet h2{
     font-size: 1.2rem;
     font-weight: bold;
     font-family: 'Teko', sans-serif;
+}
+
+.ose_logo{
+    margin-bottom: 1rem;
 }
 
 .ose_larger_cap{
@@ -23,6 +33,11 @@
 
 .ose_spacer_container{
     gap: .3rem;
+}
+
+.ose_right_side_align{
+    justify-content: flex-end;
+    text-align: right;
 }
 
 .ose_page_one,
@@ -55,9 +70,14 @@
 
 .ose_side_by_side_info_large_block,
 .ose_side_by_side_info_medium_block,
-.ose_side_by_side_info_small_block{
+.ose_side_by_side_info_small_block,
+.ose_side_by_side_info_full_block{
     border: 1px solid #000;
     text-align: center;  
+}
+
+.ose_side_by_side_info_full_block{
+    width: 100%;
 }
 
 .ose_side_by_side_info_large_block{
@@ -90,7 +110,8 @@
     padding-block: .3rem;
 }
 
-.ose_three_info_start{
+.ose_three_info_start,
+.ose_three_info_mid{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -121,4 +142,10 @@
 
 .ose_ability_saves_side_by_side{
     width: 50%;
+}
+
+.ose_general_info_block,
+.ose_character_portait{
+    border: 1px solid #000;
+    padding: .5rem;
 }
