@@ -51,11 +51,6 @@
     padding: 1.5rem;
 }
 
-.ose_page_left_side,
-.ose_page_right_side{
-    border: 1px solid #000;
-}
-
 .ose_page_left_side{
     width: 65%;
 }
@@ -105,21 +100,17 @@
 .ose_three_info_start{
     background-color: #000;
     color: #fff;
-    width: 30px;
+    min-width: 30px;
     font-size: .7rem;
     padding-block: .3rem;
 }
 
 .ose_three_info_start,
-.ose_three_info_mid{
+.ose_three_info_mid,
+.ose_side_by_side_end{
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.ose_side_by_side_end{
-    padding-left: .5rem;
-    
 }
 
 .ose_three_info_description{
@@ -148,4 +139,10 @@
 .ose_character_portait{
     border: 1px solid #000;
     padding: .5rem;
+}
+
+.ose_displayed_info{
+    font-size: .8rem !important;
+    line-height: 1;
+    padding-left: .5rem;
 }
