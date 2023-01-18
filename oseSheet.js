@@ -56,5 +56,25 @@ const oseCharacterTreasureWeight = document.getElementById("ose_character_treasu
 const oseCharacterWeaponsArmorWeight = document.getElementById("ose_character_weapons_armour_weight");
 const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_total_carried_weight");
 
+const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
+
+function oseStatRoller(){
+    let numberedRolled = 0;
+    
+    for (let i = 0; i < oseStatsArray.length; i++){
+        numberedRolled = oseDieRoller(3, 18);
+        oseStatsArray[i] = numberedRolled;
+        console.log(oseStatsArray[i]);
+    }    
+}
+
+function oseDieRoller(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+oseStatRoller();
+
+
+//console.log(oseStatRoller(3, 18));
 //let test = document.createTextNode("Character name added here with additions");
 //characterName.appendChild(test);
