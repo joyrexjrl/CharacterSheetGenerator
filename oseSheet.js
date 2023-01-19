@@ -59,11 +59,11 @@ const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_to
 const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
 
 function oseStatRoller(){
-    let numberedRolled = 0;
+    let numberedRolled;
     
     for (let i = 0; i < oseStatsArray.length; i++){
-        numberedRolled = oseDieRoller(3, 18);
-        oseStatsArray[i] = numberedRolled;
+        numberedRolled = (oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6));
+        oseStatsArray[i].innerHTML = numberedRolled;
         console.log(oseStatsArray[i]);
     }    
 }
@@ -72,7 +72,54 @@ function oseDieRoller(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function oseStatBonus(stat){
+    let statBonus = 0;
+    let number = parseInt(stat.textContent);
+    switch(number){
+        case 3:
+            statBonus = -3;
+            break;
+        case 4:
+        case 5:
+            statBonus = -2;
+            break;
+        case 6:
+        case 7:
+        case 8:
+            statBonus = -1;
+            break;
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+            statBonus = 0;
+            break;
+        case 13:
+        case 14:
+        case 15:
+            statBonus = +1;
+            break;
+        case 16:
+        case 17:
+            statBonus = +2;
+            break;
+        case 18:
+            statBonus = +3;
+            break;
+        default:
+            break;
+    }
+    return statBonus;
+}
+
+function oseStatBonusAssigner(){
+    oseCharacterWISBonusToSpellSave.innerHTML = oseStatBonus(oseCharacterWIS);
+    oseCharacterCONBonusToHP.innerHTML = oseStatBonus(oseCharacterCON);
+    oseCharacterDEXBonusToAC.innerHTML = oseStatBonus(oseCharacterDEX);
+}
+
 oseStatRoller();
+oseStatBonusAssigner();
 
 
 //console.log(oseStatRoller(3, 18));
