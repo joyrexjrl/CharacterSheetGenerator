@@ -68,10 +68,6 @@ function oseStatRoller(){
     }    
 }
 
-function oseDieRoller(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function oseStatBonus(stat){
     let statBonus = 0;
     let number = parseInt(stat.textContent);
@@ -116,12 +112,154 @@ function oseStatBonusAssigner(){
     oseCharacterWISBonusToSpellSave.innerHTML = oseStatBonus(oseCharacterWIS);
     oseCharacterCONBonusToHP.innerHTML = oseStatBonus(oseCharacterCON);
     oseCharacterDEXBonusToAC.innerHTML = oseStatBonus(oseCharacterDEX);
+    oseCharacterMeleeAttackBonus.innerHTML = oseStatBonus(oseCharacterSTR);
+    oseCharacterMissileAttackBonus.innerHTML = oseStatBonus(oseCharacterDEX);
+    oseCharacterInitiative.innerHTML = oseStatBonus(oseCharacterDEX);
+    oseCharacterCHABonusToReactions.innerHTML = oseStatBonus(oseCharacterCHA);
+}
+
+function oseCharacterRaceAvailable(){
+    let racesAvailable = ["Half-Orc", "Human"];
+
+    if(parseInt(oseCharacterCON.textContent) >= 9) racesAvailable.push("Svirfneblin", "Duergar", "Dwarf", "Gnome");    
+    if(parseInt(oseCharacterINT.textContent) >= 9) racesAvailable.push("Drow", "Elf");    
+    if(parseInt(oseCharacterCHA.textContent) >= 9 && parseInt(oseCharacterCON.textContent) >= 9) racesAvailable.push("Half-Elf");    
+    if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterDEX.textContent) >= 9) racesAvailable.push("Halfling");    
+    
+    oseCharacterRacePicker(racesAvailable);
+}
+
+function oseCharacterRacePicker(availableRaces){
+    let chosenRace = oseDieRoller(1, availableRaces.length) -1;
+    let race = availableRaces[chosenRace];
+
+    oseCharacterClass.innerHTML = race + "/ ";
+    oseCharacterClassAvailable(race);
+}
+
+function oseCharacterClassAvailable(characterRace){
+    let classesAvailable = [];
+    let rolledClass = 0;
+    let chosenClass = "";
+
+    switch(characterRace){
+        case "Drow":
+        case "Elf":
+            classesAvailable.push("Acrobat", "Assassin", "Cleric", "Fighter", "Magic-User", "Thief");
+            if(parseInt(oseCharacterWIS.textContent) >= 9) classesAvailable.push("Necromancer");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Knight");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterWIS.textContent) >= 9) classesAvailable.push("Ranger");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Duergar":
+        case "Dwarf":
+            classesAvailable.push("Assassin", "Cleric", "Fighter", "Thief");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Gnome":
+        case "Svirfneblin":
+            classesAvailable.push("Acrobat", "Cleric", "Fighter", "Thief");
+            if(parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Illusionist");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Half-Elf":
+            classesAvailable.push("Acrobat", "Assassin", "Cleric", "Druid", "Fighter", "Magic-User", "Thief");
+            if(parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Bard");
+            if(parseInt(oseCharacterCHA.textContent) >= 9) classesAvailable.push("Paladin");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Knight");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterWIS.textContent) >= 9) classesAvailable.push("Ranger");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Halfling":
+            classesAvailable.push("Druid", "Fighter", "Thief");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Half-Orc":
+            classesAvailable.push("Acrobat", "Assassin", "Cleric", "Fighter", "Thief");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+        case "Human":
+            classesAvailable.push("Acrobat", "Assassin", "Cleric", "Druid", "Fighter", "Magic-User", "Thief");
+            if(parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Bard", "Barbarian", "Illusionist");
+            if(parseInt(oseCharacterCHA.textContent) >= 9) classesAvailable.push("Paladin");
+            if(parseInt(oseCharacterWIS.textContent) >= 9) classesAvailable.push("Necromancer");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Knight");
+            if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterWIS.textContent) >= 9) classesAvailable.push("Ranger");
+            rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
+            chosenClass = classesAvailable[rolledClass];
+            break;
+    }
+
+    oseCharacterClass.innerHTML += chosenClass;
+    oseCharacterClassInformation(characterRace, chosenClass);
+}
+
+function oseCharacterClassInformation(characterRace, characterClass){
+    switch(characterRace){
+        case "Svirfneblin":
+            break;
+        case "Duergar":
+            break;
+        case "Dwarf":
+            break;
+        case "Gnome":
+            break;
+        case "Drow":
+            break;
+        case "Elf":
+            break;
+        case "Half-Elf":
+            break;
+        case "Halfling":
+            break;
+        case "Half-Orc":
+            break;
+        case "Human":
+            break;
+    }
+    switch(characterClass){
+        case "Acrobat":
+            break;
+        case "Assassin":
+            break;
+        case "Druid":
+            break;
+        case "Cleric":
+            break;
+        case "Fighter":
+            break;
+        case "Magic-User":
+            break;
+        case "Theif":
+            break;
+        case "Barbarian":
+            break;
+        case "Bard":
+            break;
+        case "Illusionist":
+            break;
+        case "Paladin":
+            break;
+        case "Necromancer":
+            break;
+        case "Knight":
+            break;
+        case "Ranger":
+            break;
+        
+    }
+}
+
+function oseDieRoller(min, max){
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 oseStatRoller();
 oseStatBonusAssigner();
-
-
-//console.log(oseStatRoller(3, 18));
-//let test = document.createTextNode("Character name added here with additions");
-//characterName.appendChild(test);
+oseCharacterRaceAvailable();
