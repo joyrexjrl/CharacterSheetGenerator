@@ -200,7 +200,92 @@ function oseCharacterClassAvailable(characterRace){
     oseCharacterClassInformation(characterRace, chosenClass);
 }
 
+function osePrimeReqExpBonus(primeStat){
+    let expBonus = 0;
+
+    switch(primeStat){
+        case 3:
+        case 4:
+        case 5:
+            expBonus = -20;
+            break;
+        case 6:
+        case 7:
+        case 8:
+            expBonus = -10;
+            break;
+        case 9:
+        case 10:
+        case 11:
+        case 12:
+            expBonus = 0;
+            break;
+        case 13:
+        case 14:
+        case 15:
+            expBonus = 5;
+            break;
+        case 16:
+        case 17:
+        case 18:
+            expBonus = 10;
+            break;   
+    }
+
+    return expBonus;
+}
+
+function oseHitPointRoller(dieType){
+    let tempHp = parseInt((oseDieRoller(1, dieType)) +  oseCharacterCONBonusToHP);
+    
+    oseCharacterMaxHP.innerHTML = tempHp < 1 ? 1 : tempHp;
+}
+
+function oseCharacterMaxLevel(charRace, charClass){
+    let levelPassed = 0;
+
+    switch(charClass){
+        case "Acrobat":
+            if(charRace == "Drow" || charRace == "Elf") levelPassed = 10;
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Half-Orc") levelPassed = 8;
+            if(charRace == "Human") levelPassed = 14;
+            break;
+        case "Assassin":
+            break;
+        case "Druid":
+            break;
+        case "Cleric":
+            break;
+        case "Fighter":
+            break;
+        case "Magic-User":
+            break;
+        case "Thief":
+            break;
+        case "Barbarian":
+            break;
+        case "Bard":
+            break;
+        case "Illusionist":
+            break;
+        case "Paladin":
+            break;
+        case "Necromancer":
+            break;
+        case "Knight":
+            break;
+        case "Ranger":
+            break;
+    }
+
+    oseCharacterLevel.innerHTML = "1/ " + levelPassed;
+}
+
 function oseCharacterClassInformation(characterRace, characterClass){
+    let tempStat = 0;
+    let maxLevel = parseInt(oseCharacterMaxLevel(characterRace, characterClass));
+
     switch(characterRace){
         case "Svirfneblin":
             break;
@@ -225,34 +310,71 @@ function oseCharacterClassInformation(characterRace, characterClass){
     }
     switch(characterClass){
         case "Acrobat":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
+            oseHitPointRoller(4);
             break;
         case "Assassin":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
+            oseHitPointRoller(4);
             break;
         case "Druid":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
+            oseHitPointRoller(6);
             break;
         case "Cleric":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
+            oseHitPointRoller(6);
             break;
         case "Fighter":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
+            oseHitPointRoller(8);
             break;
         case "Magic-User":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
+            oseHitPointRoller(4);
             break;
-        case "Theif":
+        case "Thief":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
+            oseHitPointRoller(4);
             break;
         case "Barbarian":
+            tempStat = oseCharacterSTR.textContent < oseCharacterCON.textContent ? oseCharacterSTR.textContent : oseCharacterCON.textContent;
+            
+            if(oseCharacterSTR.textContent >= 16 && oseCharacterCON.textContent >= 16) oseCharacterPrimeStatBonusToEXP.innerHTML = 10;
+            else if(oseCharacterSTR.textContent >= 13 || oseCharacterCON.textContent >= 13) oseCharacterPrimeStatBonusToEXP.innerHTML = 5;
+            else oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(tempStat));
+
+            oseHitPointRoller(8);            
             break;
         case "Bard":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterCHA.textContent));
+            oseHitPointRoller(6);
             break;
         case "Illusionist":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
+            oseHitPointRoller(4);
             break;
         case "Paladin":
+            tempStat = oseCharacterSTR.textContent < oseCharacterWIS.textContent ? oseCharacterSTR.textContent : oseCharacterWIS.textContent;
+            
+            if(oseCharacterSTR.textContent >= 16 && oseCharacterWIS.textContent >= 16) oseCharacterPrimeStatBonusToEXP.innerHTML = 10;
+            else if(oseCharacterSTR.textContent >= 13 || oseCharacterWIS.textContent >= 13) oseCharacterPrimeStatBonusToEXP.innerHTML = 5;
+            else oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(tempStat));
+
+            oseHitPointRoller(8);
             break;
         case "Necromancer":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
+            oseHitPointRoller(4);
             break;
         case "Knight":
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
+            oseHitPointRoller(8);
             break;
         case "Ranger":
-            break;
-        
+            oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
+            oseHitPointRoller(8);
+            break;        
     }
 }
 
