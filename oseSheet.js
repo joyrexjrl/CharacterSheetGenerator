@@ -116,6 +116,9 @@ function oseStatBonusAssigner(){
     oseCharacterMissileAttackBonus.innerHTML = oseStatBonus(oseCharacterDEX);
     oseCharacterInitiative.innerHTML = oseStatBonus(oseCharacterDEX);
     oseCharacterCHABonusToReactions.innerHTML = oseStatBonus(oseCharacterCHA);
+    oseCharacterUnarmouredAC.innerHTML = 10 + oseStatBonus(oseCharacterDEX);
+    oseCharacterAttackBonus.innerHTML = 0;
+    oseCharacterGoldCoins.innerHTML = parseInt((oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6)) * 10);
 }
 
 function oseCharacterRaceAvailable(){
@@ -236,9 +239,10 @@ function osePrimeReqExpBonus(primeStat){
 }
 
 function oseHitPointRoller(dieType){
-    let tempHp = parseInt((oseDieRoller(1, dieType)) +  oseCharacterCONBonusToHP);
-    
-    oseCharacterMaxHP.innerHTML = tempHp < 1 ? 1 : tempHp;
+    let tempHp = parseInt((oseDieRoller(1, dieType)) + oseCharacterCONBonusToHP);
+    if(tempHp < 1) tempHp = 1;
+    oseCharacterMaxHP.innerHTML = tempHp;
+    oseCharacterCurrentHP.innerHTML = tempHp;
 }
 
 function oseCharacterMaxLevel(charRace, charClass){
@@ -252,58 +256,212 @@ function oseCharacterMaxLevel(charRace, charClass){
             if(charRace == "Human") levelPassed = 14;
             break;
         case "Assassin":
+            if(charRace == "Svirfneblin" || charRace == "Half-Orc") levelPassed = 8;
+            if(charRace == "Duergar" || charRace == "Dwarf") levelPassed = 9;
+            if(charRace == "Gnome") levelPassed = 6;
+            if(charRace == "Drow" || charRace == "Elf") levelPassed = 10;
+            if(charRace == "Half-Elf") levelPassed = 11;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Druid":
+            if(charRace == "Elf") levelPassed = 8;
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Halfling") levelPassed = 6;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Cleric":
+            if(charRace == "Svirfneblin" || charRace == "Gnome") levelPassed = 7;
+            if(charRace == "Duergar" || charRace == "Dwarf") levelPassed = 8;
+            if(charRace == "Drow") levelPassed = 11;
+            if(charRace == "Elf") levelPassed = 7;
+            if(charRace == "Half-Elf") levelPassed = 5;
+            if(charRace == "Half-Orc") levelPassed = 4;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Fighter":
+            if(charRace == "Svirfneblin" || charRace == "Gnome") levelPassed = 6;
+            if(charRace == "Duergar") levelPassed = 9;
+            if(charRace == "Dwarf") levelPassed = 10;
+            if(charRace == "Elf" || charRace == "Drow") levelPassed = 7;
+            if(charRace == "Half-Elf") levelPassed = 8;
+            if(charRace == "Halfling") levelPassed = 6;
+            if(charRace == "Half-Orc") levelPassed = 10;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Magic-User":
+        case "Necromancer":
+        case "Ranger":
+            if(charRace == "Drow") levelPassed = 9;
+            if(charRace == "Elf") levelPassed = 11;
+            if(charRace == "Half-Elf") levelPassed = 8;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Thief":
+            if(charRace == "Svirfneblin" || charRace == "Gnome") levelPassed = 8;
+            if(charRace == "Duergar" || charRace == "Dwarf") levelPassed = 9;
+            if(charRace == "Drow") levelPassed = 11;
+            if(charRace == "Elf") levelPassed = 10;
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Halfling" || charRace == "Half-Orc") levelPassed = 8;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Barbarian":
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Bard":
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Illusionist":
+            if(charRace == "Svirfneblin" || charRace == "Gnome") levelPassed = 7;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Paladin":
-            break;
-        case "Necromancer":
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Human") levelPassed = 14;
             break;
         case "Knight":
-            break;
-        case "Ranger":
+            if(charRace == "Elf") levelPassed = 11;
+            if(charRace == "Half-Elf") levelPassed = 12;
+            if(charRace == "Human") levelPassed = 14;
             break;
     }
 
-    oseCharacterLevel.innerHTML = "1/ " + levelPassed;
+    return levelPassed;    
+}
+
+function oseCharacterSaves(characterClass){
+    let characterSavesArray = [oseCharacterDeathSave, oseCharacterWandsSave, oseCharacterParalysisSave,
+        oseCharacterBreathSave, oseCharacterSpellSave, oseCharacterWISBonusToSpellSave];
+
+    switch(characterClass){
+        case "Acrobat":
+        case "Assassin":
+        case "Bard":
+        case "Illusionist":
+        case "Magic-User":
+        case "Thief":
+        case "Necromancer":
+            characterSavesArray[0].innerHTML = 13;
+            characterSavesArray[1].innerHTML = 14;
+            characterSavesArray[2].innerHTML = 13;
+            characterSavesArray[3].innerHTML = 16;
+            characterSavesArray[4].innerHTML = 15;
+            break;
+        case "Knight":
+        case "Ranger":
+        case "Fighter":
+            characterSavesArray[0].innerHTML = 12;
+            characterSavesArray[1].innerHTML = 13;
+            characterSavesArray[2].innerHTML = 14;
+            characterSavesArray[3].innerHTML = 15;
+            characterSavesArray[4].innerHTML = 16;
+            break;
+        case "Druid":
+        case "Cleric":
+            characterSavesArray[0].innerHTML = 11;
+            characterSavesArray[1].innerHTML = 12;
+            characterSavesArray[2].innerHTML = 14;
+            characterSavesArray[3].innerHTML = 16;
+            characterSavesArray[4].innerHTML = 15;
+            break;
+        case "Barbarian":
+            characterSavesArray[0].innerHTML = 10;
+            characterSavesArray[1].innerHTML = 13;
+            characterSavesArray[2].innerHTML = 12;
+            characterSavesArray[3].innerHTML = 15;
+            characterSavesArray[4].innerHTML = 16;
+            break;
+        case "Paladin":
+            characterSavesArray[0].innerHTML = 10;
+            characterSavesArray[1].innerHTML = 11;
+            characterSavesArray[2].innerHTML = 12;
+            characterSavesArray[3].innerHTML = 13;
+            characterSavesArray[4].innerHTML = 14;
+            break;        
+    }
+}
+
+function oseCharacterExpNeededToLevel(characterClass){
+    let xpNeeded = 0;
+    switch(characterClass){
+        case "Barbarian":
+        case "Illusionist":
+        case "Magic-User":
+        case "Knight":
+        case "Necromancer":
+            xpNeeded = 2500;
+            break;
+        case "Druid":
+        case "Bard":
+        case "Fighter":
+            xpNeeded = 2000;
+            break;
+        case "Acrobat":
+        case "Thief":
+            xpNeeded = 1200;
+            break;
+        case "Cleric":
+        case "Assassin":
+            xpNeeded = 1500;
+            break;
+        case "Ranger":
+            xpNeeded = 2250;
+            break;
+        case "Paladin":
+            xpNeeded = 2750;
+            break;
+    }
+    return xpNeeded;
+}
+
+function oseCharacterRaceAbilityModifier(abilityScore, abilityMod){
+    let tempScore = parseInt(abilityScore) + parseInt(abilityMod);
+    if(tempScore < 3) tempScore = 3;
+    if(tempScore > 18) tempScore = 18;
+    return tempScore;
 }
 
 function oseCharacterClassInformation(characterRace, characterClass){
     let tempStat = 0;
     let maxLevel = parseInt(oseCharacterMaxLevel(characterRace, characterClass));
+    let xpNeededToLevel = parseInt(oseCharacterExpNeededToLevel(characterClass));
+
+    oseCharacterCurrentEXP.innerHTML = 0;
+    oseCharacterNextLevelEXPNeeded.innerHTML = xpNeededToLevel;
+    oseCharacterLevel.innerHTML = "1/ " + maxLevel;
 
     switch(characterRace){
         case "Svirfneblin":
             break;
         case "Duergar":
+            oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             break;
         case "Dwarf":
+            oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             break;
         case "Gnome":
             break;
-        case "Drow":
+        case "Drow":            
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
+            oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             break;
         case "Elf":
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
+            oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             break;
         case "Half-Elf":
             break;
         case "Halfling":
+            oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, -1);
+            oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             break;
         case "Half-Orc":
+            oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
+            oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, 1);
             break;
         case "Human":
             break;
@@ -312,30 +470,37 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "Acrobat":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Assassin":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Druid":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
             oseHitPointRoller(6);
+            oseCharacterSaves(characterClass);
             break;
         case "Cleric":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
             oseHitPointRoller(6);
+            oseCharacterSaves(characterClass);
             break;
         case "Fighter":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
             oseHitPointRoller(8);
+            oseCharacterSaves(characterClass);
             break;
         case "Magic-User":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Thief":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Barbarian":
             tempStat = oseCharacterSTR.textContent < oseCharacterCON.textContent ? oseCharacterSTR.textContent : oseCharacterCON.textContent;
@@ -344,15 +509,18 @@ function oseCharacterClassInformation(characterRace, characterClass){
             else if(oseCharacterSTR.textContent >= 13 || oseCharacterCON.textContent >= 13) oseCharacterPrimeStatBonusToEXP.innerHTML = 5;
             else oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(tempStat));
 
-            oseHitPointRoller(8);            
+            oseHitPointRoller(8);
+            oseCharacterSaves(characterClass);
             break;
         case "Bard":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterCHA.textContent));
             oseHitPointRoller(6);
+            oseCharacterSaves(characterClass);
             break;
         case "Illusionist":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Paladin":
             tempStat = oseCharacterSTR.textContent < oseCharacterWIS.textContent ? oseCharacterSTR.textContent : oseCharacterWIS.textContent;
@@ -362,18 +530,22 @@ function oseCharacterClassInformation(characterRace, characterClass){
             else oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(tempStat));
 
             oseHitPointRoller(8);
+            oseCharacterSaves(characterClass);
             break;
         case "Necromancer":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
             oseHitPointRoller(4);
+            oseCharacterSaves(characterClass);
             break;
         case "Knight":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
             oseHitPointRoller(8);
+            oseCharacterSaves(characterClass);
             break;
         case "Ranger":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
             oseHitPointRoller(8);
+            oseCharacterSaves(characterClass);
             break;        
     }
 }
