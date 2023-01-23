@@ -42,6 +42,8 @@ const oseCharacterOverlandMovement = document.getElementById("ose_character_over
 const oseCharacterExplorationMovement = document.getElementById("ose_character_exploration_movement");
 const oseCharacterEncounterMovement = document.getElementById("ose_character_encounter_movement");
 
+const oseCharacterLanguages = document.getElementById("ose_character_languages");
+
 const oseCharacterCurrentEXP = document.getElementById("ose_character_current_exp");
 const oseCharacterNextLevelEXPNeeded = document.getElementById("ose_character_next_level_exp_needed");
 const oseCharacterPrimeStatBonusToEXP = document.getElementById("ose_character_prime_stat_bonus_to_exp");
@@ -57,6 +59,8 @@ const oseCharacterWeaponsArmorWeight = document.getElementById("ose_character_we
 const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_total_carried_weight");
 
 const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
+
+const lineBreak = document.createElement("br");
 
 function oseStatRoller(){
     let numberedRolled;
@@ -118,7 +122,20 @@ function oseStatBonusAssigner(){
     oseCharacterCHABonusToReactions.innerHTML = oseStatBonus(oseCharacterCHA);
     oseCharacterUnarmouredAC.innerHTML = 10 + oseStatBonus(oseCharacterDEX);
     oseCharacterAttackBonus.innerHTML = 0;
+    oseCharacterListenDoorExplore.innerHTML = 1;
+    oseCharacterOpenDoorExplore.innerHTML = oseStatBonus(oseCharacterSTR);
+    if(oseCharacterOpenDoorExplore.textContent < 0) oseCharacterOpenDoorExplore.innerHTML = 0;
+    oseCharacterSecretDoorExplore.innerHTML = 1;
+    oseCharacterFindTrapExplore.innerHTML = 1;
+    oseCharacterLanguages.innerHTML = "Common";
     oseCharacterGoldCoins.innerHTML = parseInt((oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6)) * 10);
+}
+
+function oseAlingmentPicker(){
+    let charAlingment = ["Law", "Neutral", "Chaos"];
+    let rolledAlingment = 0;
+    rolledAlingment = oseDieRoller(1, charAlingment.length) -1;
+    oseCharacterAlignment.innerHTML = charAlingment[rolledAlingment];
 }
 
 function oseCharacterRaceAvailable(){
@@ -163,7 +180,7 @@ function oseCharacterClassAvailable(characterRace){
             break;
         case "Gnome":
         case "Svirfneblin":
-            classesAvailable.push("Acrobat", "Cleric", "Fighter", "Thief");
+            classesAvailable.push("Assassin", "Cleric", "Fighter", "Thief");
             if(parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Illusionist");
             rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
             chosenClass = classesAvailable[rolledClass];
@@ -239,10 +256,10 @@ function osePrimeReqExpBonus(primeStat){
 }
 
 function oseHitPointRoller(dieType){
-    let tempHp = parseInt((oseDieRoller(1, dieType)) + oseCharacterCONBonusToHP);
-    if(tempHp < 1) tempHp = 1;
-    oseCharacterMaxHP.innerHTML = tempHp;
-    oseCharacterCurrentHP.innerHTML = tempHp;
+    let tempHp = parseInt(oseDieRoller(1, dieType));
+    oseCharacterMaxHP.innerHTML = tempHp + parseInt(oseCharacterCONBonusToHP.textContent);
+    if(tempHp < 1) tempHp = 1;    
+    oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
 }
 
 function oseCharacterMaxLevel(charRace, charClass){
@@ -422,6 +439,10 @@ function oseCharacterRaceAbilityModifier(abilityScore, abilityMod){
     return tempScore;
 }
 
+function oseCharacterLanguagePicker(characterRace, INTBonus){
+
+}
+
 function oseCharacterClassInformation(characterRace, characterClass){
     let tempStat = 0;
     let maxLevel = parseInt(oseCharacterMaxLevel(characterRace, characterClass));
@@ -433,30 +454,42 @@ function oseCharacterClassInformation(characterRace, characterClass){
 
     switch(characterRace){
         case "Svirfneblin":
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Duergar":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
+            oseCharacterFindTrapExplore.innerHTML = 2;
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Dwarf":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
+            oseCharacterFindTrapExplore.innerHTML = 2;
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Gnome":
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Drow":            
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
+            oseCharacterSecretDoorExplore.innerHTML = 2;
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Elf":
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
+            oseCharacterSecretDoorExplore.innerHTML = 2;
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Half-Elf":
+            oseCharacterSecretDoorExplore.innerHTML = 2;
             break;
         case "Halfling":
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
+            oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Half-Orc":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
@@ -476,6 +509,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
             oseHitPointRoller(4);
             oseCharacterSaves(characterClass);
+            if(oseCharacterListenDoorExplore.textContent < 2) oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Druid":
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
@@ -501,6 +535,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
             oseHitPointRoller(4);
             oseCharacterSaves(characterClass);
+            if(oseCharacterListenDoorExplore.textContent < 2) oseCharacterListenDoorExplore.innerHTML = 2;
             break;
         case "Barbarian":
             tempStat = oseCharacterSTR.textContent < oseCharacterCON.textContent ? oseCharacterSTR.textContent : oseCharacterCON.textContent;
@@ -556,4 +591,5 @@ function oseDieRoller(min, max){
 
 oseStatRoller();
 oseStatBonusAssigner();
+oseAlingmentPicker();
 oseCharacterRaceAvailable();
