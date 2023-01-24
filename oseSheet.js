@@ -68,7 +68,6 @@ function oseStatRoller(){
     for (let i = 0; i < oseStatsArray.length; i++){
         numberedRolled = (oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6));
         oseStatsArray[i].innerHTML = numberedRolled;
-        console.log(oseStatsArray[i]);
     }    
 }
 
@@ -126,8 +125,7 @@ function oseStatBonusAssigner(){
     oseCharacterOpenDoorExplore.innerHTML = oseStatBonus(oseCharacterSTR);
     if(oseCharacterOpenDoorExplore.textContent < 0) oseCharacterOpenDoorExplore.innerHTML = 0;
     oseCharacterSecretDoorExplore.innerHTML = 1;
-    oseCharacterFindTrapExplore.innerHTML = 1;
-    oseCharacterLanguages.innerHTML = "Common";
+    oseCharacterFindTrapExplore.innerHTML = 1;    
     oseCharacterGoldCoins.innerHTML = parseInt((oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6)) * 10);
 }
 
@@ -439,14 +437,30 @@ function oseCharacterRaceAbilityModifier(abilityScore, abilityMod){
     return tempScore;
 }
 
-function oseCharacterLanguagePicker(characterRace, INTBonus){
+function oseCharacterLanguagePicker(INTBonus, racialLanguagesBonus, otherLanguages){
+    let tempNumber = 0;
+    if(INTBonus < 0) INTBonus = 0;
+    if(INTBonus > 0){
+        for(let i = INTBonus; i > 0; i--){
+            tempNumber = oseDieRoller(1, otherLanguages.length);
+            console.log("language rolled " + tempNumber);
+            racialLanguagesBonus.push(otherLanguages[tempNumber]);
+            console.log(racialLanguagesBonus);
+            console.log(otherLanguages);
+        }
+    }
 
+    
+    
+    //oseCharacterLanguages.innerHTML = ;
 }
 
 function oseCharacterClassInformation(characterRace, characterClass){
     let tempStat = 0;
     let maxLevel = parseInt(oseCharacterMaxLevel(characterRace, characterClass));
     let xpNeededToLevel = parseInt(oseCharacterExpNeededToLevel(characterClass));
+    let racialLanguagesAvailable = [];
+    let otherLanguagesAvailable = [];
 
     oseCharacterCurrentEXP.innerHTML = 0;
     oseCharacterNextLevelEXPNeeded.innerHTML = xpNeededToLevel;
@@ -455,48 +469,78 @@ function oseCharacterClassInformation(characterRace, characterClass){
     switch(characterRace){
         case "Svirfneblin":
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Deepcommon", "Earth elemental", "Gnomish", "Dwarvish", "Kobold"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Duergar":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterFindTrapExplore.innerHTML = 2;
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Deepcommon", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Dwarf":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterFindTrapExplore.innerHTML = 2;
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Gnome":
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Gnomish", "Dwarvish", "Burrow animals", "Kobold"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Drow":            
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterSecretDoorExplore.innerHTML = 2;
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Deepcommon", "Elvish", "Gnomish"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Elf":
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterSecretDoorExplore.innerHTML = 2;
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Elvish", "Gnoll", "Hobgoblin", "Orcish"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnomish", "Goblin", "Halfling", "Harpy", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Half-Elf":
             oseCharacterSecretDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Elvish"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Halfling":
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterListenDoorExplore.innerHTML = 2;
+            racialLanguagesAvailable = ["Common", "Halfling"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Half-Orc":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, 1);
+            racialLanguagesAvailable = ["Common", "Orcish"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
         case "Human":
+            racialLanguagesAvailable = ["Common"];
+            otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             break;
     }
     switch(characterClass){
