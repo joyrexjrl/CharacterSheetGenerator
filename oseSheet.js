@@ -467,10 +467,66 @@ function oseCharacterNameGenerator(characterRace){
     let drowLastNames = ["A’Daragon", "Abaeir", "Abbylan", "Argith", "Baenre", "Beltaulur", "Blaerabban", "Blundyth", "Chaulssin", "Coborel", "Coloara", "Cormrael", "Daevion’lyr", "Dalael", "Dhalmass", "Dhunnyl", "Diliriy", "Dinoryn", "Dryaalis", "Duskryn", "Dyrr", "Elpragh", "Elpragh", "Faertala", "Filifar", "Gallaer", "Glannath", "Glaurach", "Helviiryn", "Hune", "Hunzrin", "Hyluan", "Icharyd", "Ilaleztice", "Illistyn", "Illykur", "Jhalavar", "Jusztiirn", "Keteeruae", "Khalazza", "Kront’tane", "Mizzrym", "Mlezziir", "Naerth", "Nirinath", "Olonrae", "Omriwin", "Philiom", "Quavein", "Rhomduil", "Rrostarr", "Seerear", "Ssambra", "T’orgh", "T’sarran", "Tanor’Thal", "Telenna", "Tlin’orzza", "Tlintarn", "Tuin", "Uloavae", "Vrammyr", "Vrinn", "Waeglossz", "Xiltyn", "Yauntyrr", "Yauthlo", "Yril’Lysaen", "Zaphresz", "Zauviir", "Zolond"];
     let svirfneblinLastNames = ["Flintbasher", "Lodgeeyes", "Zircontooth", "Quartztwister", "Roughfinder", "Slabmelter", "Rubymoulder", "Millbrowser", "Zincbasher", "Depositbrowser", "Slabbasher", "Soilmug", "Limesniffer", "Zirconbasher", "Diamondtemperer", "Amethystsenser", "Seamwatcher", "Brickgrinder", "Sturdytemperer", "Scrapfingers", "Slateseizer", "Millsmelter", "Rocksweeper", "Bronzetrader", "Sandmaker", "Nuggetswitcher", "Jointsnatcher", "Fossilscratcher", "Wiresplitter", "Moldpacker", "Irondigger", "Boulderduster", "Depositscanner", "Bouldereye", "Pelletcrusher", "Wedgebreaker", "Dustsenser", "Peridotforger", "Lumpsorter", "Metalrater", "Metalchewer", "Geopusher", "Pelletwatcher", "Masonteeth", "Lapisfinder", "Agatechest", "Orechin", "Rubyfist", "Cobbleeyes", "Bedrockmender", "Sturdyleg", "Shelfstamper", "Limefeet", "Clayviewer"];
     let halflingFirstNames = ["Seraphina", "Asphodel", "Hilda", "Mazzy", "Balbina", "Merry", "Bonita", "Diamond", "Merla", "Arabella", "Mirabella", "Ayita", "Susannah", "Alora", "Lavinia", "Belinda", "Charmaine", "Lidda", "Gelvira", "Berylla", "Portia", "Primula", "Angelica", "Asphodel", "Ruby", "Brunella", "Armida", "Aiko", "Malva", "Belladonna", "Peony", "Rose", "Arabella", "Carlotta", "Bellisima", "Garret", "Cottar", "Adelard", "Bill", "Otho", "Anson", "Andwise", "Hob", "Ronald", "Beau", "Olo", "Kepli", "Bodo", "Balbo", "Drogo", "Hildigrim", "Adric", "Dudo", "Eder", "Largo", "Rufus", "Rorimac", "Haldon", "Barner", "Joyas", "Tarkas", "Adelard", "Valkas", "Gokin"];
-    let halflingLastNames = ["Ashworthy", "Moonward", "Longfoot", "Headstrong", "Hamson", "Dudley", "Faneth", "Fleetfoot", "Billberry", "Bolger", "Brandybuck", "Bullroarer", "Dale", "Devix", "Gardner", "Gammidge"];
-    let halfOrcNames = [];
-    let humanFirstNames = [];
-    let humanLastNames = [];
+    let halflingLastNames = ["Ashworthy", "Moonward", "Longfoot", "Headstrong", "Hamson", "Dudley", "Faneth", "Fleetfoot", "Billberry", "Bolger", "Brandybuck", "Bullroarer", "Dale", "Devix", "Gardner", "Gammidge", "Rosetopple", "Shadowbrand", "Rumblecrest", "Freebough", "Appleleaf", "Grandbelly", "Cherryhand", "Laughingwillow", "Lightwater", "Barleyglide", "Ravenlade", "Smoothhearth", "Heartmane", "Hillflow", "Glowsong", "Whisperbloom", "Flintglide", "Cinderbranch"];
+    let halfOrcNames = ["Tandrech", "Kul", "Daavaim", "Krivuun", "Gnibad", "Crukazvi", "Nod", "Thralulro", "Miadurk", "Nirdal", "Cimex", "Ningish", "Bol", "Sardi", "Nuzuh", "Gox", "Hoth", "Wighidin", "Cex", "Dord", "Gim", "Kiavi", "Nird", "Dorravaa", "Met", "Nimex", "Rangu", "Hastrach", "Crelradhuch", "Brot", "Brukraidirk", "Lash", "Gnud", "Likrulirg", "Biath", "Bredungem", "Weglay", "Futh", "Pamge", "Kih", "Sodlo", "Wex", "Orluth", "Thenge", "Cin", "Casduco", "Hitu", "Aisi", "Tish"];
+    let humanFirstNames = ["Carden", "Draven", "Barkley", "Mikel", "Oskar", "Larry", "Arnhold", "Lindon", "Otto", "Hans", "Per", "Darrion", "Jacque", "Wassilie", "Ian", "Marden", "Tomke", "Lincoln", "Loga", "Hetdt", "Juliette", "Bridgette", "Kyleigh", "Isalda", "Aggy", "Wilf", "Tiara", "Sam", "Dasia", "Jacalynn", "Alysha", "Shar", "Shelby", "Pell", "Reese", "Ryland", "Hein", "Beldon", "Ravin", "Nelles", "Bastle", "Joey", "Sylvester", "Vardon", "Brooks", "Pierce", "Rudi", "Akim", "Levin", "Luther", ""];
+    let humanLastNames = ["Uan", "Cieng", "Jindurne", "Gizulda", "Zammed", "Cidu", "Rapidscribe", "Fletcher", "Shoemaker", "Tailer", "Hydrapelt", "Sesk", "Merdosk", "Mournclaw", "Lehrihpafk", "Biltram", "Zuvintetva", "Dua", "Bidrinil", "Yalve", "Qing", "Nei", "Sulilda", "Daoy", "Merdosk", "Zuvintetve", "Dulmugu", "Dua", "Hastu", "Zeimmu", "Mossbinder", "Scribe", "Susk", "Sokrosk", "Vuntezd", "Chubok", "Qao", "Jassi", "Velas", "Estorus", "Khussom", "Danaz", "Granddorb", "Trodurgano", "Mokyadze", "Dao", "Zula"];
+
+    let characterNamePlaceholder = "";
+    let firstNameNumber = 0;
+    let secondNameNumber = 0;
+
+    switch(characterRace){
+        case "Svirfneblin":
+            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length))] + " " + svirfneblinLastNames[(oseDieRoller(1, svirfneblinLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Duergar":
+            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length))] + " " + duergarLastNames[(oseDieRoller(1, duergarLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Dwarf":
+            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length))] + " " + dwarfLastNames[(oseDieRoller(1, dwarfLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Gnome":
+            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length))] + " " + gnomeLastNames[(oseDieRoller(1, gnomeLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Drow":
+            characterNamePlaceholder = drowFirstNames[(oseDieRoller(1, drowFirstNames.length))] + " " + drowLastNames[(oseDieRoller(1, drowLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Elf":
+            characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length))] + " " + elfLastNames[(oseDieRoller(1, elfLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Half-Elf":
+            firstNameNumber = (oseDieRoller(1, 2));
+
+            if(firstNameNumber == 1) characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length))];
+            else characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length))];
+
+            secondNameNumber = (oseDieRoller(1, 2));
+
+            if(secondNameNumber == 1) characterNamePlaceholder += " " + elfLastNames[(oseDieRoller(1, elfLastNames.length))];                
+            else characterNamePlaceholder += " " + humanLastNames[(oseDieRoller(1, humanLastNames.length))];
+
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Halfling":
+            characterNamePlaceholder = halflingFirstNames[(oseDieRoller(1, halflingFirstNames.length))] + " " + halflingLastNames[(oseDieRoller(1, halflingLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Half-Orc":
+            characterNamePlaceholder = halfOrcNames[(oseDieRoller(1, halfOrcNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+        case "Human":
+            characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length))] + " " + humanLastNames[(oseDieRoller(1, humanLastNames.length))];
+            oseCharacterName.innerHTML = characterNamePlaceholder;
+            break;
+    }
 }
 
 function oseCharacterClassInformation(characterRace, characterClass){
@@ -490,6 +546,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Earth elemental", "Gnomish", "Dwarvish", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Duergar":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
@@ -499,6 +556,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Dwarf":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
@@ -508,12 +566,14 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Gnome":
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Gnomish", "Dwarvish", "Burrow animals", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Drow":            
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
@@ -523,6 +583,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Elvish", "Gnomish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Elf":
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
@@ -532,12 +593,14 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Elvish", "Gnoll", "Hobgoblin", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnomish", "Goblin", "Halfling", "Harpy", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Half-Elf":
             oseCharacterSecretDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Elvish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Halfling":
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, -1);
@@ -546,6 +609,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Halfling"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Half-Orc":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
@@ -554,11 +618,13 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
         case "Human":
             racialLanguagesAvailable = ["Common"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+            oseCharacterNameGenerator(characterRace);
             break;
     }
     switch(characterClass){
