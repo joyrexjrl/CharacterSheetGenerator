@@ -45,7 +45,7 @@ const oseCharacterEncounterMovement = document.getElementById("ose_character_enc
 const oseCharacterAbilitySkillsWeapons = document.getElementById("ose_character_ability_skills_weapons");
 const oseCharacterLanguages = document.getElementById("ose_character_languages");
 const oseCharacterEquipment = document.getElementById("ose_character_equipment");
-const oseWeaponsArmorDisplay = document.getElementById("ose_weapons_armor_armor");
+const oseWeaponsArmorDisplay = document.getElementById("ose_weapons_armor_display");
 
 const oseCharacterCurrentEXP = document.getElementById("ose_character_current_exp");
 const oseCharacterNextLevelEXPNeeded = document.getElementById("ose_character_next_level_exp_needed");
@@ -62,8 +62,6 @@ const oseCharacterWeaponsArmorWeight = document.getElementById("ose_character_we
 const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_total_carried_weight");
 
 const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
-
-const lineBreak = document.createElement("br");
 
 function oseStatRoller(){
     let numberedRolled;
@@ -549,7 +547,6 @@ function oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations){
     oseCharacterAbilitySkillsWeapons.innerHTML += "Weapon Proficiency:" + "<br>";
 
     if(weaponLimitations.length > 0){
-        console.log("weapon limitation rolls")
         for(let i = 0; i < numberOfRolls; i++){
             randomRoll = oseDieRoller(1, weaponLimitations.length) -1;
             weaponTypeKnown.push(weaponLimitations[randomRoll]);
@@ -574,12 +571,123 @@ function oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations){
             }
         }
     }
-    console.log("weapon of choice " + weaponOfChoice);
-
-    console.log(weaponTypeKnown);
     
     for(let i = 0; i < weaponTypeKnown.length; i++){
-        oseCharacterAbilitySkillsWeapons.innerHTML += weaponTypeKnown[i] + "<br>";
+        oseCharacterAbilitySkillsWeapons.innerHTML += "• " + weaponTypeKnown[i] + "<br>";
+    }
+
+    oseWeaponPicker(weaponOfChoice);
+}
+
+function weaponQualitiesDisplayer(qualitiesArray){
+    let quality = "";
+    switch(qualitiesArray){
+        case "Blunt":
+            return quality += "• " + "Blunt: May be used by clerics." + "<br>";
+        case "Brace":
+            return quality += "• " + "Brace: Bracing against the ground doubles damage against charging monsters." + "<br>";
+        case "Charge":
+            return quality += "• " + "Charge: While mounted, moving at least 60' in a round and attacking doubles any damage done with a successful hit." + "<br>";
+        case "Melee":
+            return quality += "• " + "Melee: Close quarters weapon (5' or less)." + "<br>";
+        case "Missile":
+            return quality += "• " + "Missile: Thrown or fired weapons (grater than 5' distance). The distance for short (+1 to hit), medium, and long (-1 to hit) range are shown in parentheses." + "<br>";            
+        case "Reload":
+            return quality += "• " + "Reload (optional rule): Requires a round to reload between shots; can only be fired every second round." + "<br>";
+        case "Slow":
+            return quality += "• " + "Slow: The character acts last in each combat round." + "<br>";
+        case "Splash weapon":
+            return quality += "• " + "Splash weapon: On a successful attack, the container smashes and douses the target with the liquid. The listed damage is inflicted for two rounds, as the liquid drips off." + "<br>";
+        case "Two-handed":
+            return quality += "• " + "Two-handed: Requires both hands; the character cannot use a shield." + "<br>";
+    }
+}
+
+function oseWeaponPicker(weaponOfChoice){
+    const battleAxe = {weapon:"Battle axe", cost:7, damage:"1d8", weight:50, qualities:["Melee", "Slow", "Two-handed"]};
+    const club = {weapon:"Club", cost:3, damage:"1d4", weight:50, qualities:["Blunt", "Melee"]};
+    const crossbow = {weapon:"Crossbow", cost:30, damage:"1d6", weight:50, qualities:["Missile", "Reload", "Slow", "Two-handed"], range:"(5'-80'/ 81'-160'/ 161'-240')"};
+    const dagger = {weapon:"Dagger", cost:3, damage:"1d4", weight:10, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
+    const handAxe = {weapon:"Hand axe", cost:4, damage:"1d6", weight:30, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
+    const holyWaterVial = {weapon:"Holy water vial", cost:25, damage:"1d8", weight:1, qualities:["Missile", "Splash weapon"], range:"(5'-10'/ 11'-30'/ 31'-50')"};
+    const javelin = {weapon:"Javelin", cost:1, damage:"1d4", weight:20, qualities:["Missile"], range:"(5'-30'/ 31'-60'/ 61'-90')"};
+    const lance = {weapon:"Lance", cost:1, damage:"1d6", weight:120, qualities:["Charge", "Melee"]};
+    const longBow = {weapon:"Long Bow", cost:40, damage:"1d6", weight:30, qualities:["Missile", "Two-handed"], range:"(5'-70'/ 71'-140'/ 141'-210')"};
+    const mace = {weapon:"Mace", cost:5, damage:"1d6", weight:30, qualities:["Blunt", "Melee"]};
+    const oilFlaskBurning = {weapon:"Oil flask, burning", cost:2, damage:"1d8", weight:1, qualities:["Missile", "Splash weapon"], range:"(5'-10'/ 11'-30'/ 31'-50')"};
+    const polearm = {weapon:"Polearm", cost:7, damage:"1d10", weight:150, qualities:["Brace", "Melee", "Slow", "Two-handed"]};
+    const shortBow = {weapon:"Short bow", cost:25, damage:"1d6", weight:30, qualities:["Missile", "Two-handed"], range:"(5'-50'/ 51'-100'/ 101'-150')"};
+    const shortSword = {weapon:"Short sword", cost:7, damage:"1d6", weight:30, qualities:["Melee"]};
+    const silverDagger = {weapon:"Silver dagger", cost:30, damage:"1d4", weight:10, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
+    const sling = {weapon:"Sling", cost:2, damage:"1d4", weight:20, qualities:["Blunt", "Missile"], range:"(5'-40'/ 41'-80'/ 81'-160')"};
+    const spear = {weapon:"Spear", cost:3, damage:"1d6", weight:30, qualities:["Brace", "Melee", "Missile"], range:"(5'-20'/ 21'-40'/ 41'-60')"};
+    const staff = {weapon:"Staff", cost:2, damage:"1d4", weight:40, qualities:["Blunt", "Melee", "Slow", "Two-handed"]};
+    const sword = {weapon:"Sword", cost:10, damage:"1d8", weight:60, qualities:["Melee"]};
+    const torch = {weapon:"Torch", cost:1, damage:"1d4", weight:1, qualities:["Melee"]};
+    const twoHandedSword = {weapon:"Two-handed sword", cost:15, damage:"1d10", weight:150, qualities:["Melee", "Slow", "Two-handed"]};
+    const warHammer = {weapon:"War hammer", cost:5, damage:"1d6", weight:30, qualities:["Blunt", "Melee"]};
+
+    const weaponsArray = [battleAxe, club, crossbow, dagger, handAxe, holyWaterVial, javelin, lance, longBow, mace, oilFlaskBurning, polearm, shortBow, shortSword, silverDagger, sling, spear, staff, sword, torch, twoHandedSword, warHammer];
+
+    for (let i = 0; i < weaponsArray.length; i++) {
+        if(weaponsArray[i].weapon == weaponOfChoice){
+            oseCharacterEquipment.innerHTML += weaponsArray[i].weapon + " - weight" + " " + weaponsArray[i].weight + "<br>";
+            let weaponQualitiesArray = weaponsArray[i].qualities;
+            let qualityToBeAdded = "";
+            for (let j = 0; j < weaponQualitiesArray.length; j++) {
+                qualityToBeAdded = weaponQualitiesDisplayer(weaponsArray[i].qualities[j]);                
+                oseCharacterEquipment.innerHTML += qualityToBeAdded;
+                if(weaponsArray[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + weaponsArray[i].range;
+            }
+            oseWeaponsArmorDisplay.innerHTML += weaponsArray[i].weapon + " - damage" + " " + weaponsArray[i].damage + "<br>";
+
+        }        
+    }
+}
+
+function oseItemPicker(){
+    const backpack = {item:"Backpack", cost:5};
+    const crowbar = {item:"Crowbar", cost:10};
+    const garlic = {item:"Garlic", cost:5};
+    const grapplingHook = {item:"Grappling hook", cost:25};
+    const hammer = {item:"Hammer (small)", cost:2};
+    const holySymbol = {item:"Holy symbol", cost:25};
+    const holyWater = {item:"Holy water (vial)", cost:25};
+    const ironSpikes = {item:"Iron spikes (12)", cost:1};
+    const lantern = {item:"Lantern", cost:10};
+    const mirror = {item:"Mirror (hand-sized, steel)", cost:5};
+    const oil = {item:"Oil (1 flask)", cost:2};
+    const pole = {item:"Pole (10' long, wooden)", cost:1};
+    const rationsIron = {item:"Iron rations (7 days)", cost:15};
+    const rationsStandard = {item:"Standard rations (7 days)", cost:5};
+    const rope = {item:"Rope (50')", cost:1};
+    const sackLarge = {item:"Sack (large)", cost:2};
+    const sackSmall = {item:"Sack (small)", cost:1};
+    const stakes = {item:"Stakes (3) and mallet", cost:3};
+    const thievesTools = {item:"Thieves tools", cost:25};
+    const tinderBox = {item:"Tinder box (flint & steel)", cost:3};
+    const torches = {item:"Torches (6)", cost:1};
+    const waterskin = {item:"Waterskin", cost:1};
+    const wine = {item:"Wine (2 pints)", cost:1};
+    const wolfsbane = {item:"Wolfsbane (1 bunch)", cost:10};
+
+    const itemsArray = [backpack, crowbar, garlic, grapplingHook, hammer, holySymbol, holyWater, ironSpikes, lantern, mirror, oil, pole, rationsIron, rationsStandard, rope, sackLarge, sackSmall, stakes, thievesTools, tinderBox, torches, waterskin, wine, wolfsbane];
+}
+
+function oseArmourPicker(armourWorn){
+    const leather = {armour:"Leather", cost:20, armourClass:12, weight:200};
+    const chainmail = {armour:"Chainmail", cost:40, armourClass:14, weight:400};
+    const plateMail = {armour:"Plate mail", cost:60, armourClass:16, weight:500};
+    const shield = {armour:"Shield", cost:10, armourClass:1, weight:100};
+
+    const armourArray = [leather, chainmail, plateMail, shield];
+
+    for (let i = 0; i < armourArray.length; i++) {
+        if(armourArray[i].armour == armourWorn){
+            oseCharacterEquipment.innerHTML += armourArray[i].armour + " - weight" + " " + armourArray[i].weight + "<br>";
+            oseWeaponsArmorDisplay.innerHTML += armourArray[i].armour + " - armour class" + " " + armourArray[i].armourClass + "<br>";
+
+        }        
     }
 }
 
