@@ -74,42 +74,40 @@ function oseStatRoller(){
 
 function oseStatBonus(stat){
     let statBonus = 0;
-    let number = parseInt(stat.textContent);
-    switch(number){
+    let passedStat = parseInt(stat);
+    switch(passedStat){
         case 3:
             statBonus = -3;
-            break;
+            return statBonus;
         case 4:
         case 5:
-            statBonus = -2;
-            break;
+            statBonus = -2
+            return statBonus;
         case 6:
         case 7:
         case 8:
-            statBonus = -1;
-            break;
+            statBonus = -1
+            return statBonus;
         case 9:
         case 10:
         case 11:
         case 12:
-            statBonus = 0;
-            break;
+            return statBonus;
         case 13:
         case 14:
         case 15:
-            statBonus = +1;
-            break;
+            statBonus = 1
+            return statBonus;
         case 16:
         case 17:
-            statBonus = +2;
-            break;
+            statBonus = 2
+            return statBonus;
         case 18:
-            statBonus = +3;
-            break;
+            statBonus = 3
+            return statBonus;
         default:
             break;
     }
-    return statBonus;
 }
 
 function oseStatBonusAssigner(){
@@ -118,21 +116,21 @@ function oseStatBonusAssigner(){
     oseCharacterExplorationMovement.innerHTML = baseMovementRate;
     oseCharacterEncounterMovement.innerHTML = baseMovementRate/2;
 
-    oseCharacterWISBonusToSpellSave.innerHTML = oseStatBonus(oseCharacterWIS);
-    oseCharacterCONBonusToHP.innerHTML = oseStatBonus(oseCharacterCON);
-    oseCharacterDEXBonusToAC.innerHTML = oseStatBonus(oseCharacterDEX);
+    oseCharacterWISBonusToSpellSave.innerHTML = oseStatBonus(oseCharacterWIS.textContent);
+    oseCharacterCONBonusToHP.innerHTML = oseStatBonus(oseCharacterCON.textContent);
+    oseCharacterDEXBonusToAC.innerHTML = oseStatBonus(oseCharacterDEX.textContent);
 
-    oseCharacterMeleeAttackBonus.innerHTML = oseStatBonus(oseCharacterSTR);
-    oseCharacterMissileAttackBonus.innerHTML = oseStatBonus(oseCharacterDEX);
+    oseCharacterMeleeAttackBonus.innerHTML = oseStatBonus(oseCharacterSTR.textContent);
+    oseCharacterMissileAttackBonus.innerHTML = oseStatBonus(oseCharacterDEX.textContent);
 
-    oseCharacterInitiative.innerHTML = oseStatBonus(oseCharacterDEX);
-    oseCharacterCHABonusToReactions.innerHTML = oseStatBonus(oseCharacterCHA);
+    oseCharacterInitiative.innerHTML = oseStatBonus(oseCharacterDEX.textContent);
+    oseCharacterCHABonusToReactions.innerHTML = oseStatBonus(oseCharacterCHA.textContent);
 
-    oseCharacterUnarmouredAC.innerHTML = 10 + oseStatBonus(oseCharacterDEX);
+    oseCharacterUnarmouredAC.innerHTML = 10 + oseStatBonus(oseCharacterDEX.textContent);
     oseCharacterAttackBonus.innerHTML = 0;
 
     oseCharacterListenDoorExplore.innerHTML = 1;
-    oseCharacterOpenDoorExplore.innerHTML = oseStatBonus(oseCharacterSTR);
+    oseCharacterOpenDoorExplore.innerHTML = oseStatBonus(oseCharacterSTR.textContent);
     if(oseCharacterOpenDoorExplore.textContent < 0) oseCharacterOpenDoorExplore.innerHTML = 0;
     oseCharacterSecretDoorExplore.innerHTML = 1;
     oseCharacterFindTrapExplore.innerHTML = 1;
@@ -576,10 +574,10 @@ function oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations){
         oseCharacterAbilitySkillsWeapons.innerHTML += "• " + weaponTypeKnown[i] + "<br>";
     }
 
-    oseWeaponPicker(weaponOfChoice);
+    oseWeaponPicker(weaponOfChoice, true);
 }
 
-function weaponQualitiesDisplayer(qualitiesArray){
+function oseWeaponQualitiesDisplayer(qualitiesArray){
     let quality = "";
     switch(qualitiesArray){
         case "Blunt":
@@ -603,7 +601,21 @@ function weaponQualitiesDisplayer(qualitiesArray){
     }
 }
 
-function oseWeaponPicker(weaponOfChoice){
+function oseArmourClassCalculator(armourWornValue){
+
+    let acDexBonus = parseInt(oseCharacterDEXBonusToAC.textContent);
+    if(armourWornValue == 0){
+        oseCharacterCurrentAC.innerHTML = oseCharacterUnarmouredAC.innerHTML;
+    }
+    else if(armourWornValue == 1){
+        let shieldOnlyAC = 10 + armourWornValue;        
+        oseCharacterCurrentAC.innerHTML = acDexBonus + shieldOnlyAC;        
+    }else{
+        oseCharacterCurrentAC.innerHTML = acDexBonus + armourWornValue;
+    }
+}
+
+function oseWeaponPicker(weaponOfChoice, weaponProfPicker){
     const battleAxe = {weapon:"Battle axe", cost:7, damage:"1d8", weight:50, qualities:["Melee", "Slow", "Two-handed"]};
     const club = {weapon:"Club", cost:3, damage:"1d4", weight:50, qualities:["Blunt", "Melee"]};
     const crossbow = {weapon:"Crossbow", cost:30, damage:"1d6", weight:50, qualities:["Missile", "Reload", "Slow", "Two-handed"], range:"(5'-80'/ 81'-160'/ 161'-240')"};
@@ -629,20 +641,21 @@ function oseWeaponPicker(weaponOfChoice){
 
     const weaponsArray = [battleAxe, club, crossbow, dagger, handAxe, holyWaterVial, javelin, lance, longBow, mace, oilFlaskBurning, polearm, shortBow, shortSword, silverDagger, sling, spear, staff, sword, torch, twoHandedSword, warHammer];
 
-    for (let i = 0; i < weaponsArray.length; i++) {
-        if(weaponsArray[i].weapon == weaponOfChoice){
-            oseCharacterEquipment.innerHTML += weaponsArray[i].weapon + " - weight" + " " + weaponsArray[i].weight + "<br>";
-            let weaponQualitiesArray = weaponsArray[i].qualities;
-            let qualityToBeAdded = "";
-            for (let j = 0; j < weaponQualitiesArray.length; j++) {
-                qualityToBeAdded = weaponQualitiesDisplayer(weaponsArray[i].qualities[j]);                
-                oseCharacterEquipment.innerHTML += qualityToBeAdded;
-                if(weaponsArray[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + weaponsArray[i].range;
-            }
-            oseWeaponsArmorDisplay.innerHTML += weaponsArray[i].weapon + " - damage" + " " + weaponsArray[i].damage + "<br>";
-
-        }        
-    }
+    if(weaponProfPicker){
+        for (let i = 0; i < weaponsArray.length; i++) {
+            if(weaponsArray[i].weapon == weaponOfChoice){
+                oseCharacterEquipment.innerHTML += weaponsArray[i].weapon + " - weight" + " " + weaponsArray[i].weight + "<br>";
+                let weaponQualitiesArray = weaponsArray[i].qualities;
+                let qualityToBeAdded = "";
+                for (let j = 0; j < weaponQualitiesArray.length; j++) {
+                    qualityToBeAdded = oseWeaponQualitiesDisplayer(weaponsArray[i].qualities[j]);                
+                    oseCharacterEquipment.innerHTML += qualityToBeAdded;
+                    if(weaponsArray[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + weaponsArray[i].range + "<br>";
+                }
+                oseWeaponsArmorDisplay.innerHTML += weaponsArray[i].weapon + " - damage" + " " + weaponsArray[i].damage + "<br>";
+            }        
+        }
+    }    
 }
 
 function oseItemPicker(){
@@ -674,25 +687,34 @@ function oseItemPicker(){
     const itemsArray = [backpack, crowbar, garlic, grapplingHook, hammer, holySymbol, holyWater, ironSpikes, lantern, mirror, oil, pole, rationsIron, rationsStandard, rope, sackLarge, sackSmall, stakes, thievesTools, tinderBox, torches, waterskin, wine, wolfsbane];
 }
 
-function oseArmourPicker(armourWorn){
+function oseArmourPicker(startingArmourArray, startingArmourChoice){
     const leather = {armour:"Leather", cost:20, armourClass:12, weight:200};
     const chainmail = {armour:"Chainmail", cost:40, armourClass:14, weight:400};
     const plateMail = {armour:"Plate mail", cost:60, armourClass:16, weight:500};
     const shield = {armour:"Shield", cost:10, armourClass:1, weight:100};
 
     const armourArray = [leather, chainmail, plateMail, shield];
+    let randomRoll = 0;
+    let itemsArmourClass = 0;
 
-    for (let i = 0; i < armourArray.length; i++) {
-        if(armourArray[i].armour == armourWorn){
-            oseCharacterEquipment.innerHTML += armourArray[i].armour + " - weight" + " " + armourArray[i].weight + "<br>";
-            oseWeaponsArmorDisplay.innerHTML += armourArray[i].armour + " - armour class" + " " + armourArray[i].armourClass + "<br>";
-
-        }        
+    if(startingArmourChoice && startingArmourArray.length > 0){
+        randomRoll = parseInt(oseDieRoller(1, startingArmourArray.length) -1);
+        for (let i = 0; i < armourArray.length; i++) {
+            if(startingArmourArray[randomRoll] == armourArray[i].armour){
+                oseCharacterEquipment.innerHTML += armourArray[i].armour + " - weight" + " " + armourArray[i].weight + "<br>";
+                oseWeaponsArmorDisplay.innerHTML += armourArray[i].armour + " - armour class" + " " + armourArray[i].armourClass + "<br>";
+                itemsArmourClass = armourArray[i].armourClass;
+                oseArmourClassCalculator(itemsArmourClass);
+                return;
+            }
+        }
     }
+
+    oseArmourClassCalculator(itemsArmourClass);
 }
 
-function oseEquipmentPicker(weaponOfChoice){
-
+function oseEquipmentPicker(){
+    
 }
 
 function oseCharacterClassInformation(characterRace, characterClass){
@@ -704,6 +726,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
     let characterAlingment = [];
     let weaponLimitations = [];
     let martialType = "";
+    let armourAllowed = [];
 
     oseCharacterCurrentEXP.innerHTML = 0;
     oseCharacterNextLevelEXPNeeded.innerHTML = xpNeededToLevel;
@@ -799,8 +822,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
     switch(characterClass){
         case "Acrobat":
             martialType = "semi-martial";
+            armourAllowed = ["Leather"];
             weaponLimitations = ["Dagger", "Sword", "Short sword", "Polearm", "Spear", "Staff", "Crossbow", "Javelin", "Long bow", "Short bow", "Sling"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
@@ -809,8 +834,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Assassin":
             martialType = "semi-martial";
+            armourAllowed = ["Leather", "Shield"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
@@ -820,8 +847,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Druid":
             martialType = "semi-martial";
+            armourAllowed = ["Leather", "Shield"];
             weaponLimitations = ["Club", "Dagger", "Sling", "Spear", "Staff"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             oseCharacterAlignment.innerHTML = "Neutral";
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
             oseHitPointRoller(6);
@@ -829,8 +858,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Cleric":
             martialType = "semi-martial";
+            armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
             weaponLimitations = ["Club", "Mace", "Sling", "Staff", "War hammer"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
@@ -839,8 +870,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Fighter":
             martialType = "martial";
+            armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
@@ -849,8 +882,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Magic-User":
             martialType = "non-martial";
+            armourAllowed = [];
             weaponLimitations = ["Dagger", "Staff"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
@@ -859,8 +894,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Thief":
             martialType = "semi-martial";
+            armourAllowed = ["Leather"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterDEX.textContent));
@@ -870,8 +907,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Barbarian":
             martialType = "martial";
+            armourAllowed = ["Leather", "Chainmail", "Shield"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             tempStat = oseCharacterSTR.textContent < oseCharacterCON.textContent ? oseCharacterSTR.textContent : oseCharacterCON.textContent;
@@ -885,8 +924,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Bard":
             martialType = "semi-martial";
+            armourAllowed = ["Leather", "Chainmail"];
             weaponLimitations = ["Club", "Crossbow", "Dagger", "Hand axe", "Javelin", "Long bow", "Mace", "Short bow", "Short sword", "Sling", "Spear", "Sword", "War hammer"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterCHA.textContent));
@@ -895,8 +936,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Illusionist":
             martialType = "non-martial";
+            armourAllowed = [];
             weaponLimitations = ["Dagger", "Staff"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
@@ -905,8 +948,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Paladin":
             martialType = "martial";
+            armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             oseCharacterAlignment.innerHTML = "Law";
             tempStat = oseCharacterSTR.textContent < oseCharacterWIS.textContent ? oseCharacterSTR.textContent : oseCharacterWIS.textContent;
             
@@ -919,8 +964,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Necromancer":
             martialType = "non-martial";
+            armourAllowed = [];
             weaponLimitations = ["Dagger", "Staff"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
@@ -929,8 +976,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Knight":
             martialType = "martial";
+            armourAllowed = ["Chainmail", "Plate mail", "Shield"];
             weaponLimitations = ["Battle axe", "Club", "Dagger", "Hand axe", "Lance", "Mace", "Polearm", "Short sword", "Spear", "Sword", "Two-handed sword", "War hammer"];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral", "Chaos"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
@@ -939,8 +988,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Ranger":
             martialType = "martial";
+            armourAllowed = ["Leather", "Chainmail", "Shield"];
             weaponLimitations = [];
             oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
+            oseArmourPicker(armourAllowed, true);
             characterAlingment = ["Law", "Neutral"];
             oseAlingmentPicker(characterAlingment);
             oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterSTR.textContent));
