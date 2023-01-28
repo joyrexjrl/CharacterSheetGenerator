@@ -484,52 +484,52 @@ function oseCharacterNameGenerator(characterRace){
 
     switch(characterRace){
         case "Svirfneblin":
-            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length))] + " " + svirfneblinLastNames[(oseDieRoller(1, svirfneblinLastNames.length))];
+            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length)-1)] + " " + svirfneblinLastNames[(oseDieRoller(1, svirfneblinLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Duergar":
-            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length))] + " " + duergarLastNames[(oseDieRoller(1, duergarLastNames.length))];
+            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length)-1)] + " " + duergarLastNames[(oseDieRoller(1, duergarLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Dwarf":
-            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length))] + " " + dwarfLastNames[(oseDieRoller(1, dwarfLastNames.length))];
+            characterNamePlaceholder = dwarfFirstNames[(oseDieRoller(1, dwarfFirstNames.length)-1)] + " " + dwarfLastNames[(oseDieRoller(1, dwarfLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Gnome":
-            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length))] + " " + gnomeLastNames[(oseDieRoller(1, gnomeLastNames.length))];
+            characterNamePlaceholder = gnomeFirstNames[(oseDieRoller(1, gnomeFirstNames.length)-1)] + " " + gnomeLastNames[(oseDieRoller(1, gnomeLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Drow":
-            characterNamePlaceholder = drowFirstNames[(oseDieRoller(1, drowFirstNames.length))] + " " + drowLastNames[(oseDieRoller(1, drowLastNames.length))];
+            characterNamePlaceholder = drowFirstNames[(oseDieRoller(1, drowFirstNames.length)-1)] + " " + drowLastNames[(oseDieRoller(1, drowLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Elf":
-            characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length))] + " " + elfLastNames[(oseDieRoller(1, elfLastNames.length))];
+            characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length)-1)] + " " + elfLastNames[(oseDieRoller(1, elfLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Half-Elf":
             firstNameNumber = (oseDieRoller(1, 2));
 
-            if(firstNameNumber == 1) characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length))];
-            else characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length))];
+            if(firstNameNumber == 1) characterNamePlaceholder = elfFirstNames[(oseDieRoller(1, elfFirstNames.length)-1)];
+            else characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length)-1)];
 
             secondNameNumber = (oseDieRoller(1, 2));
 
-            if(secondNameNumber == 1) characterNamePlaceholder += " " + elfLastNames[(oseDieRoller(1, elfLastNames.length))];                
-            else characterNamePlaceholder += " " + humanLastNames[(oseDieRoller(1, humanLastNames.length))];
+            if(secondNameNumber == 1) characterNamePlaceholder += " " + elfLastNames[(oseDieRoller(1, elfLastNames.length)-1)];                
+            else characterNamePlaceholder += " " + humanLastNames[(oseDieRoller(1, humanLastNames.length)-1)];
 
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Halfling":
-            characterNamePlaceholder = halflingFirstNames[(oseDieRoller(1, halflingFirstNames.length))] + " " + halflingLastNames[(oseDieRoller(1, halflingLastNames.length))];
+            characterNamePlaceholder = halflingFirstNames[(oseDieRoller(1, halflingFirstNames.length)-1)] + " " + halflingLastNames[(oseDieRoller(1, halflingLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Half-Orc":
-            characterNamePlaceholder = halfOrcNames[(oseDieRoller(1, halfOrcNames.length))];
+            characterNamePlaceholder = halfOrcNames[(oseDieRoller(1, halfOrcNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
         case "Human":
-            characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length))] + " " + humanLastNames[(oseDieRoller(1, humanLastNames.length))];
+            characterNamePlaceholder = humanFirstNames[(oseDieRoller(1, humanFirstNames.length)-1)] + " " + humanLastNames[(oseDieRoller(1, humanLastNames.length)-1)];
             oseCharacterName.innerHTML = characterNamePlaceholder;
             break;
     }
