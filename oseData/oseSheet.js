@@ -1,67 +1,4 @@
-const oseCharacterName = document.getElementById("ose_character_name");
-const oseCharacterClass = document.getElementById("ose_character_class");
-const oseCharacterAlignment = document.getElementById("ose_character_alignment");
-const oseCharacterTitle = document.getElementById("ose_character_title");
-const oseCharacterLevel = document.getElementById("ose_character_level");
 
-const oseCharacterSTR = document.getElementById("ose_character_str");
-const oseCharacterINT = document.getElementById("ose_character_int");
-const oseCharacterWIS = document.getElementById("ose_character_wis");
-const oseCharacterDEX = document.getElementById("ose_character_dex");
-const oseCharacterCON = document.getElementById("ose_character_con");
-const oseCharacterCHA = document.getElementById("ose_character_cha");
-
-const oseCharacterDeathSave = document.getElementById("ose_character_d_save");
-const oseCharacterWandsSave = document.getElementById("ose_character_w-save");
-const oseCharacterParalysisSave = document.getElementById("ose_character_p_save");
-const oseCharacterBreathSave = document.getElementById("ose_character_b_save");
-const oseCharacterSpellSave = document.getElementById("ose_character_s_save");
-const oseCharacterWISBonusToSpellSave = document.getElementById("ose_character_wis_bonus_to_s_saves");
-
-const oseCharacterCurrentHP = document.getElementById("ose_character_current_hp");
-const oseCharacterMaxHP = document.getElementById("ose_character_max_hp");
-const oseCharacterCONBonusToHP = document.getElementById("ose_character_con_bonus_to_hp");
-
-const oseCharacterCurrentAC = document.getElementById("ose_character_current_ac");
-const oseCharacterUnarmouredAC = document.getElementById("ose_character_unarmoured_ac");
-const oseCharacterDEXBonusToAC = document.getElementById("ose_character_dex_bonus_to_ac");
-
-const oseCharacterAttackBonus = document.getElementById("ose_character_attack_bonus");
-const oseCharacterMeleeAttackBonus = document.getElementById("ose_character_melee_attack_bonus");
-const oseCharacterMissileAttackBonus = document.getElementById("ose_character_missile_attack_bonus");
-
-const oseCharacterInitiative = document.getElementById("ose_character_initiative");
-const oseCharacterCHABonusToReactions = document.getElementById("ose_character_cha_bonus_to_reactions");
-
-const oseCharacterListenDoorExplore = document.getElementById("ose_character_listen_door_explore");
-const oseCharacterOpenDoorExplore = document.getElementById("ose_character_open_door_explore");
-const oseCharacterSecretDoorExplore = document.getElementById("ose_character_secret_door_explore");
-const oseCharacterFindTrapExplore = document.getElementById("ose_character_find_trap_explore");
-
-const oseCharacterOverlandMovement = document.getElementById("ose_character_overland_movement");
-const oseCharacterExplorationMovement = document.getElementById("ose_character_exploration_movement");
-const oseCharacterEncounterMovement = document.getElementById("ose_character_encounter_movement");
-
-const oseCharacterAbilitySkillsWeapons = document.getElementById("ose_character_ability_skills_weapons");
-const oseCharacterLanguages = document.getElementById("ose_character_languages");
-const oseCharacterEquipment = document.getElementById("ose_character_equipment");
-const oseWeaponsArmorDisplay = document.getElementById("ose_weapons_armor_display");
-
-const oseCharacterCurrentEXP = document.getElementById("ose_character_current_exp");
-const oseCharacterNextLevelEXPNeeded = document.getElementById("ose_character_next_level_exp_needed");
-const oseCharacterPrimeStatBonusToEXP = document.getElementById("ose_character_prime_stat_bonus_to_exp");
-
-const oseCharacterPlatinumCoins = document.getElementById("ose_character_platinum_coins");
-const oseCharacterGoldCoins = document.getElementById("ose_character_gold_coins");
-const oseCharacterElectrumCoins = document.getElementById("ose_character_electrum_coins");
-const oseCharacterSilverCoins = document.getElementById("ose_character_silver_coins");
-const oseCharacterCopperCoins = document.getElementById("ose_character_copper_coins");
-
-const oseCharacterTreasureWeight = document.getElementById("ose_character_treasure_coin_weight");
-const oseCharacterWeaponsArmorWeight = document.getElementById("ose_character_weapons_armour_weight");
-const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_total_carried_weight");
-
-const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
 
 function oseStatRoller(){
     let numberedRolled;
@@ -459,26 +396,11 @@ function oseCharacterLanguagePicker(INTBonus, racialLanguagesBonus, otherLanguag
     }
 }
 
-function oseCharacterNameGenerator(characterRace){
-    let elfFirstNames = ["Elara", "Eadric", "Eirlys", "Gaelyn", "Galadriel", "Lirien", "Nessa", "Niamh", "Tahlia", "Aeloria", "Arwen", "Calantha", "Celadriel", "Darian", "Elenwë", "Erith", "Eiluned", "Fëanor", "Gwindor", "Gwendolyn", "Ithilien", "Lúthien", "Melian", "Orodreth", "Rúmil", "Rhoslyn", "Soronúmë", "Turgon", "Ulmo", "Varda", "Yavanna", "Zinnober", "Beryndiel"];
-    let elfLastNames = ["Moonwhisper", "Starlight", "Silverthorn", "Moonblade", "Windrunner", "Woodwhisper", "Moonstone", "Wildheart", "Treesinger", "Stormchaser", "Starweaver", "Skydancer", "Shadowstrike", "Seaswept", "Riverflow", "Rainwhisper", "Nightshade", "Mountainborn", "Mistdancer", "Lunarfall", "Leafwhisper", "Lakeheart", "Iceborn", "Highborn", "Hearthfire", "Hawkwing", "Havensoul", "Greenshadow", "Gemheart", "Fireheart", "Fernshadow", "Farseer", "Eaglewing", "Dreamweaver", "Dragonheart", "Dawnchaser", "Darkwater", "Crimsonwing", "Cloudwhisper", "Cedarfall", "Celestial", "Celestia", "Celestiel", "Celestyn", "Chantriel"];
-    let dwarfFirstNames = ["Adrik", "Alberich", "Baern", "Barendd", "Brottor", "Bruenor", "Dain", "Dalgal", "Darrak", "Delg", "Eberk", "Einkil", "Elmar", "Fargrim", "Flint", "Gardain", "Harbek", "Kildrak", "Morgran", "Orsik", "Oskar", "Rangrim", "Rurik", "Taklinn", "Thoradin", "Thorin", "Tordek", "Traubon", "Travok", "Ulfgar", "Ulrich", "Vondal", "Agar", "Aram", "Lorg", "Orlen", "Rakkulf", "Dur", "Durgur", "Orthr", "Al’Dan", "Stwulf", "Argon", "Bargur", "Fisthel", "Kron", "Dulg", "Klond", "Durgal", "Lurg", "Smut", "Kragg", "Thalrus", "Torr", "Gern", "Klag", "Borjal", "Gurjarn", "Narguraz", "Komraz", "Ork", "Mogun", "Yonala", "Dathak", "Eiran", "Rhonda", "Haudra", "Mudskull", "Kalla", "Seimur", "Deimra", "Picarvella", "Dolund", "Carys", "Esmund", "Karaza", "Dregur", "Gyzunna", "Mornaugr", "Fionnuala", "Lucildel", "Rassur", "Whelanda", "Balda", "Dotty", "Bardur"];
-    let dwarfLastNames = ["Battlehammer", "Blacksmith", "Brightblade", "Copperbeard", "Deepdelver", "Fireforge", "Frostbeard", "Gemcutter", "Goldenhorn", "Ironfist", "Ironforge", "Ironhewer", "Ironstrike", "Longbeard", "Mithrilforge", "Mountainheart", "Redbeard", "Rockseeker", "Silverblade", "Silverforge", "Steelbeard", "Stonefist", "Strongheart", "Thickbeard", "Thunderfist", "Tunnelfinder", "Underfoot", "Warhammer", "Whiteshield", "Wildstrike", "Wyrmslayer", "Adamantforge", "Dwarfthunder", "Earthenheart", "Fireheart", "Gemheart", "Granitefist", "Grimforge", "Ironheart", "Mountainfist", "Rockfist", "Stonedelver", "Stormheart", "Thunderheart", "Underhill", "Wrathforge", "Hulgdirth", "Firecoal", "Stwulfson", "Runestone", "Vahk", "Al’Dawn", "Dawnnose", "Deeprock", "Barrelbelly", "Niblock", "Stubbleback", "Stoneminded", "Stonehide", "Torlek", "Brutemaul", "Oakenskin", "Thunderbelly", "Klagdor", "Udgson", "Sikgwil", "Gernwulf", "Zurgash", "Thunderbeard", "Ghostaxe", "Thunderbeard", "Nargrim", "Stonehide", "Darkface", "Thunderfist", "Dawnstone", "Zarzur", "Tundra", "Glacier", "Moonrock", "Nargrum", "Mountainbeard", "Nargnur", "Valantyr", "Klaggor", "Arktur", "Dobroldson", "Grumbar", "Nargrim", "Dawnskull", "Doomskull", "Fireking", "Gurgaz", "Neckscalde"];
-    let duergarLastNames = ["Blackaxe", "Darkforge", "Deepdelver", "Graybeard", "Grimforge", "Ironclad", "Ironfist", "Ironmask", "Ironmine", "Ironvein", "Leadbeard", "Malachite", "Obsidian", "Onyxclaw", "Quicksilver", "Shadowstrike", "Silvershield", "Stonefist", "Stonemantle", "Stonerage", "Stonewalker", "Stormshield", "Underfoot", "Underhill", "Undermine", "Undertow", "Underworld", "Veinsplitter", "Whiteshield", "Wrathforge", "Barrenbreath", "Skullrest", "Flintpride", "Brokeneye", "Doomsorrow", "Shadowaxe", "Blackslice", "Hellslice", "Wrathmaster", "Rustforge", "Moltenbrow", "Vicehunt", "Shadowgrace", "Flamerock", "Blackfavor", "Undercrusher", "Ashfury", "Madgore", "Darkeater"];
-    let gnomeFirstNames = ["Adan", "Adva", "Aiko", "Amorette", "Aripine", "Armida", "Belita", "Bonita", "Brenna", "Brooke", "Bingles", "Banxi", "Bink", "Banli", "Bitsy", "Bitty", "Bixi", "Carlin", "Charlene", "Celqys", "Carnoa", "Darra", "Demi", "Dinky", "Elfi", "Flimp", "Giggbert", "Half-Pint", "Herble", "Helna", "Hisxif", "Dustseeker", "Nuttlattle", "Bernifitlacks", "Ipswoms", "Pelletsniffer", "Tinkerfoot", "Gemhair", "Blaesocket", "Sabblewloth", "Muwlebra", "Giobibaar", "Woh", "Apleldosp", "Mirlon", "Peedlupnon", "Krackhig", "Deedler", "Khaalkru", "Shaget", "Thitlu", "Waicke", "Theghaddi", "Wote", "Shetturs", "Tothul", "Manais", "Iskiryi", "Graknan", "Hegilli", "Ghickut", "Wudgend", "Huskill", "Theghiala", "Kraknank", "Karthmi", "Dakturs", "Ussin", "Ghiegglac", "Neghalni", "Madlili", "Khontrut", "Thigglud", "Thanee", "Yamga"];
-    let gnomeLastNames = ["Bearslayer", "Brightblade", "Clockwinder", "Copperpot", "Deepdelver", "Gemcutter", "Goldenhorn", "Greenbottle", "Ironfist", "Ironforge", "Laughingloon", "Longbeard", "Mithrilforge", "Moonwhisper", "Redbeard", "Rockseeker", "Silverblade", "Silverforge", "Steelbeard", "Stonefist", "Tinkertop", "Tunnelfinder", "Underfoot", "Whiteshield", "Wildheart", "Wildstrike", "Wyrmslayer", "Yellowbell", "Zephyrwhistle", "Bratlic Turfsurvey", "Fruklu Terratemp", "Schnartank Eartwister", "Gigget Pilwicken", "Krankle Slyfox", "Bink Leffery", "Dugguld Lapisseizer", "Wilfiz Klulnulme", "Frelwic Littlefoot", "Gontull Claymoulder", "Warver Eyeswitcher", "Xogim Flintsweeper", "Tanziver Cobblemug", "Merfan Rapleth", "Graziver Slatenose", "Merzu Shelfbender", "Warkas Coppersnatcher", "Dokli Rubyforger", "Tildrull Dustsnorter", "Snegick Boulderforger", "Drendan Dirtcarrier", "Figglar Gemfinger"];
-    let drowFirstNames = ["Balok", "Baragh", "Belaern", "Belgos", "Bemril", "Berg’inyon", "Bhintel", "Brorn", "Bruherd", "Caelkoth", "Callimar", "Chakos", "Chaszmyr", "Coranzen", "Dantrag", "Dhuunyl", "Dinin", "Dresmorlin", "Dro", "Duagloth", "Durdyn", "Hadrogh", "Hatch’net", "Honemmeth", "Houndaer", "Ildan", "Ilmryn", "Ilphrin", "Imbros", "Irennan", "Istolil", "Istorvir", "Iymril", "Jaezred", "Jalynfein", "Jeggred", "Jevan", "Jhaamdath", "Jhaldrym", "Jivvin", "Jyslin", "K’yorl", "Vielyn", "Vlondril", "Vorn", "Vuzlyn", "Welverin", "Xarann", "Xundus", "Yazston", "Yuimmar", "Zaknafein", "Zeerith", "Zyn", "Akordia", "Alaunirra", "Alystin", "Amalica", "Angaste", "G’eldriia", "Gaussra", "Ghilanna", "Greyanna", "Gurina", "Haelra", "Halisstra", "Ilharess", "Lledrith", "Llolfaen", "Lualyrr", "Lythrana", "Malice", "Maya", "Menzoberra", "Mez’Barris", "Micarlin", "Miz’ri", "Mizzrym", "Myrymma", "Urmelena", "Vhondryl", "Viconia", "Vierna", "Vornalla", "Waerva", "Wuyondra", "Xalyth", "Xullrae", "Xune", "Yasrena", "Yvonnel", "Z’ress", "Zarra", "Zebeyana", "Zeerith", "Zelpassa", "Zendalure", "Zesstra", "Zilvra"];
-    let drowLastNames = ["A’Daragon", "Abaeir", "Abbylan", "Argith", "Baenre", "Beltaulur", "Blaerabban", "Blundyth", "Chaulssin", "Coborel", "Coloara", "Cormrael", "Daevion’lyr", "Dalael", "Dhalmass", "Dhunnyl", "Diliriy", "Dinoryn", "Dryaalis", "Duskryn", "Dyrr", "Elpragh", "Elpragh", "Faertala", "Filifar", "Gallaer", "Glannath", "Glaurach", "Helviiryn", "Hune", "Hunzrin", "Hyluan", "Icharyd", "Ilaleztice", "Illistyn", "Illykur", "Jhalavar", "Jusztiirn", "Keteeruae", "Khalazza", "Kront’tane", "Mizzrym", "Mlezziir", "Naerth", "Nirinath", "Olonrae", "Omriwin", "Philiom", "Quavein", "Rhomduil", "Rrostarr", "Seerear", "Ssambra", "T’orgh", "T’sarran", "Tanor’Thal", "Telenna", "Tlin’orzza", "Tlintarn", "Tuin", "Uloavae", "Vrammyr", "Vrinn", "Waeglossz", "Xiltyn", "Yauntyrr", "Yauthlo", "Yril’Lysaen", "Zaphresz", "Zauviir", "Zolond"];
-    let svirfneblinLastNames = ["Flintbasher", "Lodgeeyes", "Zircontooth", "Quartztwister", "Roughfinder", "Slabmelter", "Rubymoulder", "Millbrowser", "Zincbasher", "Depositbrowser", "Slabbasher", "Soilmug", "Limesniffer", "Zirconbasher", "Diamondtemperer", "Amethystsenser", "Seamwatcher", "Brickgrinder", "Sturdytemperer", "Scrapfingers", "Slateseizer", "Millsmelter", "Rocksweeper", "Bronzetrader", "Sandmaker", "Nuggetswitcher", "Jointsnatcher", "Fossilscratcher", "Wiresplitter", "Moldpacker", "Irondigger", "Boulderduster", "Depositscanner", "Bouldereye", "Pelletcrusher", "Wedgebreaker", "Dustsenser", "Peridotforger", "Lumpsorter", "Metalrater", "Metalchewer", "Geopusher", "Pelletwatcher", "Masonteeth", "Lapisfinder", "Agatechest", "Orechin", "Rubyfist", "Cobbleeyes", "Bedrockmender", "Sturdyleg", "Shelfstamper", "Limefeet", "Clayviewer"];
-    let halflingFirstNames = ["Seraphina", "Asphodel", "Hilda", "Mazzy", "Balbina", "Merry", "Bonita", "Diamond", "Merla", "Arabella", "Mirabella", "Ayita", "Susannah", "Alora", "Lavinia", "Belinda", "Charmaine", "Lidda", "Gelvira", "Berylla", "Portia", "Primula", "Angelica", "Asphodel", "Ruby", "Brunella", "Armida", "Aiko", "Malva", "Belladonna", "Peony", "Rose", "Arabella", "Carlotta", "Bellisima", "Garret", "Cottar", "Adelard", "Bill", "Otho", "Anson", "Andwise", "Hob", "Ronald", "Beau", "Olo", "Kepli", "Bodo", "Balbo", "Drogo", "Hildigrim", "Adric", "Dudo", "Eder", "Largo", "Rufus", "Rorimac", "Haldon", "Barner", "Joyas", "Tarkas", "Adelard", "Valkas", "Gokin"];
-    let halflingLastNames = ["Ashworthy", "Moonward", "Longfoot", "Headstrong", "Hamson", "Dudley", "Faneth", "Fleetfoot", "Billberry", "Bolger", "Brandybuck", "Bullroarer", "Dale", "Devix", "Gardner", "Gammidge", "Rosetopple", "Shadowbrand", "Rumblecrest", "Freebough", "Appleleaf", "Grandbelly", "Cherryhand", "Laughingwillow", "Lightwater", "Barleyglide", "Ravenlade", "Smoothhearth", "Heartmane", "Hillflow", "Glowsong", "Whisperbloom", "Flintglide", "Cinderbranch"];
-    let halfOrcNames = ["Tandrech", "Kul", "Daavaim", "Krivuun", "Gnibad", "Crukazvi", "Nod", "Thralulro", "Miadurk", "Nirdal", "Cimex", "Ningish", "Bol", "Sardi", "Nuzuh", "Gox", "Hoth", "Wighidin", "Cex", "Dord", "Gim", "Kiavi", "Nird", "Dorravaa", "Met", "Nimex", "Rangu", "Hastrach", "Crelradhuch", "Brot", "Brukraidirk", "Lash", "Gnud", "Likrulirg", "Biath", "Bredungem", "Weglay", "Futh", "Pamge", "Kih", "Sodlo", "Wex", "Orluth", "Thenge", "Cin", "Casduco", "Hitu", "Aisi", "Tish"];
-    let humanFirstNames = ["Carden", "Draven", "Barkley", "Mikel", "Oskar", "Larry", "Arnhold", "Lindon", "Otto", "Hans", "Per", "Darrion", "Jacque", "Wassilie", "Ian", "Marden", "Tomke", "Lincoln", "Loga", "Hetdt", "Juliette", "Bridgette", "Kyleigh", "Isalda", "Aggy", "Wilf", "Tiara", "Sam", "Dasia", "Jacalynn", "Alysha", "Shar", "Shelby", "Pell", "Reese", "Ryland", "Hein", "Beldon", "Ravin", "Nelles", "Bastle", "Joey", "Sylvester", "Vardon", "Brooks", "Pierce", "Rudi", "Akim", "Levin", "Luther", ""];
-    let humanLastNames = ["Uan", "Cieng", "Jindurne", "Gizulda", "Zammed", "Cidu", "Rapidscribe", "Fletcher", "Shoemaker", "Tailer", "Hydrapelt", "Sesk", "Merdosk", "Mournclaw", "Lehrihpafk", "Biltram", "Zuvintetva", "Dua", "Bidrinil", "Yalve", "Qing", "Nei", "Sulilda", "Daoy", "Merdosk", "Zuvintetve", "Dulmugu", "Dua", "Hastu", "Zeimmu", "Mossbinder", "Scribe", "Susk", "Sokrosk", "Vuntezd", "Chubok", "Qao", "Jassi", "Velas", "Estorus", "Khussom", "Danaz", "Granddorb", "Trodurgano", "Mokyadze", "Dao", "Zula"];
-
-    let characterNamePlaceholder = "";
-    let firstNameNumber = 0;
-    let secondNameNumber = 0;
+function oseCharacterNameGenerator(characterFirstName, characterLastName){
+    let firstNameArray = characterFirstName;
+    let firstName = Math.floor(Math.random() * firstNameArray.length);
+    let lastName = Math.floor(Math.random() * characterLastName.length);
+    return firstName + " " + lastName;
 
     switch(characterRace){
         case "Svirfneblin":
@@ -615,102 +537,41 @@ function oseArmourClassCalculator(armourWornValue){
     }
 }
 
-function oseWeaponPicker(weaponOfChoice, weaponProfPicker){
-    const battleAxe = {weapon:"Battle axe", cost:7, damage:"1d8", weight:50, qualities:["Melee", "Slow", "Two-handed"]};
-    const club = {weapon:"Club", cost:3, damage:"1d4", weight:50, qualities:["Blunt", "Melee"]};
-    const crossbow = {weapon:"Crossbow", cost:30, damage:"1d6", weight:50, qualities:["Missile", "Reload", "Slow", "Two-handed"], range:"(5'-80'/ 81'-160'/ 161'-240')"};
-    const dagger = {weapon:"Dagger", cost:3, damage:"1d4", weight:10, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
-    const handAxe = {weapon:"Hand axe", cost:4, damage:"1d6", weight:30, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
-    const holyWaterVial = {weapon:"Holy water vial", cost:25, damage:"1d8", weight:1, qualities:["Missile", "Splash weapon"], range:"(5'-10'/ 11'-30'/ 31'-50')"};
-    const javelin = {weapon:"Javelin", cost:1, damage:"1d4", weight:20, qualities:["Missile"], range:"(5'-30'/ 31'-60'/ 61'-90')"};
-    const lance = {weapon:"Lance", cost:1, damage:"1d6", weight:120, qualities:["Charge", "Melee"]};
-    const longBow = {weapon:"Long Bow", cost:40, damage:"1d6", weight:30, qualities:["Missile", "Two-handed"], range:"(5'-70'/ 71'-140'/ 141'-210')"};
-    const mace = {weapon:"Mace", cost:5, damage:"1d6", weight:30, qualities:["Blunt", "Melee"]};
-    const oilFlaskBurning = {weapon:"Oil flask, burning", cost:2, damage:"1d8", weight:1, qualities:["Missile", "Splash weapon"], range:"(5'-10'/ 11'-30'/ 31'-50')"};
-    const polearm = {weapon:"Polearm", cost:7, damage:"1d10", weight:150, qualities:["Brace", "Melee", "Slow", "Two-handed"]};
-    const shortBow = {weapon:"Short bow", cost:25, damage:"1d6", weight:30, qualities:["Missile", "Two-handed"], range:"(5'-50'/ 51'-100'/ 101'-150')"};
-    const shortSword = {weapon:"Short sword", cost:7, damage:"1d6", weight:30, qualities:["Melee"]};
-    const silverDagger = {weapon:"Silver dagger", cost:30, damage:"1d4", weight:10, qualities:["Melee", "Missile"], range:"(5'-10'/ 11'-20'/ 21'-30')"};
-    const sling = {weapon:"Sling", cost:2, damage:"1d4", weight:20, qualities:["Blunt", "Missile"], range:"(5'-40'/ 41'-80'/ 81'-160')"};
-    const spear = {weapon:"Spear", cost:3, damage:"1d6", weight:30, qualities:["Brace", "Melee", "Missile"], range:"(5'-20'/ 21'-40'/ 41'-60')"};
-    const staff = {weapon:"Staff", cost:2, damage:"1d4", weight:40, qualities:["Blunt", "Melee", "Slow", "Two-handed"]};
-    const sword = {weapon:"Sword", cost:10, damage:"1d8", weight:60, qualities:["Melee"]};
-    const torch = {weapon:"Torch", cost:1, damage:"1d4", weight:1, qualities:["Melee"]};
-    const twoHandedSword = {weapon:"Two-handed sword", cost:15, damage:"1d10", weight:150, qualities:["Melee", "Slow", "Two-handed"]};
-    const warHammer = {weapon:"War hammer", cost:5, damage:"1d6", weight:30, qualities:["Blunt", "Melee"]};
-
-    const weaponsArray = [battleAxe, club, crossbow, dagger, handAxe, holyWaterVial, javelin, lance, longBow, mace, oilFlaskBurning, polearm, shortBow, shortSword, silverDagger, sling, spear, staff, sword, torch, twoHandedSword, warHammer];
-
+function oseWeaponPicker(weaponOfChoice, weaponProfPicker){    
     if(weaponProfPicker){
-        for (let i = 0; i < weaponsArray.length; i++) {
-            if(weaponsArray[i].weapon == weaponOfChoice){
-                oseCharacterEquipment.innerHTML += weaponsArray[i].weapon + " - weight" + " " + weaponsArray[i].weight + "<br>";
-                let weaponQualitiesArray = weaponsArray[i].qualities;
+        for (let i = 0; i < oseWeapons.length; i++) {
+            if(oseWeapons[i].weapon == weaponOfChoice){
+                oseCharacterEquipment.innerHTML += oseWeapons[i].weapon + " - weight" + " " + oseWeapons[i].weight + "<br>";
+                let weaponQualitiesArray = oseWeapons[i].qualities;
                 let qualityToBeAdded = "";
                 for (let j = 0; j < weaponQualitiesArray.length; j++) {
-                    qualityToBeAdded = oseWeaponQualitiesDisplayer(weaponsArray[i].qualities[j]);                
+                    qualityToBeAdded = oseWeaponQualitiesDisplayer(oseWeapons[i].qualities[j]);                
                     oseCharacterEquipment.innerHTML += qualityToBeAdded;
-                    if(weaponsArray[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + weaponsArray[i].range + "<br>";
+                    if(oseWeapons[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + oseWeapons[i].range + "<br>";
                 }
-                oseWeaponsArmorDisplay.innerHTML += weaponsArray[i].weapon + " - damage" + " " + weaponsArray[i].damage + "<br>";
+                oseWeaponsArmorDisplay.innerHTML += oseWeapons[i].weapon + " - damage" + " " + oseWeapons[i].damage + "<br>";
             }        
         }
-    }    
+    }   
 }
 
 function oseItemPicker(){
-    const backpack = {item:"Backpack", cost:5};
-    const crowbar = {item:"Crowbar", cost:10};
-    const garlic = {item:"Garlic", cost:5};
-    const grapplingHook = {item:"Grappling hook", cost:25};
-    const hammer = {item:"Hammer (small)", cost:2};
-    const holySymbol = {item:"Holy symbol", cost:25};
-    const holyWater = {item:"Holy water (vial)", cost:25};
-    const ironSpikes = {item:"Iron spikes (12)", cost:1};
-    const lantern = {item:"Lantern", cost:10};
-    const mirror = {item:"Mirror (hand-sized, steel)", cost:5};
-    const oil = {item:"Oil (1 flask)", cost:2};
-    const pole = {item:"Pole (10' long, wooden)", cost:1};
-    const rationsIron = {item:"Iron rations (7 days)", cost:15};
-    const rationsStandard = {item:"Standard rations (7 days)", cost:5};
-    const rope = {item:"Rope (50')", cost:1};
-    const sackLarge = {item:"Sack (large)", cost:2};
-    const sackSmall = {item:"Sack (small)", cost:1};
-    const stakes = {item:"Stakes (3) and mallet", cost:3};
-    const thievesTools = {item:"Thieves tools", cost:25};
-    const tinderBox = {item:"Tinder box (flint & steel)", cost:3};
-    const torches = {item:"Torches (6)", cost:1};
-    const waterskin = {item:"Waterskin", cost:1};
-    const wine = {item:"Wine (2 pints)", cost:1};
-    const wolfsbane = {item:"Wolfsbane (1 bunch)", cost:10};
-
-    const itemsArray = [backpack, crowbar, garlic, grapplingHook, hammer, holySymbol, holyWater, ironSpikes, lantern, mirror, oil, pole, rationsIron, rationsStandard, rope, sackLarge, sackSmall, stakes, thievesTools, tinderBox, torches, waterskin, wine, wolfsbane];
+    
 }
 
 function oseArmourPicker(startingArmourArray, startingArmourChoice){
-    const leather = {armour:"Leather", cost:20, armourClass:12, weight:200};
-    const chainmail = {armour:"Chainmail", cost:40, armourClass:14, weight:400};
-    const plateMail = {armour:"Plate mail", cost:60, armourClass:16, weight:500};
-    const shield = {armour:"Shield", cost:10, armourClass:1, weight:100};
-
-    const armourArray = [leather, chainmail, plateMail, shield];
-    let randomRoll = 0;
-    let itemsArmourClass = 0;
-
     if(startingArmourChoice && startingArmourArray.length > 0){
-        randomRoll = parseInt(oseDieRoller(1, startingArmourArray.length) -1);
-        for (let i = 0; i < armourArray.length; i++) {
-            if(startingArmourArray[randomRoll] == armourArray[i].armour){
-                oseCharacterEquipment.innerHTML += armourArray[i].armour + " - weight" + " " + armourArray[i].weight + "<br>";
-                oseWeaponsArmorDisplay.innerHTML += armourArray[i].armour + " - armour class" + " " + armourArray[i].armourClass + "<br>";
-                itemsArmourClass = armourArray[i].armourClass;
+        let randomRoll = Math.floor(Math.random() * startingArmourArray.length);
+        for (let i = 0; i < oseArmour.length; i++) {
+            if(startingArmourArray[randomRoll] == oseArmour[i].armour){
+                oseCharacterEquipment.innerHTML += oseArmour[i].armour + " - weight" + " " + oseArmour[i].weight + "<br>";
+                oseWeaponsArmorDisplay.innerHTML += oseArmour[i].armour + " - armour class" + " " + oseArmour[i].armourClass + "<br>";
+                let itemsArmourClass = oseArmour[i].armourClass;
                 oseArmourClassCalculator(itemsArmourClass);
                 return;
             }
         }
     }
-
-    oseArmourClassCalculator(itemsArmourClass);
 }
 
 function oseEquipmentPicker(){
@@ -738,7 +599,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Earth elemental", "Gnomish", "Dwarvish", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(gnomeFirstNames, svirfneblinLastNames);
             break;
         case "Duergar":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
@@ -748,7 +609,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(dwarfFirstNames, duergarLastNames);
             break;
         case "Dwarf":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
@@ -758,14 +619,14 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(dwarfFirstNames, dwarfLastNames);
             break;
         case "Gnome":
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Gnomish", "Dwarvish", "Burrow animals", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(gnomeFirstNames, gnomeLastNames);
             break;
         case "Drow":            
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
@@ -775,7 +636,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Deepcommon", "Elvish", "Gnomish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(drowFirstNames, drowLastNames);
             break;
         case "Elf":
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
@@ -785,13 +646,14 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Elvish", "Gnoll", "Hobgoblin", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnomish", "Goblin", "Halfling", "Harpy", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(elfFirstNames, elfLastNames);
             break;
         case "Half-Elf":
             oseCharacterSecretDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Elvish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
+
             oseCharacterNameGenerator(characterRace);
             break;
         case "Halfling":
@@ -801,7 +663,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Halfling"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(halflingFirstNames, halflingLastNames);
             break;
         case "Half-Orc":
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
@@ -810,13 +672,13 @@ function oseCharacterClassInformation(characterRace, characterClass){
             racialLanguagesAvailable = ["Common", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(halfOrcNames, []);
             break;
         case "Human":
             racialLanguagesAvailable = ["Common"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
-            oseCharacterNameGenerator(characterRace);
+            oseCharacterNameGenerator(humanFirstNames, humanLastNames);
             break;
     }
     switch(characterClass){
