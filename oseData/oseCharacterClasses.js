@@ -8,7 +8,6 @@ function acrobatBuilder(characterClass){
     martialType = "semi-martial";
     armourAllowed = ["Leather"];
     weaponLimitations = ["Dagger", "Sword", "Short sword", "Polearm", "Spear", "Staff", "Crossbow", "Javelin", "Long bow", "Short bow", "Sling"];
-    oseCharacterAbilitySkillsWeapons.innerHTML += "Acrobat Skills:" + "<br>";
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -44,6 +43,8 @@ function druidBuilder(characterClass){
     oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterWIS.textContent));
     oseHitPointRoller(6);
     oseCharacterSaves(characterClass);
+    oseCharacterEquipment.innerHTML += oseItems[5].item + "<br>";
+    oseCharacterEquipment.innerHTML += oseItems[5].description + "<br>";
     oseItemPicker();
 }
 
