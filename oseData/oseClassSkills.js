@@ -69,12 +69,3 @@ var thiefSkills = [{skill:"<span class='bold'>Thief Skill Chance of Success:</sp
 
 var necromancerSkills = [{skill:"<span class='bold'>Spells:</span>", spells:"• level 1 spells per day: 1"},
 {skill:"<span class='bold'>Arcane Magic:</span>", research:"• Magical research: A necromancer of any level may spend time and money on magical research. This allows them to add new spells to their spell book and to research other magical effects.", casting:"• Spell casting: Necromancers carry spell books containing the formulae for arcane spells. The level progression table shows both the number of spells in the necromancer's spell book and the number they may memorize, determined by the character's experience level.", magicItems:"• Using magic items: As spell casters, necromancers are able to use magic scrolls of spells on their spell list. They can also use items that may only be used by arcane spell casters (e.g. magic wands). They are, however, not able to use magic items with effects that charm or control living creatures, including humans (e.g. a ring that controls animals)."}];
-
-function classSkillsDisplayer(classSkillsArray){    
-    
-    for(let obj of classSkillsArray){
-        for(let key in obj){
-            oseCharacterAbilitySkillsWeapons.innerHTML += obj[key] + "<br>";
-        }
-    }
-};

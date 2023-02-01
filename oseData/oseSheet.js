@@ -96,5 +96,4 @@ function oseDieRoller(min, max){
 }
 
 oseStatRoller();
-//oseStatBonusAssigner();
 oseCharacterRaceAvailable();

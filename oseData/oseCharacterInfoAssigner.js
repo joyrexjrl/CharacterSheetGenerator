@@ -2,7 +2,8 @@ function oseCharacterClassInformation(characterRace, characterClass){
     let maxLevel = parseInt(oseCharacterMaxLevel(characterRace, characterClass));
     let xpNeededToLevel = parseInt(oseCharacterExpNeededToLevel(characterClass));
     let racialLanguagesAvailable = [];
-    let otherLanguagesAvailable = [];    
+    let otherLanguagesAvailable = [];
+    let racialAbilitiesArray = [];
     let firstNameArray = [];
     let lastNameArray = [];
 
@@ -14,16 +15,19 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "Svirfneblin":
             firstNameArray = gnomeFirstNames;
             lastNameArray = svirfneblinLastNames;
+            racialAbilitiesArray = svirfneblinAbilties;
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Deepcommon", "Earth elemental", "Gnomish", "Dwarvish", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Duergar":
             firstNameArray = dwarfFirstNames;
             lastNameArray = duergarLastNames;
+            racialAbilitiesArray = duergarAbilities;
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterFindTrapExplore.innerHTML = 2;
@@ -33,10 +37,12 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Dwarf":
             firstNameArray = dwarfFirstNames;
             lastNameArray = dwarfLastNames;
+            racialAbilitiesArray = dwarfAbilities;
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCHA.textContent, -1);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterFindTrapExplore.innerHTML = 2;
@@ -46,20 +52,24 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Gnome":
             firstNameArray = gnomeFirstNames;
             lastNameArray = gnomeLastNames;
+            racialAbilitiesArray = gnomeAbilities;
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Gnomish", "Dwarvish", "Burrow animals", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Drow":
             firstNameArray = drowFirstNames;
-            lastNameArray = drowLastNames;            
+            lastNameArray = drowLastNames;
+            racialAbilitiesArray = drowAbilities;
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterSecretDoorExplore.innerHTML = 2;
@@ -69,10 +79,12 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Elf":
             firstNameArray = elfFirstNames;
             lastNameArray = elfLastNames;
+            racialAbilitiesArray = elfAbilities;
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterSecretDoorExplore.innerHTML = 2;
@@ -82,10 +94,12 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Half-Elf":
             let firstNameNumber = (oseDieRoller(1, 2));
             let secondNameNumber = (oseDieRoller(1, 2));
+            racialAbilitiesArray = halfElfAbilities;
             if(firstNameNumber == 1) firstNameArray = elfFirstNames;
             else firstNameArray = humanFirstNames;
             
@@ -98,10 +112,12 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Halfling":
             firstNameArray = halflingFirstNames;
             lastNameArray = halflingLastNames;
+            racialAbilitiesArray = halflingAbilities;
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, -1);
             oseCharacterDEX.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterDEX.textContent, 1);
             oseCharacterListenDoorExplore.innerHTML = 2;
@@ -110,9 +126,11 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Half-Orc":
             firstNameArray = halfOrcNames;
+            racialAbilitiesArray = halfOrcAbilities;
             oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, -2);
             oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, 1);
@@ -121,15 +139,20 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(halfOrcNames, [" "], true);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Human":
             firstNameArray = humanFirstNames;
             lastNameArray = humanLastNames;
+            racialAbilitiesArray = humanAbilities;
+            oseCharacterCHA.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
+            oseCharacterCON.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterCON.textContent, 1);
             racialLanguagesAvailable = ["Common"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
             oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
+            classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
     }
     switch(characterClass){

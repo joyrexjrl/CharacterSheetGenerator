@@ -10,7 +10,7 @@ function acrobatBuilder(characterClass){
     armourAllowed = ["Leather"];
     weaponLimitations = ["Dagger", "Sword", "Short sword", "Polearm", "Spear", "Staff", "Crossbow", "Javelin", "Long bow", "Short bow", "Sling"];
     classSkillsArray = acrobatSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -26,7 +26,7 @@ function assassinBuilder(characterClass){
     armourAllowed = ["Leather", "Shield"];
     weaponLimitations = [];
     classSkillsArray = assassinSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Neutral", "Chaos"];
@@ -43,7 +43,7 @@ function druidBuilder(characterClass){
     armourAllowed = ["Leather", "Shield"];
     weaponLimitations = ["Club", "Dagger", "Sling", "Spear", "Staff"];
     classSkillsArray = druidSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     oseCharacterAlignment.innerHTML = "Neutral";
@@ -60,7 +60,7 @@ function clericBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
     weaponLimitations = ["Club", "Mace", "Sling", "Staff", "War hammer"];
     classSkillsArray = clericSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -78,7 +78,7 @@ function fighterBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
     weaponLimitations = [];
     classSkillsArray = fighterSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -94,7 +94,7 @@ function magicUserBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = magicUserSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -110,7 +110,7 @@ function thiefBuilder(characterClass){
     armourAllowed = ["Leather"];
     weaponLimitations = [];
     classSkillsArray = thiefSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -129,7 +129,7 @@ function barbarianBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Shield"];
     weaponLimitations = [];
     classSkillsArray = barbarianSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -150,7 +150,7 @@ function bardBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail"];
     weaponLimitations = ["Club", "Crossbow", "Dagger", "Hand axe", "Javelin", "Long bow", "Mace", "Short bow", "Short sword", "Sling", "Spear", "Sword", "War hammer"];
     classSkillsArray = bardSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -166,7 +166,7 @@ function illusionistBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = illusionistSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -182,7 +182,7 @@ function paladinBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
     weaponLimitations = [];
     classSkillsArray = paladinSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     oseCharacterAlignment.innerHTML = "Law";
@@ -203,7 +203,7 @@ function necromancerBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = necromancerSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -219,7 +219,7 @@ function knightBuilder(characterClass){
     armourAllowed = ["Chainmail", "Plate mail", "Shield"];
     weaponLimitations = ["Battle axe", "Club", "Dagger", "Hand axe", "Lance", "Mace", "Polearm", "Short sword", "Spear", "Sword", "Two-handed sword", "War hammer"];
     classSkillsArray = knightSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral", "Chaos"];
@@ -235,7 +235,7 @@ function rangerBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Shield"];
     weaponLimitations = [];
     classSkillsArray = rangerSkills;
-    classSkillsDisplayer(classSkillsArray);
+    classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
     characterAlingment = ["Law", "Neutral"];

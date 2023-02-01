@@ -437,3 +437,11 @@ function oseStatBonus(stat){
             break;
     }
 }
+
+function classSkillsAndAbilitiesDisplayer(classSkillsAbilitiesArray){        
+    for(let obj of classSkillsAbilitiesArray){
+        for(let key in obj){
+            oseCharacterAbilitySkillsWeapons.innerHTML += obj[key] + "<br>";
+        }
+    }
+};
