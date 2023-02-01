@@ -342,7 +342,7 @@ function oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations){
     let weaponOfChoice = "";
     if(martialType == "martial") numberOfRolls = 4;
     if(martialType == "semi-martial") numberOfRolls = 3;
-    oseCharacterAbilitySkillsWeapons.innerHTML += "Weapon Proficiency:" + "<br>";
+    oseCharacterAbilitySkillsWeapons.innerHTML += "<span class='bold'>Weapon Proficiency:</span>" + "<br>";
 
     if(weaponLimitations.length > 0){
         for(let i = 0; i < numberOfRolls; i++){

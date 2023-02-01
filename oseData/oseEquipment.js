@@ -80,8 +80,8 @@ function oseArmourPicker(startingArmourArray, startingArmourChoice){
         let randomRoll = Math.floor(Math.random() * startingArmourArray.length);
         for (let i = 0; i < oseArmour.length; i++) {
             if(startingArmourArray[randomRoll] == oseArmour[i].armour){
-                oseCharacterEquipment.innerHTML += oseArmour[i].armour + " - weight" + " " + oseArmour[i].weight + "<br>";
-                oseWeaponsArmorDisplay.innerHTML += oseArmour[i].armour + " - armour class" + " " + oseArmour[i].armourClass + "<br>";
+                oseCharacterEquipment.innerHTML += "<span class='bold'>" + oseArmour[i].armour + "</span>" + " - weight" + " " + oseArmour[i].weight + "<br>";
+                oseWeaponsArmorDisplay.innerHTML += "<span class='bold'>" + oseArmour[i].armour + "</span>" + " - armour class" + " " + oseArmour[i].armourClass + "<br>";
                 let itemsArmourClass = oseArmour[i].armourClass;
                 oseArmourClassCalculator(itemsArmourClass);
                 return;
@@ -94,7 +94,7 @@ function oseWeaponPicker(weaponOfChoice, weaponProfPicker){
     if(weaponProfPicker){
         for (let i = 0; i < oseWeapons.length; i++) {
             if(oseWeapons[i].weapon == weaponOfChoice){
-                oseCharacterEquipment.innerHTML += oseWeapons[i].weapon + " - weight" + " " + oseWeapons[i].weight + "<br>";
+                oseCharacterEquipment.innerHTML += "<span class='bold'>" + oseWeapons[i].weapon + "</span>" + " - weight" + " " + oseWeapons[i].weight + "<br>";
                 let weaponQualitiesArray = oseWeapons[i].qualities;
                 let qualityToBeAdded = "";
                 for (let j = 0; j < weaponQualitiesArray.length; j++) {
@@ -102,7 +102,7 @@ function oseWeaponPicker(weaponOfChoice, weaponProfPicker){
                     oseCharacterEquipment.innerHTML += qualityToBeAdded;
                     if(oseWeapons[i].qualities[j] == "Missile") oseCharacterEquipment.innerHTML += "Range " + oseWeapons[i].range + "<br>";
                 }
-                oseWeaponsArmorDisplay.innerHTML += oseWeapons[i].weapon + " - damage" + " " + oseWeapons[i].damage + "<br>";
+                oseWeaponsArmorDisplay.innerHTML += "<span class='bold'>" + oseWeapons[i].weapon + "</span>" + " - damage" + " " + oseWeapons[i].damage + "<br>";
             }        
         }
     }   
@@ -117,7 +117,7 @@ function oseItemPicker(){
     for (let i = 0; i < itemsAmount; i++) {
         randomRoll = oseDieRoller(1, oseItems.length)-1;
         itemTotalCost += oseItems[randomRoll].cost;
-        oseCharacterEquipment.innerHTML += oseItems[randomRoll].item + "<br>";
+        oseCharacterEquipment.innerHTML += "<span class='bold'>" + oseItems[randomRoll].item + "</span>" + "<br>";
         oseCharacterEquipment.innerHTML += oseItems[randomRoll].description + "<br>";        
     }
 

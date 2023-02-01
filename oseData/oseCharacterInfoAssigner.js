@@ -17,6 +17,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Deepcommon", "Earth elemental", "Gnomish", "Dwarvish", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -29,6 +30,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Deepcommon", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -41,6 +43,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Dwarvish", "Gnomish", "Goblin", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -50,6 +53,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Gnomish", "Dwarvish", "Burrow animals", "Kobold"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Elvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -62,6 +66,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Deepcommon", "Elvish", "Gnomish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -74,6 +79,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Elvish", "Gnoll", "Hobgoblin", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnomish", "Goblin", "Halfling", "Harpy", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -89,6 +95,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterSecretDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Elvish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -100,6 +107,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterListenDoorExplore.innerHTML = 2;
             racialLanguagesAvailable = ["Common", "Halfling"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
@@ -110,6 +118,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterSTR.innerHTML = oseCharacterRaceAbilityModifier(oseCharacterSTR.textContent, 1);
             racialLanguagesAvailable = ["Common", "Orcish"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(halfOrcNames, [" "], true);
             break;
@@ -118,6 +127,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             lastNameArray = humanLastNames;
             racialLanguagesAvailable = ["Common"];
             otherLanguagesAvailable = ["Bugbear", "Doppelganger", "Dragon", "Dwarvish", "Elvish", "Gargoyal", "Gnoll", "Gnomish", "Goblin", "Halfling", "Harpy", "Hobgoblin", "Kobold", "Lizard man", "Medusa", "Minotaur", "Ogre", "Orcish", "Pixie"];
+            oseStatBonusAssigner();
             oseCharacterLanguagePicker(oseStatBonus(oseCharacterINT), racialLanguagesAvailable, otherLanguagesAvailable);
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             break;
