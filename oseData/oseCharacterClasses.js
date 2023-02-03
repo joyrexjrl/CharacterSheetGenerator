@@ -4,6 +4,7 @@ var weaponLimitations = [];
 var martialType = "";
 var armourAllowed = [];
 var classSkillsArray = [];
+var classSpellsArray = [];
 
 function acrobatBuilder(characterClass){
     martialType = "semi-martial";
@@ -43,6 +44,7 @@ function druidBuilder(characterClass){
     armourAllowed = ["Leather", "Shield"];
     weaponLimitations = ["Club", "Dagger", "Sling", "Spear", "Staff"];
     classSkillsArray = druidSkills;
+    classSpellsArray = druidLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
@@ -53,6 +55,7 @@ function druidBuilder(characterClass){
     oseCharacterEquipment.innerHTML += oseItems[5].item + "<br>";
     oseCharacterEquipment.innerHTML += oseItems[5].description + "<br>";
     oseItemPicker();
+    characterSpellDisplayer(druidLevelOneSpells);
 }
 
 function clericBuilder(characterClass){
@@ -60,6 +63,7 @@ function clericBuilder(characterClass){
     armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
     weaponLimitations = ["Club", "Mace", "Sling", "Staff", "War hammer"];
     classSkillsArray = clericSkills;
+    classSpellsArray = clericLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
@@ -71,6 +75,7 @@ function clericBuilder(characterClass){
     oseCharacterEquipment.innerHTML += oseItems[5].item + "<br>";
     oseCharacterEquipment.innerHTML += oseItems[5].description + "<br>";
     oseItemPicker();
+    characterSpellDisplayer(clericLevelOneSpells);
 }
 
 function fighterBuilder(characterClass){
@@ -94,6 +99,7 @@ function magicUserBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = magicUserSkills;
+    classSpellsArray = magicUserLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
@@ -103,6 +109,7 @@ function magicUserBuilder(characterClass){
     oseHitPointRoller(4);
     oseCharacterSaves(characterClass);
     oseItemPicker();
+    characterSpellDisplayer(magicUserLevelOneSpells);
 }
 
 function thiefBuilder(characterClass){
@@ -166,6 +173,7 @@ function illusionistBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = illusionistSkills;
+    classSpellsArray = illusionistLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
@@ -175,6 +183,7 @@ function illusionistBuilder(characterClass){
     oseHitPointRoller(4);
     oseCharacterSaves(characterClass);
     oseItemPicker();
+    characterSpellDisplayer(illusionistLevelOneSpells);
 }
 
 function paladinBuilder(characterClass){
@@ -203,6 +212,7 @@ function necromancerBuilder(characterClass){
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
     classSkillsArray = necromancerSkills;
+    classSpellsArray = necromancerLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
     oseArmourPicker(armourAllowed, true);
@@ -212,6 +222,7 @@ function necromancerBuilder(characterClass){
     oseHitPointRoller(4);
     oseCharacterSaves(characterClass);
     oseItemPicker();
+    characterSpellDisplayer(necromancerLevelOneSpells);
 }
 
 function knightBuilder(characterClass){

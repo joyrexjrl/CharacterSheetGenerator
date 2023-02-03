@@ -123,8 +123,9 @@ function osePrimeReqExpBonus(primeStat){
 
 function oseHitPointRoller(dieType){
     let tempHp = parseInt(oseDieRoller(1, dieType));
-    oseCharacterMaxHP.innerHTML = tempHp + parseInt(oseCharacterCONBonusToHP.textContent);
-    if(tempHp < 1) tempHp = 1;    
+    tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
+    if(tempHp < 1) tempHp = 1;
+    oseCharacterMaxHP.innerHTML = tempHp;
     oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
 }
 

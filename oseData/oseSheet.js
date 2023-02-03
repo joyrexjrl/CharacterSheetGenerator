@@ -45,6 +45,7 @@ const oseCharacterEncounterMovement = document.getElementById("ose_character_enc
 const oseCharacterAbilitySkillsWeapons = document.getElementById("ose_character_ability_skills_weapons");
 const oseCharacterLanguages = document.getElementById("ose_character_languages");
 const oseCharacterEquipment = document.getElementById("ose_character_equipment");
+const oseCharacterSpellsMountsOther = document.getElementById("ose_character_spells_mounts_other");
 const oseWeaponsArmorDisplay = document.getElementById("ose_weapons_armor_display");
 
 const oseCharacterCurrentEXP = document.getElementById("ose_character_current_exp");
