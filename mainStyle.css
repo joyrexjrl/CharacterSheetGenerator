@@ -1,3 +1,7 @@
+:root{
+    --logo-size-clamp: clamp(4rem, 6vw + 1rem, 6rem);
+}
+
 body {
     background-color: rgb(230,230,230);
 }
@@ -25,4 +29,24 @@ body {
 
 body{
     display:block !important;
+}
+
+.site_logo{
+    width: 100px;
+}
+
+.nav_container{
+    padding: .5rem 1rem;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(100,100,100);
+    margin-bottom: 1rem;
+}
+
+.game_sheet_buttons{
+    width: var(--logo-size-clamp);
+}
+
+.character_generators{
+    gap: 2rem;
 }
