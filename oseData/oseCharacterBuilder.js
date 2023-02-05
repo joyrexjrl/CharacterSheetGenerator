@@ -12,7 +12,7 @@ function oseCharacterRaceAvailable(){
     if(parseInt(oseCharacterCHA.textContent) >= 9 && parseInt(oseCharacterCON.textContent) >= 9) racesAvailable.push("Half-Elf");    
     if(parseInt(oseCharacterCON.textContent) >= 9 && parseInt(oseCharacterDEX.textContent) >= 9) racesAvailable.push("Halfling");    
     
-    oseCharacterRacePicker(racesAvailable);
+    return racesAvailable;
 }
 
 function oseCharacterRacePicker(availableRaces){
@@ -20,7 +20,7 @@ function oseCharacterRacePicker(availableRaces){
     let race = availableRaces[chosenRace];
 
     oseCharacterClass.innerHTML = race + "/ ";
-    oseCharacterClassAvailable(race);
+    return race;
 }
 
 function oseCharacterClassAvailable(characterRace){

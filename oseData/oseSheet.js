@@ -96,5 +96,18 @@ function oseDieRoller(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-oseStatRoller();
-oseCharacterRaceAvailable();
+function oseBuildMyCharacter(){
+    let availableRaces = [];
+    let availableClasses = [];
+
+    oseStatRoller();
+    availableRaces = oseCharacterRaceAvailable();
+    availableClasses = oseCharacterRacePicker(availableRaces);
+    oseCharacterClassAvailable(availableClasses);
+    oseEquipmentWeightDisplayer(equipmentWeight);
+    oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent);
+}
+
+
+
+oseBuildMyCharacter();

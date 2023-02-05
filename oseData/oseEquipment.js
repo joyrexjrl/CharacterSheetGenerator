@@ -51,6 +51,8 @@ var oseItems = [{item:"Backpack", cost:5, description:"• Has twos traps and ca
     {item:"Wine (2 pints)", cost:1, description:"• A bottle of wine with many different uses, including drinking. Let your imagination flow."},
     {item:"Wolfsbane (1 bunch)", cost:10, description:"• This herb can be used to repel lycanthropes. The creature must be hit with the herb in melee combat."}];
 
+var equipmentWeight = 0;
+
 function oseWeaponQualitiesDisplayer(qualitiesArray){
     let quality = "";
     switch(qualitiesArray){
@@ -84,6 +86,7 @@ function oseArmourPicker(startingArmourArray, startingArmourChoice){
                 oseWeaponsArmorDisplay.innerHTML += "<span class='bold'>" + oseArmour[i].armour + "</span>" + " - armour class" + " " + oseArmour[i].armourClass + "<br>";
                 let itemsArmourClass = oseArmour[i].armourClass;
                 oseArmourClassCalculator(itemsArmourClass);
+                equipmentWeight += (parseInt(oseArmour[i].weight));
                 return;
             }
         }
@@ -95,6 +98,7 @@ function oseWeaponPicker(weaponOfChoice, weaponProfPicker){
         for (let i = 0; i < oseWeapons.length; i++) {
             if(oseWeapons[i].weapon == weaponOfChoice){
                 oseCharacterEquipment.innerHTML += "<span class='bold'>" + oseWeapons[i].weapon + "</span>" + " - weight" + " " + oseWeapons[i].weight + "<br>";
+                equipmentWeight += (parseInt(oseWeapons[i].weight));
                 let weaponQualitiesArray = oseWeapons[i].qualities;
                 let qualityToBeAdded = "";
                 for (let j = 0; j < weaponQualitiesArray.length; j++) {
@@ -122,4 +126,15 @@ function oseItemPicker(){
     }
 
     goldAfterItemcost = oseCharacterGoldCoins.textContent -= itemTotalCost;
+    oseCharacterTreasureWeight.innerHTML += goldAfterItemcost;
+}
+
+function oseEquipmentWeightDisplayer(equipmentWeight){
+    let sum = parseInt(equipmentWeight);
+    oseCharacterWeaponsArmorWeight.innerHTML = sum;
+}
+
+function oseTotalEquipmentWeightDisplayer(coinWeight, gearWeight){
+    let sum = parseInt(coinWeight) + parseInt(gearWeight);
+    oseCharacterTotalCarriedWeight.innerHTML = sum;
 }
