@@ -20,7 +20,7 @@ body {
 
 .container{
     width: 95%;
-    margin-inline: auto;    
+    margin-inline: auto;
 }
 
 .bold{
@@ -45,6 +45,7 @@ body{
 
 .game_sheet_buttons{
     width: var(--logo-size-clamp);
+    cursor: pointer;
 }
 
 .character_generators{

@@ -96,9 +96,20 @@ function oseDieRoller(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
+function oseClearAllSheet(){
+    const fullClearArray = [oseCharacterName, oseCharacterClass, oseCharacterAlignment, oseCharacterTitle, oseCharacterLevel, oseCharacterSTR, oseCharacterDEX, oseCharacterCON, oseCharacterINT, oseCharacterWIS, oseCharacterCHA, oseCharacterDeathSave, oseCharacterWandsSave, oseCharacterParalysisSave, oseCharacterBreathSave, oseCharacterSpellSave, oseCharacterWISBonusToSpellSave, oseCharacterCurrentHP, oseCharacterMaxHP, oseCharacterCONBonusToHP, oseCharacterCurrentAC, oseCharacterUnarmouredAC, oseCharacterDEXBonusToAC, oseCharacterAttackBonus, oseCharacterMeleeAttackBonus, oseCharacterMissileAttackBonus, oseCharacterInitiative, oseCharacterCHABonusToReactions, oseCharacterListenDoorExplore, oseCharacterOpenDoorExplore, oseCharacterSecretDoorExplore, oseCharacterFindTrapExplore, oseCharacterOverlandMovement, oseCharacterExplorationMovement, oseCharacterEncounterMovement, oseCharacterAbilitySkillsWeapons, oseCharacterLanguages, oseCharacterEquipment, oseCharacterSpellsMountsOther, oseWeaponsArmorDisplay, oseCharacterCurrentEXP, oseCharacterNextLevelEXPNeeded, oseCharacterPrimeStatBonusToEXP, oseCharacterGoldCoins, oseCharacterTreasureWeight, oseCharacterWeaponsArmorWeight, oseCharacterTotalCarriedWeight];
+
+    for (let i = 0; i < fullClearArray.length; i++) {
+        fullClearArray[i].innerHTML = "";
+    }
+}
+
 function oseBuildMyCharacter(){
     let availableRaces = [];
     let availableClasses = [];
+
+    oseClearAllSheet();
+    equipmentWeight = 0;
 
     oseStatRoller();
     availableRaces = oseCharacterRaceAvailable();
@@ -107,7 +118,3 @@ function oseBuildMyCharacter(){
     oseEquipmentWeightDisplayer(equipmentWeight);
     oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent);
 }
-
-
-
-oseBuildMyCharacter();

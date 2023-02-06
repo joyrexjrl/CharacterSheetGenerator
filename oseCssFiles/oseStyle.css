@@ -1,8 +1,9 @@
 .ose_character_sheet{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(600px, auto));
-    gap: 2rem;
     max-width: 1400px;
+    gap: .5rem;
+    margin: 1rem auto 0;
     font-family: 'Nova Square', cursive;
 }
 
@@ -40,15 +41,43 @@
     text-align: right;
 }
 
+.ose_info_bar{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, auto));
+    max-width: 1400px;
+    margin-inline: auto;
+}
+
+.ose_info_section,
+.ose_input_section{
+    font-family: 'Nova Square', cursive;
+    padding: .5rem 1rem;
+}
+
+.ose_info_section{
+    gap: .5rem;
+}
+
+.ose_info_section_text{
+    font-size: .8rem;
+}
+
+.ose_make_character_button{
+    width: 80px;
+    height: 25px;
+    cursor: pointer;
+    font-size: .8rem;
+}
+
 .ose_page_one,
 .ose_page_two{
     background-color: #fff;
     display: flex;
-    justify-content: space-between;
     width: 100%;
     max-width: 620px;
     margin-inline: auto;
     padding: 1.5rem;
+    gap: .2rem;
 }
 
 .ose_page_left_side{
