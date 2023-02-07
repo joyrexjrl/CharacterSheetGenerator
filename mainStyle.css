@@ -7,6 +7,10 @@ body {
     display:block !important;
 }
 
+h1{
+    font-size: 3rem;
+}
+
 .flex{
     display: flex;
 }
@@ -60,4 +64,13 @@ body {
 
 .character_generators{
     gap: 2rem;
+}
+
+.welcome_screen{
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome_screen_info{
+    width: 60ch;
 }
