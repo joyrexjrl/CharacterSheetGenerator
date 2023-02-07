@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="resets.css">
     <link rel="stylesheet" href="mainStyle.css">
     <link rel="stylesheet" href="oseCssFiles/oseStyle.css">
+    <script src="overallScripts.js" defer></script>
     <script src="oseData/oseCharacterNames.js" defer></script>
     <script src="oseData/oseEquipment.js" defer></script>
     <script src="oseData/oseClassSkills.js" defer></script>
@@ -28,7 +29,7 @@
         <div class="nav_container flex">
             <img src="images/mainPage/pageTempLogo.jpg" alt="main page logo" class="site_logo">
             <div class="character_generators flex">
-                <div id="ose_cheet_button" class="game_sheet_buttons"><img src="images/OSE/oseLogo.gif" alt="ose logo"></div>
+                <div class="game_sheet_buttons" onclick="openOsePage()"><img src="images/OSE/oseLogo.gif" alt="ose logo"></div>
                 <div class="game_sheet_buttons"><img src="images/shadowrun/shadowrun_nav_logo.gif" alt="shadowrun logo"></div>
                 <div class="game_sheet_buttons">Game 3</div>
                 <div class="game_sheet_buttons">Game 4</div>
@@ -38,7 +39,7 @@
 
     </nav>
     <!-- OSE sheet start -->
-    <section class="container">
+    <section id="ose_sheet_display" class="container page_dislayer">
 
         <div class="ose_info_bar">
             <div class="ose_info_section flex">
@@ -549,6 +550,10 @@
         </div>
     </section>
     <!-- OSE sheet end -->
+
+    <section>
+        <p>extra stuff for testing</p>
+    </section>
 
 </body>
 </html>

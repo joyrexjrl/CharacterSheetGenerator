@@ -4,6 +4,7 @@
 
 body {
     background-color: rgb(230,230,230);
+    display:block !important;
 }
 
 .flex{
@@ -27,8 +28,12 @@ body {
     font-weight: bold;
 }
 
-body{
-    display:block !important;
+.page_dislayer{
+    display: block;
+}
+
+.hide{
+    display: none;
 }
 
 .site_logo{
