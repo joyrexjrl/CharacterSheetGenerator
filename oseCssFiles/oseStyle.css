@@ -54,12 +54,9 @@
     padding: .5rem 1rem;
 }
 
-.ose_info_section{
-    gap: .5rem;
-}
-
 .ose_info_section_text{
     font-size: .8rem;
+    max-width: 50ch;
 }
 
 .ose_make_character_button{
