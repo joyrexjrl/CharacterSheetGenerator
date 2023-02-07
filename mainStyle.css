@@ -36,6 +36,10 @@ body {
     display: none;
 }
 
+.logo_outline{
+    border: 1px solid #fff;
+}
+
 .site_logo{
     width: 100px;
 }
@@ -51,6 +55,7 @@ body {
 .game_sheet_buttons{
     width: var(--logo-size-clamp);
     cursor: pointer;
+    padding: .2rem;
 }
 
 .character_generators{
