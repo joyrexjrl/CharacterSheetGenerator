@@ -75,7 +75,7 @@ function clericBuilder(characterClass){
     oseCharacterEquipment.innerHTML += oseItems[5].item + "<br>";
     oseCharacterEquipment.innerHTML += oseItems[5].description + "<br>";
     oseItemPicker();
-    characterSpellDisplayer(clericLevelOneSpells);
+    //characterSpellDisplayer(clericLevelOneSpells);
 }
 
 function fighterBuilder(characterClass){

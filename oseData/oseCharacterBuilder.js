@@ -19,7 +19,7 @@ function oseCharacterRacePicker(availableRaces){
     let chosenRace = oseDieRoller(1, availableRaces.length) -1;
     let race = availableRaces[chosenRace];
 
-    oseCharacterClass.innerHTML = race + "/ ";
+    oseCharacterRace.innerHTML = race;
     return race;
 }
 
@@ -82,7 +82,7 @@ function oseCharacterClassAvailable(characterRace){
             break;
     }
 
-    oseCharacterClass.innerHTML += chosenClass;
+    oseCharacterClass.innerHTML = chosenClass;
     oseCharacterClassInformation(characterRace, chosenClass);
 }
 

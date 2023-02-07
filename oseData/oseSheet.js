@@ -1,7 +1,7 @@
 const oseCharacterName = document.getElementById("ose_character_name");
 const oseCharacterClass = document.getElementById("ose_character_class");
+const oseCharacterRace = document.getElementById("ose_character_race");
 const oseCharacterAlignment = document.getElementById("ose_character_alignment");
-const oseCharacterTitle = document.getElementById("ose_character_title");
 const oseCharacterLevel = document.getElementById("ose_character_level");
 
 const oseCharacterSTR = document.getElementById("ose_character_str");
@@ -64,6 +64,8 @@ const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_to
 
 const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
 
+const fullClearArray = [oseCharacterName, oseCharacterClass, oseCharacterRace, oseCharacterAlignment, oseCharacterLevel, oseCharacterSTR, oseCharacterDEX, oseCharacterCON, oseCharacterINT, oseCharacterWIS, oseCharacterCHA, oseCharacterDeathSave, oseCharacterWandsSave, oseCharacterParalysisSave, oseCharacterBreathSave, oseCharacterSpellSave, oseCharacterWISBonusToSpellSave, oseCharacterCurrentHP, oseCharacterMaxHP, oseCharacterCONBonusToHP, oseCharacterCurrentAC, oseCharacterUnarmouredAC, oseCharacterDEXBonusToAC, oseCharacterAttackBonus, oseCharacterMeleeAttackBonus, oseCharacterMissileAttackBonus, oseCharacterInitiative, oseCharacterCHABonusToReactions, oseCharacterListenDoorExplore, oseCharacterOpenDoorExplore, oseCharacterSecretDoorExplore, oseCharacterFindTrapExplore, oseCharacterOverlandMovement, oseCharacterExplorationMovement, oseCharacterEncounterMovement, oseCharacterAbilitySkillsWeapons, oseCharacterLanguages, oseCharacterEquipment, oseCharacterSpellsMountsOther, oseWeaponsArmorDisplay, oseCharacterCurrentEXP, oseCharacterNextLevelEXPNeeded, oseCharacterPrimeStatBonusToEXP, oseCharacterGoldCoins, oseCharacterTreasureWeight, oseCharacterWeaponsArmorWeight, oseCharacterTotalCarriedWeight];
+
 function oseStatBonusAssigner(){
     let baseMovementRate = 120;
     oseCharacterOverlandMovement.innerHTML = baseMovementRate/2;
@@ -96,9 +98,7 @@ function oseDieRoller(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function oseClearAllSheet(){
-    const fullClearArray = [oseCharacterName, oseCharacterClass, oseCharacterAlignment, oseCharacterTitle, oseCharacterLevel, oseCharacterSTR, oseCharacterDEX, oseCharacterCON, oseCharacterINT, oseCharacterWIS, oseCharacterCHA, oseCharacterDeathSave, oseCharacterWandsSave, oseCharacterParalysisSave, oseCharacterBreathSave, oseCharacterSpellSave, oseCharacterWISBonusToSpellSave, oseCharacterCurrentHP, oseCharacterMaxHP, oseCharacterCONBonusToHP, oseCharacterCurrentAC, oseCharacterUnarmouredAC, oseCharacterDEXBonusToAC, oseCharacterAttackBonus, oseCharacterMeleeAttackBonus, oseCharacterMissileAttackBonus, oseCharacterInitiative, oseCharacterCHABonusToReactions, oseCharacterListenDoorExplore, oseCharacterOpenDoorExplore, oseCharacterSecretDoorExplore, oseCharacterFindTrapExplore, oseCharacterOverlandMovement, oseCharacterExplorationMovement, oseCharacterEncounterMovement, oseCharacterAbilitySkillsWeapons, oseCharacterLanguages, oseCharacterEquipment, oseCharacterSpellsMountsOther, oseWeaponsArmorDisplay, oseCharacterCurrentEXP, oseCharacterNextLevelEXPNeeded, oseCharacterPrimeStatBonusToEXP, oseCharacterGoldCoins, oseCharacterTreasureWeight, oseCharacterWeaponsArmorWeight, oseCharacterTotalCarriedWeight];
-
+function oseClearAllSheet(){   
     for (let i = 0; i < fullClearArray.length; i++) {
         fullClearArray[i].innerHTML = "";
     }
@@ -107,8 +107,8 @@ function oseClearAllSheet(){
 function oseBuildMyCharacter(){
     let availableRaces = [];
     let availableClasses = [];
-
-    oseClearAllSheet();
+    
+    oseClearAllSheet()
     equipmentWeight = 0;
 
     oseStatRoller();
@@ -116,5 +116,5 @@ function oseBuildMyCharacter(){
     availableClasses = oseCharacterRacePicker(availableRaces);
     oseCharacterClassAvailable(availableClasses);
     oseEquipmentWeightDisplayer(equipmentWeight);
-    oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent);
+    oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent);            
 }
