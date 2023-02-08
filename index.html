@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="oseCssFiles/oseStyle.css">
 
     <script src="overallScripts.js" defer></script>
+    <script src="oseData/oseCharacterPortrait.js" defer></script>
     <script src="oseData/oseCharacterNames.js" defer></script>
     <script src="oseData/oseEquipment.js" defer></script>
     <script src="oseData/oseClassSkills.js" defer></script>
@@ -52,8 +53,16 @@
             <div class="ose_info_section">
                 <p class="ose_info_section_text">Old school essentials character generator, currently only available for making level 1 characters complete with randomized name and gear. This generator uses the advanced rules set for OSE where races are not classes allowing for different combinations of character builds.</p>
             </div>
-            <div class="ose_input_section">
-                <button class="ose_make_character_button" onclick="oseBuildMyCharacter()">Make it so</button>
+            <div class="ose_input_section flex">
+                <div>
+                    <form action=""><input type="file" id="file_input"></form>
+                    <p class="ose_info_helper_text">Load custom image to the portrait section of the sheet.</p>
+                </div>
+                <div>
+                    <button class="ose_make_character_button" onclick="oseBuildMyCharacter()">Make it so</button>
+                    <p class="ose_info_helper_text">Click to generate character.</p>
+                </div>
+                
             </div>
         </div>
 
@@ -300,15 +309,15 @@
 
                     <div class="ose_abilities_skills_weapons_info">
                         <h2><span class="ose_larger_cap">A</span>BILITIES, <span class="ose_larger_cap">S</span>KILLS, <span class="ose_larger_cap">W</span>EAPONS</h2>
-                        <div class="ose_general_info_block"><p id="ose_character_ability_skills_weapons"></p></div>
+                        <div class="ose_general_info_block ose_block_large_height_spacer"><p id="ose_character_ability_skills_weapons"></p></div>
                     </div>
                 </div>
 
                 <div class="ose_page_right_side">
                     <img src="images/OSE/oseLogoWebp.webp" alt="oseLogo" class="ose_logo">
                     <div class="flex col ose_spacer_container">
-                        <div class="ose_character_portait"></div>
-                        <p>Character portait, symbol, description</p>
+                        <div class="ose_character_portait ose_block_medium_height_spacer"><img id="image_display"></div>
+                        <p>Character portrait, symbol, description</p>
                     </div>
 
                     <div class="ose_encounters_info">
@@ -422,7 +431,7 @@
                             <h2 class="ose_combat_section_stacked_spacer"><span class="ose_larger_cap">L</span>ANGUAGES</h2>
                             <p class="ose_side_title_info ose_combat_section_stacked_spacer">By class, extra<br>langs. if int 13+</p>
                         </div>
-                        <div class="ose_general_info_block"><p id="ose_character_languages"></p></div>
+                        <div class="ose_general_info_block ose_block_small_height_spacer"><p id="ose_character_languages"></p></div>
                     </div>
                 </div>
             </div>
@@ -431,12 +440,12 @@
                 <div class="ose_page_left_side">
                     <div class="ose_equipment_info">
                         <h2><span class="ose_larger_cap">E</span>QUIPMENT</h2>
-                        <div class="ose_general_info_block"><p id="ose_character_equipment"></p></div>
+                        <div class="ose_general_info_block ose_block_large_height_spacer"><p id="ose_character_equipment"></p></div>
                     </div>
 
                     <div class="ose_magic_items_info">
                         <h2><span class="ose_larger_cap">M</span>AGIC <span class="ose_larger_cap">I</span>TEMS</h2>
-                        <div class="ose_general_info_block"></div>
+                        <div class="ose_general_info_block ose_block_medium_height_spacer"></div>
                     </div>
 
                     <div class="ose_other_notes_info">
@@ -446,7 +455,7 @@
                         </div>
 
                         <div class="flex col ose_spacer_container">
-                            <div class="ose_general_info_block"><p id="ose_character_spells_mounts_other"></p></div>
+                            <div class="ose_general_info_block ose_block_medium_height_spacer"><p id="ose_character_spells_mounts_other"></p></div>
 
                             <div class="flex">
                                 <div class="ose_three_info_block flex">
@@ -482,12 +491,12 @@
                 <div class="ose_page_right_side">
                     <div class="ose_weapons_armor_info">
                         <h2><span class="ose_larger_cap">W</span>EAPONS <span class="ose_larger_cap">&</span> <span class="ose_larger_cap">A</span>RMOUR</h2>
-                        <div class="ose_general_info_block"><p id="ose_weapons_armor_display"></p></div>
+                        <div class="ose_general_info_block ose_block_large_height_spacer"><p id="ose_weapons_armor_display"></p></div>
                     </div>
 
                     <div class="ose_treasure_info">
                         <h2><span class="ose_larger_cap">T</span>REASURE</h2>
-                        <div class="ose_general_info_block"></div>
+                        <div class="ose_general_info_block ose_block_medium_height_spacer"></div>
                     </div>
 
                     <div class="ose_coins_info">

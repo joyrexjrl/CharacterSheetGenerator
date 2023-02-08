@@ -1,3 +1,14 @@
+:root{
+    --large-block-height: 250px;
+    --medium-block-height: 230px;
+    --small-block-height: 75px;
+}
+
+#image_display{
+    width: 100%;
+    height: auto;
+}
+
 .ose_character_sheet{
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(600px, auto));
@@ -7,7 +18,8 @@
     font-family: 'Nova Square', cursive;
 }
 
-.ose_character_sheet p{
+.ose_character_sheet p,
+.ose_info_helper_text{
     font-size: .5rem;
     font-style: italic;
 }
@@ -34,6 +46,18 @@
 
 .ose_spacer_container{
     gap: .3rem;
+}
+
+.ose_block_large_height_spacer{
+    min-height: var(--large-block-height);
+}
+
+.ose_block_medium_height_spacer{
+    min-height: var(--medium-block-height);
+}
+
+.ose_block_small_height_spacer{
+    min-height: var(--small-block-height);
 }
 
 .ose_right_side_align{
@@ -74,7 +98,7 @@
     max-width: 620px;
     margin-inline: auto;
     padding: 1.5rem;
-    gap: .2rem;
+    gap: .8rem;
 }
 
 .ose_page_left_side{

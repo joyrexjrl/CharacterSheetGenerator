@@ -98,7 +98,9 @@ function oseDieRoller(min, max){
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function oseClearAllSheet(){   
+function oseClearAllSheet(){
+    oseFileInput.value = "";
+    osePortaitDisplay.src = "";
     for (let i = 0; i < fullClearArray.length; i++) {
         fullClearArray[i].innerHTML = "";
     }
