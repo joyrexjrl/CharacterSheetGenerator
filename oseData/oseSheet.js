@@ -1,3 +1,5 @@
+const oseCustomName = document.getElementById("ose_custom_name");
+
 const oseCharacterName = document.getElementById("ose_character_name");
 const oseCharacterClass = document.getElementById("ose_character_class");
 const oseCharacterRace = document.getElementById("ose_character_race");

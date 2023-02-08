@@ -321,17 +321,21 @@ function oseCharacterLanguagePicker(INTBonus, racialLanguagesBonus, otherLanguag
 }
 
 function oseCharacterNameGenerator(firstName, lastName, isHalfOrc){
-    let firstNameRolled;
-    let lastNameRolled;
-    let randomNumber
+    if(oseCustomName.value !== ""){
+        oseCharacterName.innerHTML = oseCustomName.value        
+    }else{
+        let firstNameRolled;
+        let lastNameRolled;
+        let randomNumber;
 
-    randomNumber = (oseDieRoller(1, firstName.length)-1);
-    firstNameRolled = firstName[randomNumber];
-    randomNumber = (oseDieRoller(1, lastName.length)-1);
-    lastNameRolled = lastName[randomNumber];
-    
-    if(isHalfOrc) oseCharacterName.innerHTML = firstNameRolled;
-    else oseCharacterName.innerHTML = firstNameRolled + " " + lastNameRolled;    
+        randomNumber = (oseDieRoller(1, firstName.length)-1);
+        firstNameRolled = firstName[randomNumber];
+        randomNumber = (oseDieRoller(1, lastName.length)-1);
+        lastNameRolled = lastName[randomNumber];
+        
+        if(isHalfOrc) oseCharacterName.innerHTML = firstNameRolled;
+        else oseCharacterName.innerHTML = firstNameRolled + " " + lastNameRolled;
+    }       
 }
 
 function oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations){

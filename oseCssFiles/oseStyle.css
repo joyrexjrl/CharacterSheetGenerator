@@ -78,6 +78,20 @@
     padding: .5rem 1rem;
 }
 
+.ose_input_section{
+    gap: .5rem;
+}
+
+.ose_input_section_inner{
+    width: 100%;
+    gap: .3rem;
+}
+
+input::placeholder{
+    font-style: italic;
+    font-size: .8rem;
+}
+
 .ose_info_section_text{
     font-size: .8rem;
     max-width: 50ch;
@@ -195,4 +209,8 @@
     font-size: .8rem !important;
     line-height: 1;
     padding-left: .5rem;
+}
+
+.ose_custom_name_display{
+    width: 100%;
 }

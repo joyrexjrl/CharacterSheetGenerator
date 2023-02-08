@@ -54,11 +54,17 @@
                 <p class="ose_info_section_text">Old school essentials character generator, currently only available for making level 1 characters complete with randomized name and gear. This generator uses the advanced rules set for OSE where races are not classes allowing for different combinations of character builds.</p>
             </div>
             <div class="ose_input_section flex">
-                <div>
-                    <form action=""><input type="file" id="file_input"></form>
-                    <p class="ose_info_helper_text">Load custom image to the portrait section of the sheet.</p>
+                <div class="ose_input_section_inner flex col">
+                    <div>
+                        <form action=""><input type="file" id="file_input"></form>
+                        <p class="ose_info_helper_text">Load custom image to the portrait section of the sheet.</p>
+                    </div>
+                    <div>
+                        <input type="text" id="ose_custom_name" class="ose_custom_name_display" placeholder="Custom name here">
+                        <p class="ose_info_helper_text">Custom name for your character, if left blank a random name will be chosen.</p>
+                    </div>                    
                 </div>
-                <div>
+                <div class="ose_input_section_inner flex col">
                     <button class="ose_make_character_button" onclick="oseBuildMyCharacter()">Make it so</button>
                     <p class="ose_info_helper_text">Click to generate character.</p>
                 </div>
