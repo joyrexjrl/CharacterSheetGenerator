@@ -32,10 +32,6 @@ h1{
     font-weight: bold;
 }
 
-.page_dislayer{
-    display: block;
-}
-
 .hide{
     display: none;
 }
@@ -74,4 +70,8 @@ h1{
 
 .welcome_screen_info{
     width: 60ch;
+}
+
+.construction_sign{
+    width: 35%;
 }

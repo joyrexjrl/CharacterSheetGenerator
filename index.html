@@ -29,10 +29,10 @@
 <body>
     <nav>
         <div class="nav_container flex">
-            <img src="images/mainPage/pageTempLogo.jpg" alt="main page logo" class="site_logo">
+            <div class="site_logo"><img src="images/mainPage/pageTempLogo.jpg" alt="main page logo"></div>
             <div class="character_generators flex">
-                <div id="ose_logo_button" class="game_sheet_buttons" onclick="openOsePage()"><img src="images/OSE/oseLogo.gif" alt="ose logo"></div>
-                <div id="shadowrun_logo_button" class="game_sheet_buttons" onclick="openShadowrunPage()"><img src="images/shadowrun/shadowrun_nav_logo.gif" alt="shadowrun logo"></div>
+                <div id="ose_logo_button" class="game_sheet_buttons"><img src="images/OSE/oseLogo.gif" alt="ose logo"></div>
+                <div id="shadowrun_logo_button" class="game_sheet_buttons"><img src="images/shadowrun/shadowrun_nav_logo.gif" alt="shadowrun logo"></div>
                 <div class="game_sheet_buttons">Game 3</div>
                 <div class="game_sheet_buttons">Game 4</div>
                 <div class="game_sheet_buttons">Game 5</div>
@@ -40,7 +40,7 @@
         </div>
     </nav>
 
-    <section id="welcome_screen" class="welcome_screen flex col">
+    <section id="welcome_screen" class="welcome_screen flex col page_dislayer">
         <h1>Character Generator</h1>
         <p class="welcome_screen_info">This is a project I am working on that creates simple and quick characters for some tablt top role playing games. This is a work in progress and more should be added in the future. To begin, use the game icons above to start generating characters.</p>
     </section>
@@ -558,9 +558,9 @@
     <!-- OSE sheet end -->
 
     <!-- Shadowrun sheet start -->
-    <section>
-        <div id="under_construction" class="under_construction flex hide">
-            <img src="images/mainPage/Under-Construction-Sign-for-Locator.png" alt="under construction">
+    <section id="shadowrun_sheet_display" class="container page_dislayer hide">
+        <div id="under_construction" class="under_construction flex">
+            <img class="construction_sign" src="images/mainPage/Under-Construction-Sign-for-Locator.png" alt="under construction">
         </div>        
     </section>
     <!-- Shadowrun sheet end -->
