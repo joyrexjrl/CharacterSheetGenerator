@@ -2,6 +2,8 @@
     --large-block-height: 250px;
     --medium-block-height: 230px;
     --small-block-height: 75px;
+    --info-block-spacer-gap: .3rem;
+    --half-rem-gap: .5rem;
 }
 
 #image_display{
@@ -13,7 +15,7 @@
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(600px, auto));
     max-width: 1400px;
-    gap: .5rem;
+    gap: var(--half-rem-gap);
     margin: 1rem auto 0;
     font-family: 'Nova Square', cursive;
 }
@@ -45,7 +47,7 @@
 }
 
 .ose_spacer_container{
-    gap: .3rem;
+    gap: var(--info-block-spacer-gap);
 }
 
 .ose_block_large_height_spacer{
@@ -79,17 +81,28 @@
 }
 
 .ose_input_section{
-    gap: .5rem;
+    gap: var(--half-rem-gap);
 }
 
 .ose_input_section_inner{
     width: 100%;
-    gap: .3rem;
+    gap: var(--info-block-spacer-gap);
 }
 
-input::placeholder{
+input::placeholder,
+.ose_user_dropdowns{
     font-style: italic;
     font-size: .8rem;
+}
+
+.ose_user_dropdowns{
+    width: 100%;
+    background-color: #fff;
+    border: none;
+}
+
+.ose_header_dropdown_menues{
+    gap: var(--info-block-spacer-gap);
 }
 
 .ose_info_section_text{
@@ -124,7 +137,7 @@ input::placeholder{
 }
 
 .ose_character_header_info{
-    gap: .3rem;
+    gap: var(--info-block-spacer-gap);
 }
 
 .ose_side_by_side_info_large_block,
