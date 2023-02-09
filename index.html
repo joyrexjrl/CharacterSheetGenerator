@@ -67,46 +67,52 @@
                     <div class="ose_header_dropdown_menues flex">
                         <div>
                             <select id="ose_user_race_selection" class="ose_user_dropdowns" name="character_race_dropdown">
-                                <option value="">Random Race</option>
-                                <option value="human">Human</option>
-                                <option value="elf">Elf</option>
-                                <option value="dwarf">Dwarf</option>
-                                <option value="gnome">Gnome</option>
-                                <option value="duergar">Duergar</option>
-                                <option value="drow">Drow</option>
-                                <option value="halfling">Halfling</option>
-                                <option value="svirfneblin">Svirfneblin</option>
-                                <option value="half-elf">Half-Elf</option>
-                                <option value="half-orc">Half-Orc</option>
+                                <option value="Random">Random</option>
+                                <option value="Human">Human</option>
+                                <option value="Elf">Elf</option>
+                                <option value="Dwarf">Dwarf</option>
+                                <option value="Gnome">Gnome</option>
+                                <option value="Duergar">Duergar</option>
+                                <option value="Drow">Drow</option>
+                                <option value="Halfling">Halfling</option>
+                                <option value="Svirfneblin">Svirfneblin</option>
+                                <option value="Half Elf">Half Elf</option>
+                                <option value="Half Orc">Half Orc</option>
                             </select>
                             <p class="ose_info_helper_text">Want a specific race? Choose from the drop down menu.</p>
                         </div>
                         <div>
                             <select id="ose_user_class_selection" class="ose_user_dropdowns" name="character_class_dropdown">
-                                <option value="">Random Class</option>
-                                <option value="acrobat">Acrobat</option>
-                                <option value="thief">Thief</option>
-                                <option value="assassin">Assassin</option>
-                                <option value="cleric">Cleric</option>
-                                <option value="druid">Druid</option>
-                                <option value="fighter">Fighter</option>
-                                <option value="bard">Bard</option>
-                                <option value="magic-user">Magic-User</option>
-                                <option value="barbarian">Barbarian</option>
-                                <option value="illusionist">Illusionist</option>
-                                <option value="necromancer">Necromancer</option>
-                                <option value="knight">Knight</option>
-                                <option value="ranger">Ranger</option>
-                                <option value="paladin">Paladin</option>
+                                <option value="Random">Random</option>
+                                <option value="Acrobat">Acrobat</option>
+                                <option value="Thief">Thief</option>
+                                <option value="Assassin">Assassin</option>
+                                <option value="Cleric">Cleric</option>
+                                <option value="Druid">Druid</option>
+                                <option value="Fighter">Fighter</option>
+                                <option value="Bard">Bard</option>
+                                <option value="Magic User">Magic User</option>
+                                <option value="Barbarian">Barbarian</option>
+                                <option value="Illusionist">Illusionist</option>
+                                <option value="Necromancer">Necromancer</option>
+                                <option value="Knight">Knight</option>
+                                <option value="Ranger">Ranger</option>
+                                <option value="Paladin">Paladin</option>
                             </select>
                             <p class="ose_info_helper_text">Have a class in mind? Choose from the drop down menu.</p>
                         </div>
                     </div>
                     
                 </div>
-                <div class="ose_input_section_inner flex col">
-                    <button class="ose_make_character_button" onclick="oseBuildMyCharacter()">Make it so</button>
-                    <p class="ose_info_helper_text">Click to generate character.</p>
+                <div class="ose_input_section_inner flex">
+                    <div>
+                        <button class="ose_clear_user_content_button" onclick="oseClearUserInputs()">Clear</button>
+                        <p class="ose_info_helper_text">Clear user content.</p>
+                    </div>
+                    <div>
+                        <button class="ose_make_character_button" onclick="oseBuildMyCharacter()">Make it so</button>
+                        <p class="ose_info_helper_text">Click to generate character.</p>
+                    </div>                                        
                 </div>
                 
             </div>

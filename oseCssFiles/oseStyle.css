@@ -87,6 +87,7 @@
 .ose_input_section_inner{
     width: 100%;
     gap: var(--info-block-spacer-gap);
+    justify-content: space-between;
 }
 
 input::placeholder,
@@ -110,7 +111,8 @@ input::placeholder,
     max-width: 50ch;
 }
 
-.ose_make_character_button{
+.ose_make_character_button,
+.ose_clear_user_content_button{
     width: 80px;
     height: 25px;
     cursor: pointer;
