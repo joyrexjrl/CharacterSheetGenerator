@@ -14,6 +14,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
     switch(characterRace){
         case "Svirfneblin":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = gnomeFirstNames;
             lastNameArray = svirfneblinLastNames;
             racialAbilitiesArray = svirfneblinAbilties;
@@ -27,6 +28,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Duergar":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = dwarfFirstNames;
             lastNameArray = duergarLastNames;
             racialAbilitiesArray = duergarAbilities;
@@ -43,6 +45,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Dwarf":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = dwarfFirstNames;
             lastNameArray = dwarfLastNames;
             racialAbilitiesArray = dwarfAbilities;
@@ -59,6 +62,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Gnome":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = gnomeFirstNames;
             lastNameArray = gnomeLastNames;
             racialAbilitiesArray = gnomeAbilities;
@@ -132,6 +136,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "Halfling":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random"){
+                if(parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
+                if(parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            }
             firstNameArray = halflingFirstNames;
             lastNameArray = halflingLastNames;
             racialAbilitiesArray = halflingAbilities;
