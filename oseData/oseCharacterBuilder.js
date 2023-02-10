@@ -18,7 +18,10 @@ function oseCharacterRaceAvailable(){
 function oseCharacterRacePicker(availableRaces){
     let chosenRace = oseDieRoller(1, availableRaces.length) -1;
     let race = availableRaces[chosenRace];
-
+    if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random"){
+        if(race === "HalfElf") race = "Half-Elf";
+        if(race === "HalfOrc") race = "Half-Orc";
+    }
     oseCharacterRace.innerHTML = race;
     return race;
 }

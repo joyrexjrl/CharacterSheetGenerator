@@ -105,7 +105,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "HalfElf":
         case "Half-Elf":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCHA.textContent) < 9) oseCharacterCHA.innerHTML = 9;
-            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;            
             let firstNameNumber = (oseDieRoller(1, 2));
             let secondNameNumber = (oseDieRoller(1, 2));
             racialAbilitiesArray = halfElfAbilities;
