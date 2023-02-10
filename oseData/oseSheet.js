@@ -66,8 +66,6 @@ const oseCharacterTotalCarriedWeight = document.getElementById("ose_character_to
 
 const oseStatsArray = [oseCharacterSTR, oseCharacterINT, oseCharacterWIS, oseCharacterDEX, oseCharacterCON, oseCharacterCHA];
 
-const oseUserContentClear = [oseCustomName, ];
-
 const fullClearArray = [oseCharacterName, oseCharacterClass, oseCharacterRace, oseCharacterAlignment, oseCharacterLevel, oseCharacterSTR, oseCharacterDEX, oseCharacterCON, oseCharacterINT, oseCharacterWIS, oseCharacterCHA, oseCharacterDeathSave, oseCharacterWandsSave, oseCharacterParalysisSave, oseCharacterBreathSave, oseCharacterSpellSave, oseCharacterWISBonusToSpellSave, oseCharacterCurrentHP, oseCharacterMaxHP, oseCharacterCONBonusToHP, oseCharacterCurrentAC, oseCharacterUnarmouredAC, oseCharacterDEXBonusToAC, oseCharacterAttackBonus, oseCharacterMeleeAttackBonus, oseCharacterMissileAttackBonus, oseCharacterInitiative, oseCharacterCHABonusToReactions, oseCharacterListenDoorExplore, oseCharacterOpenDoorExplore, oseCharacterSecretDoorExplore, oseCharacterFindTrapExplore, oseCharacterOverlandMovement, oseCharacterExplorationMovement, oseCharacterEncounterMovement, oseCharacterAbilitySkillsWeapons, oseCharacterLanguages, oseCharacterEquipment, oseCharacterSpellsMountsOther, oseWeaponsArmorDisplay, oseCharacterCurrentEXP, oseCharacterNextLevelEXPNeeded, oseCharacterPrimeStatBonusToEXP, oseCharacterGoldCoins, oseCharacterTreasureWeight, oseCharacterWeaponsArmorWeight, oseCharacterTotalCarriedWeight];
 
 function oseStatBonusAssigner(){
