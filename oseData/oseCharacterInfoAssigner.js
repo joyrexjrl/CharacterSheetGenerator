@@ -72,6 +72,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Drow":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
             firstNameArray = drowFirstNames;
             lastNameArray = drowLastNames;
             racialAbilitiesArray = drowAbilities;
@@ -88,6 +89,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             break;
         case "Elf":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
             firstNameArray = elfFirstNames;
             lastNameArray = elfLastNames;
             racialAbilitiesArray = elfAbilities;
@@ -105,7 +107,11 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "HalfElf":
         case "Half-Elf":
             if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCHA.textContent) < 9) oseCharacterCHA.innerHTML = 9;
-            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;            
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace === "Random" && oseUserSelectedClass !== "Random"){
+                if(parseInt(oseCharacterCHA.textContent) < 9) oseCharacterCHA.innerHTML = 9;
+                if(parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            }
             let firstNameNumber = (oseDieRoller(1, 2));
             let secondNameNumber = (oseDieRoller(1, 2));
             racialAbilitiesArray = halfElfAbilities;
