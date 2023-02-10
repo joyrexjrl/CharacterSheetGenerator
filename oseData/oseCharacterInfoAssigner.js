@@ -13,6 +13,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
 
     switch(characterRace){
         case "Svirfneblin":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = gnomeFirstNames;
             lastNameArray = svirfneblinLastNames;
             racialAbilitiesArray = svirfneblinAbilties;
@@ -25,6 +26,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Duergar":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = dwarfFirstNames;
             lastNameArray = duergarLastNames;
             racialAbilitiesArray = duergarAbilities;
@@ -40,6 +42,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Dwarf":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = dwarfFirstNames;
             lastNameArray = dwarfLastNames;
             racialAbilitiesArray = dwarfAbilities;
@@ -55,6 +58,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Gnome":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             firstNameArray = gnomeFirstNames;
             lastNameArray = gnomeLastNames;
             racialAbilitiesArray = gnomeAbilities;
@@ -67,6 +71,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Drow":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
             firstNameArray = drowFirstNames;
             lastNameArray = drowLastNames;
             racialAbilitiesArray = drowAbilities;
@@ -82,6 +87,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Elf":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterINT.textContent) < 9) oseCharacterINT.innerHTML = 9;
             firstNameArray = elfFirstNames;
             lastNameArray = elfLastNames;
             racialAbilitiesArray = elfAbilities;
@@ -96,7 +102,10 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
+        case "HalfElf":
         case "Half-Elf":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCHA.textContent) < 9) oseCharacterCHA.innerHTML = 9;
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
             let firstNameNumber = (oseDieRoller(1, 2));
             let secondNameNumber = (oseDieRoller(1, 2));
             racialAbilitiesArray = halfElfAbilities;
@@ -115,6 +124,8 @@ function oseCharacterClassInformation(characterRace, characterClass){
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
         case "Halfling":
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+            if(oseUserSelectedRace !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
             firstNameArray = halflingFirstNames;
             lastNameArray = halflingLastNames;
             racialAbilitiesArray = halflingAbilities;
@@ -128,6 +139,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
             oseCharacterNameGenerator(firstNameArray, lastNameArray);
             classSkillsAndAbilitiesDisplayer(racialAbilitiesArray);
             break;
+        case "HalfOrc":
         case "Half-Orc":
             firstNameArray = halfOrcNames;
             racialAbilitiesArray = halfOrcAbilities;
@@ -171,6 +183,7 @@ function oseCharacterClassInformation(characterRace, characterClass){
         case "Fighter":
             fighterBuilder(characterClass);
             break;
+        case "MagicUser":
         case "Magic-User":
             magicUserBuilder(characterClass);
             break;

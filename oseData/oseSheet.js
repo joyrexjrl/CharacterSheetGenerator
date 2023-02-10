@@ -118,14 +118,48 @@ function oseClearAllSheet(){
 function oseBuildMyCharacter(){
     let availableRaces = [];
     let availableClasses = [];
+    let randomRoll = 0;
+    let randomClassSelection = "";
+    let magicUserClassNameDisplayFix = "Magic-User";
+    let userChosenHalfElfDisplayFix = "Half-Elf";
+    let userChosenHalfOrcDisplayFix = "Half-Orc";
     
     oseClearAllSheet()
     equipmentWeight = 0;
 
     oseStatRoller();
-    availableRaces = oseCharacterRaceAvailable();
-    availableClasses = oseCharacterRacePicker(availableRaces);
-    oseCharacterClassAvailable(availableClasses);
+
+    if(oseUserSelectedRace === "Random" && oseUserSelectedClass === "Random"){        
+        availableRaces = oseCharacterRaceAvailable();
+        availableClasses = oseCharacterRacePicker(availableRaces);
+        oseCharacterClassAvailable(availableClasses);         
+    }else if(oseUserSelectedRace === "Random"){
+        availableClasses = oseCharacterRacePicker(osePopulatedRacesArray);
+
+        if(oseUserSelectedClass === "MagicUser") oseCharacterClass.innerHTML = magicUserClassNameDisplayFix;
+        else oseCharacterClass.innerHTML = oseUserSelectedClass;
+        oseCharacterClassInformation(availableClasses ,oseUserSelectedClass);
+    }else if(oseUserSelectedClass === "Random"){
+        randomRoll = oseDieRoller(1, osePopulatedClassesArray.length) -1;
+        randomClassSelection = osePopulatedClassesArray[randomRoll];
+
+        if(oseUserSelectedRace === "HalfElf") oseCharacterRace.innerHTML = userChosenHalfElfDisplayFix;
+        else if(oseUserSelectedRace === "HalfOrc") oseCharacterRace.innerHTML = userChosenHalfOrcDisplayFix;
+        else oseCharacterRace.innerHTML = oseUserSelectedRace;
+
+        if(randomClassSelection === "MagicUser") oseCharacterClass.innerHTML = magicUserClassNameDisplayFix;
+        else oseCharacterClass.innerHTML = randomClassSelection;
+        oseCharacterClassInformation(oseUserSelectedRace, randomClassSelection);
+    }else{
+        if(oseUserSelectedRace === "HalfElf") oseCharacterRace.innerHTML = userChosenHalfElfDisplayFix;
+        else if(oseUserSelectedRace === "HalfOrc") oseCharacterRace.innerHTML = userChosenHalfOrcDisplayFix;
+        else oseCharacterRace.innerHTML = oseUserSelectedRace;
+
+        if(oseUserSelectedClass === "MagicUser") oseCharacterClass.innerHTML = magicUserClassNameDisplayFix;
+        else oseCharacterClass.innerHTML = oseUserSelectedClass;
+        oseCharacterClassInformation(oseUserSelectedRace, oseUserSelectedClass);
+    }
+
     oseEquipmentWeightDisplayer(equipmentWeight);
-    oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent);            
+    oseTotalEquipmentWeightDisplayer(oseCharacterTreasureWeight.textContent, oseCharacterWeaponsArmorWeight.textContent); 
 }

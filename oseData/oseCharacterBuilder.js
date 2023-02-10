@@ -51,6 +51,7 @@ function oseCharacterClassAvailable(characterRace){
             rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
             chosenClass = classesAvailable[rolledClass];
             break;
+        case "HalfElf":
         case "Half-Elf":
             classesAvailable.push("Acrobat", "Assassin", "Cleric", "Druid", "Fighter", "Magic-User", "Thief");
             if(parseInt(oseCharacterDEX.textContent) >= 9) classesAvailable.push("Bard");
@@ -65,6 +66,7 @@ function oseCharacterClassAvailable(characterRace){
             rolledClass = oseDieRoller(1, classesAvailable.length) -1; 
             chosenClass = classesAvailable[rolledClass];
             break;
+        case "HalfOrc":
         case "Half-Orc":
             classesAvailable.push("Acrobat", "Assassin", "Cleric", "Fighter", "Thief");
             rolledClass = oseDieRoller(1, classesAvailable.length) -1; 

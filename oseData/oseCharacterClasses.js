@@ -132,6 +132,7 @@ function thiefBuilder(characterClass){
 }
 
 function barbarianBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
     martialType = "martial";
     armourAllowed = ["Leather", "Chainmail", "Shield"];
     weaponLimitations = [];
@@ -153,6 +154,7 @@ function barbarianBuilder(characterClass){
 }
 
 function bardBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
     martialType = "semi-martial";
     armourAllowed = ["Leather", "Chainmail"];
     weaponLimitations = ["Club", "Crossbow", "Dagger", "Hand axe", "Javelin", "Long bow", "Mace", "Short bow", "Short sword", "Sling", "Spear", "Sword", "War hammer"];
@@ -169,6 +171,7 @@ function bardBuilder(characterClass){
 }
 
 function illusionistBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
     martialType = "non-martial";
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
@@ -187,6 +190,7 @@ function illusionistBuilder(characterClass){
 }
 
 function paladinBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterCHA.textContent) < 9) oseCharacterCHA.innerHTML = 9;
     martialType = "martial";
     armourAllowed = ["Leather", "Chainmail", "Plate mail", "Shield"];
     weaponLimitations = [];
@@ -208,6 +212,7 @@ function paladinBuilder(characterClass){
     oseItemPicker();
 }
 function necromancerBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterWIS.textContent) < 9) oseCharacterWIS.innerHTML = 9;
     martialType = "non-martial";
     armourAllowed = [];
     weaponLimitations = ["Dagger", "Staff"];
@@ -226,6 +231,8 @@ function necromancerBuilder(characterClass){
 }
 
 function knightBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterDEX.textContent) < 9) oseCharacterDEX.innerHTML = 9;
     martialType = "martial";
     armourAllowed = ["Chainmail", "Plate mail", "Shield"];
     weaponLimitations = ["Battle axe", "Club", "Dagger", "Hand axe", "Lance", "Mace", "Polearm", "Short sword", "Spear", "Sword", "Two-handed sword", "War hammer"];
@@ -242,6 +249,8 @@ function knightBuilder(characterClass){
 }
 
 function rangerBuilder(characterClass){
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterCON.textContent) < 9) oseCharacterCON.innerHTML = 9;
+    if(oseUserSelectedClass !== "Random" && parseInt(oseCharacterWIS.textContent) < 9) oseCharacterWIS.innerHTML = 9;
     martialType = "martial";
     armourAllowed = ["Leather", "Chainmail", "Shield"];
     weaponLimitations = [];

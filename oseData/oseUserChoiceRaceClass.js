@@ -35,8 +35,11 @@ const oseClasses = {
 
 var oseUserSelectedRace = "Random";
 var oseUserSelectedClass = "Random";
+var osePopulatedRacesArray = [];
+var osePopulatedClassesArray = [];
 
 const osePopulateClasses = () => {
+    osePopulatedClassesArray = [];
     oseClassSelect.innerHTML = "";
     if(oseUserSelectedRace === "Random"){
         Object.keys(oseClasses).forEach((characterClass) => {
@@ -44,6 +47,7 @@ const osePopulateClasses = () => {
             option.value = characterClass;
             option.text = characterClass;
             oseClassSelect.appendChild(option);
+            if(characterClass !== "Random") osePopulatedClassesArray.push(characterClass);
         });
     }else if(oseRaces[oseUserSelectedRace]){
         oseRaces[oseUserSelectedRace].forEach((characterClass) => {
@@ -51,12 +55,14 @@ const osePopulateClasses = () => {
             option.value = characterClass;
             option.text = characterClass;
             oseClassSelect.appendChild(option);
+            if(characterClass !== "Random") osePopulatedClassesArray.push(characterClass);
         });
     }
     oseClassSelect.value = oseUserSelectedClass;
 };
 
 const osePopulateRaces = () => {
+    osePopulatedRacesArray = [];
     oseRaceSelect.innerHTML = "";
     if(oseUserSelectedClass === "Random"){
         Object.keys(oseRaces).forEach((race) => {
@@ -64,6 +70,7 @@ const osePopulateRaces = () => {
             option.value = race;
             option.text = race;
             oseRaceSelect.appendChild(option);
+            if(race !== "Random") osePopulatedRacesArray.push(race);
         });
     }else if(oseClasses[oseUserSelectedClass]){
         oseClasses[oseUserSelectedClass].forEach((race) => {
@@ -71,6 +78,7 @@ const osePopulateRaces = () => {
             option.value = race;
             option.text = race;
             oseRaceSelect.appendChild(option);
+            if(race !== "Random") osePopulatedRacesArray.push(race);
         });
     }
     oseRaceSelect.value = oseUserSelectedRace;
@@ -92,3 +100,8 @@ function oseUserClassRaceSelectionReset(){
     osePopulateClasses();
     osePopulateRaces();
 }
+
+oseUserSelectedRace = "Random";
+oseUserSelectedClass = "Random";
+osePopulateClasses();
+osePopulateRaces();
