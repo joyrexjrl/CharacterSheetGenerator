@@ -1,0 +1,251 @@
+:root{
+    --sr_padding: .5rem;
+}
+
+.sr_h2{
+    font-size: 1.2rem;
+}
+
+.sr_character_sheet{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(600px, auto));
+    max-width: 1400px;
+    gap: .5rem;
+    margin: 1rem auto 0;
+    font-family: 'Friz Quadrata Std Medium';
+}
+
+.sr_character_sheet p{
+    font-size: .8rem;
+}
+
+.sr_all_cap_text{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.sr_black_background_header_text{
+    background-color: #000;
+    color: #fff;
+    padding: .1rem .5rem;
+    font-size: .6rem;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.sr_front_page,
+.sr_back_page{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #000;
+    background-color: #fff;
+    display: flex;
+    width: 100%;
+    max-width: 620px;
+    margin-inline: auto;
+    padding: 1.5rem;
+    gap: .8rem;
+}
+
+.sr_character_name,
+.sr_character_race,
+.sr_character_sex,
+.sr_character_age,
+.sr_character_description,
+.sr_character_header_notes{
+    border: 1px solid #000;
+    min-height: 40px;
+    position: relative;
+}
+
+.sr_character_name{
+    grid-area: sr_name;
+}
+
+.sr_character_race{
+    grid-area: sr_race;
+}
+
+.sr_character_sex{
+    grid-area: sr_sex;
+}
+
+.sr_character_age{
+    grid-area: sr_age;
+}
+
+.sr_character_description{
+    grid-area: sr_description;
+}
+
+.sr_character_header_notes{
+    grid-area: sr_notes;
+}
+
+.sr_head_section{
+    gap: .5rem;
+}
+
+.sr_logo_container{
+    width: 50%;
+}
+
+.sr_general_info_block{
+    display: grid;
+    gap: .3rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: 
+        "sr_name sr_name sr_name sr_name sr_race"
+        "sr_sex sr_age sr_description sr_description sr_description"
+        "sr_notes sr_notes sr_notes sr_notes sr_notes";
+}
+
+.sr_attributes_condition_karma_section{
+    gap: .5rem;
+}
+
+.sr_damage_rating_text{
+    font-size: .5rem !important;
+}
+
+.sr_damage_level_text{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: .5rem !important;
+    line-height: 1;
+}
+
+.sr_attributes_reaction_initiative_container{
+    gap: .5rem;
+    padding: var(--sr_padding);
+}
+
+.sr_attributes_container,
+.sr_condition_monitor_container,
+.sr_karma_container{
+    border: 1px solid #000;
+    min-height: 40px;
+    min-width: 40px;
+}
+
+.sr_section_header_text{
+    background-color: #000;
+    color: #fff;
+    font-size: 1rem;
+    text-transform: uppercase;
+    padding-left: var(--sr_padding);
+}
+
+.sr_attributes_names_block{
+    text-align: right;
+}
+
+.sr_attributes_scores{
+    border-bottom: 1px solid #000;
+    min-width: 40px;
+    line-height: 1.45;
+    text-align: center;
+}
+
+.sr_large_score_box{
+    border: 1px solid #000;
+    min-width: 65px;
+    min-height: 55px;
+}
+
+.sr_small_score_box{
+    border: 1px solid #000;
+    min-width: 50px;
+    min-height: 25px;
+}
+
+.sr_damage_box{
+    border: 1px solid #000;
+    min-width: 25px;
+    min-height: 25px;
+}
+
+.sr_st1{
+    grid-area: stun_1;
+}
+
+.sr_st2{
+    grid-area: stun_2;
+}
+
+.sr_st3{
+    grid-area: stun_3;
+}
+
+.sr_st4{
+    grid-area: stun_4;
+}
+
+.sr_st5{
+    grid-area: stun_5;
+}
+
+.sr_st6{
+    grid-area: stun_6;
+}
+
+.sr_st7{
+    grid-area: stun_7;
+}
+
+.sr_st8{
+    grid-area: stun_8;
+}
+
+.sr_st9{
+    grid-area: stun_9;
+}
+
+.sr_st10{
+    grid-area: stun_10;
+}
+
+.sr_wn1{
+
+}
+
+.sr_wn2{
+    
+}
+.sr_wn3{
+    
+}
+.sr_wn4{
+    
+}
+.sr_wn5{
+    
+}
+.sr_wn6{
+    
+}
+.sr_wn7{
+    
+}
+.sr_wn8{
+    
+}
+.sr_wn9{
+    
+}
+.sr_wn10{
+    
+}
+
+.sr_condition_grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-areas: ;
+}
+
+.sr_karma_container{
+    padding: var(--sr_padding);
+}

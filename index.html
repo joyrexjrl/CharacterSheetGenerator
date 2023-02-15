@@ -8,10 +8,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nova+Square&display=swap" rel="stylesheet"> 
-    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css2?family=Teko:wght@400;600&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="resets.css">
     <link rel="stylesheet" href="mainStyle.css">
     <link rel="stylesheet" href="oseCssFiles/oseStyle.css">
+    <link rel="stylesheet" href="srCssFiles/srFontStyle.css">
+    <link rel="stylesheet" href="srCssFiles/srStyle.css">
 
     <script src="overallScripts.js" defer></script>
     <script src="oseData/oseCharacterPortrait.js" defer></script>
@@ -25,6 +28,8 @@
     <script src="oseData/oseRaceAbilities.js" defer></script>
     <script src="oseData/oseCharacterSpells.js" defer></script>
     <script src="oseData/oseSheet.js" defer></script>
+
+    <script src="srData/srSheet.js" defer></script>
 
     <title>Character Generator for Table Top Games</title>
 </head>
@@ -620,9 +625,122 @@
 
     <!-- Shadowrun sheet start -->
     <section id="shadowrun_sheet_display" class="container page_dislayer hide">
-        <div id="under_construction" class="under_construction flex">
-            <img class="construction_sign" src="images/mainPage/Under-Construction-Sign-for-Locator.png" alt="under construction">
-        </div>        
+        <div class="sr_character_sheet">
+            <div class="sr_front_page">
+                <div class="sr_head_section flex">
+                    <div class="sr_logo_container"><img src="images/shadowrun/shadowrun_nav_logo.gif" alt="Shadowrun logo" class="sr_logo"></div>
+                    <div class="sr_character_general_info_container">
+                        <h2 class="sr_all_cap_text sr_h2">character record sheet</h2>
+                        <div class="sr_general_info_block">
+                            <div class="sr_character_name"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">name</span></p></div>
+                            <div class="sr_character_race"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">race</span></p></div>
+                            <div class="sr_character_sex"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">sex</span></p></div>
+                            <div class="sr_character_age"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">age</span></p></div>
+                            <div class="sr_character_description"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">description</span></p></div>
+                            <div class="sr_character_header_notes"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sr_attributes_condition_karma_section flex">
+                    <div class="sr_attributes_container">
+                        <h3 class="sr_section_header_text">attributes</h3>
+                        <div class="sr_attributes_reaction_initiative_container flex">
+                            <div class="sr_attributes_names_block">
+                                <p class="bold">Body</p>
+                                <p class="bold">Quickness</p>
+                                <p class="bold">Strength</p>
+                                <p class="bold">Charisma</p>
+                                <p class="bold">Intelligence</p>
+                                <p class="bold">Willpower</p>
+                                <p class="bold">Essence</p>
+                                <p class="bold">(Magic)</p>
+                            </div>
+                            <div class="sr_attributes_score_block">
+                                <div class="sr_attributes_scores"><p id="sr_attribute_body"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_quickness"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_strength"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_charisma"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_intelligence"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_willpower"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_essence"></p></div>
+                                <div class="sr_attributes_scores"><p id="sr_attribute_magic"></p></div>
+                            </div>
+                            <div>
+                                <div class="sr_reaction_block">
+                                    <p>Reaction</p>
+                                    <div class="sr_large_score_box"><p id="sr_reaction"></p></div>
+                                </div>
+                                <div class="sr_initiative_block">
+                                    <p>Initiative</p>
+                                    <div class="sr_large_score_box"><p id="sr_initiative"></p></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sr_condition_monitor_container">
+                        <h3 class="sr_section_header_text">condition monitor</h3>
+                        <div class="flex">
+                            <div>
+                                <p class="bold">Stun</p>
+                                <p class="bold">Physical</p>
+                            </div>
+                            <div class="sr_condition_grid">                            
+                                <p class="sr_damage_rating_text">Light<br>Stun</p>
+                                <p class="sr_damage_rating_text">Moderate<br>Stun</p>
+                                <p class="sr_damage_rating_text">Serious<br>Stun</p>
+                                <p class="sr_damage_rating_text">Deadly<br>Stun</p>
+                                <p class="sr_damage_rating_text">Light<br>Wound</p>
+                                <p class="sr_damage_rating_text">Moderate<br>Wound</p>
+                                <p class="sr_damage_rating_text">Serious<br>Wound</p>
+                                <p class="sr_damage_rating_text">Deadly<br>Wound</p>
+
+                                <div class="sr_damage_box sr_st1"><p class="sr_damage_level_text">-1 TN#<br>-1 Ini</p></div>
+                                <div class="sr_damage_box sr_st2"></div>
+                                <div class="sr_damage_box sr_st3"><p class="sr_damage_level_text">-2 TN#<br>-2 Ini</p></div>
+                                <div class="sr_damage_box sr_st4"></div>
+                                <div class="sr_damage_box sr_st5"></div>
+                                <div class="sr_damage_box sr_st6"><p class="sr_damage_level_text">-3 TN#<br>-3 Ini</p></div>
+                                <div class="sr_damage_box sr_st7"></div>
+                                <div class="sr_damage_box sr_st8"></div>
+                                <div class="sr_damage_box sr_st9"></div>
+                                <div class="sr_damage_box sr_st10"><p class="sr_damage_level_text">Unc</p></div>
+
+                                <div class="sr_damage_box sr_wn1"><p class="sr_damage_level_text">-1 TN#<br>-1 Ini</p></div>
+                                <div class="sr_damage_box sr_wn2"></div>
+                                <div class="sr_damage_box sr_wn3"><p class="sr_damage_level_text">-2 TN#<br>-2 Ini</p></div>
+                                <div class="sr_damage_box sr_wn4"></div>
+                                <div class="sr_damage_box sr_wn5"></div>
+                                <div class="sr_damage_box sr_wn6"><p class="sr_damage_level_text">-3 TN#<br>-3 Ini</p></div>
+                                <div class="sr_damage_box sr_wn7"></div>
+                                <div class="sr_damage_box sr_wn8"></div>
+                                <div class="sr_damage_box sr_wn9"></div>
+                                <div class="sr_damage_box sr_wn10"><p class="sr_damage_level_text">Unc<br>Maybe<br>Dead</p></div>
+                            </div>
+                        </div>
+                        
+                        <div class="sr_condition_overflow flex">
+                            <p>Physical Damage Overflow</p>
+                            <div class="sr_small_score_box"><p></p></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="sr_section_header_text">karma</h3>
+                        <div class="sr_karma_container">
+                            <p>Karma Pool</p>
+                            <div class="sr_large_score_box"><p></p></div>
+                            <p>Good Karma</p>
+                            <div class="sr_large_score_box"><p></p></div>
+                        </div>                        
+                    </div>
+
+                </div>
+            </div>
+            <div class="sr_back_page">
+
+            </div>
+        </div>                       
     </section>
     <!-- Shadowrun sheet end -->
 
