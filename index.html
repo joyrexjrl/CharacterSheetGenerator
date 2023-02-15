@@ -12,9 +12,12 @@
 
     <link rel="stylesheet" href="resets.css">
     <link rel="stylesheet" href="mainStyle.css">
+
     <link rel="stylesheet" href="oseCssFiles/oseStyle.css">
+
     <link rel="stylesheet" href="srCssFiles/srFontStyle.css">
     <link rel="stylesheet" href="srCssFiles/srStyle.css">
+    <link rel="stylesheet" href="srCssFiles/srGridDeclorations.css">
 
     <script src="overallScripts.js" defer></script>
     <script src="oseData/oseCharacterPortrait.js" defer></script>
@@ -668,11 +671,11 @@
                             <div>
                                 <div class="sr_reaction_block">
                                     <p class="sr_large_box_title">Reaction</p>
-                                    <div class="sr_large_score_box"><p id="sr_reaction"></p></div>
+                                    <div class="sr_large_score_box"><p id="sr_reaction">0</p></div>
                                 </div>
                                 <div class="sr_initiative_block">
                                     <p class="sr_large_box_title">Initiative</p>
-                                    <div class="sr_large_score_box"><p id="sr_initiative"></p></div>
+                                    <div class="sr_large_score_box"><p id="sr_initiative">0</p></div>
                                 </div>
                             </div>
                         </div>
@@ -706,7 +709,7 @@
                                 <div class="sr_damage_box sr_st9"></div>
                                 <div class="sr_damage_box sr_st10"><p class="sr_damage_level_text">Unc</p></div>
 
-                                <div class="sr_damage_box_spacer"></div>
+                                <img class="sr_damage_box_spacer" src="images/shadowrun/damage_path_image.gif" alt="damage guide line">
 
                                 <div class="sr_damage_box sr_wn1"><p class="sr_damage_level_text">-1 TN#<br>-1 Ini</p></div>
                                 <div class="sr_damage_box sr_wn2"></div>
@@ -723,24 +726,205 @@
                         
                         <div class="sr_condition_overflow flex">
                             <p>Physical Damage Overflow</p>
-                            <div class="sr_small_score_box"><p></p></div>
+                            <div class="sr_small_score_box"><p>0</p></div>
                         </div>
                     </div>
 
                     <div class="sr_karma_section_container">
                         <h3 class="sr_section_header_text">karma</h3>
-                        <div class="sr_karma_container">
+                        <div class="sr_inner_block_container">
                             <p class="sr_large_box_title">Karma Pool</p>
-                            <div class="sr_large_score_box"><p></p></div>
+                            <div class="sr_large_score_box"><p>0</p></div>
                             <p class="sr_large_box_title">Good Karma</p>
-                            <div class="sr_large_score_box"><p></p></div>
+                            <div class="sr_large_score_box"><p>0</p></div>
                         </div>                        
                     </div>
 
                 </div>
+                <div class="sr_skills_pools_cyberware_armor_edges_grid">
+                    <div class="sr_skills_block">
+                        <h3 class="sr_section_header_text">skills</h3>
+                        <div class="sr_inner_block_container">
+                            <div class="sr_name_rating_spacer flex">
+                                <p class="sr_large_box_title">Name</p>
+                                <p class="sr_large_box_title">Rating</p>
+                            </div>
+                            <div id="sr_skills_information_block_placer">
+                                <div class="sr_information_block_spacer">
+                                    <p class="sr_skill_name">Firearms</p>
+                                    <p class="sr_skill_rating">6</p>
+                                </div>
+                            </div>
+                        </div>                        
+                    </div>
+
+                    <div class="sr_dice_pools_block">
+                        <h3 class="sr_section_header_text">dice pools</h3>
+                        <div class="sr_inner_block_container sr_pools_gap_spacer">
+                            <div class="sr_pool_information_block flex">
+                                <p class="sr_pool_text">Combat Pool</p>
+                                <div class="sr_small_score_box"><p>0</p></div>
+                            </div>
+                            <div class="sr_pool_information_block flex">
+                                <p class="sr_pool_text"><span id="sr_pool_type1"></span> Pool</p>
+                                <div class="sr_small_score_box"><p></p></div>
+                            </div>
+                            <div class="sr_pool_information_block flex">
+                                <p class="sr_pool_text"><span id="sr_pool_type2"></span> Pool</p>
+                                <div class="sr_small_score_box"><p></p></div>
+                            </div>
+                            <div class="sr_pool_information_block flex">
+                                <p class="sr_pool_text"><span id="sr_pool_type3"></span> Pool</p>
+                                <div class="sr_small_score_box"><p></p></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sr_armor_block">
+                        <h3 class="sr_section_header_text">armor/gear</h3>
+                        <div class="sr_inner_block_container">
+                            <div class="sr_name_rating_spacer flex">
+                                <p class="sr_large_box_title">Type</p>
+                                <p class="sr_large_box_title">Rating</p>
+                            </div>
+                            <div id="sr_armor_information_block_placer">
+                                <div class="sr_information_block_spacer">
+                                    <p class="sr_skill_name">Vest with Plates</p>
+                                    <p class="sr_skill_rating">5/3</p>
+                                </div>
+                            </div>
+                            <div class="sr_divider_bar"></div>
+                            <div class="sr_name_rating_spacer flex">
+                                <p class="sr_large_box_title">Total Armor B/I</p>
+                                <p class="sr_large_box_title"><span id="sr_total_armor_ratings"></span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sr_cyberware_block">
+                        <h3 class="sr_section_header_text">cyberware/bioware</h3>
+                        <div class="sr_inner_block_container">
+                            <div class="sr_name_rating_spacer flex">
+                                <p class="sr_large_box_title">Type</p>
+                                <p class="sr_large_box_title">Rating</p>
+                            </div>
+                            <div id="sr_cyberware_bioware_information_block_placer">
+                                <div class="sr_information_block_spacer">
+                                    <p class="sr_skill_name">Dermal Plating</p>
+                                    <p class="sr_skill_rating">1</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sr_edges_flaws_block">
+                        <h3 class="sr_section_header_text">edges & flaws</h3>
+                        <div class="sr_inner_block_container sr_edge_flaw_gap">
+                            <div class="sr_edge_flaw_divider">
+                                <div class="sr_name_rating_spacer flex">
+                                    <p class="sr_large_box_title">Type</p>
+                                    <p class="sr_large_box_title">Rating</p>
+                                </div>
+                                <div id="sr_edge_flaw_left_side_information_block_placer">
+                                    <div class="sr_information_block_spacer">
+                                        <p class="sr_skill_name">Blind</p>
+                                        <p class="sr_skill_rating">-3</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="sr_edge_flaw_divider">
+                                <div class="sr_name_rating_spacer flex">
+                                    <p class="sr_large_box_title">Type</p>
+                                    <p class="sr_large_box_title">Rating</p>
+                                </div>
+                                <div id="sr_edge_flaw_right_side_information_block_placer">
+                                    <div class="sr_information_block_spacer">
+                                        <p class="sr_skill_name">Smell Sound</p>
+                                        <p class="sr_skill_rating">3</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="sr_back_page">
+                <div class="sr_weapons_block">
+                    <h3 class="sr_section_header_text">weapons</h3>
+                    <div class="sr_inner_block_container"></div>
+                </div>
+                <div class="sr_equipment_contacts_section_container flex">
+                    <div class="sr_equipment_block">
+                        <h3 class="sr_section_header_text">equipment & gear</h3>
+                        <div class="sr_inner_block_container"><p id="sr_equipment_placer"></p></div>
+                    </div>
+                    <div class="sr_contacts_block">
+                        <h3 class="sr_section_header_text">contacts & information</h3>
+                        <div class="sr_inner_block_container"><p id="sr_contacts_information_placer"></p></div>
+                    </div>
+                </div>
+                <div class="sr_character_vehicle_container flex">
+                    <div class="sr_character_notes_block">
+                        <h3 class="sr_section_header_text">characater notes</h3>
+                        <div class="sr_inner_block_container"><p id="sr_character_notes_placer"></p></div>
+                    </div>
+                    <div class="sr_vehicle_block">
+                        <h3 class="sr_section_header_text">vehicle</h3>
+                        <div class="sr_inner_block_container sr_vehicle_inner_block_spacer">
+                            <div class="sr_vehicle_type_information flex">
+                                <p>TYPE</p>
+                                <div class="sr_vehicle_type_underline"><p id="sr_vehicle_type_placer"></p></div>
+                            </div>
+                            <div class="sr_vehicle_att_damage_block_container">
+                                <div class="sr_vechile_arrtibutes_block">
+                                    <div class="sr_vehicle_attribute_names_block">
+                                        <p class="sr_vehicle_attribute_text bold">Handling</p>
+                                        <p class="sr_vehicle_attribute_text bold">Speed</p>
+                                        <p class="sr_vehicle_attribute_text bold">Body</p>
+                                        <p class="sr_vehicle_attribute_text bold">Armor</p>
+                                        <p class="sr_vehicle_attribute_text bold">Signature</p>
+                                        <p class="sr_vehicle_attribute_text bold">Autopilot</p>
+                                        <p class="sr_vehicle_attribute_text bold">Firmpoints</p>
+                                        <p class="sr_vehicle_attribute_text bold">Hardpoints</p>
+                                    </div>
+                                    <div class="sr_vehicle_attributes_score_block">
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_handling">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_speed">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_body">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_armor">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_signature">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_autopilot">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_firmpoints">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_hardpoints">0</p></div>
+                                    </div>
+                                </div>
+                                <div class="sr_vehicle_damage_notes_container flex col">
+                                    <div class="sr_vehicle_damage_notes_block">
+                                        <div class="sr_vehicle_condition_grid">
+                                            <p class="sr_damage_rating_text sr_veh_dam_light">Light<br>Dam</p>
+                                            <p class="sr_damage_rating_text sr_veh_dam_mod">Mod<br>Dam</p>
+                                            <p class="sr_damage_rating_text sr_veh_dam_ser">Ser<br>Dam</p>
+                                            <p class="sr_damage_rating_text sr_veh_dam_dest">Dest-<br>royed</p>
 
+                                            <div class="sr_vehicle_damage_box sr_veh_dam1"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam2"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam3"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam4"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam5"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam6"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam7"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam8"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam9"></div>
+                                            <div class="sr_vehicle_damage_box sr_veh_dam10"></div>
+                                        </div>
+                                    </div>
+                                    <div class="sr_vehicle_section_notes"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p></div>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>                       
     </section>
