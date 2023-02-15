@@ -44,8 +44,16 @@
     width: 100%;
     max-width: 620px;
     margin-inline: auto;
-    padding: 1.5rem;
+    padding: .5rem;
     gap: .8rem;
+}
+
+.sr_head_section{
+    justify-content: space-between;
+}
+
+.sr_large_box_title{
+    font-size: .6rem !important;
 }
 
 .sr_character_name,
@@ -57,6 +65,10 @@
     border: 1px solid #000;
     min-height: 40px;
     position: relative;
+}
+
+.sr_attribute_text{
+    line-height: 1.2;
 }
 
 .sr_character_name{
@@ -106,7 +118,10 @@
 }
 
 .sr_damage_rating_text{
-    font-size: .5rem !important;
+    font-size: .4rem !important;
+    line-height: 1;
+    text-align: center;
+    padding: .2rem 0;
 }
 
 .sr_damage_level_text{
@@ -114,8 +129,9 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    font-size: .5rem !important;
-    line-height: 1;
+    font-size: .3rem !important;
+    line-height: 1.3;
+    height: 100%;
 }
 
 .sr_attributes_reaction_initiative_container{
@@ -125,7 +141,7 @@
 
 .sr_attributes_container,
 .sr_condition_monitor_container,
-.sr_karma_container{
+.sr_karma_section_container{
     border: 1px solid #000;
     min-height: 40px;
     min-width: 40px;
@@ -146,14 +162,14 @@
 .sr_attributes_scores{
     border-bottom: 1px solid #000;
     min-width: 40px;
-    line-height: 1.45;
+    line-height: 1.1;
     text-align: center;
 }
 
 .sr_large_score_box{
     border: 1px solid #000;
     min-width: 65px;
-    min-height: 55px;
+    min-height: 45px;
 }
 
 .sr_small_score_box{
@@ -162,10 +178,15 @@
     min-height: 25px;
 }
 
+.sr_damage_box_container{
+    padding: .5rem .5rem 0 0;
+}
+
 .sr_damage_box{
     border: 1px solid #000;
-    min-width: 25px;
-    min-height: 25px;
+    width: 100%;
+    min-height: 24px;
+    min-width: 24px;
 }
 
 .sr_st1{
@@ -209,41 +230,107 @@
 }
 
 .sr_wn1{
-
+    grid-area: wound_1;
 }
 
 .sr_wn2{
-    
+    grid-area: wound_2;
 }
+
 .sr_wn3{
-    
+    grid-area: wound_3;
 }
+
 .sr_wn4{
-    
+    grid-area: wound_4;
 }
+
 .sr_wn5{
-    
+    grid-area: wound_5;
 }
+
 .sr_wn6{
-    
+    grid-area: wound_6;
 }
+
 .sr_wn7{
-    
+    grid-area: wound_7;
 }
+
 .sr_wn8{
-    
+    grid-area: wound_8;
 }
+
 .sr_wn9{
-    
+    grid-area: wound_9;
 }
+
 .sr_wn10{
-    
+    grid-area: wound_10;
+}
+
+.sr_ls{
+    grid-area: light_stun;
+}
+
+.sr_ms{
+    grid-area: mod_stun;
+}
+
+.sr_ss{
+    grid-area: ser_stun;
+}
+
+.sr_ds{
+    grid-area: dead_stun;
+}
+
+.sr_lw{
+    grid-area: light_wound;
+}
+
+.sr_mw{
+    grid-area: mod_wound;
+}
+
+.sr_sw{
+    grid-area: ser_wound;
+}
+
+.sr_dw{
+    grid-area: dead_wound;
+}
+
+.sr_damage_box_spacer{
+    grid-area: box_spacer;
+    min-height: 20px;
 }
 
 .sr_condition_grid{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
-    grid-template-areas: ;
+    grid-template-areas: 
+    "light_stun . mod_stun . . ser_stun . . . dead_stun"
+    "stun_1 stun_2 stun_3 stun_4 stun_5 stun_6 stun_7 stun_8 stun_9 stun_10"
+    "box_spacer box_spacer box_spacer box_spacer box_spacer box_spacer box_spacer box_spacer box_spacer box_spacer"
+    "wound_1 wound_2 wound_3 wound_4 wound_5 wound_6 wound_7 wound_8 wound_9 wound_10"
+    "light_wound . mod_wound . . ser_wound . . . dead_wound";
+}
+
+.sr_stun_physical_block{
+    text-align: right;
+    justify-content: space-around;    
+}
+
+.sr_st_phy_text{
+    font-size: .7rem !important;
+    padding-right: .2rem;
+}
+
+.sr_condition_overflow{
+    justify-content: center;
+    gap: .5rem;
+    padding-bottom: .5rem;
 }
 
 .sr_karma_container{

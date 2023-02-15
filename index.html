@@ -646,32 +646,32 @@
                         <h3 class="sr_section_header_text">attributes</h3>
                         <div class="sr_attributes_reaction_initiative_container flex">
                             <div class="sr_attributes_names_block">
-                                <p class="bold">Body</p>
-                                <p class="bold">Quickness</p>
-                                <p class="bold">Strength</p>
-                                <p class="bold">Charisma</p>
-                                <p class="bold">Intelligence</p>
-                                <p class="bold">Willpower</p>
-                                <p class="bold">Essence</p>
-                                <p class="bold">(Magic)</p>
+                                <p class="sr_attribute_text bold">Body</p>
+                                <p class="sr_attribute_text bold">Quickness</p>
+                                <p class="sr_attribute_text bold">Strength</p>
+                                <p class="sr_attribute_text bold">Charisma</p>
+                                <p class="sr_attribute_text bold">Intelligence</p>
+                                <p class="sr_attribute_text bold">Willpower</p>
+                                <p class="sr_attribute_text bold">Essence</p>
+                                <p class="sr_attribute_text bold">(Magic)</p>
                             </div>
                             <div class="sr_attributes_score_block">
-                                <div class="sr_attributes_scores"><p id="sr_attribute_body"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_quickness"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_strength"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_charisma"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_intelligence"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_willpower"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_essence"></p></div>
-                                <div class="sr_attributes_scores"><p id="sr_attribute_magic"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_body"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_quickness"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_strength"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_charisma"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_intelligence"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_willpower"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_essence"></p></div>
+                                <div class="sr_attributes_scores sr_attribute_text"><p id="sr_attribute_magic"></p></div>
                             </div>
                             <div>
                                 <div class="sr_reaction_block">
-                                    <p>Reaction</p>
+                                    <p class="sr_large_box_title">Reaction</p>
                                     <div class="sr_large_score_box"><p id="sr_reaction"></p></div>
                                 </div>
                                 <div class="sr_initiative_block">
-                                    <p>Initiative</p>
+                                    <p class="sr_large_box_title">Initiative</p>
                                     <div class="sr_large_score_box"><p id="sr_initiative"></p></div>
                                 </div>
                             </div>
@@ -680,20 +680,20 @@
 
                     <div class="sr_condition_monitor_container">
                         <h3 class="sr_section_header_text">condition monitor</h3>
-                        <div class="flex">
-                            <div>
-                                <p class="bold">Stun</p>
-                                <p class="bold">Physical</p>
+                        <div class="sr_damage_box_container flex">
+                            <div class="sr_stun_physical_block flex col">
+                                <p class="sr_st_phy_text bold">Stun</p>
+                                <p class="sr_st_phy_text bold">Physical</p>
                             </div>
                             <div class="sr_condition_grid">                            
-                                <p class="sr_damage_rating_text">Light<br>Stun</p>
-                                <p class="sr_damage_rating_text">Moderate<br>Stun</p>
-                                <p class="sr_damage_rating_text">Serious<br>Stun</p>
-                                <p class="sr_damage_rating_text">Deadly<br>Stun</p>
-                                <p class="sr_damage_rating_text">Light<br>Wound</p>
-                                <p class="sr_damage_rating_text">Moderate<br>Wound</p>
-                                <p class="sr_damage_rating_text">Serious<br>Wound</p>
-                                <p class="sr_damage_rating_text">Deadly<br>Wound</p>
+                                <p class="sr_damage_rating_text sr_ls">Light<br>Stun</p>
+                                <p class="sr_damage_rating_text sr_ms">Mod<br>Stun</p>
+                                <p class="sr_damage_rating_text sr_ss">Serious<br>Stun</p>
+                                <p class="sr_damage_rating_text sr_ds">Deadly<br>Stun</p>
+                                <p class="sr_damage_rating_text sr_lw">Light<br>Wound</p>
+                                <p class="sr_damage_rating_text sr_mw">Mod<br>Wound</p>
+                                <p class="sr_damage_rating_text sr_sw">Serious<br>Wound</p>
+                                <p class="sr_damage_rating_text sr_dw">Deadly<br>Wound</p>
 
                                 <div class="sr_damage_box sr_st1"><p class="sr_damage_level_text">-1 TN#<br>-1 Ini</p></div>
                                 <div class="sr_damage_box sr_st2"></div>
@@ -705,6 +705,8 @@
                                 <div class="sr_damage_box sr_st8"></div>
                                 <div class="sr_damage_box sr_st9"></div>
                                 <div class="sr_damage_box sr_st10"><p class="sr_damage_level_text">Unc</p></div>
+
+                                <div class="sr_damage_box_spacer"></div>
 
                                 <div class="sr_damage_box sr_wn1"><p class="sr_damage_level_text">-1 TN#<br>-1 Ini</p></div>
                                 <div class="sr_damage_box sr_wn2"></div>
@@ -725,12 +727,12 @@
                         </div>
                     </div>
 
-                    <div>
+                    <div class="sr_karma_section_container">
                         <h3 class="sr_section_header_text">karma</h3>
                         <div class="sr_karma_container">
-                            <p>Karma Pool</p>
+                            <p class="sr_large_box_title">Karma Pool</p>
                             <div class="sr_large_score_box"><p></p></div>
-                            <p>Good Karma</p>
+                            <p class="sr_large_box_title">Good Karma</p>
                             <div class="sr_large_score_box"><p></p></div>
                         </div>                        
                     </div>
