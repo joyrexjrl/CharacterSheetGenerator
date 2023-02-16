@@ -35,6 +35,11 @@
     text-align: center;
 }
 
+.sr_absolute_text_styling{
+    padding: .3rem var(--sr_padding) 1rem;
+    line-height: 1;
+}
+
 .sr_black_background_header_text{
     background-color: #000;
     color: #fff;
@@ -108,7 +113,7 @@
 }
 
 .sr_logo_container{
-    width: 50%;
+    width: 70%;
 }
 
 .sr_general_info_block{
@@ -403,6 +408,10 @@
 .sr_vehicle_type_underline{
     border-bottom: 1px solid #000;
     width: 100%;
+}
+
+.sr_vehicle_type_text{
+    font-weight: normal !important;
 }
 
 .sr_vehicle_condition_grid{

@@ -635,12 +635,30 @@
                     <div class="sr_character_general_info_container">
                         <h2 class="sr_all_cap_text sr_h2">character record sheet</h2>
                         <div class="sr_general_info_block">
-                            <div class="sr_character_name"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">name</span></p></div>
-                            <div class="sr_character_race"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">race</span></p></div>
-                            <div class="sr_character_sex"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">sex</span></p></div>
-                            <div class="sr_character_age"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">age</span></p></div>
-                            <div class="sr_character_description"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">description</span></p></div>
-                            <div class="sr_character_header_notes"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p></div>
+                            <div class="sr_character_name sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">name</span></p>
+                                <p id="sr_general_info_name">Squat "Shag Nasty" McThrusthard</p>
+                            </div>
+                            <div class="sr_character_race sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">race</span></p>
+                                <p class="sr_center_text" id="sr_general_info_race">Human</p>                                
+                            </div>
+                            <div class="sr_character_sex sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">sex</span></p>
+                                <p class="sr_center_text" id="sr_general_info_sex">M</p>
+                            </div>
+                            <div class="sr_character_age sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">age</span></p>
+                                <p class="sr_center_text" id="sr_general_info_age">28</p>
+                            </div>
+                            <div class="sr_character_description sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">description</span></p>
+                                <p id="sr_general_info_description">Low light vision</p>
+                            </div>
+                            <div class="sr_character_header_notes sr_absolute_text_styling">
+                                <p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p>
+                                <p id="sr_general_info_notes">¥ 265,200</p>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -947,13 +965,13 @@
                         <div class="sr_inner_block_container sr_vehicle_inner_block_spacer">
                             <div class="sr_vehicle_type_information flex">
                                 <p>TYPE</p>
-                                <div class="sr_vehicle_type_underline"><p id="sr_vehicle_type_placer"></p></div>
+                                <div class="sr_vehicle_type_underline"><p id="sr_vehicle_type_placer" class="sr_vehicle_type_text">Eurocar Westwind 2000</p></div>
                             </div>
                             <div class="sr_vehicle_att_damage_block_container">
                                 <div class="sr_vechile_arrtibutes_block">
                                     <div class="sr_vehicle_attribute_names_block">
                                         <p class="sr_vehicle_attribute_text bold">Handling</p>
-                                        <p class="sr_vehicle_attribute_text bold">Speed</p>
+                                        <p class="sr_vehicle_attribute_text bold">Speed/Acc</p>
                                         <p class="sr_vehicle_attribute_text bold">Body</p>
                                         <p class="sr_vehicle_attribute_text bold">Armor</p>
                                         <p class="sr_vehicle_attribute_text bold">Signature</p>
@@ -962,11 +980,11 @@
                                         <p class="sr_vehicle_attribute_text bold">Hardpoints</p>
                                     </div>
                                     <div class="sr_vehicle_attributes_score_block">
-                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_handling">0</p></div>
-                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_speed">0</p></div>
-                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_body">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_handling">3/8</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_speed">240/14</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_body">3</p></div>
                                         <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_armor">0</p></div>
-                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_signature">0</p></div>
+                                        <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_signature">1</p></div>
                                         <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_autopilot">0</p></div>
                                         <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_firmpoints">0</p></div>
                                         <div class="sr_vehicle_attributes_score sr_vehicle_attribute_text"><p id="sr_vehicle_attribute_hardpoints">0</p></div>
@@ -992,7 +1010,10 @@
                                             <div class="sr_vehicle_damage_box sr_veh_dam10"></div>
                                         </div>
                                     </div>
-                                    <div class="sr_vehicle_section_notes"><p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p></div>
+                                    <div class="sr_vehicle_section_notes sr_absolute_text_styling">
+                                        <p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p>
+                                        <p id="sr_vehicle_notes">test vehicle notes with a long ass description for testing purposes and other shitz to boot</p>
+                                    </div>
                                 </div>
                                 
                             </div>
