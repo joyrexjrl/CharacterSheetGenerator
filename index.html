@@ -670,11 +670,11 @@
                             </div>
                             <div>
                                 <div class="sr_reaction_block">
-                                    <p class="sr_large_box_title">Reaction</p>
+                                    <p class="sr_inner_section_title">Reaction</p>
                                     <div class="sr_large_score_box"><p id="sr_reaction">0</p></div>
                                 </div>
                                 <div class="sr_initiative_block">
-                                    <p class="sr_large_box_title">Initiative</p>
+                                    <p class="sr_inner_section_title">Initiative</p>
                                     <div class="sr_large_score_box"><p id="sr_initiative">0</p></div>
                                 </div>
                             </div>
@@ -733,9 +733,9 @@
                     <div class="sr_karma_section_container">
                         <h3 class="sr_section_header_text">karma</h3>
                         <div class="sr_inner_block_container">
-                            <p class="sr_large_box_title">Karma Pool</p>
+                            <p class="sr_inner_section_title">Karma Pool</p>
                             <div class="sr_large_score_box"><p>0</p></div>
-                            <p class="sr_large_box_title">Good Karma</p>
+                            <p class="sr_inner_section_title">Good Karma</p>
                             <div class="sr_large_score_box"><p>0</p></div>
                         </div>                        
                     </div>
@@ -746,8 +746,8 @@
                         <h3 class="sr_section_header_text">skills</h3>
                         <div class="sr_inner_block_container">
                             <div class="sr_name_rating_spacer flex">
-                                <p class="sr_large_box_title">Name</p>
-                                <p class="sr_large_box_title">Rating</p>
+                                <p class="sr_inner_section_title">Name</p>
+                                <p class="sr_inner_section_title">Rating</p>
                             </div>
                             <div id="sr_skills_information_block_placer">
                                 <div class="sr_information_block_spacer">
@@ -784,8 +784,8 @@
                         <h3 class="sr_section_header_text">armor/gear</h3>
                         <div class="sr_inner_block_container">
                             <div class="sr_name_rating_spacer flex">
-                                <p class="sr_large_box_title">Type</p>
-                                <p class="sr_large_box_title">Rating</p>
+                                <p class="sr_inner_section_title">Type</p>
+                                <p class="sr_inner_section_title">Rating</p>
                             </div>
                             <div id="sr_armor_information_block_placer">
                                 <div class="sr_information_block_spacer">
@@ -795,8 +795,8 @@
                             </div>
                             <div class="sr_divider_bar"></div>
                             <div class="sr_name_rating_spacer flex">
-                                <p class="sr_large_box_title">Total Armor B/I</p>
-                                <p class="sr_large_box_title"><span id="sr_total_armor_ratings"></span></p>
+                                <p class="sr_inner_section_title">Total Armor B/I</p>
+                                <p class="sr_inner_section_title"><span id="sr_total_armor_ratings"></span></p>
                             </div>
                         </div>
                     </div>
@@ -805,8 +805,8 @@
                         <h3 class="sr_section_header_text">cyberware/bioware</h3>
                         <div class="sr_inner_block_container">
                             <div class="sr_name_rating_spacer flex">
-                                <p class="sr_large_box_title">Type</p>
-                                <p class="sr_large_box_title">Rating</p>
+                                <p class="sr_inner_section_title">Type</p>
+                                <p class="sr_inner_section_title">Rating</p>
                             </div>
                             <div id="sr_cyberware_bioware_information_block_placer">
                                 <div class="sr_information_block_spacer">
@@ -817,13 +817,35 @@
                         </div>
                     </div>
 
+                    <div class="sr_spells_block">
+                        <h3 class="sr_section_header_text">spells</h3>
+                        <div class="sr_inner_block_container">
+                            <div class="sr_spells_section_spacer flex">
+                                <div class="sr_spells_name_section">
+                                    <p class="sr_inner_section_title">Name</p>
+                                    <p id="sr_spell_name_placer">spell</p>
+                                </div>
+                                <div class="sr_spells_force_drain_section flex">
+                                    <div class="sr_spells_force_block">
+                                        <p class="sr_inner_section_title sr_center_text">Force</p>
+                                        <p id="sr_spell_force_placer" class="sr_text_align_right">0</p>
+                                    </div>
+                                    <div class="sr_spells_drain_block">
+                                        <p class="sr_inner_section_title sr_center_text">Drain</p>
+                                        <p id="sr_spell_drain_placer" class="sr_text_align_right">0</p>
+                                    </div>                                                                        
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="sr_edges_flaws_block">
                         <h3 class="sr_section_header_text">edges & flaws</h3>
                         <div class="sr_inner_block_container sr_edge_flaw_gap">
                             <div class="sr_edge_flaw_divider">
                                 <div class="sr_name_rating_spacer flex">
-                                    <p class="sr_large_box_title">Type</p>
-                                    <p class="sr_large_box_title">Rating</p>
+                                    <p class="sr_inner_section_title">Type</p>
+                                    <p class="sr_inner_section_title">Rating</p>
                                 </div>
                                 <div id="sr_edge_flaw_left_side_information_block_placer">
                                     <div class="sr_information_block_spacer">
@@ -834,8 +856,8 @@
                             </div>
                             <div class="sr_edge_flaw_divider">
                                 <div class="sr_name_rating_spacer flex">
-                                    <p class="sr_large_box_title">Type</p>
-                                    <p class="sr_large_box_title">Rating</p>
+                                    <p class="sr_inner_section_title">Type</p>
+                                    <p class="sr_inner_section_title">Rating</p>
                                 </div>
                                 <div id="sr_edge_flaw_right_side_information_block_placer">
                                     <div class="sr_information_block_spacer">
@@ -848,11 +870,62 @@
                     </div>
                 </div>
             </div>
+
             <div class="sr_back_page">
                 <div class="sr_weapons_block">
                     <h3 class="sr_section_header_text">weapons</h3>
-                    <div class="sr_inner_block_container"></div>
+                    <div class="sr_inner_block_container flex">
+                        <div>
+                            <p class="sr_inner_section_title">Name</p>
+                            <div class="sr_weapons_info_spacer_large"><p id="sr_weapons_name" class="sr_inner_section_title">gun</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Type</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_type" class="sr_inner_section_title sr_center_text">smg</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Conceal</p>
+                            <div><p id="sr_weapons_conceal" class="sr_inner_section_title sr_center_text">4</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Reach</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_reach" class="sr_inner_section_title sr_center_text">-</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Mode</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_mode" class="sr_inner_section_title sr_center_text">bf</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Ammo</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_ammo" class="sr_inner_section_title sr_center_text">16(c)</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Short</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_short" class="sr_inner_section_title sr_center_text">0-25</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Med</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_medium" class="sr_inner_section_title sr_center_text">26-50</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Long</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_long" class="sr_inner_section_title sr_center_text">51-75</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Extreme</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_extreme" class="sr_inner_section_title sr_center_text">76-100</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Damage</p>
+                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_damage" class="sr_inner_section_title sr_center_text">5L</p></div>
+                        </div>
+                        <div>
+                            <p class="sr_inner_section_title sr_center_text">Modifiers</p>
+                            <div class="sr_weapons_info_spacer_large"><p id="sr_weapons_modifiers" class="sr_inner_section_title sr_center_text">-1TN</p></div>
+                        </div>  
+                    </div>
                 </div>
+
                 <div class="sr_equipment_contacts_section_container flex">
                     <div class="sr_equipment_block">
                         <h3 class="sr_section_header_text">equipment & gear</h3>
@@ -863,6 +936,7 @@
                         <div class="sr_inner_block_container"><p id="sr_contacts_information_placer"></p></div>
                     </div>
                 </div>
+
                 <div class="sr_character_vehicle_container flex">
                     <div class="sr_character_notes_block">
                         <h3 class="sr_section_header_text">characater notes</h3>

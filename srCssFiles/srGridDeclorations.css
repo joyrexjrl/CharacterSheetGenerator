@@ -156,6 +156,10 @@
     grid-area: sr_cyber;
 }
 
+.sr_spells_block{
+    grid-area: sr_spells;
+}
+
 .sr_edges_flaws_block{
     grid-area: sr_edges;
 }

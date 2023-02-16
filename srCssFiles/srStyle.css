@@ -27,6 +27,14 @@
     font-weight: bold;
 }
 
+.sr_text_align_right{
+    text-align: right;
+}
+
+.sr_center_text{
+    text-align: center;
+}
+
 .sr_black_background_header_text{
     background-color: #000;
     color: #fff;
@@ -74,7 +82,7 @@
 /*head section css end*/
 /*attributes conditions karma section css start*/
 
-.sr_large_box_title{
+.sr_inner_section_title{
     font-size: .6rem !important;
 }
 
@@ -242,7 +250,8 @@
 .sr_equipment_block,
 .sr_contacts_block,
 .sr_character_notes_block,
-.sr_vehicle_block{
+.sr_vehicle_block,
+.sr_spells_block{
     border: 1px solid #000;
 }
 
@@ -289,7 +298,26 @@
     grid-template-areas: 
     "sr_skills sr_pools sr_cyber"
     "sr_skills sr_armor sr_cyber"
-    "sr_edges sr_edges sr_cyber";
+    "sr_edges sr_edges sr_spells";
+}
+
+.sr_spells_force_block,
+.sr_spells_drain_block{
+    width: 100%;
+}
+
+.sr_spells_section_spacer{
+    gap: var(--sr_gap_spacer);
+}
+
+.sr_spells_name_section{
+    width: 55%;
+}
+
+.sr_spells_force_drain_section{
+    width: 45%;
+    justify-content: space-between;
+    gap: var(--sr_gap_spacer);
 }
 
 /*skills pools armor cyberware edges section css end*/
@@ -311,7 +339,22 @@
 
 /*weapons section start*/
 
+.sr_inner_block_container{
+    gap: var(--sr_gap_spacer);
+    justify-content: space-between;
+}
 
+.sr_weapons_info_spacer_small{
+    min-width: 30px;
+}
+
+.sr_weapons_info_spacer_med{
+    min-width: 60px;
+}
+
+.sr_weapons_info_spacer_large{
+    min-width: 75px;
+}
 
 /*weapons section end*/
 /*equipment contacts section start*/
