@@ -32,7 +32,9 @@
     <script src="oseData/oseCharacterSpells.js" defer></script>
     <script src="oseData/oseSheet.js" defer></script>
 
-    <script src="srData/srSheet.js" defer></script>
+    <script src="srData/srAttributeDistribution.js" defer></script>
+    <script src="srData/srCharBuilder.js" defer></script>
+    <script src="srData/srSheet.js" defer></script>    
 
     <title>Character Generator for Table Top Games</title>
 </head>
@@ -641,24 +643,47 @@
                             </div>
                             <div class="sr_character_race sr_absolute_text_styling">
                                 <p class="sr_all_cap_text"><span class="sr_black_background_header_text">race</span></p>
-                                <p class="sr_center_text" id="sr_general_info_race">Human</p>                                
+                                <p class="sr_center_text" id="sr_general_info_race"></p>                                
                             </div>
                             <div class="sr_character_sex sr_absolute_text_styling">
                                 <p class="sr_all_cap_text"><span class="sr_black_background_header_text">sex</span></p>
-                                <p class="sr_center_text" id="sr_general_info_sex">M</p>
+                                <p class="sr_center_text" id="sr_general_info_sex"></p>
                             </div>
                             <div class="sr_character_age sr_absolute_text_styling">
                                 <p class="sr_all_cap_text"><span class="sr_black_background_header_text">age</span></p>
-                                <p class="sr_center_text" id="sr_general_info_age">28</p>
+                                <p class="sr_center_text" id="sr_general_info_age"></p>
                             </div>
                             <div class="sr_character_description sr_absolute_text_styling">
                                 <p class="sr_all_cap_text"><span class="sr_black_background_header_text">description</span></p>
-                                <p id="sr_general_info_description">Low light vision</p>
+                                <p id="sr_general_info_description"></p>
                             </div>
                             <div class="sr_character_header_notes sr_absolute_text_styling">
                                 <p class="sr_all_cap_text"><span class="sr_black_background_header_text">notes</span></p>
-                                <p id="sr_general_info_notes">¥ 265,200</p>
+                                <p id="sr_general_info_notes"></p>
                             </div>
+                        </div>
+                        <div id="sr_priority_selection" class="sr_priority_display flex">
+                            <div>
+                                <p id="sr_priority_A" class="sr_priority_text">A:</p>
+                                <p id="sr_priority_A_displayer" class="sr_priority_text"></p>
+                            </div>
+                            <div>
+                                <p id="sr_priority_B" class="sr_priority_text">B:</p>
+                                <p id="sr_priority_B_displayer" class="sr_priority_text"></p>
+                            </div>
+                            <div>
+                                <p id="sr_priority_C" class="sr_priority_text">C:</p>
+                                <p id="sr_priority_C_displayer" class="sr_priority_text"></p>
+                            </div>
+                            <div>
+                                <p id="sr_priority_D" class="sr_priority_text">D:</p>
+                                <p id="sr_priority_D_displayer" class="sr_priority_text"></p>
+                            </div>
+                            <div>
+                                <p id="sr_priority_E" class="sr_priority_text">E:</p>
+                                <p id="sr_priority_E_displayer" class="sr_priority_text"></p>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -744,7 +769,7 @@
                         
                         <div class="sr_condition_overflow flex">
                             <p>Physical Damage Overflow</p>
-                            <div class="sr_small_score_box"><p>0</p></div>
+                            <div class="sr_small_score_box"><p id="sr_damage_overflow">0</p></div>
                         </div>
                     </div>
 
@@ -752,9 +777,9 @@
                         <h3 class="sr_section_header_text">karma</h3>
                         <div class="sr_inner_block_container">
                             <p class="sr_inner_section_title">Karma Pool</p>
-                            <div class="sr_large_score_box"><p>0</p></div>
+                            <div class="sr_large_score_box"><p id="sr_karma_pool">0</p></div>
                             <p class="sr_inner_section_title">Good Karma</p>
-                            <div class="sr_large_score_box"><p>0</p></div>
+                            <div class="sr_large_score_box"><p id="sr_good_karma">0</p></div>
                         </div>                        
                     </div>
 
@@ -769,8 +794,8 @@
                             </div>
                             <div id="sr_skills_information_block_placer">
                                 <div class="sr_information_block_spacer">
-                                    <p class="sr_skill_name">Firearms</p>
-                                    <p class="sr_skill_rating">6</p>
+                                    <p id="sr_skill_name" class="sr_skill_name">Firearms</p>
+                                    <p id="sr_skill_rating" class="sr_skill_rating">6</p>
                                 </div>
                             </div>
                         </div>                        
@@ -781,19 +806,19 @@
                         <div class="sr_inner_block_container sr_pools_gap_spacer">
                             <div class="sr_pool_information_block flex">
                                 <p class="sr_pool_text">Combat Pool</p>
-                                <div class="sr_small_score_box"><p>0</p></div>
+                                <div class="sr_small_score_box"><p id="sr_combat_pool_dice">0</p></div>
                             </div>
                             <div class="sr_pool_information_block flex">
                                 <p class="sr_pool_text"><span id="sr_pool_type1"></span> Pool</p>
-                                <div class="sr_small_score_box"><p></p></div>
+                                <div class="sr_small_score_box"><p id="sr_type1_pool_dice"></p></div>
                             </div>
                             <div class="sr_pool_information_block flex">
                                 <p class="sr_pool_text"><span id="sr_pool_type2"></span> Pool</p>
-                                <div class="sr_small_score_box"><p></p></div>
+                                <div class="sr_small_score_box"><p id="sr_type2_pool_dice"></p></div>
                             </div>
                             <div class="sr_pool_information_block flex">
                                 <p class="sr_pool_text"><span id="sr_pool_type3"></span> Pool</p>
-                                <div class="sr_small_score_box"><p></p></div>
+                                <div class="sr_small_score_box"><p id="sr_type3_pool_dice"></p></div>
                             </div>
                         </div>
                     </div>
@@ -807,8 +832,8 @@
                             </div>
                             <div id="sr_armor_information_block_placer">
                                 <div class="sr_information_block_spacer">
-                                    <p class="sr_skill_name">Vest with Plates</p>
-                                    <p class="sr_skill_rating">5/3</p>
+                                    <p id="sr_armor_name" class="sr_skill_name">Vest with Plates</p>
+                                    <p id="sr_armor_rating" class="sr_skill_rating">5/3</p>
                                 </div>
                             </div>
                             <div class="sr_divider_bar"></div>
@@ -828,8 +853,8 @@
                             </div>
                             <div id="sr_cyberware_bioware_information_block_placer">
                                 <div class="sr_information_block_spacer">
-                                    <p class="sr_skill_name">Dermal Plating</p>
-                                    <p class="sr_skill_rating">1</p>
+                                    <p id="sr_cyber_bio_name" class="sr_skill_name">Dermal Plating</p>
+                                    <p id="sr_cyber_bio_rating" class="sr_skill_rating">1</p>
                                 </div>
                             </div>
                         </div>
@@ -867,8 +892,8 @@
                                 </div>
                                 <div id="sr_edge_flaw_left_side_information_block_placer">
                                     <div class="sr_information_block_spacer">
-                                        <p class="sr_skill_name">Blind</p>
-                                        <p class="sr_skill_rating">-3</p>
+                                        <p id="sr_edge_flaw_left_name" class="sr_skill_name">Blind</p>
+                                        <p id="sr_edge_flaw_left_rating" class="sr_skill_rating">-3</p>
                                     </div>
                                 </div>
                             </div>
@@ -879,8 +904,8 @@
                                 </div>
                                 <div id="sr_edge_flaw_right_side_information_block_placer">
                                     <div class="sr_information_block_spacer">
-                                        <p class="sr_skill_name">Smell Sound</p>
-                                        <p class="sr_skill_rating">3</p>
+                                        <p id="sr_edge_flaw_right_name" class="sr_skill_name">Smell Sound</p>
+                                        <p id="sr_edge_flaw_right_rating" class="sr_skill_rating">3</p>
                                     </div>
                                 </div>
                             </div>
@@ -893,53 +918,53 @@
                 <div class="sr_weapons_block">
                     <h3 class="sr_section_header_text">weapons</h3>
                     <div class="sr_inner_block_container flex">
-                        <div>
+                        <div id="sr_weapons_name">
                             <p class="sr_inner_section_title">Name</p>
-                            <div class="sr_weapons_info_spacer_large"><p id="sr_weapons_name" class="sr_inner_section_title">gun</p></div>
+                            <div class="sr_weapons_info_spacer_large"><p class="sr_inner_section_title">gun</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_type">
                             <p class="sr_inner_section_title sr_center_text">Type</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_type" class="sr_inner_section_title sr_center_text">smg</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">smg</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_conceal">
                             <p class="sr_inner_section_title sr_center_text">Conceal</p>
-                            <div><p id="sr_weapons_conceal" class="sr_inner_section_title sr_center_text">4</p></div>
+                            <div><p class="sr_inner_section_title sr_center_text">4</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_reach">
                             <p class="sr_inner_section_title sr_center_text">Reach</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_reach" class="sr_inner_section_title sr_center_text">-</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">-</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_mode">
                             <p class="sr_inner_section_title sr_center_text">Mode</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_mode" class="sr_inner_section_title sr_center_text">bf</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">bf</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_ammo">
                             <p class="sr_inner_section_title sr_center_text">Ammo</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_ammo" class="sr_inner_section_title sr_center_text">16(c)</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">16(c)</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_short">
                             <p class="sr_inner_section_title sr_center_text">Short</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_short" class="sr_inner_section_title sr_center_text">0-25</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">0-25</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_medium">
                             <p class="sr_inner_section_title sr_center_text">Med</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_medium" class="sr_inner_section_title sr_center_text">26-50</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">26-50</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_long">
                             <p class="sr_inner_section_title sr_center_text">Long</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_long" class="sr_inner_section_title sr_center_text">51-75</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">51-75</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_extreme">
                             <p class="sr_inner_section_title sr_center_text">Extreme</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_extreme" class="sr_inner_section_title sr_center_text">76-100</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">76-100</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_damage">
                             <p class="sr_inner_section_title sr_center_text">Damage</p>
-                            <div class="sr_weapons_info_spacer_small"><p id="sr_weapons_damage" class="sr_inner_section_title sr_center_text">5L</p></div>
+                            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">5L</p></div>
                         </div>
-                        <div>
+                        <div id="sr_weapons_modifiers">
                             <p class="sr_inner_section_title sr_center_text">Modifiers</p>
-                            <div class="sr_weapons_info_spacer_large"><p id="sr_weapons_modifiers" class="sr_inner_section_title sr_center_text">-1TN</p></div>
+                            <div class="sr_weapons_info_spacer_large"><p class="sr_inner_section_title sr_center_text">-1TN</p></div>
                         </div>  
                     </div>
                 </div>

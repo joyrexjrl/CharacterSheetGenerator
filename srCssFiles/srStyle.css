@@ -126,6 +126,14 @@
         "sr_notes sr_notes sr_notes sr_notes sr_notes";
 }
 
+.sr_priority_display{
+    justify-content: space-between;
+}
+
+.sr_priority_text{
+    font-size:.5rem !important;
+}
+
 .sr_attributes_condition_karma_section{
     gap: var(--sr_gap_spacer);
 }
