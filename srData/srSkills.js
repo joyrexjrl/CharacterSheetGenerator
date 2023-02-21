@@ -57,5 +57,6 @@ const srSkillSpecializations = [
 ];
 
 function srSkillsRandomizer(skillPoints){
+    let skillAttributeSoftCap = 0;
     
 }

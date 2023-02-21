@@ -17,11 +17,11 @@ function srRacialPointAdjuster(attPoints, charRace){
     let elfChaBonus = 2;
     let elfNotes = "Low-light Vision";
 
-    let orcBodBonus = 3;
-    let orcStrBonus = 2;
-    let orcChaBonus = -1;
-    let orcIntBonus = -1;
-    let orcNotes = "Low-light Vision";
+    let orkBodBonus = 3;
+    let orkStrBonus = 2;
+    let orkChaBonus = -1;
+    let orkIntBonus = -1;
+    let orkNotes = "Low-light Vision";
 
     let trollBodBonus = 5;
     let trollQuicBonus = -1;
@@ -61,17 +61,15 @@ function srRacialPointAdjuster(attPoints, charRace){
             availableAttPoints = attPoints - 6;
         break;
         case "Ork":
-            srAttributesCurrentMax[0].Max += (racialAttributeMaximum + orcBodBonus);
-            srAttributesCurrentMax[0].Current += orcBodBonus;
-            srAttributesCurrentMax[2].Max += (racialAttributeMaximum + orcStrBonus);
-            srAttributesCurrentMax[2].Current += orcStrBonus;
-            srAttributesCurrentMax[3].Max += (racialAttributeMaximum + orcChaBonus);
-            srAttributesCurrentMax[3].Current += orcChaBonus;
-            srAttributesCurrentMax[4].Max += (racialAttributeMaximum + orcIntBonus);
-            srAttributesCurrentMax[4].Current += orcIntBonus;
+            srAttributesCurrentMax[0].Max += (racialAttributeMaximum + orkBodBonus);
+            srAttributesCurrentMax[0].Current += orkBodBonus;
+            srAttributesCurrentMax[2].Max += (racialAttributeMaximum + orkStrBonus);
+            srAttributesCurrentMax[2].Current += orkStrBonus;
+            srAttributesCurrentMax[3].Max += (racialAttributeMaximum + orkChaBonus);
+            srAttributesCurrentMax[4].Max += (racialAttributeMaximum + orkIntBonus);
             srAttributesCurrentMax[1].Max += racialAttributeMaximum;
             srAttributesCurrentMax[5].Max += racialAttributeMaximum;
-            srGeneralCharNotes.innerHTML += orcNotes;
+            srGeneralCharNotes.innerHTML += orkNotes;
             srGeneralCharRace.innerHTML += charRace;
             availableAttPoints = attPoints - 8;
         break;
@@ -114,18 +112,18 @@ function srAttributePointRandomizer(attPoints) {
         srAttributesCurrentMax = shuffleArray(srAttributesCurrentMax);
 
         for (let i = 0; i < srAttributesCurrentMax.length; i++) {
-        if (attPoints <= 0) {
-            break;
-        }
+            if (attPoints <= 0) {
+                break;
+            }
 
-        let att = srAttributesCurrentMax[i];
-        let maxPointsToAdd = att.Max - att.Current;
+            let att = srAttributesCurrentMax[i];
+            let maxPointsToAdd = att.Max - att.Current;
 
-        if (maxPointsToAdd > 0) {
-            let pointsToAdd = Math.floor(Math.random() * Math.min(maxPointsToAdd, attPoints)) + 1;
-            att.Current += pointsToAdd;
-            attPoints -= pointsToAdd;
-        }
+            if (maxPointsToAdd > 0) {
+                let pointsToAdd = Math.floor(Math.random() * Math.min(maxPointsToAdd, attPoints)) + 1;
+                att.Current += pointsToAdd;
+                attPoints -= pointsToAdd;
+            }
         }
     }
 
