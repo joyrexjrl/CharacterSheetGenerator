@@ -103,6 +103,10 @@
     position: relative;
 }
 
+.sr_general_info_notes_text{
+    font-size: .5rem !important;
+}
+
 .sr_attribute_text,
 .sr_vehicle_attribute_text{
     line-height: 1.2;
@@ -136,6 +140,7 @@
 
 .sr_attributes_condition_karma_section{
     gap: var(--sr_gap_spacer);
+    justify-content: space-between;
 }
 
 .sr_damage_rating_text{

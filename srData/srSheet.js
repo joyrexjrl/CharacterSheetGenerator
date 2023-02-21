@@ -98,14 +98,10 @@ const srVehicleFirmpoints = document.getElementById("sr_vehicle_attribute_firmpo
 const srVehicleHardpoints = document.getElementById("sr_vehicle_attribute_hardpoints");
 const srVehicleNotes = document.getElementById("sr_vehicle_notes");
 
-srAttributeBody.innerHTML = 0;
-srAttributeQuickness.innerHTML = 0;
-srAttributeStrength.innerHTML = 0;
-srAttributeCharisma.innerHTML = 0;
-srAttributeIntelligence.innerHTML = 0;
-srAttributeWillpower.innerHTML = 0;
-srAttributeEssence.innerHTML = 0;
-srAttributeMagic.innerHTML = 0;
+// inner html div creation
+const srSectionDiv = document.createElement("div");
+const srNameP = document.createElement("p");
+const srRatingP = document.createElement("p");
 
 priorityRandomPlacer();
 srRacialPointAdjuster(srAttributePoints, srRaceChoice);
