@@ -5,11 +5,11 @@ const srGeneralCharAge = document.getElementById("sr_general_info_age");
 const srGeneralCharDescription = document.getElementById("sr_general_info_description");
 const srGeneralCharNotes = document.getElementById("sr_general_info_notes");
 
-const srPriorityADisplay = document.getElementById("sr_priority_A");
-const srPriorityBDisplay = document.getElementById("sr_priority_B");
-const srPriorityCDisplay = document.getElementById("sr_priority_C");
-const srPriorityDDisplay = document.getElementById("sr_priority_D");
-const srPriorityEDisplay = document.getElementById("sr_priority_E");
+const srPriorityA = document.getElementById("sr_priority_A");
+const srPriorityB = document.getElementById("sr_priority_B");
+const srPriorityC = document.getElementById("sr_priority_C");
+const srPriorityD = document.getElementById("sr_priority_D");
+const srPriorityE = document.getElementById("sr_priority_E");
 
 const srPriorityAAmount = document.getElementById("sr_priority_A_displayer");
 const srPriorityBAmount = document.getElementById("sr_priority_B_displayer");
@@ -17,7 +17,7 @@ const srPriorityCAmount = document.getElementById("sr_priority_C_displayer");
 const srPriorityDAmount = document.getElementById("sr_priority_D_displayer");
 const srPriorityEAmount = document.getElementById("sr_priority_E_displayer");
 
-const srAttributeBbody = document.getElementById("sr_attribute_body");
+const srAttributeBody = document.getElementById("sr_attribute_body");
 const srAttributeQuickness = document.getElementById("sr_attribute_quickness");
 const srAttributeStrength = document.getElementById("sr_attribute_strength");
 const srAttributeCharisma = document.getElementById("sr_attribute_charisma");
@@ -98,7 +98,7 @@ const srVehicleFirmpoints = document.getElementById("sr_vehicle_attribute_firmpo
 const srVehicleHardpoints = document.getElementById("sr_vehicle_attribute_hardpoints");
 const srVehicleNotes = document.getElementById("sr_vehicle_notes");
 
-srAttributeBbody.innerHTML = 0;
+srAttributeBody.innerHTML = 0;
 srAttributeQuickness.innerHTML = 0;
 srAttributeStrength.innerHTML = 0;
 srAttributeCharisma.innerHTML = 0;
@@ -108,3 +108,4 @@ srAttributeEssence.innerHTML = 0;
 srAttributeMagic.innerHTML = 0;
 
 priorityRandomPlacer();
+srRacialPointAdjuster(srAttributePoints, srRaceChoice);
