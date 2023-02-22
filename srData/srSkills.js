@@ -63,7 +63,7 @@ function srSkillsRandomizer(){
     let skillAttributeLink = srSkills[Math.floor(Math.random() * srSkills.length)].skillAttribute;
     let skillOptionChosen = srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions[Math.floor(Math.random() * srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions.length)];
 
-    console.log(skillAttributeLink + skillOptionChosen);
+    //console.log(skillAttributeLink + skillOptionChosen);
     return{attribute: skillAttributeLink, option: skillOptionChosen};
 }
 
@@ -73,7 +73,7 @@ function srRandomSkillPlacer(skillPoints){
     let skillAttributeSoftCap = 0;
     let skillRating = 0;
 
-    console.log("starting skill points " + skillPoints);
+    //console.log("starting skill points " + skillPoints);
 
     if(srIsCaster && srCasterType !== "Adept"){
         for (let i = 0; i < srCasterSkills.length; i++) {
@@ -104,10 +104,10 @@ function srRandomSkillPlacer(skillPoints){
                 }else if(skillRating > skillAttributeSoftCap && skillRating <= skillPoints){
                     let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
                     let skillCost = (skillAttributeSoftCap) + (pointsOver);
-                    console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
+                    //console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
                     skillPoints -= skillCost;
                 }
-                console.log("remaining skill points " + skillPoints);
+                //console.log("remaining skill points " + skillPoints);
             }            
         }
     }
@@ -129,7 +129,7 @@ function srRandomSkillPlacer(skillPoints){
 
         skillRating = oseDieRoller(1,6);
 
-        console.log("skill rating rolled " + skillRating);
+        //console.log("skill rating rolled " + skillRating);
 
         if(skillRating > skillPoints){
             skillRating = skillPoints;
@@ -140,7 +140,7 @@ function srRandomSkillPlacer(skillPoints){
         }else if(skillRating > skillAttributeSoftCap){
             let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
             let skillCost = (skillAttributeSoftCap) + (pointsOver);
-            console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
+            //console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
             if(skillCost >= skillPoints){
                 skillRating = skillAttributeSoftCap + Math.floor((skillPoints - 1) / 2);
                 skillPoints = 0;
@@ -155,7 +155,7 @@ function srRandomSkillPlacer(skillPoints){
         srSkillsSection.appendChild(srSkillsName);
         srSkillsSection.appendChild(srSkillsRating);
         srSkillsParent.appendChild(srSkillsSection);
-        console.log("remaining skill points " + skillPoints);
+        //console.log("remaining skill points " + skillPoints);
 
         selectedSkills.push(option);
     }
