@@ -73,6 +73,8 @@ function srRandomSkillPlacer(skillPoints){
     let skillAttributeSoftCap = 0;
     let skillRating = 0;
 
+    console.log("starting skill points " + skillPoints);
+
     if(srIsCaster){
         for (let i = 0; i < srCasterSkills.length; i++) {
             const {skillAttribute, skillOptions} = srCasterSkills[i];
@@ -95,12 +97,15 @@ function srRandomSkillPlacer(skillPoints){
 
                 skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === skillAttribute).Current
 
-                if(6 <= skillAttributeSoftCap){
-                    skillPoints -= 6;
-                }else if(6 > skillAttributeSoftCap && 6 <= skillPoints){
-                    let pointsOver = 2 * (6 - skillAttributeSoftCap);
-                    console.log("over soft cap cost " + pointsOver);
-                    skillPoints -= 6 + pointsOver;
+                skillRating = 6;
+
+                if(skillRating <= skillAttributeSoftCap){
+                    skillPoints -= skillRating;
+                }else if(skillRating > skillAttributeSoftCap && skillRating <= skillPoints){
+                    let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
+                    let skillCost = (skillAttributeSoftCap) + (pointsOver);
+                    console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
+                    skillPoints -= skillCost;
                 }
                 console.log("remaining skill points " + skillPoints);
             }            
@@ -120,20 +125,28 @@ function srRandomSkillPlacer(skillPoints){
         srSkillsName.textContent = option;
 
         srSkillsRating.classList.add("sr_skill_rating");
-        skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === attribute)?.Current || srReaction.textContent;
+        skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === attribute)?.Current || parseInt(srReaction.textContent);
 
         skillRating = oseDieRoller(1,6);
 
         console.log("skill rating rolled " + skillRating);
 
         if(skillRating > skillPoints){
-            continue;
-        }else if(skillRating <= skillAttributeSoftCap){
+            skillRating = skillPoints;
+        }
+        
+        if(skillRating <= skillAttributeSoftCap){
             skillPoints -= skillRating;
         }else if(skillRating > skillAttributeSoftCap){
             let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
-            console.log("over soft cap cost " + pointsOver);
-            skillPoints -= skillRating + pointsOver;
+            let skillCost = (skillAttributeSoftCap) + (pointsOver);
+            console.log("over soft cap cost " + pointsOver + " total skill cost including base cost " + skillCost);
+            if(skillCost >= skillPoints){
+                skillRating = skillAttributeSoftCap + Math.floor((skillPoints - 1) / 2);
+                skillPoints = 0;
+            }else{
+                skillPoints -= skillCost;
+            }            
         }
 
         srSkillsRating.textContent = skillRating;
