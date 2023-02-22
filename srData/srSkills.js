@@ -8,7 +8,7 @@ const srSkills = [
 ];
 
 const srCasterSkills = [
-    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Scorcery"]}
+    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Sorcery"]}
 ]
 
 const srSkillSpecializations = [
@@ -31,7 +31,7 @@ const srSkillSpecializations = [
     {skillName: "Underwater Combat", skillSpecialization: ["Unarmed Attack", "Armed Attack"]},
     {skillName: "Whips", skillSpecialization: []}, // add all Whips weapons here
     {skillName: "Aura Reading", skillSpecialization: ["Auras", "Signatures", "Sorcery", "Conjuring"]},
-    {skillName: "Scorcery", skillSpecialization: ["Spellcasting", "Spell Defense", "Dispelling", "Astral Combat", "Spell Catagoty"]}, // add the different spell catagorys to the list
+    {skillName: "Sorcery", skillSpecialization: ["Spellcasting", "Spell Defense", "Dispelling", "Astral Combat", "Spell Catagoty"]}, // add the different spell catagorys to the list
     {skillName: "Conjuring", skillSpecialization: ["Summoning", "Banishing", "Controlling"]},
     {skillName: "Athletics", skillSpecialization: ["Running", "Climbing", "Lifting", "Jumping", "Escape Artist", "Swimming"]},
     {skillName: "Diving", skillSpecialization: ["Deep-water Diving", "Mixed-gas Diving"]},
@@ -75,7 +75,7 @@ function srRandomSkillPlacer(skillPoints){
 
     console.log("starting skill points " + skillPoints);
 
-    if(srIsCaster){
+    if(srIsCaster && srCasterType !== "Adept"){
         for (let i = 0; i < srCasterSkills.length; i++) {
             const {skillAttribute, skillOptions} = srCasterSkills[i];
             for (let j = 0; j < skillOptions.length; j++) {

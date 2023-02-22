@@ -106,3 +106,6 @@ const srRatingP = document.createElement("p");
 priorityRandomPlacer();
 srRacialPointAdjuster(srAttributePoints, srRaceChoice);
 srRandomSkillPlacer(srSkillPoints);
+if(srIsCaster){
+    srCasterAbilitys(srCasterType);
+}
