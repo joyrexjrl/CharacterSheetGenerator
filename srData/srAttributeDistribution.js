@@ -1,9 +1,10 @@
 var srAttributesCurrentMax = [{attribute: "Body", Current: 1, Max: 0},
-        {attribute: "Quickness", Current: 1, Max: 0},
-        {attribute: "Strength", Current: 1, Max: 0},
-        {attribute: "Charisma", Current: 1, Max: 0},
-        {attribute: "Intelligence", Current: 1, Max: 0},
-        {attribute: "Willpower", Current: 1, Max: 0}];
+    {attribute: "Quickness", Current: 1, Max: 0},
+    {attribute: "Strength", Current: 1, Max: 0},
+    {attribute: "Charisma", Current: 1, Max: 0},
+    {attribute: "Intelligence", Current: 1, Max: 0},
+    {attribute: "Willpower", Current: 1, Max: 0}
+];
 
 function srRacialPointAdjuster(attPoints, charRace){
     let availableAttPoints = 0;

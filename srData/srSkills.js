@@ -56,7 +56,55 @@ const srSkillSpecializations = [
     {skillName: "Winged Aircraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
 ];
 
-function srSkillsRandomizer(skillPoints){
+function srSkillsRandomizer(){            
+    let skillAttributeLink = srSkills[Math.floor(Math.random() * srSkills.length)].skillAttribute;
+    let skillOptionChosen = srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions[Math.floor(Math.random() * srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions.length)];
+
+    console.log(skillAttributeLink + skillOptionChosen);
+    return{attribute: skillAttributeLink, option: skillOptionChosen};
+}
+
+function srRandomSkillPlacer(skillPoints){
+    const srSkillsParent = srSkillsBlockPlacer;
+    let selectedSkills = [];
     let skillAttributeSoftCap = 0;
-    
+    let skillRating = 0;
+
+    while (skillPoints > 0){
+        let {attribute, option} = srSkillsRandomizer();
+
+        if(selectedSkills.includes(option)) continue;
+
+        const srSkillsSection = document.createElement("div");
+        const srSkillsName = document.createElement("p");
+        const srSkillsRating = document.createElement("p");
+
+        srSkillsName.classList.add("sr_skill_name");
+        srSkillsName.textContent = option;
+
+        srSkillsRating.classList.add("sr_skill_rating");
+        skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === attribute)?.Current || srReaction.textContent;
+
+        skillRating = oseDieRoller(1,6);
+
+        console.log("skill rating rolled " + skillRating);
+
+        if(skillRating <= skillAttributeSoftCap){
+            skillPoints -= skillRating;
+        }else if(skillRating > skillAttributeSoftCap){
+            let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
+            console.log("over soft cap cost " + pointsOver);
+            skillPoints -= skillRating + pointsOver;
+        }
+
+        srSkillsRating.textContent = skillRating;
+
+        srSkillsSection.classList.add("sr_information_block_spacer");
+        srSkillsSection.appendChild(srSkillsName);
+        srSkillsSection.appendChild(srSkillsRating);
+        srSkillsParent.appendChild(srSkillsSection);
+        console.log("remaining skill points " + skillPoints);
+
+        selectedSkills.push(option);
+    }
 }

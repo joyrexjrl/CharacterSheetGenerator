@@ -96,10 +96,6 @@ function oseStatBonusAssigner(){
     oseCharacterGoldCoins.innerHTML = parseInt((oseDieRoller(1, 6) + oseDieRoller(1, 6) + oseDieRoller(1, 6)) * 10);
 }
 
-function oseDieRoller(min, max){
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
 function oseClearUserInputs(){
     oseFileInput.value = "";
     osePortaitDisplay.src = "";
