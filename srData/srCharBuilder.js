@@ -11,6 +11,7 @@ var srAttributePoints = 0;
 var srSkillPoints = 0;
 var srResourceAmount = 0;
 var srRaceChoice = "";
+var srIsCaster = false;
 
 function randomOptionPicker(priority) {
     let availableOptions = priorities.find(p => p.priority === priority).options.filter(o => !usedOptions.includes(o));
@@ -43,6 +44,7 @@ function priorityPlacement(priority, option){
             case "Magic":
                 displayResult = "Full Magician"
                 srAttributeMagic.innerHTML = 6;
+                srIsCaster = true;
                 break;
             case "Attributes":
                 displayResult = 30;
@@ -66,6 +68,7 @@ function priorityPlacement(priority, option){
                 randomRoll = Math.floor(Math.random() * priBMagicType.length);
                 displayResult = priBMagicType[randomRoll];
                 srAttributeMagic.innerHTML = 6;
+                srIsCaster = true;
                 break;
             case "Attributes":
                 displayResult = 27;

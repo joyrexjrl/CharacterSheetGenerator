@@ -3,10 +3,13 @@ const srSkills = [
     {skillAttribute: "Strength", skillOptions: ["Edged Weapons", "Clubs", "Pole Arms/ Staffs", "Cyber-Implant Combat", "Unarmed Combat", "Throwing Weapons", "Projectile Weapons", "Heavy Weapons", "Underwater Combat"]},
     {skillAttribute: "Quickness", skillOptions: ["Pistols", "Submachine Guns", "Rifles", "Assault Rifles", "Shotguns", "Laser Weapons", "Whips", "Stealth"]},
     {skillAttribute: "Intelligence", skillOptions: ["Aura Reading", "Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair", "Knowledge Skills", "Language Skills"]},
-    {skillAttribute: "Charisma", skillOptions: ["Etiquette", "Instruction", "Interrogation", "Intimidation", "Leadership", "Negotiation"]},
-    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Scorcery"]},
+    {skillAttribute: "Charisma", skillOptions: ["Etiquette", "Instruction", "Interrogation", "Intimidation", "Leadership", "Negotiation"]},    
     {skillAttribute: "Reaction", skillOptions: ["Bike", "Car", "Hovercraft", "Motorboat", "Ship", "Sailboat", "Winged Aircraft", "Rotor Aircraft", "Vector Thrust Aircraft", "LTA Aircraft", "Submarine"]}
 ];
+
+const srCasterSkills = [
+    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Scorcery"]}
+]
 
 const srSkillSpecializations = [
     {skillName: "Assault Rifles", skillSpecialization: []}, // add all assault weapons here
@@ -70,6 +73,40 @@ function srRandomSkillPlacer(skillPoints){
     let skillAttributeSoftCap = 0;
     let skillRating = 0;
 
+    if(srIsCaster){
+        for (let i = 0; i < srCasterSkills.length; i++) {
+            const {skillAttribute, skillOptions} = srCasterSkills[i];
+            for (let j = 0; j < skillOptions.length; j++) {
+                const option = skillOptions[j];
+                const srSkillsSection = document.createElement("div");
+                const srSkillsName = document.createElement("p");
+                const srSkillsRating = document.createElement("p");
+
+                srSkillsName.classList.add("sr_skill_name");
+                srSkillsName.textContent = option;
+
+                srSkillsRating.classList.add("sr_skill_rating");
+                srSkillsRating.textContent = 6;
+
+                srSkillsSection.classList.add("sr_information_block_spacer");
+                srSkillsSection.appendChild(srSkillsName);
+                srSkillsSection.appendChild(srSkillsRating);
+                srSkillsParent.appendChild(srSkillsSection);
+
+                skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === skillAttribute).Current
+
+                if(6 <= skillAttributeSoftCap){
+                    skillPoints -= 6;
+                }else if(6 > skillAttributeSoftCap && 6 <= skillPoints){
+                    let pointsOver = 2 * (6 - skillAttributeSoftCap);
+                    console.log("over soft cap cost " + pointsOver);
+                    skillPoints -= 6 + pointsOver;
+                }
+                console.log("remaining skill points " + skillPoints);
+            }            
+        }
+    }
+
     while (skillPoints > 0){
         let {attribute, option} = srSkillsRandomizer();
 
@@ -89,7 +126,9 @@ function srRandomSkillPlacer(skillPoints){
 
         console.log("skill rating rolled " + skillRating);
 
-        if(skillRating <= skillAttributeSoftCap){
+        if(skillRating > skillPoints){
+            continue;
+        }else if(skillRating <= skillAttributeSoftCap){
             skillPoints -= skillRating;
         }else if(skillRating > skillAttributeSoftCap){
             let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
