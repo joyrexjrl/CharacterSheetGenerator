@@ -103,7 +103,9 @@
     position: relative;
 }
 
-.sr_general_info_notes_text{
+.sr_general_info_notes_text,
+.sr_character_notes_text,
+.sr_vehicle_notes_text{
     font-size: .5rem !important;
 }
 
