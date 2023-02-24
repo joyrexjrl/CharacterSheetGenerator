@@ -60,6 +60,10 @@ const srSpellName = document.getElementById("sr_spell_name_placer");
 const srSpellForce = document.getElementById("sr_spell_force_placer");
 const srSpellDrain = document.getElementById("sr_spell_drain_placer");
 
+const srAdeptSpellsSection = document.getElementById("sr_adept_spells_section");
+const srSpellAdeptAbilityPlacer = document.getElementById("sr_spell_adept_ability_placer");
+const srSpellAdeptLevelPlacer = document.getElementById("sr_spell_adept_level_placer");
+
 const srEdgeFlawLeftPlacer = document.getElementById("sr_edge_flaw_left_side_information_block_placer");
 const srEdgeFlawLeftName = document.getElementById("sr_edge_flaw_left_name");
 const srEdgeFlawLeftRating = document.getElementById("sr_edge_flaw_left_rating");

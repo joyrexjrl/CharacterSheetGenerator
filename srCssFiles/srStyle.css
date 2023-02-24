@@ -327,7 +327,8 @@
     width: 100%;
 }
 
-.sr_spells_section_spacer{
+.sr_spells_section_spacer,
+.sr_spells_adept_section_spacer{
     gap: var(--sr_gap_spacer);
 }
 

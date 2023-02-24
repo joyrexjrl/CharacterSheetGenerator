@@ -61,7 +61,8 @@ const srSkillSpecializations = [
 
 function srSkillsRandomizer(){            
     let skillAttributeLink = srSkills[Math.floor(Math.random() * srSkills.length)].skillAttribute;
-    let skillOptionChosen = srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions[Math.floor(Math.random() * srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions.length)];
+    let skillOptionChosen = srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions[Math.floor(Math.random() *
+        srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions.length)];
 
     //console.log(skillAttributeLink + skillOptionChosen);
     return{attribute: skillAttributeLink, option: skillOptionChosen};
