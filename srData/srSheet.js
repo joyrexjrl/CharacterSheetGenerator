@@ -56,6 +56,7 @@ const srCyberBioBlockPlacer = document.getElementById("sr_cyberware_bioware_info
 const srCyberBioName = document.getElementById("sr_cyber_bio_name");
 const srCyberBioRating = document.getElementById("sr_cyber_bio_rating");
 
+const srSpellsSectionNonadept = document.getElementById("sr_spells_section_nonadept");
 const srSpellName = document.getElementById("sr_spell_name_placer");
 const srSpellForce = document.getElementById("sr_spell_force_placer");
 const srSpellDrain = document.getElementById("sr_spell_drain_placer");
@@ -111,5 +112,12 @@ priorityRandomPlacer();
 srRacialPointAdjuster(srAttributePoints, srRaceChoice);
 srRandomSkillPlacer(srSkillPoints);
 if(srIsCaster){
+    if(srCasterType === "Adept"){
+        srSpellsSectionNonadept.classList.add("hide");
+        srAdeptSpellsSection.classList.remove("hide");
+    }else{
+        srSpellsSectionNonadept.classList.remove("hide");
+        srAdeptSpellsSection.classList.add("hide");
+    }
     srCasterAbilitys(srCasterType);
 }
