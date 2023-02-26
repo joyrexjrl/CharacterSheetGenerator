@@ -1,7 +1,7 @@
 const srAdeptsPowers = [    
-    {power: "Attribute Boost (Strength)", cost: .25, restricter: function() { return srAttributeBoost("Strength")}}, //per level
-    {power: "Attribute Boost (Body)", cost: .25, restricter: function() { return srAttributeBoost("Body")}},//per level
-    {power: "Attribute Boost (Quickness)", cost: .25, restricter: function() { return srAttributeBoost("Quickness")}}, //per level
+    {power: "Attribute Boost (Strength)", cost: .25}, //per level
+    {power: "Attribute Boost (Body)", cost: .25},//per level
+    {power: "Attribute Boost (Quickness)", cost: .25}, //per level
     {power: "Body Control", cost: .25}, //per level
     {power: "Combat Sense", cost: 1},  //per level
     {power: "Enhanced Perception", cost: .5},  //per level
@@ -27,25 +27,29 @@ const srAdeptPowersNoLevels = [
     {power: "Improved Sense (Sound Dampening)", cost: .25}
 ];
 
-function srAdeptPowersPlacer(spellPoints){
-    const chosenPowers = [];
-    let randomPowerLevelRoll = 0;
+function srAdeptPowersPlacer(spellPoints) {
+    const chosenPowersMap = new Map();
 
-    function getRandomPower(powers, spellPoints){
-        const availablePowers = powers.filter(power => !(power.power in chosenPowers));
+    function getRandomPower(powers) {
+        const availablePowers = powers.filter(power => !chosenPowersMap.has(power.power));
         if (availablePowers.length === 0) {
             return null;
         }
         const randomIndex = Math.floor(Math.random() * availablePowers.length);
         const power = availablePowers[randomIndex];
-        if(power.restricter){
-            const {cost, spellPoints: points} = power.restricter(spellPoints);
-            if(points < 0){
+        if (power.restricter) {
+            const abilityCost = power.restricter(spellPoints);
+            if (abilityCost === null) {
                 return null;
             }
-            return{...power, cost, spellPoints: points};
+            const { cost, powerLevel } = abilityCost;
+            return { ...power, cost, powerLevel };
         }
-        return power;
+        return { ...power };
+    }
+
+    function calculatePowerLevelRoll(power, spellPoints) {
+        return power.cost === "" ? 1 : oseDieRoller(1, Math.ceil(spellPoints / power.cost));
     }
 
     while (spellPoints > 0) {
@@ -56,22 +60,18 @@ function srAdeptPowersPlacer(spellPoints){
         if (!power) {
             break;
         }
-        if (power.cost !== "") {
-            randomPowerLevelRoll = oseDieRoller(1, Math.ceil(spellPoints / power.cost));
-        } else {
-            randomPowerLevelRoll = 1;
-        }
-        let abilityCost = randomPowerLevelRoll * power.cost;
+        const randomPowerLevelRoll = calculatePowerLevelRoll(power, spellPoints);
+        const abilityCost = randomPowerLevelRoll * power.cost;
         if (spellPoints - abilityCost < 0) {
             break;
         }
-        spellPoints -= randomPowerLevelRoll * power.cost;
-        chosenPowers[power.power] = randomPowerLevelRoll;
+        spellPoints -= abilityCost;
+        chosenPowersMap.set(power.power, randomPowerLevelRoll);
     }
+
     const adeptSpellsSection = document.getElementById("sr_adept_spells_section");
 
-    for (const power in chosenPowers) {
-        const powerLevel = chosenPowers[power];
+    for (const [power, powerLevel] of chosenPowersMap) {
         const powerElement = document.createElement("div");
         powerElement.innerHTML = `
         <div class="sr_information_block_spacer flex">
@@ -80,35 +80,8 @@ function srAdeptPowersPlacer(spellPoints){
         </div>
         `;
         adeptSpellsSection.appendChild(powerElement);
-        console.log("current spell points " + spellPoints);
     }
+
     console.log("remaining spell points " + spellPoints);
     srAttributeMagic.innerHTML += " (" + spellPoints + ")";
-}
-
-function srAttributeBoost(boostedAttribute) {
-    const cost = 0.25;
-    const attribute = srAttributesCurrentMax.find(attr => attr.attribute === boostedAttribute);
-    return function(spellPoints) {
-      const attributeCost = srAttributeBoostCalculator(attribute.Max, cost, spellPoints);
-      const remainingPoints = spellPoints - attributeCost;
-      if (remainingPoints < 0) {
-        return { cost: null, spellPoints };
-      }
-      return { cost: attributeCost, spellPoints: remainingPoints };
-    };
-  }
-
-function srAttributeBoostCalculator(attribute, cost, spellPoints){
-    let maxRacialAttribute = 0;
-    let levelRolled = 0;
-    let abilityCost = 0;
-    maxRacialAttribute = Math.ceil(attribute * 1.5);
-    levelRolled = oseDieRoller(1, maxRacialAttribute);
-    abilityCost = levelRolled * cost;
-    if(abilityCost > spellPoints){
-        levelRolled = Math.floor(spellPoints / cost);
-        abilityCost = levelRolled * cost;
-    }
-    return abilityCost
-}
+}  
