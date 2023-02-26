@@ -20,33 +20,9 @@ const srShamanSpiritAnimalTotem = [
     {totem: "Wolf totem", advantage: "• Advantage: +2 dice for combat and detection spells, +2 dice for forest, prairie or mountain spirits (shaman's choice)", disadvantage: "• Disadvantage: Wolf shamans can go berserk when wounded. Whenever a Wolf shaman takes physical damage in combat, the player makes a Willpower (4) Test. The shaman goes berserk for 3 turns, minus 1 turn per success. Three or more successes avert the berserk rage entirely. A berserk shaman will attack the closest living thing, friend or foe, using the most powerful weapons available (mundane or magical). If the shaman incapacitates a target before the time is up, the berserk fury dissipates."}
 ];
 
-const srAdeptsPowers = [
-    {power: "Astral Perception", cost: 2},
-    {power: "Attribute Boost", cost: .25},
-    {power: "Body Control", cost: .25},
-    {power: "Combat Sense", cost: 1},
-    {power: "Enhanced Perception", cost: .5},
-    {power: "Improved Ability (Physical)", cost: .25},
-    {power: "Improved Ability (Combat)", cost: .5},
-    {power: "Improved Physical Attribute", cost: .5},
-    {power: "Improved Reflexes", cost: ""}, //cost depends on level of power
-    {power: "Improved Sense (Direction Sense)", cost: .25},
-    {power: "Improved Sense (Improved Scent)", cost: .25},
-    {power: "Improved Sense (Improved Taste)", cost: .25},
-    {power: "Improved Sense (Flare Compensation)", cost: .25},
-    {power: "Improved Sense (Sound Dampening)", cost: .25},
-    {power: "Killing Hands", cost: ""}, //cost depends on damage level
-    {power: "Magic Resistance", cost: 1},
-    {power: "Missile Parry", cost: 1},
-    {power: "Mystic Armor", cost: .5},
-    {power: "Pain Resistance", cost: .5},
-    {power: "Rapid Healing", cost: .5},
-    {power: "Suspended State", cost: 1}
-];
+var spellPoints = 0;
 
 function srCasterAbilitys(casterType){
-    console.log("caster skills activated, using " + casterType + " abilitys");
-    let spellPoints = 0;
     let randomCasterTypeRoll = 0;        
 
     switch(casterType){
@@ -63,6 +39,7 @@ function srCasterAbilitys(casterType){
             break;
         case "Adept":
             spellPoints = 6;
+            srAdeptPowersPlacer(spellPoints);
             break;
         case "Aspected Magician":
             spellPoints = 35;
@@ -93,8 +70,7 @@ function srSpellPoolPlacer(){
     let spellPoolDice = Math.floor((intelligenceAttribute.Current + willpowerAttribute.Current + magicAttribute) / 3);
 
     srPoolType1.innerHTML = "Spell";
-    srPoolType1Dice.innerHTML = spellPoolDice
-    console.log("spell pool amount " + spellPoolDice);
+    srPoolType1Dice.innerHTML = spellPoolDice;
 }
 
 function srAstralCombatPoolPlacer(){

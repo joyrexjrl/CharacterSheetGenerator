@@ -111,7 +111,7 @@
 
 .sr_attribute_text,
 .sr_vehicle_attribute_text{
-    line-height: 1.2;
+    line-height: 1.16;
 }
 
 .sr_head_section{
@@ -330,6 +330,10 @@
 .sr_spells_section_spacer,
 .sr_spells_adept_section_spacer{
     gap: var(--sr_gap_spacer);
+}
+
+.sr_spell_text{
+    font-size: .5rem !important;
 }
 
 .sr_spells_name_section{

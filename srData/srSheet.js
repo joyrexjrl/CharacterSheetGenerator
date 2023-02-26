@@ -114,10 +114,10 @@ srRandomSkillPlacer(srSkillPoints);
 if(srIsCaster){
     if(srCasterType === "Adept"){
         srSpellsSectionNonadept.classList.add("hide");
-        srAdeptSpellsSection.classList.remove("hide");
+        srAdeptSpellsSection.classList.remove("hide");        
     }else{
         srSpellsSectionNonadept.classList.remove("hide");
         srAdeptSpellsSection.classList.add("hide");
     }
-    srCasterAbilitys(srCasterType);
+    srCasterAbilitys(srCasterType);    
 }
