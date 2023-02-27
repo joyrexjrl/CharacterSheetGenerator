@@ -7,7 +7,7 @@ const srCyberware = [
     {cyberware: "Fingertip Compartment", essenceCost: .1, maxRank: 1, price: 3000},
     {cyberware: ["Hand Blade", "Retractable Hand Blade"], essenceCost: [.1, .25], maxRank: 1, price: [7500, 10000]},
     {cyberware: ["Hand Razors", "Retractable Hand Razors"], essenceCost: [.1, .2], maxRank: 1, price: [4500, 9000]},
-    {cyberware: ["Muscle Replacement 1", "Muscle Replacement 2", "Muscle Replacement 3", "Muscle Replacement 4"], essenceCost: [1, 2, 3, 4], maxRank: 4, price: [20000, 40000, 60000, 80000]},
+    {cyberware: ["Muscle Replacement 1", "Muscle Replacement 2", "Muscle Replacement 3", "Muscle Replacement 4"], essenceCost: [1, 2, 3, 4], maxRank: 1, price: [20000, 40000, 60000, 80000]},
     {cyberware: ["Smartlink", "Built-in Smartgun Link"], essenceCost: [.5, .25], maxRank: 1, price: 2500},
     {cyberware: ["Spur", "Retractable Spur"], essenceCost: [.1, .3], maxRank: 1, price: [7000, 11500]},
     {cyberware: ["Voice Modulator", "Voice Increased Volume", "Voice Playback", "Voice Tonal Shift"], essenceCost: [.2, 0, .2, 0], maxRank: 1, price: [45000, 10000, 40000, 25000]},
