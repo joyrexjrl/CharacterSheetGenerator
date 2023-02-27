@@ -5,11 +5,32 @@ const srAdeptsPowers = [
     {power: "Body Control", cost: .25}, //per level
     {power: "Combat Sense", cost: 1},  //per level
     {power: "Enhanced Perception", cost: .5},  //per level
-    {power: "Improved Ability (Physical)", cost: .25},  //per level
-    {power: "Improved Ability (Combat)", cost: .5},  //per level
-    {power: "Improved Physical Attribute", cost: .5},  //per level
-    {power: "Improved Reflexes", cost: ""}, //cost depends on level of power    
-    {power: "Killing Hands", cost: ""}, //cost depends on damage level
+    {power: "Improved Ability (Athletics)", cost: .25},  //per level
+    {power: "Improved Ability (Diving)", cost: .25},  //per level
+    {power: "Improved Ability (Stealth)", cost: .25},  //per level
+    {power: "Improved Ability (Edged Weapons)", cost: .5},  //per level
+    {power: "Improved Ability (Clubs)", cost: .5},  //per level
+    {power: "Improved Ability (Pole Arms)", cost: .5},  //per level
+    {power: "Improved Ability (Cyber-Implant Weapon)", cost: .5},  //per level
+    {power: "Improved Ability (Unarmed Combat)", cost: .5},  //per level
+    {power: "Improved Ability (Throwing Weapons)", cost: .5},  //per level
+    {power: "Improved Ability (Projectile Weapons)", cost: .5},  //per level
+    {power: "Improved Ability (Underwater Combat)", cost: .5},  //per level
+    {power: "Improved Ability (Pistols)", cost: .5},  //per level
+    {power: "Improved Ability (SMGs)", cost: .5},  //per level
+    {power: "Improved Ability (Rifles)", cost: .5},  //per level
+    {power: "Improved Ability (Assault Rifles)", cost: .5},  //per level
+    {power: "Improved Ability (Shotguns)", cost: .5},  //per level
+    {power: "Improved Ability (Heavy Weapons)", cost: .5},  //per level
+    {power: "Improved Ability (Grenade Launchers)", cost: .5},  //per level
+    {power: "Improved Ability (Whips)", cost: .5},  //per level
+    {power: "Improved Ability (Gunnery)", cost: .5},  //per level
+    {power: "Improved Ability (Launch Weapons)", cost: .5},  //per level
+    {power: "Improved Physical Attribute (Body)", cost: .5},  //per level
+    {power: "Improved Physical Attribute (Strength)", cost: .5},  //per level
+    {power: "Improved Physical Attribute (Quickness)", cost: .5},  //per level
+    {power: "Improved Reflexes", cost: 2}, //cost depends on level of power    
+    {power: "Killing Hands", cost: 1}, //cost depends on damage level
     {power: "Magic Resistance", cost: 1}, //per level    
     {power: "Mystic Armor", cost: .5}, //per level
     {power: "Pain Resistance", cost: .5}, //per level

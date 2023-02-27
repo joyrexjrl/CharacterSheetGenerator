@@ -12,24 +12,24 @@ const srCasterSkills = [
 ]
 
 const srSkillSpecializations = [
-    {skillName: "Assault Rifles", skillSpecialization: []}, // add all assault weapons here
-    {skillName: "Clubs", skillSpecialization: []}, // add all club weapons here
+    {skillName: "Assault Rifles", skillSpecialization: ["AK-97", "AK-98", "FN HAR"]},
+    {skillName: "Clubs", skillSpecialization: ["Club", "Sap", "Stun Baton"]},
     {skillName: "Cyber-Implant Combat", skillSpecialization: []}, // add all Cyber-Implant weapons here
-    {skillName: "Edged Weapons", skillSpecialization: []}, // add all Edged weapons here
+    {skillName: "Edged Weapons", skillSpecialization: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife"]},
     {skillName: "Gunnery", skillSpecialization: []}, // add all Gunnery weapons here
-    {skillName: "Heavy Weapons", skillSpecialization: []}, // add all Heavy weapons here
+    {skillName: "Heavy Weapons", skillSpecialization: ["Ingram Valiant", "RPK HMG", "Ultimax MMG", "Vigorous Assault Cannon"]},
     {skillName: "Laser Weapons", skillSpecialization: []}, // add all Laser weapons here
-    {skillName: "Launch Weapons", skillSpecialization: []}, // add all Launch weapons here
-    {skillName: "Pistols", skillSpecialization: []}, // add all Pistols weapons here
-    {skillName: "Pole Arms/ Staffs", skillSpecialization: []}, // add all Pole Arms/ Staffs weapons here
+    {skillName: "Launch Weapons", skillSpecialization: ["Ares Antioch", "IWS Multi-Launcher"]},
+    {skillName: "Pistols", skillSpecialization: ["Streetline Special", "Walther Palm Pistol", "Beretta Model 101T", "Colt American L36", "Fichetti Security 500", "Fichetti Security 500a","Ceska Black Scorpion", "Ares Predator", "Ares Viper Silvergun", "Browning Max-Power", "Remington Roomsweeper", "Ruger Super Warhawk", "Defiance Super Shock"]},
+    {skillName: "Pole Arms/ Staffs", skillSpecialization: ["Combat Axe", "Pole Arm", "Staff"]},
     {skillName: "Projectile Weapons", skillSpecialization: ["Pull-Bows", "Crossbows"]},
-    {skillName: "Rifles", skillSpecialization: []}, // add all Rifles weapons here
-    {skillName: "Shotguns", skillSpecialization: []}, // add all Shotguns weapons here
-    {skillName: "Submachine Guns", skillSpecialization: []}, // add all Submachine Guns weapons here
-    {skillName: "Throwing Weapons", skillSpecialization: []}, // add all Throwing weapons here
-    {skillName: "Unarmed Combat", skillSpecialization: ["Subduing Combat", "Martial Arts Technique", "Fists", "Head Butts", "Kicks"]},
+    {skillName: "Rifles", skillSpecialization: ["Remington 750", "Remington 950", "Ranger Arms SM-3"]},
+    {skillName: "Shotguns", skillSpecialization: ["Defiance T-250", "Enfield AS-7"]},
+    {skillName: "Submachine Guns", skillSpecialization: ["AK-97 SMG/Carbine", "Heckler & Koch HK227", "HK227-S", "Ingram Smartgun", "Uzi III"]},
+    {skillName: "Throwing Weapons", skillSpecialization: ["Throwing Knife", "Shuriken"]},
+    {skillName: "Unarmed Combat", skillSpecialization: ["Subduing Combat", "Martial Arts Technique", "Fists", "Head Butts", "Kicks", "Shock Glove"]},
     {skillName: "Underwater Combat", skillSpecialization: ["Unarmed Attack", "Armed Attack"]},
-    {skillName: "Whips", skillSpecialization: []}, // add all Whips weapons here
+    {skillName: "Whips", skillSpecialization: ["Monofilament Whip", "Whip"]},
     {skillName: "Aura Reading", skillSpecialization: ["Auras", "Signatures", "Sorcery", "Conjuring"]},
     {skillName: "Sorcery", skillSpecialization: ["Spellcasting", "Spell Defense", "Dispelling", "Astral Combat", "Spell Catagoty"]}, // add the different spell catagorys to the list
     {skillName: "Conjuring", skillSpecialization: ["Summoning", "Banishing", "Controlling"]},

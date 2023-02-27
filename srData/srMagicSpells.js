@@ -34,9 +34,6 @@ const srHealthSpells = [
     {spell: "Decrease Cybered Body (P)", drain: "+2(S)"},
     {spell: "Decrease Cybered Quickness (P)", drain: "+2(S)"},
     {spell: "Decrease Cybered Strength (P)", drain: "+2(S)"},
-    {spell: "Decrease Cybered Charisma (P)", drain: "+2(S)"},
-    {spell: "Decrease Cybered Intelligence (P)", drain: "+2(S)"},
-    {spell: "Decrease Cybered Willpower (P)", drain: "+2(S)"},
     {spell: "Detox (M)", drain: "(Wound Level)"},
     {spell: "Treat (M)", drain: "-1(Wound Level)"},
     {spell: "Healthy Glow (M)", drain: "L"},
@@ -50,9 +47,6 @@ const srHealthSpells = [
     {spell: "Increase Cybered Body (P)", drain: "+2(M)"},
     {spell: "Increase Cybered Quickness (P)", drain: "+2(M)"},
     {spell: "Increase Cybered Strength (P)", drain: "+2(M)"},
-    {spell: "Increase Cybered Charisma (P)", drain: "+2(M)"},
-    {spell: "Increase Cybered Intelligence (P)", drain: "+2(M)"},
-    {spell: "Increase Cybered Willpower (P)", drain: "+2(M)"},
     {spell: "Increase Reaction (M)", drain: "+1(S)"},
     {spell: "Increase Reflexes +1 (M)", drain: "+1(S)"},
     {spell: "Increase Reflexes +2 (M)", drain: "+1(D)"},
@@ -109,10 +103,12 @@ const srManipulationSpells = [
 function srSpellPowerPlacer(spellPoints){
     const spellsArray = [srCombatSpells, srDetectionSpells, srHealthSpells, srIllusionSpells, srIllusionSpells, srManipulationSpells];    
     const srSpellsSectionNonadept = document.getElementById('sr_spells_section_nonadept');
+    const chosenSpells = [];
     
     while(spellPoints > 0){
         const randomSpellArray = spellsArray[Math.floor(Math.random() * spellsArray.length)];
-        const chosenSpell = randomSpellArray[Math.floor(Math.random() * randomSpellArray.length)];
+        const filteredSpellsArray = randomSpellArray.filter(spell => !chosenSpells.includes(spell));
+        const chosenSpell = filteredSpellsArray[Math.floor(Math.random() * filteredSpellsArray.length)];
         let spellForce = oseDieRoller(1, 6);
         if(spellForce > spellPoints) spellForce = spellPoints;
         else spellPoints -= spellForce;
@@ -125,10 +121,10 @@ function srSpellPowerPlacer(spellPoints){
             </div>
             <div class="sr_spells_force_drain_section flex">
                 <div class="sr_spells_force_block">
-                    <p id="sr_spell_force_placer" class="sr_text_align_right sr_spell_text">${spellForce}</p>
+                    <p id="sr_spell_force_placer" class="sr_center_text sr_spell_text">${spellForce}</p>
                 </div>
                 <div class="sr_spells_drain_block">
-                    <p id="sr_spell_drain_placer" class="sr_text_align_right sr_spell_text">${chosenSpell.drain}</p>
+                    <p id="sr_spell_drain_placer" class="sr_center_text sr_spell_text">${chosenSpell.drain}</p>
                 </div>                                                                        
             </div>
         </div>
@@ -136,5 +132,6 @@ function srSpellPowerPlacer(spellPoints){
                 
         srSpellsSectionNonadept.appendChild(spellDiv);
         console.log("remaining spell points " + spellPoints);
+        chosenSpells.push(chosenSpell);
     };
 }

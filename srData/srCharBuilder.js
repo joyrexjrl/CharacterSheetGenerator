@@ -13,6 +13,7 @@ var srResourceAmount = 0;
 var srRaceChoice = "";
 var srIsCaster = false;
 var srCasterType = "";
+var srArchtype = "";
 
 function randomOptionPicker(priority) {
     let availableOptions = priorities.find(p => p.priority === priority).options.filter(o => !usedOptions.includes(o));
@@ -99,6 +100,7 @@ function priorityPlacement(priority, option){
             case "Magic":
                 displayResult = "-"
                 srAttributeMagic.innerHTML = 0;
+                srArchtypePicker();
                 break;
             case "Attributes":
                 displayResult = 24;
@@ -126,6 +128,7 @@ function priorityPlacement(priority, option){
             case "Magic":
                 displayResult = "-"
                 srAttributeMagic.innerHTML = 0;
+                srArchtypePicker();
                 break;
             case "Attributes":
                 displayResult = 21;
@@ -152,6 +155,7 @@ function priorityPlacement(priority, option){
             case "Magic":
                 displayResult = "-"
                 srAttributeMagic.innerHTML = 0;
+                srArchtypePicker();
                 break;
             case "Attributes":
                 displayResult = 18;
@@ -168,4 +172,11 @@ function priorityPlacement(priority, option){
         }
         srPriorityEAmount.innerHTML = displayResult;
     }
+}
+
+function srArchtypePicker(){
+    const archtype = ["Rigger", "Decker", "Street Samurai"];
+    var randomRoll = Math.floor(Math.random() * archtype.length);
+    srArchtype = archtype[randomRoll];
+    console.log("character archtype " + srArchtype);
 }

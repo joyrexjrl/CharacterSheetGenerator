@@ -121,3 +121,6 @@ if(srIsCaster){
     }
     srCasterAbilitys(srCasterType);    
 }
+if(srArchtype === "Rigger");
+if(srArchtype === "Decker");
+if(srArchtype === "Street Samurai");

@@ -3,6 +3,8 @@
 :root{
     --sr_padding: .5rem;
     --sr_gap_spacer: .5rem;
+    --sr_medium_text_size: .8rem;
+    --sr_small_text_size: .5rem;
 }
 
 .sr_h2{
@@ -87,10 +89,6 @@
 /*head section css end*/
 /*attributes conditions karma section css start*/
 
-.sr_inner_section_title{
-    font-size: .6rem !important;
-}
-
 .sr_character_name,
 .sr_character_race,
 .sr_character_sex,
@@ -105,8 +103,13 @@
 
 .sr_general_info_notes_text,
 .sr_character_notes_text,
-.sr_vehicle_notes_text{
-    font-size: .5rem !important;
+.sr_vehicle_notes_text,
+.sr_priority_text,
+.sr_spell_text,
+.sr_skill_name,
+.sr_skill_rating,
+.sr_inner_section_title{
+    font-size: var(--sr_small_text_size) !important;
 }
 
 .sr_attribute_text,
@@ -134,10 +137,6 @@
 
 .sr_priority_display{
     justify-content: space-between;
-}
-
-.sr_priority_text{
-    font-size:.5rem !important;
 }
 
 .sr_attributes_condition_karma_section{
@@ -309,7 +308,7 @@
 .sr_pool_text{
     text-align: right;
     width: 100%;
-    font-size: .5rem !important;
+    font-size: var(--sr_small_text_size) !important;
 }
 
 .sr_skills_pools_cyberware_armor_edges_grid{
@@ -330,10 +329,6 @@
 .sr_spells_section_spacer,
 .sr_spells_adept_section_spacer{
     gap: var(--sr_gap_spacer);
-}
-
-.sr_spell_text{
-    font-size: .5rem !important;
 }
 
 .sr_spells_name_section{
