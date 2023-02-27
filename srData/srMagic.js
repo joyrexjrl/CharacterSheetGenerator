@@ -36,6 +36,7 @@ function srCasterAbilitys(casterType){
             if(fullMageType === "Shamanic"){
                 shamanTotemPicker();
             }
+            srSpellPowerPlacer(spellPoints);
             break;
         case "Adept":
             spellPoints = 6;
@@ -50,6 +51,7 @@ function srCasterAbilitys(casterType){
             if(aspectedMageType === "Shamanist"){
                 shamanTotemPicker();
             }
+            srSpellPowerPlacer(spellPoints);
             break;
     }
     
