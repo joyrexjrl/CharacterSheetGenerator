@@ -112,6 +112,10 @@
     font-size: var(--sr_small_text_size) !important;
 }
 
+.sr_score_text{
+    font-size: .6rem !important;
+}
+
 .sr_attribute_text,
 .sr_vehicle_attribute_text{
     line-height: 1.16;
@@ -191,7 +195,7 @@
 .sr_vehicle_attributes_score{
     border-bottom: 1px solid #000;
     min-width: 40px;
-    line-height: 1.1;
+    line-height: 1.45;
     text-align: center;
 }
 

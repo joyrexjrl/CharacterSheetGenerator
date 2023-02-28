@@ -3,7 +3,7 @@ const srCyberware = [
     {cyberware: "Chipjack", essenceCost: .2, maxRank: 1, price: 1000},
     {cyberware: "Datajack", essenceCost: .2, maxRank: 1, price: 1000},
     {cyberware: "Knowsoft Link", essenceCost: .1, maxRank: 1, price: 1000},
-    {cyberware: ["Bone Lacing (Plastic)", "Bone Lacing (Aluminum)", "Bone Lacing (Titanium)"], essenceCost: 0, maxRank: 1, price: [7500, 25000, 75000]},
+    {cyberware: "Bone Lacing", essenceCost: 0, maxRank: 1, price: 0, newObject: function(){ return srBoneLacing()}},
     {cyberware: "Fingertip Compartment", essenceCost: .1, maxRank: 1, price: 3000},
     {cyberware: ["Hand Blade", "Retractable Hand Blade"], essenceCost: [.1, .25], maxRank: 1, price: [7500, 10000]},
     {cyberware: ["Hand Razors", "Retractable Hand Razors"], essenceCost: [.1, .2], maxRank: 1, price: [4500, 9000]},
@@ -46,3 +46,38 @@ const srCybereyes = [
     {cyberware: ["Vision Magnification (Electronic 1)", "Vision Magnification (Electronic 2)", "Vision Magnification (Electronic 3)"], essenceCost: .1, maxRank: 1, price: [3500, 7500, 11000]}
 ];
 
+function srBoneLacing(){
+    let boneLacingType = ["Bone Lacing (Plastic)", "Bone Lacing (Alumunum)", "Bone Lacing (Titanium)"];
+    let name = "";
+    let essenceCost = 0;
+    let cost = 0;
+    let bodyBonus = srAttributesCurrentMax.find(attribute => attribute.attribute === "Body");
+
+    let randomRoll = Math.floor(Math.random() * boneLacingType.length);
+    switch(boneLacingType[randomRoll]){
+        case "Bone Lacing (Plastic)":
+            name = "Bone Lacing (Plastic)";
+            essenceCost = .5;
+            cost = 7500;
+            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + name + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+2)M Stun";
+            break;
+        case "Bone Lacing (Alumunum)":
+            name = "Bone Lacing (Alumunum)";
+            essenceCost = 1.15;
+            cost = 25000;
+            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + name + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+3)M Stun";
+            //+1 Body, +1 Impact armor, unarmed damage (STR+3)M Stun
+            break;
+        case "Bone Lacing (Titanium)":
+            name = "Bone Lacing (Titanium)";
+            essenceCost = 2.25;
+            cost = 75000;
+            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 2) + ")";
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + name + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+4)M Stun";
+            //+2 Body, +1 impact and ballistic armor, unarmed damage (STR+4)M Stun
+            break;
+    }
+    return {cyberware: name, essenceCost: essenceCost, maxRank: 1, price: cost};
+}

@@ -131,7 +131,6 @@ function srSpellPowerPlacer(spellPoints){
         `;
                 
         srSpellsSectionNonadept.appendChild(spellDiv);
-        console.log("remaining spell points " + spellPoints);
         chosenSpells.push(chosenSpell);
     };
 }
