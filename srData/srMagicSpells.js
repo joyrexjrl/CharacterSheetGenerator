@@ -111,7 +111,7 @@ function srSpellPowerPlacer(spellPoints){
         const chosenSpell = filteredSpellsArray[Math.floor(Math.random() * filteredSpellsArray.length)];
         let spellForce = oseDieRoller(1, 6);
         if(spellForce > spellPoints) spellForce = spellPoints;
-        else spellPoints -= spellForce;
+        spellPoints -= spellForce;
 
         const spellDiv = document.createElement('div');
         spellDiv.innerHTML += `
