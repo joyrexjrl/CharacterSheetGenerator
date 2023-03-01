@@ -4,6 +4,158 @@ var cost = 0;
 var randomRoll = 0;
 var cyberlimbBuiltInDevice = false;
 
+function srCyberEyes(){
+    let eyeMods = ["Camera", "Display Link", "Flare Compensation", "Image Link", "Low-Light", "Opticam", "Protective Covers", "Retinal Clock", "Retinal Duplication", "Thermographic", "Vision Magnification"];
+    let visionMagMods = ["Optical 1", "Optical 2", "Optical 3", "Electronic 1", "Electronic 2", "Electronic 3"];
+    let freeEssenceBank = .5;
+    let modEssenceCost = 0;
+    let chosenMods = [];
+    let addedMods = "";
+    let modsToAdd = oseDieRoller(1, 8);
+
+    cyberwareName = "Cyber Eyes: ";
+    essenceCost = .2;
+    cost = 5000;
+
+    for (let i = 0; i < modsToAdd; i++) {
+        const addMod = eyeMods.filter(mods => !chosenMods.includes(mods));
+        const chosenMod = addMod[Math.floor(Math.random() * addMod.length)];
+        const visionMod = visionMagMods[Math.floor(Math.random() * visionMagMods.length)];
+        let duplicationRating = oseDieRoller(1, 6);
+        
+        switch(chosenMod){
+            case "Camera":
+                modEssenceCost += .4;
+                cost += 5000;
+            break;
+            case "Display Link":
+                modEssenceCost += .1;
+                cost += 1000;
+            break;
+            case "Flare Compensation":
+                modEssenceCost += .1;
+                cost += 2000;
+            break;
+            case "Image Link":
+                modEssenceCost += .2;
+                cost += 1600;
+            break;
+            case "Low-Light":
+                modEssenceCost += .2;
+                cost += 3000;
+            break;
+            case "Opticam":
+                modEssenceCost += .5;
+                cost += 20000;
+            break;
+            case "Protective Covers":
+                cost += 500;
+            break;
+            case "Retinal Clock":
+                modEssenceCost += .1;
+                cost += 450;
+            break;
+            case "Retinal Duplication":
+                modEssenceCost += .1;
+                cost += duplicationRating * 25000;
+            break;
+            case "Thermographic":
+                modEssenceCost += .2;
+                cost += 3000;
+            break;
+            case "Vision Magnification":
+                switch(visionMod){
+                    case "Optical 1":
+                        modEssenceCost += .2;
+                        cost += 2500;
+                    break;
+                    case "Optical 2":
+                        modEssenceCost += .2;
+                        cost += 4000;
+                    break;
+                    case "Optical 3":
+                        modEssenceCost += .2;
+                        cost += 6000;
+                    break;
+                    case "Electronic 1":
+                        modEssenceCost += .1;
+                        cost += 3500;
+                    break;
+                    case "Electronic 2":
+                        modEssenceCost += .1;
+                        cost += 7500;
+                    break;
+                    case "Electronic 3":
+                        modEssenceCost += .1;
+                        cost += 11000;
+                    break;
+                }
+            break;
+        }        
+        if(chosenMod === "Retinal Duplication") addedMods += "• " + chosenMod + " " + duplicationRating + " ";
+        else if(chosenMod === "Vision Magnification") addedMods += "• " + chosenMod + ": " + visionMod + " ";
+        else addedMods += "• " + chosenMod + " ";
+        chosenMods.push(chosenMod);
+    }
+    modEssenceCost -= freeEssenceBank;
+    if(modEssenceCost < 0) modEssenceCost = 0;
+    (essenceCost += modEssenceCost).toFixed(1);
+    cyberwareName += addedMods;
+
+    return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
+}
+
+function srCyberEars(){
+    let earMods = ["Dampener", "Hearing Amplification", "High Frequency", "Low Frequency", "Recorder", "Select Sound Filter"];
+    let freeEssenceBank = .5;
+    let modEssenceCost = 0;
+    let chosenMods = [];
+    let addedMods = "";
+    let modsToAdd = oseDieRoller(1, 4);
+
+    cyberwareName = "Cyber Ears: ";
+    essenceCost = .3;
+    cost = 4000;
+
+    for (let i = 0; i < modsToAdd; i++) {
+        const addMod = earMods.filter(mods => !chosenMods.includes(mods));      
+        const chosenMod = addMod[Math.floor(Math.random() * addMod.length)];
+        let rank = oseDieRoller(1, 5);
+        switch(chosenMod){
+            case "Dampener":
+                modEssenceCost += .1;
+                cost += 3500;
+            break;
+            case "Hearing Amplification":
+                modEssenceCost += .2;
+                cost += 3500;
+            break;
+            case "High Frequency":
+            case "Low Frequency":
+                modEssenceCost += .2;
+                cost += 3000;
+            break;
+            case "Recorder":
+                modEssenceCost += .3;
+                cost += 7000;
+            break;
+            case "Select Sound Filter":                
+                modEssenceCost += .2;
+                cost += rank * 10000;
+            break;
+        }
+        if(chosenMod === "Select Sound Filter") addedMods += "• " + chosenMod + " " + rank + " ";
+        else addedMods += "• " + chosenMod + " ";
+        chosenMods.push(chosenMod);
+    }
+    modEssenceCost -= freeEssenceBank;
+    if(modEssenceCost < 0) modEssenceCost = 0;
+    (essenceCost += modEssenceCost).toFixed(1);
+    cyberwareName += addedMods;
+
+    return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
+}
+
 function srCyberLimbs(){
     let limbReplacement = "";
     let modsAdded = "";
@@ -18,9 +170,6 @@ function srCyberLimbs(){
     let characterBody = srAttributesCurrentMax.find(attribute => attribute.attribute === "Body");
     let cyberStrBonus = 0;
     let cyberBodBonus = 0;
-
-    console.log("limbs to add " + limbsToAdd);
-    console.log("mods to add " + modsToAdd);
 
     cyberwareName = "Cyber Limb: ";
 
@@ -115,8 +264,6 @@ function srCyberLimbs(){
             cyberStrBonus = 8;
         }
 
-        console.log("cyber str bonus " + cyberStrBonus);
-
         function strEnhance(rank){
             if(rank > 3){
                 let modifiedEssence = ((rank - 3) * .4).toFixed(2);
@@ -169,12 +316,9 @@ function srCyberLimbs(){
             }
         }
         modsToAdd -= 1;
-        console.log("check to see if isArm and isLeg bools reset " + isArm + " " + isLeg);
     }
     if(cyberBodBonus > 0) srAttributeBody.innerHTML += " c(" + (characterBody.Current + cyberBodBonus) + ")";    
     cyberwareName += limbReplacement + modsAdded;
-    console.log("full cyberware name with mods " + cyberwareName);
-    console.log({cyberware: cyberwareName, essenceCost: essenceCost, price: cost});
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -208,7 +352,7 @@ function srVCR(){
     srInitiative.innerHTML += "<br>" + "c(" + iniBonus + reactionBonus + ")";
     srPoolType3.innerHTML = "Control";
     srPoolType3Dice.innerHTML = (reactionBonus + (randomRoll*2));
-    return {cyberware: cyberwareName, essenceCost: essenceCost, maxRank: 1, price: cost};
+    return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srFiltration(){

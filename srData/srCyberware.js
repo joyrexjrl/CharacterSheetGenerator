@@ -1,4 +1,3 @@
-var cyberRank = 1;
 const srCyberware = [
     {cyberware: "Chipjack", essenceCost: .2, price: 1000},
     {cyberware: "Datajack", essenceCost: .2, price: 1000},
@@ -14,30 +13,66 @@ const srCyberware = [
     {cyberware: "Dermal Plating", essenceCost: 0, price: 0, newObject: function(){ return srDermalPlating()}},
     {cyberware: "Filtration", essenceCost: 0, price: 0, newObject: function(){ return srFiltration()}},
     {cyberware: "Vehicle Control Rig", essenceCost: 0, price: 0, newObject: function(){ return srVCR()}},
-    {cyberware: "Cyber Limb", essenceCost: 1, price: 0, newObject: function(){ return srCyberLimbs()}},  
+    {cyberware: "Cyber Limb", essenceCost: 1, price: 0, newObject: function(){ return srCyberLimbs()}},
+    {cyberware: "Cyber Eyes", essentCost: 0, price: 0, newObject: function(){ return srCyberEyes()}},
+    {cyberware: "Cyber Ears", essentCost: 0, price: 0, newObject: function(){ return srCyberEars()}}
 ];
 
-const srCyberears = [
-    {cyberware: "Cyber Replacement (Ear)", essenceCost: .3, maxRank: 1, price: 4000},
-    {cyberware: "Dampener", essenceCost: .1, maxRank: 1, price: 3500},
-    {cyberware: "Hearing Amplification", essenceCost: .2, maxRank: 1, price: 3500},
-    {cyberware: "High Frequency", essenceCost: .2, maxRank: 1, price: 3000},
-    {cyberware: "Low Frequency", essenceCost: .2, maxRank: 1, price: 3000},
-    {cyberware: "Recorder", essenceCost: .3, maxRank: 1, price: 7000},
-    {cyberware: "Select Sound Filter", essenceCost: .2, maxRank: 5, price: 10000}
-];
+function srCyberwarePlacer(){
+    const srCyberwareParentDiv = document.getElementById("sr_cyberware_bioware_information_block_placer");
+    let totalCost = 0;
+    let cyberwareEssence = 0;
+    let chosenCyberware = [];
+    let cyberwareName = "";
+    let currentEssence = parseFloat(srAttributeEssence.textContent);
+    let startingYen = parseInt(srResourceAmount);
 
-const srCybereyes = [
-    {cyberware: "Camera", essenceCost: .4, maxRank: 1, price: 5000},
-    {cyberware: "Cyber Replacement (Eye)", essenceCost: .2, maxRank: 1, price: 5000},
-    {cyberware: "Display Link", essenceCost: .1, maxRank: 1, price: 1000},
-    {cyberware: "Flair Compensation", essenceCost: .1, maxRank: 1, price: 2000},
-    {cyberware: "Image Link", essenceCost: .2, maxRank: 1, price: 1600},
-    {cyberware: "Low Light", essenceCost: .2, maxRank: 1, price: 3000},
-    {cyberware: "Opticam", essenceCost: .5, maxRank: 1, price: 20000},
-    {cyberware: "Retinal Clock", essenceCost: .1, maxRank: 1, price: 450},
-    {cyberware: "Thermographic", essenceCost: .2, maxRank: 1, price: 3000},
-    {cyberware: ["Vision Magnification (Optical 1)", "Vision Magnification (Optical 2)", "Vision Magnification (Optical 3)"], essenceCost: .2, maxRank: 1, price: [2500, 4000, 6000]},
-    {cyberware: ["Vision Magnification (Electronic 1)", "Vision Magnification (Electronic 2)", "Vision Magnification (Electronic 3)"], essenceCost: .1, maxRank: 1, price: [3500, 7500, 11000]}
-];
+    console.log("starting yen: " + startingYen + " starting essence: " + currentEssence);
+
+    while(currentEssence > .01){
+        const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
+        const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
+        if(cyberware.newObject){
+            const newCyberware = cyberware.newObject();
+            cyberwareName = newCyberware.cyberware;
+            cyberwareEssence = newCyberware.essenceCost;
+            totalCost = newCyberware.price;
+        }else{
+            cyberwareName = cyberware.cyberware;
+            cyberwareEssence = cyberware.essenceCost;
+            totalCost = cyberware.price;
+        }
+
+        currentEssence -= cyberwareEssence;
+        startingYen -= totalCost;
+
+        if((currentEssence -= cyberwareEssence) < 0 || (startingYen -= totalCost) < 0){
+            console.log("failed to add due to reasons " + cyberwareName);
+            console.log("essence cost " + cyberwareEssence);        
+            console.log("remaining essence " + currentEssence);
+            console.log("cost of cyberware " + totalCost);        
+            console.log("remaining yen " + startingYen);
+            console.log("--------------------------------------------");
+            break;
+        }else{
+            const cyberDiv = document.createElement('div');
+            cyberDiv.innerHTML += `
+            <div class="sr_information_block_spacer">
+                <p id="sr_cyber_bio_name" class="sr_skill_name">${cyberwareName}</p>
+                <p id="sr_cyber_bio_rating" class="sr_skill_rating">${cyberwareEssence}</p>
+            </div>
+            `;
+
+            srCyberwareParentDiv.appendChild(cyberDiv);
+            chosenCyberware.push(cyberware);
+            srAttributeEssence.innerHTML =  parseFloat(currentEssence).toFixed(2) - parseFloat(cyberwareEssence).toFixed(2);
+            console.log("adding " + cyberwareName);
+            console.log("essence cost " + cyberwareEssence);        
+            console.log("remaining essence " + currentEssence);
+            console.log("cost of cyberware " + totalCost);        
+            console.log("remaining yen " + startingYen);
+            console.log("--------------------------------------------");
+        }                
+    }    
+}
 

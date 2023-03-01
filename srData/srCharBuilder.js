@@ -10,6 +10,7 @@ const usedOptions = [];
 var srAttributePoints = 0;
 var srSkillPoints = 0;
 var srResourceAmount = 0;
+var srTotalEquipmentCost = 0;
 var srRaceChoice = "";
 var srIsCaster = false;
 var srCasterType = "";
