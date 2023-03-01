@@ -7,14 +7,14 @@ var cyberlimbBuiltInDevice = false;
 function srCyberEyes(){
     let eyeMods = ["Camera", "Display Link", "Flare Compensation", "Image Link", "Low-Light", "Opticam", "Protective Covers", "Retinal Clock", "Retinal Duplication", "Thermographic", "Vision Magnification"];
     let visionMagMods = ["Optical 1", "Optical 2", "Optical 3", "Electronic 1", "Electronic 2", "Electronic 3"];
-    let freeEssenceBank = .5;
+    let freeEssenceBank = 50;
     let modEssenceCost = 0;
     let chosenMods = [];
     let addedMods = "";
     let modsToAdd = oseDieRoller(1, 8);
 
     cyberwareName = "Cyber Eyes: ";
-    essenceCost = .2;
+    essenceCost = 20;
     cost = 5000;
 
     for (let i = 0; i < modsToAdd; i++) {
@@ -25,68 +25,68 @@ function srCyberEyes(){
         
         switch(chosenMod){
             case "Camera":
-                modEssenceCost += .4;
+                modEssenceCost += 40;
                 cost += 5000;
             break;
             case "Display Link":
-                modEssenceCost += .1;
+                modEssenceCost += 10;
                 cost += 1000;
             break;
             case "Flare Compensation":
-                modEssenceCost += .1;
+                modEssenceCost += 10;
                 cost += 2000;
             break;
             case "Image Link":
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += 1600;
             break;
             case "Low-Light":
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += 3000;
             break;
             case "Opticam":
-                modEssenceCost += .5;
+                modEssenceCost += 50;
                 cost += 20000;
             break;
             case "Protective Covers":
                 cost += 500;
             break;
             case "Retinal Clock":
-                modEssenceCost += .1;
+                modEssenceCost += 10;
                 cost += 450;
             break;
             case "Retinal Duplication":
-                modEssenceCost += .1;
+                modEssenceCost += 10;
                 cost += duplicationRating * 25000;
             break;
             case "Thermographic":
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += 3000;
             break;
             case "Vision Magnification":
                 switch(visionMod){
                     case "Optical 1":
-                        modEssenceCost += .2;
+                        modEssenceCost += 20;
                         cost += 2500;
                     break;
                     case "Optical 2":
-                        modEssenceCost += .2;
+                        modEssenceCost += 20;
                         cost += 4000;
                     break;
                     case "Optical 3":
-                        modEssenceCost += .2;
+                        modEssenceCost += 20;
                         cost += 6000;
                     break;
                     case "Electronic 1":
-                        modEssenceCost += .1;
+                        modEssenceCost += 10;
                         cost += 3500;
                     break;
                     case "Electronic 2":
-                        modEssenceCost += .1;
+                        modEssenceCost += 10;
                         cost += 7500;
                     break;
                     case "Electronic 3":
-                        modEssenceCost += .1;
+                        modEssenceCost += 10;
                         cost += 11000;
                     break;
                 }
@@ -99,7 +99,7 @@ function srCyberEyes(){
     }
     modEssenceCost -= freeEssenceBank;
     if(modEssenceCost < 0) modEssenceCost = 0;
-    (essenceCost += modEssenceCost).toFixed(1);
+    (essenceCost += modEssenceCost).toFixed(2);
     cyberwareName += addedMods;
 
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -107,14 +107,14 @@ function srCyberEyes(){
 
 function srCyberEars(){
     let earMods = ["Dampener", "Hearing Amplification", "High Frequency", "Low Frequency", "Recorder", "Select Sound Filter"];
-    let freeEssenceBank = .5;
+    let freeEssenceBank = 50;
     let modEssenceCost = 0;
     let chosenMods = [];
     let addedMods = "";
     let modsToAdd = oseDieRoller(1, 4);
 
     cyberwareName = "Cyber Ears: ";
-    essenceCost = .3;
+    essenceCost = 30;
     cost = 4000;
 
     for (let i = 0; i < modsToAdd; i++) {
@@ -123,24 +123,24 @@ function srCyberEars(){
         let rank = oseDieRoller(1, 5);
         switch(chosenMod){
             case "Dampener":
-                modEssenceCost += .1;
+                modEssenceCost += 10;
                 cost += 3500;
             break;
             case "Hearing Amplification":
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += 3500;
             break;
             case "High Frequency":
             case "Low Frequency":
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += 3000;
             break;
             case "Recorder":
-                modEssenceCost += .3;
+                modEssenceCost += 30;
                 cost += 7000;
             break;
             case "Select Sound Filter":                
-                modEssenceCost += .2;
+                modEssenceCost += 20;
                 cost += rank * 10000;
             break;
         }
@@ -150,7 +150,7 @@ function srCyberEars(){
     }
     modEssenceCost -= freeEssenceBank;
     if(modEssenceCost < 0) modEssenceCost = 0;
-    (essenceCost += modEssenceCost).toFixed(1);
+    (essenceCost += modEssenceCost).toFixed(2);
     cyberwareName += addedMods;
 
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -266,7 +266,7 @@ function srCyberLimbs(){
 
         function strEnhance(rank){
             if(rank > 3){
-                let modifiedEssence = ((rank - 3) * .4).toFixed(2);
+                let modifiedEssence = ((rank - 3) * 40).toFixed(2);
                 essenceCost += parseFloat(modifiedEssence);
                 cost += ((rank - 3) * 50000) + (3 * 50000);
             }else{
@@ -288,11 +288,11 @@ function srCyberLimbs(){
                         cyberlimbBuiltInDevice = true;
                     break;
                     case "Built-In Smartgun Link":
-                        essenceCost += parseFloat(.25);
+                        essenceCost += parseFloat(25);
                         cost += 2500;
                     break;
                     case "Direct Neural Interface":
-                        essenceCost += parseFloat(.1);
+                        essenceCost += parseFloat(10);
                         cost += 4500;
                     break;
                     case "Strength Enhancement":
@@ -306,7 +306,7 @@ function srCyberLimbs(){
                 modsAdded += "• " + chooseLegMod + " ";
                 switch(chooseLegMod){                    
                     case "Direct Neural Interface":
-                        essenceCost += parseFloat(.1);
+                        essenceCost += parseFloat(10);
                         cost += 4500;
                     break;
                     case "Strength Enhancement":
@@ -331,19 +331,19 @@ function srVCR(){
     cyberwareName = "Vehicle Control Rig " + randomRoll;
     switch(randomRoll){
         case 1:
-            essenceCost = 2;
+            essenceCost = 200;
             cost = 12000;
             iniBonus = "2d6+";
             reactionBonus = reaction + 2;
             break;
         case 2:
-            essenceCost = 3;
+            essenceCost = 300;
             cost = 60000;
             reactionBonus = reaction + 4;
             iniBonus = "3d6+";
             break;
         case 3:
-            essenceCost = 5;
+            essenceCost = 500;
             cost = 300000;
             reactionBonus = reaction + 6;
             iniBonus = "4d6+";
@@ -369,14 +369,14 @@ function srFiltration(){
         switch(chooseFilterType){
             case "Air":
                 addedFilterType += "Air "
-                essenceCost += parseFloat((filterRank /10).toFixed(2));
+                essenceCost += parseFloat(((filterRank /10)*100).toFixed(2));
                 cost += filterRank * 15000;
                 break;
             case "Blood":
             case "Ingested Toxin":
                 if(chooseFilterType === "Blood") addedFilterType += "Blood ";
                 else if(chooseFilterType === "Ingested Toxin") addedFilterType += "Ingested Toxin ";
-                essenceCost += parseFloat((filterRank /5).toFixed(2));
+                essenceCost += parseFloat(((filterRank /5)*100).toFixed(2));
                 cost += filterRank *10000;
                 break;
         }
@@ -393,15 +393,15 @@ function srDermalPlating(){
 
     switch(randomRoll){
         case 1:
-            essenceCost = .5;
+            essenceCost = 50;
             cost = 6000;
             break;
         case 2:
-            essenceCost = 1;
+            essenceCost = 100;
             cost = 15000;
             break;
         case 3:
-            essenceCost = 1.5;
+            essenceCost = 150;
             cost = 45000;
             break;
     }
@@ -423,19 +423,19 @@ function srReflexesCyberware(){
         cyberwareName = "Boosted Reflexes " + randomRoll;
         switch(randomRoll){
             case 1:
-                essenceCost = .5;
+                essenceCost = 50;
                 cost = 15000;
                 iniBonus = "2d6+";
                 reactionBonus = reaction + 0;
                 break;
             case 2:
-                essenceCost = 1.25;
+                essenceCost = 125;
                 cost = 40000;
                 reactionBonus = reaction + 1;
                 iniBonus = "2d6+";
                 break;
             case 3:
-                essenceCost = 2.8;
+                essenceCost = 280;
                 cost = 90000;
                 reactionBonus = reaction + 2;
                 iniBonus = "3d6+";
@@ -445,19 +445,19 @@ function srReflexesCyberware(){
         cyberwareName = "Wired Reflexes " + randomRoll;
         switch(randomRoll){
             case 1:
-                essenceCost = 2;
+                essenceCost = 200;
                 cost = 55000;
                 iniBonus = "2d6+";
                 reactionBonus = reaction + 2;
                 break;
             case 2:
-                essenceCost = 3;
+                essenceCost = 300;
                 cost = 165000;
                 reactionBonus = reaction + 4;
                 iniBonus = "3d6+";
                 break;
             case 3:
-                essenceCost = 5;
+                essenceCost = 500;
                 cost = 500000;
                 reactionBonus = reaction + 6;
                 iniBonus = "4d6+";
@@ -474,7 +474,7 @@ function srVoiceModulator(){
     let upgradeAmounts = oseDieRoller(0, 3);
 
     cyberwareName = "Voice Modulator";
-    essenceCost = .2;
+    essenceCost = 20;
     cost = 45000;
 
     switch(upgradeAmounts){
@@ -484,12 +484,12 @@ function srVoiceModulator(){
             break;
         case 2:
             upgrades = "PB TS";
-            essenceCost += .2;
+            essenceCost += 20;
             cost += 65000;
             break;
         case 3:
             upgrades = "IV PB TS";
-            essenceCost += .2;
+            essenceCost += 20;
             cost += 75000;
             break;
         default:
@@ -508,12 +508,12 @@ function srSpur(){
     switch(spurType[randomRoll]){
         case "Spur":
             cyberwareName = "Spur";
-            essenceCost = .1;
+            essenceCost = 10;
             cost = 7000;
             break;
         case "Retractable Spur":
             cyberwareName = "Retractable Spur";
-            essenceCost = .3;
+            essenceCost = 30;
             cost = 11500;            
             break;
     }
@@ -543,14 +543,14 @@ function srBoneLacing(){
     switch(boneLacingType[randomRoll]){
         case "Bone Lacing (Plastic)":
             cyberwareName = "Bone Lacing (Plastic)";
-            essenceCost = .5;
+            essenceCost = 50;
             cost = 7500;
             srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
             srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+2)M Stun";
             break;
         case "Bone Lacing (Alumunum)":
             cyberwareName = "Bone Lacing (Alumunum)";
-            essenceCost = 1.15;
+            essenceCost = 115;
             cost = 25000;
             srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
             srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+3)M Stun";
@@ -558,7 +558,7 @@ function srBoneLacing(){
             break;
         case "Bone Lacing (Titanium)":
             cyberwareName = "Bone Lacing (Titanium)";
-            essenceCost = 2.25;
+            essenceCost = 225;
             cost = 75000;
             srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 2) + ")";
             srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+4)M Stun";
@@ -576,25 +576,25 @@ function srHandBlade(){
     switch(bladeTypes[randomRoll]){
         case "Hand Blade":
             cyberwareName = "Hand Blade";
-            essenceCost = .1;
+            essenceCost = 10;
             cost = 4500;
             unarmedDamageBonus = "• (STR)L"
             break;
         case "Retractable Hand Blade":
             cyberwareName = "Retractable Hand Blade";
-            essenceCost = .2;
+            essenceCost = 20;
             cost = 9000;
             unarmedDamageBonus = "• (STR)L"
             break;
         case "Hand Blade (Improved)":
             cyberwareName = "Hand Blade (Improved)";
-            essenceCost = .1;
+            essenceCost = 10;
             cost = 13000;
             unarmedDamageBonus = "• (STR+2)L"
             break;
         case "Retractable Hand Blade (Improved)":
             cyberwareName = "Retractable Hand Blade (Improved)";
-            essenceCost = .2;
+            essenceCost = 20;
             cost = 17500;
             unarmedDamageBonus = "• (STR+2)L"
             break;

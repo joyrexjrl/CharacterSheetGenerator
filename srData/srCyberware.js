@@ -1,12 +1,12 @@
 const srCyberware = [
-    {cyberware: "Chipjack", essenceCost: .2, price: 1000},
-    {cyberware: "Datajack", essenceCost: .2, price: 1000},
-    {cyberware: "Knowsoft Link", essenceCost: .1, price: 1000},
+    {cyberware: "Chipjack", essenceCost: 20, price: 1000},
+    {cyberware: "Datajack", essenceCost: 20, price: 1000},
+    {cyberware: "Knowsoft Link", essenceCost: 10, price: 1000},
     {cyberware: "Bone Lacing", essenceCost: 0, price: 0, newObject: function(){ return srBoneLacing()}},
-    {cyberware: "Fingertip Compartment", essenceCost: .1, price: 3000},
+    {cyberware: "Fingertip Compartment", essenceCost: 10, price: 3000},
     {cyberware: "Hand Blade", essenceCost: 0, price: 0, newObject: function(){ return srHandBlade()}},
     {cyberware: "Muscle Replacement", essenceCost: 0, price: 0, newObject: function(){ return srMuscleReplacement()}},
-    {cyberware: "Smartlink", essenceCost: .5, price: 2500},
+    {cyberware: "Smartlink", essenceCost: 50, price: 2500},
     {cyberware: "Spur", essenceCost: 0, price: 0, newObject: function(){ return srSpur()}},
     {cyberware: "Voice Modulator", essenceCost: 0, price: 0, newObject: function(){ return srVoiceModulator()}},
     {cyberware: "Reflexes", essenceCost: 0, price: 0, newObject: function(){ return srReflexesCyberware()}},
@@ -42,6 +42,8 @@ function srCyberwarePlacer(){
             cyberwareEssence = cyberware.essenceCost;
             totalCost = cyberware.price;
         }
+        console.log("essence cost before division " + cyberwareEssence);
+        parseFloat(cyberwareEssence /= 100).toFixed(2);
 
         currentEssence -= cyberwareEssence;
         startingYen -= totalCost;
