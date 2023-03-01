@@ -125,4 +125,4 @@ if(srArchtype === "Rigger");
 if(srArchtype === "Decker");
 if(srArchtype === "Street Samurai");
 
-srReflexesCyberware()
+srCyberLimbs()

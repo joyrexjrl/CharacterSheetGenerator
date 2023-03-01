@@ -103,6 +103,5 @@ function srAdeptPowersPlacer(spellPoints) {
         adeptSpellsSection.appendChild(powerElement);
     }
 
-    console.log("remaining spell points " + spellPoints);
     srAttributeMagic.innerHTML += " (" + spellPoints + ")";
 }  
