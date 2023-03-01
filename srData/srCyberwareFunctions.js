@@ -169,6 +169,7 @@ function srCyberLimbs(){
             }
         }
         modsToAdd -= 1;
+        console.log("check to see if isArm and isLeg bools reset " + isArm + " " + isLeg);
     }
     if(cyberBodBonus > 0) srAttributeBody.innerHTML += " c(" + (characterBody.Current + cyberBodBonus) + ")";    
     cyberwareName += limbReplacement + modsAdded;
