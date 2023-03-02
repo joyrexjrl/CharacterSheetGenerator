@@ -58,7 +58,6 @@ function srCyberwarePlacer(){
             break;
         }else{
             currentEssence -= cyberwareEssence;
-                
             currentYen -= totalCost;
 
             const cyberDiv = document.createElement('div');

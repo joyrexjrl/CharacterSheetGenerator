@@ -4,6 +4,14 @@ var cost = 0;
 var randomRoll = 0;
 var cyberlimbBuiltInDevice = false;
 
+var cyberStrengthBonus = 0;
+var cyberQuicknessBonus = 0;
+var cyberBodyBonus = 0;
+var cyberReactionBonus = 0;
+var cyberInitiativeBonus = "";
+var cyberImpactArmorBonus = 0;
+var cyberBalisticArmorBonus = 0;
+
 function srCyberEyes(){
     let eyeMods = ["Camera", "Display Link", "Flare Compensation", "Image Link", "Low-Light", "Opticam", "Protective Covers", "Retinal Clock", "Retinal Duplication", "Thermographic", "Vision Magnification"];
     let visionMagMods = ["Optical 1", "Optical 2", "Optical 3", "Electronic 1", "Electronic 2", "Electronic 3"];
@@ -92,14 +100,14 @@ function srCyberEyes(){
                 }
             break;
         }        
-        if(chosenMod === "Retinal Duplication") addedMods += "• " + chosenMod + " " + duplicationRating + " ";
-        else if(chosenMod === "Vision Magnification") addedMods += "• " + chosenMod + ": " + visionMod + " ";
-        else addedMods += "• " + chosenMod + " ";
+        if(chosenMod === "Retinal Duplication") addedMods += "•" + chosenMod + " " + duplicationRating + " ";
+        else if(chosenMod === "Vision Magnification") addedMods += "•" + chosenMod + ": " + visionMod + " ";
+        else addedMods += "•" + chosenMod + " ";
         chosenMods.push(chosenMod);
     }
     modEssenceCost -= freeEssenceBank;
     if(modEssenceCost < 0) modEssenceCost = 0;
-    (essenceCost += modEssenceCost).toFixed(2);
+    essenceCost += modEssenceCost;
     cyberwareName += addedMods;
 
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -144,13 +152,13 @@ function srCyberEars(){
                 cost += rank * 10000;
             break;
         }
-        if(chosenMod === "Select Sound Filter") addedMods += "• " + chosenMod + " " + rank + " ";
-        else addedMods += "• " + chosenMod + " ";
+        if(chosenMod === "Select Sound Filter") addedMods += "•" + chosenMod + " " + rank + " ";
+        else addedMods += "•" + chosenMod + " ";
         chosenMods.push(chosenMod);
     }
     modEssenceCost -= freeEssenceBank;
     if(modEssenceCost < 0) modEssenceCost = 0;
-    (essenceCost += modEssenceCost).toFixed(2);
+    essenceCost += modEssenceCost;
     cyberwareName += addedMods;
 
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -166,10 +174,7 @@ function srCyberLimbs(){
     let chosenLimbAndMods = [];    
     let limbsToAdd = oseDieRoller(1, 2);
     let modsToAdd = oseDieRoller(0, 2);
-    let characterStrength = srAttributesCurrentMax.find(attribute => attribute.attribute === "Strength");
-    let characterBody = srAttributesCurrentMax.find(attribute => attribute.attribute === "Body");
     let cyberStrBonus = 0;
-    let cyberBodBonus = 0;
 
     cyberwareName = "Cyber Limb: ";
 
@@ -193,7 +198,7 @@ function srCyberLimbs(){
             case "Cyberarm Pair":                
                 chosenLimbAndMods.push("Cyberarm Pair", "Cyberarm Left", "Cyberarm Right", "Synthetic Cyberarm Right", "Synthetic Cyberarm Left", "Synthetic Cyberarm Pair");
                 isArm = true;
-                cyberBodBonus += 1;
+                cyberBodyBonus += 1;
                 break;
             case "Synthetic Cyberarm Left":                
                 chosenLimbAndMods.push("Synthetic Cyberarm Left", "Cyberarm Pair", "Cyberarm Left", "Synthetic Cyberarm Pair");
@@ -206,7 +211,7 @@ function srCyberLimbs(){
             case "Synthetic Cyberarm Pair":
                 chosenLimbAndMods.push("Synthetic Cyberarm Pair", "Cyberarm Left", "Cyberarm Right", "Cyberarm Pair", "Synthetic Cyberarm Right", "Synthetic Cyberarm Left");
                 isArm = true;
-                cyberBodBonus += 1;
+                cyberBodyBonus += 1;
                 break;
             case "Cyberleg Left":
                 chosenLimbAndMods.push("Cyberleg Left", "Cyberleg Pair", "Synthetic Cyberleg Left", "Synthetic Cyberleg Pair");
@@ -219,7 +224,7 @@ function srCyberLimbs(){
             case "Cyberleg Pair":
                 chosenLimbAndMods.push("Cyberleg Pair", "Cyberleg Right", "Cyberleg Left", "Synthetic Cyberleg Right", "Synthetic Cyberleg Left", "Synthetic Cyberleg Pair");
                 isLeg = true;
-                cyberBodBonus += 2;
+                cyberBodyBonus += 2;
                 break;
             case "Synthetic Cyberleg Left":
                 chosenLimbAndMods.push("Synthetic Cyberleg Left", "Synthetic Cyberleg Pair", "Cyberleg Left", "Cyberleg Pair");
@@ -232,23 +237,23 @@ function srCyberLimbs(){
             case "Synthetic Cyberleg Pair":
                 chosenLimbAndMods.push("Synthetic Cyberleg Pair", "Synthetic Cyberleg Right", "Synthetic Cyberleg Left", "Cyberleg Right", "Cyberleg Left", "Cyberleg Pair");
                 isLeg = true;
-                cyberBodBonus += 2;
+                cyberBodyBonus += 2;
                 break;
         }
 
-        limbReplacement += "• " + chosenLimbType + " ";
+        limbReplacement += "•" + chosenLimbType + " ";
         if(chosenLimbType === "Cyberarm Left" || chosenLimbType === "Cyberarm Right" || chosenLimbType === "Cyberleg Left" || chosenLimbType === "Cyberleg Right"){
-            essenceCost += parseFloat(1);
+            essenceCost += 100;
             cost += 75000;
         }else if(chosenLimbType === "Cyberarm Pair" || chosenLimbType === "Cyberleg Pair"){
-            essenceCost += parseFloat(2);
+            essenceCost += 200;
             cost += 150000;
         }else if(chosenLimbType === "Synthetic Cyberarm Left" || chosenLimbType === "Synthetic Cyberarm Right" ||
             chosenLimbType === "Synthetic Cyberleg Left" || chosenLimbType === "Synthetic Cyberleg Right"){
-            essenceCost += parseFloat(1);
+            essenceCost += 100;
             cost += 100000;
         }else if(chosenLimbType === "Synthetic Cyberarm Pair" || chosenLimbType === "Synthetic Cyberleg Pair"){
-            essenceCost += parseFloat(2);
+            essenceCost += 200;
             cost += 200000;
         }
 
@@ -266,7 +271,7 @@ function srCyberLimbs(){
 
         function strEnhance(rank){
             if(rank > 3){
-                let modifiedEssence = ((rank - 3) * 40).toFixed(2);
+                let modifiedEssence = (rank - 3) * 40;
                 essenceCost += parseFloat(modifiedEssence);
                 cost += ((rank - 3) * 50000) + (3 * 50000);
             }else{
@@ -282,17 +287,17 @@ function srCyberLimbs(){
             if(isArm){
                 const chooseArmMod = armMods[Math.floor(Math.random() * armMods.length)];
                 chosenLimbAndMods.push(chooseArmMod);
-                modsAdded += "• " + chooseArmMod + " ";
+                modsAdded += "•" + chooseArmMod + " ";
                 switch(chooseArmMod){
                     case "Built-In Device":
                         cyberlimbBuiltInDevice = true;
                     break;
                     case "Built-In Smartgun Link":
-                        essenceCost += parseFloat(25);
+                        essenceCost += 25;
                         cost += 2500;
                     break;
                     case "Direct Neural Interface":
-                        essenceCost += parseFloat(10);
+                        essenceCost += 10;
                         cost += 4500;
                     break;
                     case "Strength Enhancement":
@@ -303,10 +308,10 @@ function srCyberLimbs(){
             }else if(isLeg){
                 const chooseLegMod = legMods[Math.floor(Math.random() * legMods.length)];
                 chosenLimbAndMods.push(chooseLegMod);
-                modsAdded += "• " + chooseLegMod + " ";
+                modsAdded += "•" + chooseLegMod + " ";
                 switch(chooseLegMod){                    
                     case "Direct Neural Interface":
-                        essenceCost += parseFloat(10);
+                        essenceCost += 10;
                         cost += 4500;
                     break;
                     case "Strength Enhancement":
@@ -317,36 +322,32 @@ function srCyberLimbs(){
         }
         modsToAdd -= 1;
     }
-    if(cyberBodBonus > 0) srAttributeBody.innerHTML += " c(" + (characterBody.Current + cyberBodBonus) + ")";    
+    if(cyberBodyBonus > 0) srAttributeBody.innerHTML += " c(" + (characterBody.Current + cyberBodBonus) + ")";    
     cyberwareName += limbReplacement + modsAdded;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srVCR(){
-    let reaction = parseInt(srReaction.textContent);
-    let iniBonus = "";
-    let reactionBonus = 0;
-
     randomRoll = oseDieRoller(1, 3);
     cyberwareName = "Vehicle Control Rig " + randomRoll;
     switch(randomRoll){
         case 1:
             essenceCost = 200;
             cost = 12000;
-            iniBonus = "2d6+";
-            reactionBonus = reaction + 2;
+            cyberInitiativeBonus += "2d6+";
+            cyberReactionBonus += 2;
             break;
         case 2:
             essenceCost = 300;
             cost = 60000;
-            reactionBonus = reaction + 4;
-            iniBonus = "3d6+";
+            cyberReactionBonus += 4;
+            cyberInitiativeBonus += "3d6+";
             break;
         case 3:
             essenceCost = 500;
             cost = 300000;
-            reactionBonus = reaction + 6;
-            iniBonus = "4d6+";
+            cyberReactionBonus += 6;
+            cyberInitiativeBonus += "4d6+";
             break;
     }
     srInitiative.innerHTML += "<br>" + "c(" + iniBonus + reactionBonus + ")";
@@ -369,20 +370,20 @@ function srFiltration(){
         switch(chooseFilterType){
             case "Air":
                 addedFilterType += "Air "
-                essenceCost += parseFloat(((filterRank /10)*100).toFixed(2));
+                essenceCost += parseFloat(((filterRank /10)*100));
                 cost += filterRank * 15000;
                 break;
             case "Blood":
             case "Ingested Toxin":
                 if(chooseFilterType === "Blood") addedFilterType += "Blood ";
                 else if(chooseFilterType === "Ingested Toxin") addedFilterType += "Ingested Toxin ";
-                essenceCost += parseFloat(((filterRank /5)*100).toFixed(2));
+                essenceCost += parseFloat(((filterRank /5)*100));
                 cost += filterRank *10000;
                 break;
         }
         chosenType.push(chooseFilterType);
     }
-    cyberwareName = "Filtration: " + addedFilterType;    
+    cyberwareName = "Filtration: " + addedFilterType + " " + filterRank;    
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -405,15 +406,13 @@ function srDermalPlating(){
             cost = 45000;
             break;
     }
+    cyberBodyBonus += randomRoll;
     srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + randomRoll) + ")";
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srReflexesCyberware(){
     let reflexType = ["Boosted Reflexes", "Wired Reflexes"];
-    let reaction = parseInt(srReaction.textContent);
-    let iniBonus = "";
-    let reactionBonus = 0;
     let reflexRandomRoll = Math.floor(Math.random() * reflexType.length);
     let reflexTypeChosen = reflexType[reflexRandomRoll];
 
@@ -425,20 +424,19 @@ function srReflexesCyberware(){
             case 1:
                 essenceCost = 50;
                 cost = 15000;
-                iniBonus = "2d6+";
-                reactionBonus = reaction + 0;
+                cyberInitiativeBonus += "2d6+";
                 break;
             case 2:
                 essenceCost = 125;
                 cost = 40000;
-                reactionBonus = reaction + 1;
-                iniBonus = "2d6+";
+                cyberReactionBonus += 1;
+                cyberInitiativeBonus += "2d6+";
                 break;
             case 3:
                 essenceCost = 280;
                 cost = 90000;
-                reactionBonus = reaction + 2;
-                iniBonus = "3d6+";
+                cyberReactionBonus += 2;
+                cyberInitiativeBonus += "3d6+";
                 break;
         }
     }else{
@@ -447,20 +445,20 @@ function srReflexesCyberware(){
             case 1:
                 essenceCost = 200;
                 cost = 55000;
-                iniBonus = "2d6+";
-                reactionBonus = reaction + 2;
+                cyberInitiativeBonus += "2d6+";
+                cyberReactionBonus += 2;
                 break;
             case 2:
                 essenceCost = 300;
                 cost = 165000;
-                reactionBonus = reaction + 4;
-                iniBonus = "3d6+";
+                cyberReactionBonus += 4;
+                cyberInitiativeBonus += "3d6+";
                 break;
             case 3:
                 essenceCost = 500;
                 cost = 500000;
-                reactionBonus = reaction + 6;
-                iniBonus = "4d6+";
+                cyberReactionBonus += 6;
+                cyberInitiativeBonus += "4d6+";
                 break;
         }
     }
@@ -518,26 +516,22 @@ function srSpur(){
             break;
     }
     if(cyberlimbBuiltInDevice) essenceCost = 0;
-    srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR)M";
+    srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR)M";
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srMuscleReplacement(){
-    let strengthBonus = srAttributesCurrentMax.find(attribute => attribute.attribute === "Strength");
-    let quicknessBonus = srAttributesCurrentMax.find(attribute => attribute.attribute === "Quickness");
-
     randomRoll = oseDieRoller(1, 4);
     cyberwareName = "Muscle Replacement " + randomRoll;
     essenceCost = randomRoll * 100;
     cost = 20000 * randomRoll;
-    srAttributeStrength.innerHTML += " c(" + (strengthBonus.Current + randomRoll) + ")";
-    srAttributeQuickness.innerHTML += " c(" + (quicknessBonus.Current + randomRoll) + ")";
+    cyberStrengthBonus += randomRoll;
+    cyberQuicknessBonus += randomRoll;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srBoneLacing(){
     let boneLacingType = ["Bone Lacing (Plastic)", "Bone Lacing (Alumunum)", "Bone Lacing (Titanium)"];
-    let bodyBonus = srAttributesCurrentMax.find(attribute => attribute.attribute === "Body");
 
     randomRoll = Math.floor(Math.random() * boneLacingType.length);
     switch(boneLacingType[randomRoll]){
@@ -545,24 +539,25 @@ function srBoneLacing(){
             cyberwareName = "Bone Lacing (Plastic)";
             essenceCost = 50;
             cost = 7500;
-            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+2)M Stun";
+            cyberBodyBonus += 1;
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+2)M Stun";
             break;
         case "Bone Lacing (Alumunum)":
             cyberwareName = "Bone Lacing (Alumunum)";
             essenceCost = 115;
             cost = 25000;
-            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 1) + ")";
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+3)M Stun";
-            //+1 Body, +1 Impact armor, unarmed damage (STR+3)M Stun
+            cyberBodyBonus += 1;
+            cyberImpactArmorBonus += 1;
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+3)M Stun";
             break;
         case "Bone Lacing (Titanium)":
             cyberwareName = "Bone Lacing (Titanium)";
             essenceCost = 225;
             cost = 75000;
-            srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + 2) + ")";
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "• (STR+4)M Stun";
-            //+2 Body, +1 impact and ballistic armor, unarmed damage (STR+4)M Stun
+            cyberBodyBonus += 2;
+            cyberImpactArmorBonus += 1;
+            cyberBalisticArmorBonus += 1;
+            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+4)M Stun";
             break;
     }
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -578,25 +573,25 @@ function srHandBlade(){
             cyberwareName = "Hand Blade";
             essenceCost = 10;
             cost = 4500;
-            unarmedDamageBonus = "• (STR)L"
+            unarmedDamageBonus = "•(STR)L"
             break;
         case "Retractable Hand Blade":
             cyberwareName = "Retractable Hand Blade";
             essenceCost = 20;
             cost = 9000;
-            unarmedDamageBonus = "• (STR)L"
+            unarmedDamageBonus = "•(STR)L"
             break;
         case "Hand Blade (Improved)":
             cyberwareName = "Hand Blade (Improved)";
             essenceCost = 10;
             cost = 13000;
-            unarmedDamageBonus = "• (STR+2)L"
+            unarmedDamageBonus = "•(STR+2)L"
             break;
         case "Retractable Hand Blade (Improved)":
             cyberwareName = "Retractable Hand Blade (Improved)";
             essenceCost = 20;
             cost = 17500;
-            unarmedDamageBonus = "• (STR+2)L"
+            unarmedDamageBonus = "•(STR+2)L"
             break;
     }
     if(cyberlimbBuiltInDevice) essenceCost = 0;
