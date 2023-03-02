@@ -24,12 +24,12 @@ function srCyberwarePlacer(){
     let cyberwareEssence = 0;
     let chosenCyberware = [];
     let cyberwareName = "";
-    let currentEssence = parseFloat(srAttributeEssence.textContent);
-    let startingYen = parseInt(srResourceAmount);
+    let currentEssence = 600;
+    let currentYen = parseInt(srResourceAmount);
 
-    console.log("starting yen: " + startingYen + " starting essence: " + currentEssence);
+    console.log("starting yen: " + currentYen + " starting essence: " + currentEssence);
 
-    while(currentEssence > .01){
+    while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
         const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
         if(cyberware.newObject){
@@ -43,38 +43,44 @@ function srCyberwarePlacer(){
             totalCost = cyberware.price;
         }
         console.log("essence cost before division " + cyberwareEssence);
-        parseFloat(cyberwareEssence /= 100).toFixed(2);
+        
+        var availableEssence = currentEssence - cyberwareEssence;
+        var availableYen = currentYen - totalCost;
 
-        currentEssence -= cyberwareEssence;
-        startingYen -= totalCost;
-
-        if((currentEssence -= cyberwareEssence) < 0 || (startingYen -= totalCost) < 0){
+        if(availableEssence < 0 || availableYen < 0){
             console.log("failed to add due to reasons " + cyberwareName);
             console.log("essence cost " + cyberwareEssence);        
             console.log("remaining essence " + currentEssence);
             console.log("cost of cyberware " + totalCost);        
-            console.log("remaining yen " + startingYen);
+            console.log("remaining yen " + currentYen);
             console.log("--------------------------------------------");
+            cyberwareEssence = 0;
             break;
         }else{
+            currentEssence -= cyberwareEssence;
+                
+            currentYen -= totalCost;
+
             const cyberDiv = document.createElement('div');
             cyberDiv.innerHTML += `
             <div class="sr_information_block_spacer">
                 <p id="sr_cyber_bio_name" class="sr_skill_name">${cyberwareName}</p>
-                <p id="sr_cyber_bio_rating" class="sr_skill_rating">${cyberwareEssence}</p>
+                <p id="sr_cyber_bio_rating" class="sr_skill_rating">${cyberwareEssence/100}</p>
             </div>
             `;
 
             srCyberwareParentDiv.appendChild(cyberDiv);
             chosenCyberware.push(cyberware);
-            srAttributeEssence.innerHTML =  parseFloat(currentEssence).toFixed(2) - parseFloat(cyberwareEssence).toFixed(2);
+            cyberwareEssence = 0;
             console.log("adding " + cyberwareName);
-            console.log("essence cost " + cyberwareEssence);        
             console.log("remaining essence " + currentEssence);
             console.log("cost of cyberware " + totalCost);        
-            console.log("remaining yen " + startingYen);
+            console.log("remaining yen " + currentYen);
             console.log("--------------------------------------------");
         }                
-    }    
+    } 
+    currentEssence /= 100;
+    console.log("remaining essence after division " + currentEssence);
+    srAttributeEssence.innerHTML = currentEssence;
 }
 

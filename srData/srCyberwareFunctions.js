@@ -528,7 +528,7 @@ function srMuscleReplacement(){
 
     randomRoll = oseDieRoller(1, 4);
     cyberwareName = "Muscle Replacement " + randomRoll;
-    essenceCost = randomRoll;
+    essenceCost = randomRoll * 100;
     cost = 20000 * randomRoll;
     srAttributeStrength.innerHTML += " c(" + (strengthBonus.Current + randomRoll) + ")";
     srAttributeQuickness.innerHTML += " c(" + (quicknessBonus.Current + randomRoll) + ")";
