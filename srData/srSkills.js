@@ -2,7 +2,7 @@ const srSkills = [
     {skillAttribute: "Body", skillOptions: ["Athletics", "Diving"]},
     {skillAttribute: "Strength", skillOptions: ["Edged Weapons", "Clubs", "Pole Arms/ Staffs", "Cyber-Implant Combat", "Unarmed Combat", "Throwing Weapons", "Projectile Weapons", "Heavy Weapons", "Underwater Combat"]},
     {skillAttribute: "Quickness", skillOptions: ["Pistols", "Submachine Guns", "Rifles", "Assault Rifles", "Shotguns", "Laser Weapons", "Whips", "Stealth"]},
-    {skillAttribute: "Intelligence", skillOptions: ["Aura Reading", "Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair", "Knowledge Skills", "Language Skills"]},
+    {skillAttribute: "Intelligence", skillOptions: ["Aura Reading", "Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair"]},
     {skillAttribute: "Charisma", skillOptions: ["Etiquette", "Instruction", "Interrogation", "Intimidation", "Leadership", "Negotiation"]},    
     {skillAttribute: "Reaction", skillOptions: ["Bike", "Car", "Hovercraft", "Motorboat", "Ship", "Sailboat", "Winged Aircraft", "Rotor Aircraft", "Vector Thrust Aircraft", "LTA Aircraft", "Submarine"]}
 ];
@@ -43,6 +43,7 @@ const srSkillSpecializations = [
     {skillName: "Leadership", skillSpecialization: ["Political", "Military", "Commercial", "Strategy", "Tactics", "Morale"]},
     {skillName: "Negotiation", skillSpecialization: ["Bargain", "Bribe", "Con", "Fast Talk"]},
     {skillName: "Biotech", skillSpecialization: ["Cybertechnology Implantation", "Extended Care", "First Aid", "Organ Culture & Growth", "Surgery", "Transplant Surgery"]},
+    {skillName: "Build/Repair", skillSpecialization: ["Armor", "Assault Rifles", "Clubs Weapons", "Computer", "Cybernetics", "Cyber Implant Weapons", "Diving Equipment", "Edged Weapons", "Electronics", "Security Systems", "Gunnery Equipment", "Heavy Weapons", "Laser Weapons", "Launch Weapons", "Pistols", "Pole Arms/Staffs", "Projectile Weapons", "Rifles", "Shotguns", "Submachine Guns", "Throwing Weapons", "Whips", "Bike", "Car", "Fixed Wing Aircraft", "Hovercraft", "LTA Aircraft", "Motorboat", "Rotor Aircraft", "Sailboat", "Ship", "Submarine", "Vector thrust Aircraft"]},
     {skillName: "Computer", skillSpecialization: ["Hardware", "Decking", "Programming", "Cybernetics"]},
     {skillName: "Demolitions", skillSpecialization: ["Commercial Explosives", "Plastic Explosives", "Improvised Explosives"]},
     {skillName: "Electronics", skillSpecialization: ["Control Systems", "Electronic Warfare", "Maglocks", "Linking between Devices", "Diagnostics", "Cybertechnology"]},
