@@ -39,8 +39,6 @@ function srCyberwarePlacer(){
     let currentEssence = 600;
     let currentYen = parseInt(srResourceAmount);
 
-    console.log("starting yen: " + currentYen + " starting essence: " + currentEssence);
-
     while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
         const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
@@ -55,28 +53,17 @@ function srCyberwarePlacer(){
             cyberwareEssence = cyberware.essenceCost;
             totalCost = cyberware.price;
         }
-        console.log("essence cost before division " + cyberwareEssence);
         
         var availableEssence = currentEssence - cyberwareEssence;
         var availableYen = currentYen - totalCost;
 
         if(availableEssence < 0 || availableYen < 0){
-            console.log("failed to add due to reasons " + cyberwareName);
-            console.log("essence cost " + cyberwareEssence);        
-            console.log("remaining essence " + currentEssence);
-            console.log("cost of cyberware " + totalCost);        
-            console.log("remaining yen " + currentYen);
-            console.log("--------------------------------------------");
             cyberwareEssence = 0;
             break;
         }else{
             let combinedReaction = cyberReactionBonus + reactionCyberAttributeBonus;
             currentEssence -= cyberwareEssence;
             currentYen -= totalCost;
-
-            console.log("attribute values to be passed: " + "str: " + cyberStrengthBonus + " quick: " + cyberQuicknessBonus + " body: " + cyberBodyBonus + " reac: " +
-                cyberReactionBonus + " impac: " + cyberImpactArmorBonus + " bali: " + cyberBalisticArmorBonus + " ini: " + cyberInitiativeBonus + " rank: " + cyberRank +
-                " unarmed: " + cyberUnarmedDamageBonus);
 
             if(cyberwareName.includes("Cyber Limb")){
                 srCharNotesPlacer.innerHTML += "<br>" + "Unarmed cyber enhanced damage bonus: +" + cyberUnarmedPowerBonus;
@@ -129,18 +116,11 @@ function srCyberwarePlacer(){
                 //if(cyberBalisticArmorBonus > 0);  fix after armor has been implemented to html
             }
 
-            console.log("passed values for html display: body " + passedBody + ", quickness " + passedQuickness + ", strength " + passedStrength);
-
             srCyberBonusResets();
 
             srCyberwareParentDiv.appendChild(cyberDiv);
             chosenCyberware.push(cyberware);
             cyberwareEssence = 0;
-            console.log("adding " + cyberwareName);
-            console.log("remaining essence " + currentEssence);
-            console.log("cost of cyberware " + totalCost);        
-            console.log("remaining yen " + currentYen);
-            console.log("--------------------------------------------");
         }                
     }
 
@@ -156,7 +136,6 @@ function srCyberwarePlacer(){
     srPassedBonusesReset();
 
     currentEssence /= 100;
-    console.log("remaining essence after division " + currentEssence);
     srAttributeEssence.innerHTML = currentEssence;
 }
 

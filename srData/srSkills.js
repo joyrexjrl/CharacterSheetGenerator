@@ -14,9 +14,9 @@ const srCasterSkills = [
 const srSkillSpecializations = [
     {skillName: "Assault Rifles", skillSpecialization: ["AK-97", "AK-98", "FN HAR"]},
     {skillName: "Clubs", skillSpecialization: ["Club", "Sap", "Stun Baton"]},
-    {skillName: "Cyber-Implant Combat", skillSpecialization: []}, // add all Cyber-Implant weapons here
+    {skillName: "Cyber-Implant Combat", skillSpecialization: ["Hand Blade", "Hand Razors", "Spur"]},
     {skillName: "Edged Weapons", skillSpecialization: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife"]},
-    {skillName: "Gunnery", skillSpecialization: []}, // add all Gunnery weapons here
+    {skillName: "Gunnery", skillSpecialization: ["Ares Vermicide Autocannon", "Water Cannon"]},
     {skillName: "Heavy Weapons", skillSpecialization: ["Ingram Valiant", "RPK HMG", "Ultimax MMG", "Vigorous Assault Cannon"]},
     {skillName: "Laser Weapons", skillSpecialization: []}, // add all Laser weapons here
     {skillName: "Launch Weapons", skillSpecialization: ["Ares Antioch", "IWS Multi-Launcher"]},
@@ -31,7 +31,7 @@ const srSkillSpecializations = [
     {skillName: "Underwater Combat", skillSpecialization: ["Unarmed Attack", "Armed Attack"]},
     {skillName: "Whips", skillSpecialization: ["Monofilament Whip", "Whip"]},
     {skillName: "Aura Reading", skillSpecialization: ["Auras", "Signatures", "Sorcery", "Conjuring"]},
-    {skillName: "Sorcery", skillSpecialization: ["Spellcasting", "Spell Defense", "Dispelling", "Astral Combat", "Spell Catagoty"]}, // add the different spell catagorys to the list
+    {skillName: "Sorcery", skillSpecialization: ["Spellcasting", "Spell Defense", "Dispelling", "Astral Combat", "Combat Spells", "Detection Spells", "Health Spells", "Illusion Spells", "Manipulation Spells"]},
     {skillName: "Conjuring", skillSpecialization: ["Summoning", "Banishing", "Controlling"]},
     {skillName: "Athletics", skillSpecialization: ["Running", "Climbing", "Lifting", "Jumping", "Escape Artist", "Swimming"]},
     {skillName: "Diving", skillSpecialization: ["Deep-water Diving", "Mixed-gas Diving"]},
@@ -46,17 +46,17 @@ const srSkillSpecializations = [
     {skillName: "Computer", skillSpecialization: ["Hardware", "Decking", "Programming", "Cybernetics"]},
     {skillName: "Demolitions", skillSpecialization: ["Commercial Explosives", "Plastic Explosives", "Improvised Explosives"]},
     {skillName: "Electronics", skillSpecialization: ["Control Systems", "Electronic Warfare", "Maglocks", "Linking between Devices", "Diagnostics", "Cybertechnology"]},
-    {skillName: "Bike", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Car", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Hovercraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "LTA Aircraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Motorboat", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Rotor Aircraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Sailboat", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
+    {skillName: "Bike", skillSpecialization: ["Remote Operations", "Dodge Scoot", "Harley-Davidson Scorpion", "Yamaha Rapier"]},
+    {skillName: "Car", skillSpecialization: ["Remote Operations", "Chrysler-Nissan Jackrabbit", "Eurocar Westwind 2000", "Ares Roadmaster", "Ford-Canada Bison", "Ares Citymaster", "Chrysler-Nissan Patrol-1", "Doc Waggon Osprey II"]},
+    {skillName: "Hovercraft", skillSpecialization: ["Remote Operations", "Chrysler-Nissan G12A", "GMC Beachcraft Patroller"]},
+    {skillName: "LTA Aircraft", skillSpecialization: ["Remote Operations", "GMC Banshee"]},
+    {skillName: "Motorboat", skillSpecialization: ["Remote Operations", "Samuvani Criscraft Otter"]},
+    {skillName: "Rotor Aircraft", skillSpecialization: ["Remote Operations", "Ares Dragon", "Northrup Wasp (PRC-42B Variant)"]},
+    {skillName: "Sailboat", skillSpecialization: ["Remote Operations", "Sendanko Marlin"]},
     {skillName: "Ship", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
     {skillName: "Submarine", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
     {skillName: "Vector Thrust Aircraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
-    {skillName: "Winged Aircraft", skillSpecialization: ["Remote Operations", ""]}, // add vehicle types here
+    {skillName: "Winged Aircraft", skillSpecialization: ["Remote Operations", "Cessna C750"]},
 ];
 
 function srSkillsRandomizer(){            
@@ -72,6 +72,8 @@ function srRandomSkillPlacer(skillPoints){
     let selectedSkills = [];
     let skillAttributeSoftCap = 0;
     let skillRating = 0;
+    let isSpecialized = false;
+    let optionPlusSpecialization = "";
 
     if(srIsCaster && srCasterType !== "Adept"){
         for (let i = 0; i < srCasterSkills.length; i++) {
@@ -80,13 +82,24 @@ function srRandomSkillPlacer(skillPoints){
                 const option = skillOptions[j];
                 const srSkillsSection = document.createElement("div");
                 const srSkillsName = document.createElement("p");
-                const srSkillsRating = document.createElement("p");
+                const srSkillsRating = document.createElement("p");                
+
+                let randomNumber = oseDieRoller(1, 10);
+
+                if(randomNumber < 3){
+                    isSpecialized = true;
+                    optionPlusSpecialization = srSkillSpecialPicker(option);
+                }
 
                 srSkillsName.classList.add("sr_skill_name");
-                srSkillsName.textContent = option;
+                if(isSpecialized) srSkillsName.textContent = optionPlusSpecialization;
+                else srSkillsName.textContent = option;
 
                 srSkillsRating.classList.add("sr_skill_rating");
-                srSkillsRating.textContent = 6;
+                if(isSpecialized) srSkillsRating.textContent = "5 (7)";
+                else srSkillsRating.textContent = 6;
+
+                isSpecialized = false;
 
                 srSkillsSection.classList.add("sr_information_block_spacer");
                 srSkillsSection.appendChild(srSkillsName);
@@ -117,8 +130,16 @@ function srRandomSkillPlacer(skillPoints){
         const srSkillsName = document.createElement("p");
         const srSkillsRating = document.createElement("p");
 
+        let randomNumber = oseDieRoller(1, 10);
+
+        if(randomNumber < 3){
+            isSpecialized = true;
+            optionPlusSpecialization = srSkillSpecialPicker(option);
+        }
+
         srSkillsName.classList.add("sr_skill_name");
-        srSkillsName.textContent = option;
+        if(isSpecialized) srSkillsName.textContent = optionPlusSpecialization;
+        else srSkillsName.textContent = option;
 
         srSkillsRating.classList.add("sr_skill_rating");
         skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === attribute)?.Current || parseInt(srReaction.textContent);
@@ -142,7 +163,12 @@ function srRandomSkillPlacer(skillPoints){
             }            
         }
 
-        srSkillsRating.textContent = skillRating;
+        if(isSpecialized){
+            let lowerByOne = skillRating - 1;
+            let raiseByOne = skillRating + 1;
+            if(lowerByOne < 1) lowerByOne = 1;
+            srSkillsRating.textContent = lowerByOne + " (" + raiseByOne + ")";
+        }else srSkillsRating.textContent = skillRating;
 
         srSkillsSection.classList.add("sr_information_block_spacer");
         srSkillsSection.appendChild(srSkillsName);
@@ -150,5 +176,19 @@ function srRandomSkillPlacer(skillPoints){
         srSkillsParent.appendChild(srSkillsSection);
 
         selectedSkills.push(option);
+        isSpecialized = false;
     }
+}
+
+function srSkillSpecialPicker(skillName){
+    var specializationOptions = [];
+    for (var i = 0; i < srSkillSpecializations.length; i++) {
+        if (srSkillSpecializations[i].skillName === skillName) {
+            specializationOptions = srSkillSpecializations[i].skillSpecialization;
+            break;
+        }
+    }
+
+    var skillSpecialization = specializationOptions[Math.floor(Math.random() * specializationOptions.length)];
+    return skillName + " (" + skillSpecialization + ")";
 }

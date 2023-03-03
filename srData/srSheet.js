@@ -121,8 +121,13 @@ if(srIsCaster){
     }
     srCasterAbilitys(srCasterType);    
 }
-if(srArchtype === "Rigger");
-if(srArchtype === "Decker");
-if(srArchtype === "Street Samurai");
+if(srArchtype === "Rigger"){
+    srCyberwarePlacer();
+}
+if(srArchtype === "Decker"){
+    srCyberwarePlacer();
+}
+if(srArchtype === "Street Samurai"){
+    srCyberwarePlacer();
+}
 
-srCyberwarePlacer()
