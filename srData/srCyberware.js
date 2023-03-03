@@ -25,6 +25,8 @@ function srCyberwarePlacer(){
     let quicknessCyberAttributeBonus = parseInt(srAttributeQuickness.textContent);
     let strengthCyberAttributeBonus = parseInt(srAttributeStrength.textContent);
     let reactionCyberAttributeBonus = parseInt(srReaction.textContent);
+    let intelligenceAttribute = srAttributesCurrentMax.find(attribute => attribute.attribute === "Intelligence");
+    let willpowerAttribute = srAttributesCurrentMax.find(attribute => attribute.attribute === "Willpower");
 
     let passedStrength = 0;
     let passedQuickness = 0;
@@ -68,6 +70,7 @@ function srCyberwarePlacer(){
             cyberwareEssence = 0;
             break;
         }else{
+            let combinedReaction = cyberReactionBonus + reactionCyberAttributeBonus;
             currentEssence -= cyberwareEssence;
             currentYen -= totalCost;
 
@@ -75,50 +78,40 @@ function srCyberwarePlacer(){
                 cyberReactionBonus + " impac: " + cyberImpactArmorBonus + " bali: " + cyberBalisticArmorBonus + " ini: " + cyberInitiativeBonus + " rank: " + cyberRank +
                 " unarmed: " + cyberUnarmedDamageBonus);
 
-            switch(cyberwareName){
-                case "Hand Blade":
-                case "Retractable Hand Blade":
-                case "Hand Blade (Improved)":
-                case "Retractable Hand Blade (Improved)":
-                case "Bone Lacing (Plastic)":
-                case "Bone Lacing (Alumunum)":
-                case "Bone Lacing (Titanium)":
-                case "Spur":
-                case "Retractable Spur":
-                    srCharNotesPlacer.innerHTML += "<br>" + '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + cyberUnarmedDamageBonus;
-                    cyberUnarmedDamageBonus = "";
-                break;
-                case "Boosted Reflexes 1":
-                case "Boosted Reflexes 2":
-                case "Boosted Reflexes 3":
-                case "Wired Reflexes 1":
-                case "Wired Reflexes 2":
-                case "Wired Reflexes 3":
-                    if(cyberwareName === "Boosted Reflexes 1" || cyberwareName === "Boosted Reflexes 2" || cyberwareName === "Boosted Reflexes 3"){
-                        srInitiative.innerHTML += "<br>" + "Cyber Boosted" + "<br>" + "c(" + cyberInitiativeBonus + (cyberReactionBonus + reactionCyberAttributeBonus) + ")";
+            if(cyberwareName.includes("Cyber Limb")){
+                srCharNotesPlacer.innerHTML += "<br>" + "Unarmed cyber enhanced damage bonus: +" + cyberUnarmedPowerBonus;
+                cyberUnarmedPowerBonus = 0;
+            }
+
+            if(cyberwareName.includes("Hand Blade") || cyberwareName.includes("Bone Lacing") || cyberwareName.includes("Spur")){
+                srCharNotesPlacer.innerHTML += "<br>" + '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + cyberUnarmedDamageBonus;
+                cyberUnarmedDamageBonus = "";
+            }
+
+            if(cyberwareName.includes("Boosted Reflexes") || cyberwareName.includes("Wired Reflexes")){
+                if(cyberwareName.includes("Boosted Reflexes")){
+                    srInitiative.innerHTML += "<br>" + '<span class="sr_tiny_text">Boosted Ini</span>' + "<br>" + "c(" + cyberInitiativeBonus + combinedReaction + ")";
+                    if(cyberwareName === "Boosted Reflexes 2" || cyberwareName === "Boosted Reflexes 3"){
+                        srReaction.innerHTML += "<br>" + '<span class="sr_tiny_text">Boosted Reaction</span>' + "<br>" + combinedReaction;
                     }
-                    if(cyberwareName === "Wired Reflexes 1" || cyberwareName === "Wired Reflexes 2" || cyberwareName === "Wired Reflexes 3"){
-                        srInitiative.innerHTML += "<br>" + "Cyber Wired" + "<br>" + "c(" + cyberInitiativeBonus + (cyberReactionBonus + reactionCyberAttributeBonus) + ")";
-                    }
-                    cyberInitiativeBonus = "";
-                    cyberReactionBonus = 0;
-                break;
-                case "Vehicle Control Rig 1":
-                case "Vehicle Control Rig 2":
-                case "Vehicle Control Rig 3":
-                    let combinedReaction = cyberReactionBonus + reactionCyberAttributeBonus;
-                    srInitiative.innerHTML += "<br>" + "Cyber VCR" + "<br>" + "c(" + cyberInitiativeBonus + combinedReaction + ")";
-                    srPoolType3.innerHTML = "Control";
-                    srPoolType3Dice.innerHTML = (combinedReaction + (cyberRank*2));
-                    cyberInitiativeBonus = "";
-                    cyberReactionBonus = 0;
-                    cyberRank = 0;                                        
-                break;
-                case "Cyber Limb":
-                    srCharNotesPlacer.innerHTML += "<br>" + "Unarmed cyber enhanced damage bonus: +" + cyberUnarmedPowerBonus;
-                    cyberUnarmedPowerBonus = 0;
-                break;
-            }            
+                }
+                if(cyberwareName.includes("Wired Reflexes")){
+                    srReaction.innerHTML += "<br>" + '<span class="sr_tiny_text">Wired Reaction</span>' + "<br>" + combinedReaction;
+                    srInitiative.innerHTML += "<br>" + '<span class="sr_tiny_text">Wired Ini</span>' + "<br>" + "c(" + cyberInitiativeBonus + combinedReaction + ")";
+                }
+                cyberInitiativeBonus = "";
+                cyberReactionBonus = 0;
+            }
+
+            if(cyberwareName.includes("Vehicle Control Rig")){
+                srReaction.innerHTML += "<br>" + '<span class="sr_tiny_text">VCR Reaction</span>' + "<br>" + combinedReaction;
+                srInitiative.innerHTML += "<br>" + '<span class="sr_tiny_text">VCR Ini</span>' + "<br>" + "c(" + cyberInitiativeBonus + combinedReaction + ")";
+                srPoolType3.innerHTML = "Control";
+                srPoolType3Dice.innerHTML = (combinedReaction + (cyberRank*2));
+                cyberInitiativeBonus = "";
+                cyberReactionBonus = 0;
+                cyberRank = 0;  
+            }           
 
             const cyberDiv = document.createElement('div');
             cyberDiv.innerHTML += `
@@ -155,6 +148,8 @@ function srCyberwarePlacer(){
         if(passedStrength > 0) srAttributeStrength.innerHTML += " c(" + (strengthCyberAttributeBonus + passedStrength) + ")";
         if(passedQuickness > 0) srAttributeQuickness.innerHTML += " c(" + (quicknessCyberAttributeBonus + passedQuickness) + ")";
         if(passedBody > 0) srAttributeBody.innerHTML += " c(" + (bodyCyberAttributeBonus + passedBody) + ")";
+        let recalcCombatPool = Math.floor(((quicknessCyberAttributeBonus + passedQuickness) + intelligenceAttribute.Current + willpowerAttribute.Current) /2);
+        if(recalcCombatPool > srCombatPool.textContent) srCombatPool.innerHTML = recalcCombatPool;
     }
 
     srCyberBonusResets();

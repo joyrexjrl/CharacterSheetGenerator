@@ -273,11 +273,9 @@ function srCyberLimbs(){
             cost += 200000;
         }
 
-        console.log("cyberlimb str min requirment " + characterStrength.Current);
-
-        if(srRaceChoice === "Human" && characterStrength.Current > 4 || srRaceChoice === "Elf" && characterStrength.Current > 4 ||
-        srRaceChoice === "Ork" && characterStrength.Current > 6 || srRaceChoice === "Dwarf" && characterStrength.Current > 6 ||
-        srRaceChoice === "Troll" && characterStrength.Current > 8){
+        if((srRaceChoice === "Human" && characterStrength.Current > 4) || (srRaceChoice === "Elf" && characterStrength.Current > 4) ||
+        (srRaceChoice === "Ork" && characterStrength.Current > 6) || (srRaceChoice === "Dwarf" && characterStrength.Current > 6) ||
+        (srRaceChoice === "Troll" && characterStrength.Current > 8)){
             chosenLimbAndMods.push("Strength Enhancement");
         }else if(srRaceChoice === "Human" && characterStrength.Current < 4 || srRaceChoice === "Elf" && characterStrength.Current < 4){
             cyberStrBonus = 4;
@@ -286,8 +284,6 @@ function srCyberLimbs(){
         }else if(srRaceChoice === "Troll" && characterStrength.Current < 8){
             cyberStrBonus = 8;
         }
-
-        console.log("limb mods idnore list " + chosenLimbAndMods);
 
         function strEnhance(rank){
             if(rank > 3){

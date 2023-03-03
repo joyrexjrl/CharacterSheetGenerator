@@ -5,6 +5,7 @@
     --sr_gap_spacer: .5rem;
     --sr_medium_text_size: .8rem;
     --sr_small_text_size: .5rem;
+    --sr_tiny_text_size: .4rem;
 }
 
 .sr_h2{
@@ -116,6 +117,10 @@
     font-size: .6rem !important;
 }
 
+.sr_tiny_text{
+    font-size: var(--sr_tiny_text_size);
+}
+
 .sr_attribute_text,
 .sr_vehicle_attribute_text{
     line-height: 1.16;
@@ -203,6 +208,7 @@
 .sr_small_score_box{
     border: 1px solid #000;
     display: flex;
+    text-align: center;
     align-items: center;
     justify-content: center;
 }
