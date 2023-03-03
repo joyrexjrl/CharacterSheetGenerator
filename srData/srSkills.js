@@ -164,6 +164,8 @@ function srRandomSkillPlacer(skillPoints){
             }            
         }
 
+        //console.log("skill: " + option + " base skill rating: " + skillRating);
+
         if(isSpecialized){
             let lowerByOne = skillRating - 1;
             let raiseByOne = skillRating + 1;
