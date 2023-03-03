@@ -1,3 +1,6 @@
+![RPG Dice Image](images/RPGDicePic1.png)
+
+
 # Character Sheet Generator
 
 This website generates random characters for Old School Essentials, and Shadowrun 3rd Ed (more to come soon) tabletop RPG games.
