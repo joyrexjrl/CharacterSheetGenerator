@@ -20,6 +20,16 @@ const srCyberware = [
 
 function srCyberwarePlacer(){
     const srCyberwareParentDiv = document.getElementById("sr_cyberware_bioware_information_block_placer");
+
+    let bodyCyberAttributeBonus = parseInt(srAttributeBody.textContent);
+    let quicknessCyberAttributeBonus = parseInt(srAttributeQuickness.textContent);
+    let strengthCyberAttributeBonus = parseInt(srAttributeStrength.textContent);
+    let reactionCyberAttributeBonus = parseInt(srReaction.textContent);
+
+    let passedStrength = 0;
+    let passedQuickness = 0;
+    let passedBody = 0;
+
     let totalCost = 0;
     let cyberwareEssence = 0;
     let chosenCyberware = [];
@@ -32,6 +42,7 @@ function srCyberwarePlacer(){
     while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
         const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
+        srCyberBonusResets();
         if(cyberware.newObject){
             const newCyberware = cyberware.newObject();
             cyberwareName = newCyberware.cyberware;
@@ -60,6 +71,55 @@ function srCyberwarePlacer(){
             currentEssence -= cyberwareEssence;
             currentYen -= totalCost;
 
+            console.log("attribute values to be passed: " + "str: " + cyberStrengthBonus + " quick: " + cyberQuicknessBonus + " body: " + cyberBodyBonus + " reac: " +
+                cyberReactionBonus + " impac: " + cyberImpactArmorBonus + " bali: " + cyberBalisticArmorBonus + " ini: " + cyberInitiativeBonus + " rank: " + cyberRank +
+                " unarmed: " + cyberUnarmedDamageBonus);
+
+            switch(cyberwareName){
+                case "Hand Blade":
+                case "Retractable Hand Blade":
+                case "Hand Blade (Improved)":
+                case "Retractable Hand Blade (Improved)":
+                case "Bone Lacing (Plastic)":
+                case "Bone Lacing (Alumunum)":
+                case "Bone Lacing (Titanium)":
+                case "Spur":
+                case "Retractable Spur":
+                    srCharNotesPlacer.innerHTML += "<br>" + '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + cyberUnarmedDamageBonus;
+                    cyberUnarmedDamageBonus = "";
+                break;
+                case "Boosted Reflexes 1":
+                case "Boosted Reflexes 2":
+                case "Boosted Reflexes 3":
+                case "Wired Reflexes 1":
+                case "Wired Reflexes 2":
+                case "Wired Reflexes 3":
+                    if(cyberwareName === "Boosted Reflexes 1" || cyberwareName === "Boosted Reflexes 2" || cyberwareName === "Boosted Reflexes 3"){
+                        srInitiative.innerHTML += "<br>" + "Cyber Boosted" + "<br>" + "c(" + cyberInitiativeBonus + (cyberReactionBonus + reactionCyberAttributeBonus) + ")";
+                    }
+                    if(cyberwareName === "Wired Reflexes 1" || cyberwareName === "Wired Reflexes 2" || cyberwareName === "Wired Reflexes 3"){
+                        srInitiative.innerHTML += "<br>" + "Cyber Wired" + "<br>" + "c(" + cyberInitiativeBonus + (cyberReactionBonus + reactionCyberAttributeBonus) + ")";
+                    }
+                    cyberInitiativeBonus = "";
+                    cyberReactionBonus = 0;
+                break;
+                case "Vehicle Control Rig 1":
+                case "Vehicle Control Rig 2":
+                case "Vehicle Control Rig 3":
+                    let combinedReaction = cyberReactionBonus + reactionCyberAttributeBonus;
+                    srInitiative.innerHTML += "<br>" + "Cyber VCR" + "<br>" + "c(" + cyberInitiativeBonus + combinedReaction + ")";
+                    srPoolType3.innerHTML = "Control";
+                    srPoolType3Dice.innerHTML = (combinedReaction + (cyberRank*2));
+                    cyberInitiativeBonus = "";
+                    cyberReactionBonus = 0;
+                    cyberRank = 0;                                        
+                break;
+                case "Cyber Limb":
+                    srCharNotesPlacer.innerHTML += "<br>" + "Unarmed cyber enhanced damage bonus: +" + cyberUnarmedPowerBonus;
+                    cyberUnarmedPowerBonus = 0;
+                break;
+            }            
+
             const cyberDiv = document.createElement('div');
             cyberDiv.innerHTML += `
             <div class="sr_information_block_spacer">
@@ -67,6 +127,18 @@ function srCyberwarePlacer(){
                 <p id="sr_cyber_bio_rating" class="sr_skill_rating">${cyberwareEssence/100}</p>
             </div>
             `;
+
+            if(cyberStrengthBonus > 0 || cyberQuicknessBonus > 0 || cyberBodyBonus > 0 || cyberImpactArmorBonus > 0 || cyberBalisticArmorBonus > 0){
+                if(cyberStrengthBonus > 0) passedStrength += cyberStrengthBonus;
+                if(cyberQuicknessBonus > 0) passedQuickness += cyberQuicknessBonus;
+                if(cyberBodyBonus > 0) passedBody += cyberBodyBonus;
+                //if(cyberImpactArmorBonus > 0);
+                //if(cyberBalisticArmorBonus > 0);  fix after armor has been implemented to html
+            }
+
+            console.log("passed values for html display: body " + passedBody + ", quickness " + passedQuickness + ", strength " + passedStrength);
+
+            srCyberBonusResets();
 
             srCyberwareParentDiv.appendChild(cyberDiv);
             chosenCyberware.push(cyberware);
@@ -77,9 +149,37 @@ function srCyberwarePlacer(){
             console.log("remaining yen " + currentYen);
             console.log("--------------------------------------------");
         }                
-    } 
+    }
+
+    if(passedBody > 0 || passedQuickness > 0 || passedStrength > 0){
+        if(passedStrength > 0) srAttributeStrength.innerHTML += " c(" + (strengthCyberAttributeBonus + passedStrength) + ")";
+        if(passedQuickness > 0) srAttributeQuickness.innerHTML += " c(" + (quicknessCyberAttributeBonus + passedQuickness) + ")";
+        if(passedBody > 0) srAttributeBody.innerHTML += " c(" + (bodyCyberAttributeBonus + passedBody) + ")";
+    }
+
+    srCyberBonusResets();
+    srPassedBonusesReset();
+
     currentEssence /= 100;
     console.log("remaining essence after division " + currentEssence);
     srAttributeEssence.innerHTML = currentEssence;
 }
 
+function srPassedBonusesReset(){
+    passedBody = 0;
+    passedQuickness = 0;
+    passedStrength = 0;
+}
+
+function srCyberBonusResets(){
+    cyberInitiativeBonus = "";
+    cyberUnarmedDamageBonus = "";
+    cyberStrengthBonus = 0;
+    cyberQuicknessBonus = 0;
+    cyberBodyBonus = 0;
+    cyberReactionBonus = 0;
+    cyberImpactArmorBonus = 0;
+    cyberBalisticArmorBonus = 0;
+    cyberRank = 0;
+    cyberUnarmedPowerBonus = 0;
+}

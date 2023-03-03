@@ -9,8 +9,11 @@ var cyberQuicknessBonus = 0;
 var cyberBodyBonus = 0;
 var cyberReactionBonus = 0;
 var cyberInitiativeBonus = "";
+var cyberUnarmedDamageBonus = "";
+var cyberUnarmedPowerBonus = 0;
 var cyberImpactArmorBonus = 0;
 var cyberBalisticArmorBonus = 0;
+var cyberRank = 0;
 
 function srCyberEyes(){
     let eyeMods = ["Camera", "Display Link", "Flare Compensation", "Image Link", "Low-Light", "Opticam", "Protective Covers", "Retinal Clock", "Retinal Duplication", "Thermographic", "Vision Magnification"];
@@ -109,7 +112,6 @@ function srCyberEyes(){
     if(modEssenceCost < 0) modEssenceCost = 0;
     essenceCost += modEssenceCost;
     cyberwareName += addedMods;
-
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -160,11 +162,11 @@ function srCyberEars(){
     if(modEssenceCost < 0) modEssenceCost = 0;
     essenceCost += modEssenceCost;
     cyberwareName += addedMods;
-
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
 function srCyberLimbs(){
+    const characterStrength = srAttributesCurrentMax.find(attribute => attribute.attribute === "Strength");
     let limbReplacement = "";
     let modsAdded = "";
     let limbTypes = ["Cyberarm Left", "Cyberarm Right", "Cyberarm Pair", "Cyberleg Left", "Cyberleg Right", "Cyberleg Pair",
@@ -190,56 +192,70 @@ function srCyberLimbs(){
             case "Cyberarm Left":
                 chosenLimbAndMods.push("Cyberarm Left", "Cyberarm Pair", "Synthetic Cyberarm Left", "Synthetic Cyberarm Pair");
                 isArm = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Cyberarm Right":
                 chosenLimbAndMods.push("Cyberarm Right", "Cyberarm Pair", "Synthetic Cyberarm Right", "Synthetic Cyberarm Pair");
                 isArm = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Cyberarm Pair":                
                 chosenLimbAndMods.push("Cyberarm Pair", "Cyberarm Left", "Cyberarm Right", "Synthetic Cyberarm Right", "Synthetic Cyberarm Left", "Synthetic Cyberarm Pair");
                 isArm = true;
                 cyberBodyBonus += 1;
+                cyberUnarmedPowerBonus += 2;
                 break;
             case "Synthetic Cyberarm Left":                
                 chosenLimbAndMods.push("Synthetic Cyberarm Left", "Cyberarm Pair", "Cyberarm Left", "Synthetic Cyberarm Pair");
                 isArm = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Synthetic Cyberarm Right":
                 chosenLimbAndMods.push("Synthetic Cyberarm Right", "Cyberarm Pair", "Cyberarm Right", "Synthetic Cyberarm Pair");
                 isArm = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Synthetic Cyberarm Pair":
                 chosenLimbAndMods.push("Synthetic Cyberarm Pair", "Cyberarm Left", "Cyberarm Right", "Cyberarm Pair", "Synthetic Cyberarm Right", "Synthetic Cyberarm Left");
                 isArm = true;
                 cyberBodyBonus += 1;
+                cyberUnarmedPowerBonus += 2;
                 break;
             case "Cyberleg Left":
                 chosenLimbAndMods.push("Cyberleg Left", "Cyberleg Pair", "Synthetic Cyberleg Left", "Synthetic Cyberleg Pair");
                 isLeg = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Cyberleg Right":
                 chosenLimbAndMods.push("Cyberleg Right", "Cyberleg Pair", "Synthetic Cyberleg Right", "Synthetic Cyberleg Pair");
                 isLeg = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Cyberleg Pair":
                 chosenLimbAndMods.push("Cyberleg Pair", "Cyberleg Right", "Cyberleg Left", "Synthetic Cyberleg Right", "Synthetic Cyberleg Left", "Synthetic Cyberleg Pair");
                 isLeg = true;
                 cyberBodyBonus += 2;
+                cyberUnarmedPowerBonus += 2;
                 break;
             case "Synthetic Cyberleg Left":
                 chosenLimbAndMods.push("Synthetic Cyberleg Left", "Synthetic Cyberleg Pair", "Cyberleg Left", "Cyberleg Pair");
                 isLeg = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Synthetic Cyberleg Right":
                 chosenLimbAndMods.push("Synthetic Cyberleg Right", "Synthetic Cyberleg Pair", "Cyberleg Right", "Cyberleg Pair");
                 isLeg = true;
+                cyberUnarmedPowerBonus += 1;
                 break;
             case "Synthetic Cyberleg Pair":
                 chosenLimbAndMods.push("Synthetic Cyberleg Pair", "Synthetic Cyberleg Right", "Synthetic Cyberleg Left", "Cyberleg Right", "Cyberleg Left", "Cyberleg Pair");
                 isLeg = true;
                 cyberBodyBonus += 2;
+                cyberUnarmedPowerBonus += 2;
                 break;
         }
+
+        if(cyberUnarmedPowerBonus > 2) cyberUnarmedPowerBonus = 2;
 
         limbReplacement += "•" + chosenLimbType + " ";
         if(chosenLimbType === "Cyberarm Left" || chosenLimbType === "Cyberarm Right" || chosenLimbType === "Cyberleg Left" || chosenLimbType === "Cyberleg Right"){
@@ -257,6 +273,8 @@ function srCyberLimbs(){
             cost += 200000;
         }
 
+        console.log("cyberlimb str min requirment " + characterStrength.Current);
+
         if(srRaceChoice === "Human" && characterStrength.Current > 4 || srRaceChoice === "Elf" && characterStrength.Current > 4 ||
         srRaceChoice === "Ork" && characterStrength.Current > 6 || srRaceChoice === "Dwarf" && characterStrength.Current > 6 ||
         srRaceChoice === "Troll" && characterStrength.Current > 8){
@@ -269,6 +287,8 @@ function srCyberLimbs(){
             cyberStrBonus = 8;
         }
 
+        console.log("limb mods idnore list " + chosenLimbAndMods);
+
         function strEnhance(rank){
             if(rank > 3){
                 let modifiedEssence = (rank - 3) * 40;
@@ -277,9 +297,8 @@ function srCyberLimbs(){
             }else{
                 cost += rank * 50000;
             }
-            cyberStrBonus += rank;
+            cyberStrengthBonus += cyberStrBonus + rank;
             modsAdded += rank + " ";
-            srAttributeStrength.innerHTML += " c(" + cyberStrBonus + ")";
         }
 
         if(modsToAdd > 0){
@@ -321,8 +340,7 @@ function srCyberLimbs(){
             }
         }
         modsToAdd -= 1;
-    }
-    if(cyberBodyBonus > 0) srAttributeBody.innerHTML += " c(" + (characterBody.Current + cyberBodBonus) + ")";    
+    }  
     cyberwareName += limbReplacement + modsAdded;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
@@ -350,9 +368,7 @@ function srVCR(){
             cyberInitiativeBonus += "4d6+";
             break;
     }
-    srInitiative.innerHTML += "<br>" + "c(" + iniBonus + reactionBonus + ")";
-    srPoolType3.innerHTML = "Control";
-    srPoolType3Dice.innerHTML = (reactionBonus + (randomRoll*2));
+    cyberRank += randomRoll;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -388,7 +404,6 @@ function srFiltration(){
 }
 
 function srDermalPlating(){
-    let bodyBonus = srAttributesCurrentMax.find(attribute => attribute.attribute === "Body");
     randomRoll = oseDieRoller(1, 3);
     cyberwareName = "Dermal Plating " + randomRoll;
 
@@ -407,7 +422,6 @@ function srDermalPlating(){
             break;
     }
     cyberBodyBonus += randomRoll;
-    srAttributeBody.innerHTML += " c(" + (bodyBonus.Current + randomRoll) + ")";
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -461,9 +475,7 @@ function srReflexesCyberware(){
                 cyberInitiativeBonus += "4d6+";
                 break;
         }
-    }
-    
-    srInitiative.innerHTML += "<br>" + "c(" + iniBonus + reactionBonus + ")";
+    }    
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -516,7 +528,7 @@ function srSpur(){
             break;
     }
     if(cyberlimbBuiltInDevice) essenceCost = 0;
-    srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR)M";
+    cyberUnarmedDamageBonus += "•(STR)M"
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 
@@ -540,7 +552,7 @@ function srBoneLacing(){
             essenceCost = 50;
             cost = 7500;
             cyberBodyBonus += 1;
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+2)M Stun";
+            cyberUnarmedDamageBonus += "•(STR+2)M Stun";
             break;
         case "Bone Lacing (Alumunum)":
             cyberwareName = "Bone Lacing (Alumunum)";
@@ -548,7 +560,7 @@ function srBoneLacing(){
             cost = 25000;
             cyberBodyBonus += 1;
             cyberImpactArmorBonus += 1;
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+3)M Stun";
+            cyberUnarmedDamageBonus += "•(STR+3)M Stun";
             break;
         case "Bone Lacing (Titanium)":
             cyberwareName = "Bone Lacing (Titanium)";
@@ -557,7 +569,7 @@ function srBoneLacing(){
             cyberBodyBonus += 2;
             cyberImpactArmorBonus += 1;
             cyberBalisticArmorBonus += 1;
-            srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + "•(STR+4)M Stun";
+            cyberUnarmedDamageBonus += "•(STR+4)M Stun";
             break;
     }
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
@@ -565,7 +577,6 @@ function srBoneLacing(){
 
 function srHandBlade(){
     let bladeTypes = ["Hand Blade", "Retractable Hand Blade", "Hand Blade (Improved)", "Retractable Hand Blade (Improved)"];
-    let unarmedDamageBonus = "";
 
     randomRoll = Math.floor(Math.random() * bladeTypes.length);
     switch(bladeTypes[randomRoll]){
@@ -573,28 +584,27 @@ function srHandBlade(){
             cyberwareName = "Hand Blade";
             essenceCost = 10;
             cost = 4500;
-            unarmedDamageBonus = "•(STR)L"
+            cyberUnarmedDamageBonus = "•(STR)L"
             break;
         case "Retractable Hand Blade":
             cyberwareName = "Retractable Hand Blade";
             essenceCost = 20;
             cost = 9000;
-            unarmedDamageBonus = "•(STR)L"
+            cyberUnarmedDamageBonus = "•(STR)L"
             break;
         case "Hand Blade (Improved)":
             cyberwareName = "Hand Blade (Improved)";
             essenceCost = 10;
             cost = 13000;
-            unarmedDamageBonus = "•(STR+2)L"
+            cyberUnarmedDamageBonus = "•(STR+2)L"
             break;
         case "Retractable Hand Blade (Improved)":
             cyberwareName = "Retractable Hand Blade (Improved)";
             essenceCost = 20;
             cost = 17500;
-            unarmedDamageBonus = "•(STR+2)L"
+            cyberUnarmedDamageBonus = "•(STR+2)L"
             break;
     }
     if(cyberlimbBuiltInDevice) essenceCost = 0;
-    srCharNotesPlacer.innerHTML += '<span class="bold">' + cyberwareName + " Unarmed Damage" + "</span>" + "<br>" + unarmedDamageBonus;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
