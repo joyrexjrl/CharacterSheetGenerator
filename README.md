@@ -1,4 +1,4 @@
-![RPG Dice Image](images/RPGDicePic1.png)
+![RPG Dice Image](CharacterSheetGenerator/images/RPGDicePic1.png)
 
 
 # Character Sheet Generator
