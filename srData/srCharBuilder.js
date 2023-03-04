@@ -36,7 +36,7 @@ function priorityRandomPlacer() {
 }
 
 function priorityPlacement(priority, option){
-    let displayResult;
+    let displayResult = "";
     let priBMagicType = ["Adept", "Aspected Magician"];
     let priCRaceType = ["Troll", "Elf"];
     let priDRaceType = ["Dwarf", "Ork"];

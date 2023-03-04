@@ -81,6 +81,34 @@
 }
 
 /*general css end*/
+/*info bar section start*/
+
+.sr_info_bar{
+    margin-inline: auto;
+    max-width: 1400px;
+    justify-content: space-between;
+    gap: var(--sr_gap_spacer);
+    font-family: 'Friz Quadrata Std Medium';
+}
+
+.sr_info_bar_text,
+.sr_generate_button_section{
+    width: 50%;
+}
+
+.sr_info_bar_text{
+    line-height: 1;
+    max-width: 50ch;
+}
+
+.sr_make_character_button{
+    width: 80px;
+    height: 25px;
+    cursor: pointer;
+    font-size: .8rem;
+}
+
+/*info bar section end*/
 /*head section css start*/
 
 .sr_head_section{

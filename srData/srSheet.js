@@ -108,6 +108,7 @@ const srSectionDiv = document.createElement("div");
 const srNameP = document.createElement("p");
 const srRatingP = document.createElement("p");
 
+
 priorityRandomPlacer();
 srRacialPointAdjuster(srAttributePoints, srRaceChoice);
 srRandomSkillPlacer(srSkillPoints);
