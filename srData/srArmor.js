@@ -52,6 +52,7 @@ function srArmorPicker(){
                 <p id="sr_armor_rating" class="sr_skill_rating">${mediumArmorRatingBallistic}/${mediumArmorRatingImpact}</p>
             </div>`;
         srResourceAmount -= mediumArmor.cost;
+        srEquipmentPlacer.innerHTML += mediumArmorName + "<br>";
         console.log("medium armor cost: " + mediumArmor.cost);
     }
 
@@ -62,6 +63,7 @@ function srArmorPicker(){
                 <p id="sr_armor_rating" class="sr_skill_rating">${lightArmorRatingBallistic}/${lightArmorRatingImpact}</p>
             </div>`;
         srResourceAmount -= lightArmor.cost;
+        srEquipmentPlacer.innerHTML += lightArmorName + "<br>";
         console.log("light armor cost: " + lightArmor.cost);
     }
     console.log("cash after armor: " + srResourceAmount);
