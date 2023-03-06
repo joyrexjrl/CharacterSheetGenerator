@@ -108,27 +108,64 @@ const srSectionDiv = document.createElement("div");
 const srNameP = document.createElement("p");
 const srRatingP = document.createElement("p");
 
+const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer]
 
-priorityRandomPlacer();
-srRacialPointAdjuster(srAttributePoints, srRaceChoice);
-srRandomSkillPlacer(srSkillPoints);
-if(srIsCaster){
-    if(srCasterType === "Adept"){
-        srSpellsSectionNonadept.classList.add("hide");
-        srAdeptSpellsSection.classList.remove("hide");        
-    }else{
-        srSpellsSectionNonadept.classList.remove("hide");
-        srAdeptSpellsSection.classList.add("hide");
+function srClearAll(){
+    for (let i = 0; i < srResetAllArray.length; i++) {
+        srResetAllArray[i].innerHTML = "";        
     }
-    srCasterAbilitys(srCasterType);    
+
+    usedOptions = [];
+
+    srAttributePoints = 0;
+    srSkillPoints = 0;
+    srResourceAmount = 0;
+    srTotalEquipmentCost = 0;
+    srRaceChoice = "";
+    srIsCaster = false;
+    srCasterType = "";
+    srArchtype = "";
+
+    srAttributesCurrentMax = [{attribute: "Body", Current: 1, Max: 0},
+        {attribute: "Quickness", Current: 1, Max: 0},
+        {attribute: "Strength", Current: 1, Max: 0},
+        {attribute: "Charisma", Current: 1, Max: 0},
+        {attribute: "Intelligence", Current: 1, Max: 0},
+        {attribute: "Willpower", Current: 1, Max: 0}
+    ];
+
+    srPriorityA.innerHTML = "A: ";
+    srPriorityB.innerHTML = "B: ";
+    srPriorityC.innerHTML = "C: ";
+    srPriorityD.innerHTML = "D: ";
+    srPriorityE.innerHTML = "E: ";
 }
-if(srArchtype === "Rigger"){
-    srCyberwarePlacer();
+
+function srGenerateCharacter(){
+    srClearAll()
+    priorityRandomPlacer();
+    srRacialPointAdjuster(srAttributePoints, srRaceChoice);
+    srRandomSkillPlacer(srSkillPoints);
+    if(srIsCaster){
+        if(srCasterType === "Adept"){
+            srSpellsSectionNonadept.classList.add("hide");
+            srAdeptSpellsSection.classList.remove("hide");        
+        }else{
+            srSpellsSectionNonadept.classList.remove("hide");
+            srAdeptSpellsSection.classList.add("hide");
+        }
+        srCasterAbilitys(srCasterType);    
+    }
+    if(srArchtype === "Rigger"){
+        srCyberwarePlacer();
+    }
+    if(srArchtype === "Decker"){
+        srCyberwarePlacer();
+    }
+    if(srArchtype === "Street Samurai"){
+        srCyberwarePlacer();
+    }
 }
-if(srArchtype === "Decker"){
-    srCyberwarePlacer();
-}
-if(srArchtype === "Street Samurai"){
-    srCyberwarePlacer();
-}
+
+
 

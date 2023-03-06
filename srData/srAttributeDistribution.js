@@ -46,6 +46,7 @@ function srRacialPointAdjuster(attPoints, charRace){
             srAttributesCurrentMax[4].Max += racialAttributeMaximum;
             srGeneralCharNotes.innerHTML += dwarfNotes;
             srGeneralCharRace.innerHTML += charRace;
+            srKarmaPool.innerHTML = 0;
             availableAttPoints = attPoints - 6;            
         break;
         case "Elf":
@@ -59,6 +60,7 @@ function srRacialPointAdjuster(attPoints, charRace){
             srAttributesCurrentMax[5].Max += racialAttributeMaximum;
             srGeneralCharNotes.innerHTML += elfNotes;
             srGeneralCharRace.innerHTML += charRace;
+            srKarmaPool.innerHTML = 0;
             availableAttPoints = attPoints - 6;
         break;
         case "Ork":
@@ -72,6 +74,7 @@ function srRacialPointAdjuster(attPoints, charRace){
             srAttributesCurrentMax[5].Max += racialAttributeMaximum;
             srGeneralCharNotes.innerHTML += orkNotes;
             srGeneralCharRace.innerHTML += charRace;
+            srKarmaPool.innerHTML = 0;
             availableAttPoints = attPoints - 8;
         break;
         case "Troll":
@@ -85,6 +88,7 @@ function srRacialPointAdjuster(attPoints, charRace){
             srAttributesCurrentMax[5].Max += racialAttributeMaximum;
             srGeneralCharNotes.innerHTML += trollNotes;
             srGeneralCharRace.innerHTML += charRace;
+            srKarmaPool.innerHTML = 0;
             availableAttPoints = attPoints - 11;
         break;
         case "Human":

@@ -5,7 +5,7 @@ const priorities = [
     {priority: "D", options: ["Race", "Magic", "Attributes", "Skills", "Resources"]},
     {priority: "E", options: ["Race", "Magic", "Attributes", "Skills", "Resources"]},
 ];
-const usedOptions = [];
+var usedOptions = [];
 
 var srAttributePoints = 0;
 var srSkillPoints = 0;
