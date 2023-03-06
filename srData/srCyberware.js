@@ -40,7 +40,6 @@ function srCyberwarePlacer(){
     let chosenCyberware = [];
     let cyberwareName = "";
     let currentEssence = 600;
-    let currentYen = parseInt(srResourceAmount);
 
     while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
@@ -58,7 +57,7 @@ function srCyberwarePlacer(){
         }
         
         var availableEssence = currentEssence - cyberwareEssence;
-        var availableYen = currentYen - totalCost;
+        var availableYen = srResourceAmount - totalCost;
 
         if(availableEssence < 0 || availableYen < 0){
             cyberwareEssence = 0;
@@ -66,7 +65,7 @@ function srCyberwarePlacer(){
         }else{
             let combinedReaction = cyberReactionBonus + reactionCyberAttributeBonus;
             currentEssence -= cyberwareEssence;
-            currentYen -= totalCost;
+            srResourceAmount -= totalCost;
 
             if(cyberwareName.includes("Cyber Limb")){
                 srCharNotesPlacer.innerHTML += "<br>" + "Unarmed cyber enhanced damage bonus: +" + cyberUnarmedPowerBonus;

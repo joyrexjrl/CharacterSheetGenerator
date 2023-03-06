@@ -44,16 +44,28 @@ function srArmorPicker(){
     let mediumArmorRatingImpact = mediumArmor.impact;
 
     const armorDiv = document.createElement('div');
-    armorDiv.innerHTML = `
-        <div class="sr_information_block_spacer">
-            <p id="sr_armor_name" class="sr_skill_name">${mediumArmorName}</p>
-            <p id="sr_armor_rating" class="sr_skill_rating">${mediumArmorRatingBallistic}/${mediumArmorRatingImpact}</p>
-        </div>
-        <div class="sr_information_block_spacer">
-            <p id="sr_armor_name" class="sr_skill_name">${lightArmorName}</p>
-            <p id="sr_armor_rating" class="sr_skill_rating">${lightArmorRatingBallistic}/${lightArmorRatingImpact}</p>
-        </div>
-    `;
+
+    if(srResourceAmount > mediumArmor.cost){
+        armorDiv.innerHTML += `
+            <div class="sr_information_block_spacer">
+                <p id="sr_armor_name" class="sr_skill_name">${mediumArmorName}</p>
+                <p id="sr_armor_rating" class="sr_skill_rating">${mediumArmorRatingBallistic}/${mediumArmorRatingImpact}</p>
+            </div>`;
+        srResourceAmount -= mediumArmor.cost;
+        console.log("medium armor cost: " + mediumArmor.cost);
+    }
+
+    if(srResourceAmount > lightArmor.cost){
+        armorDiv.innerHTML += `
+            <div class="sr_information_block_spacer">
+                <p id="sr_armor_name" class="sr_skill_name">${lightArmorName}</p>
+                <p id="sr_armor_rating" class="sr_skill_rating">${lightArmorRatingBallistic}/${lightArmorRatingImpact}</p>
+            </div>`;
+        srResourceAmount -= lightArmor.cost;
+        console.log("light armor cost: " + lightArmor.cost);
+    }
+    console.log("cash after armor: " + srResourceAmount);
+
     srArmorParentDiv.appendChild(armorDiv);
 
     if(lightArmorRatingBallistic > 1) lightArmorBonusBallistic = Math.floor(lightArmorRatingBallistic/2);
