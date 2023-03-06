@@ -57,6 +57,10 @@ function srCyberwarePlacer(){
         console.log("ignored cyberware " + chosenCyberware);
     }
 
+    if(srArchtype === "Rigger"){
+        
+    }
+
     while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
         const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
