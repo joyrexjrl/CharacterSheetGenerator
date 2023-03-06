@@ -539,7 +539,7 @@ function srMuscleReplacement(){
 }
 
 function srBoneLacing(){
-    let boneLacingType = ["Bone Lacing (Plastic)", "Bone Lacing (Alumunum)", "Bone Lacing (Titanium)"];
+    let boneLacingType = ["Bone Lacing (Plastic)", "Bone Lacing (Aluminum)", "Bone Lacing (Titanium)"];
 
     randomRoll = Math.floor(Math.random() * boneLacingType.length);
     switch(boneLacingType[randomRoll]){
@@ -550,8 +550,8 @@ function srBoneLacing(){
             cyberBodyBonus += 1;
             cyberUnarmedDamageBonus += "•(STR+2)M Stun";
             break;
-        case "Bone Lacing (Alumunum)":
-            cyberwareName = "Bone Lacing (Alumunum)";
+        case "Bone Lacing (Aluminum)":
+            cyberwareName = "Bone Lacing (Aluminum)";
             essenceCost = 115;
             cost = 25000;
             cyberBodyBonus += 1;

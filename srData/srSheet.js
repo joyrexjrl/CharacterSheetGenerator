@@ -50,6 +50,11 @@ const srPoolType3Dice = document.getElementById("sr_type3_pool_dice");
 const srArmorBlockPlacer = document.getElementById("sr_armor_information_block_placer");
 const srArmorName = document.getElementById("sr_armor_name");
 const srArmorRating = document.getElementById("sr_armor_rating");
+
+const srArmorCyberBonusPlacer = document.getElementById("sr_armor_cyber_bonus_placer");
+const srCyberBonusName = document.getElementById("sr_cyber_bonus_name");
+const srCyberBonusRating = document.getElementById("sr_cyber_bonus_rating");
+
 const srTotalArmorRatings = document.getElementById("sr_total_armor_ratings");
 
 const srCyberBioBlockPlacer = document.getElementById("sr_cyberware_bioware_information_block_placer");
@@ -108,12 +113,15 @@ const srSectionDiv = document.createElement("div");
 const srNameP = document.createElement("p");
 const srRatingP = document.createElement("p");
 
-const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer]
+const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer, srArmorCyberBonusPlacer, srCyberBonusName, srCyberBonusRating, srArmorBlockPlacer, srArmorName, srArmorRating, srTotalArmorRatings];
 
 function srClearAll(){
     for (let i = 0; i < srResetAllArray.length; i++) {
         srResetAllArray[i].innerHTML = "";        
     }
+
+    isCyberAluminum = false;
+    isCyberTitanium = false;
 
     usedOptions = [];
 
@@ -165,6 +173,7 @@ function srGenerateCharacter(){
     if(srArchtype === "Street Samurai"){
         srCyberwarePlacer();
     }
+    srArmorPicker();
 }
 
 

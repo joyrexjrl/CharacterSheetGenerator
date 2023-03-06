@@ -18,6 +18,9 @@ const srCyberware = [
     {cyberware: "Cyber Ears", essentCost: 0, price: 0, newObject: function(){ return srCyberEars()}}
 ];
 
+var isCyberAluminum = false;
+var isCyberTitanium = false;
+
 function srCyberwarePlacer(){
     const srCyberwareParentDiv = document.getElementById("sr_cyberware_bioware_information_block_placer");
 
@@ -108,12 +111,30 @@ function srCyberwarePlacer(){
             </div>
             `;
 
+            const cyberAmorBonusPlacer = srArmorCyberBonusPlacer;
+            const cyberArmorBonus = document.createElement('div');
+
             if(cyberStrengthBonus > 0 || cyberQuicknessBonus > 0 || cyberBodyBonus > 0 || cyberImpactArmorBonus > 0 || cyberBalisticArmorBonus > 0){
                 if(cyberStrengthBonus > 0) passedStrength += cyberStrengthBonus;
                 if(cyberQuicknessBonus > 0) passedQuickness += cyberQuicknessBonus;
                 if(cyberBodyBonus > 0) passedBody += cyberBodyBonus;
-                //if(cyberImpactArmorBonus > 0);
-                //if(cyberBalisticArmorBonus > 0);  fix after armor has been implemented to html
+                if(cyberBalisticArmorBonus > 0 && cyberImpactArmorBonus > 0){
+                    cyberArmorBonus.innerHTML += 
+                        `<div class="sr_name_rating_spacer flex">
+                            <p id="sr_cyber_bonus_name" class="sr_skill_name">Bone Lacing (Titanium)</p>
+                            <p id="sr_cyber_bonus_rating" class="sr_skill_rating">${1}/${1}</p>
+                        </div>`;                    
+                    cyberAmorBonusPlacer.appendChild(cyberArmorBonus);
+                    isCyberTitanium = true;
+                }else if(cyberImpactArmorBonus > 0){
+                    cyberArmorBonus.innerHTML += 
+                        `<div class="sr_name_rating_spacer flex">
+                            <p id="sr_cyber_bonus_name" class="sr_skill_name">Bone Lacing (Aluminum)</p>
+                            <p id="sr_cyber_bonus_rating" class="sr_skill_rating">${0}/${1}</p>
+                        </div>`;                    
+                    cyberAmorBonusPlacer.appendChild(cyberArmorBonus);
+                    isCyberAluminum = true;
+                }
             }
 
             srCyberBonusResets();

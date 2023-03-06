@@ -642,9 +642,8 @@
             <div class="sr_info_bar_text">
                 <p>Shadowrun 3rd edition character generator. For now there is no user inputs, just a press of the button to see what you get. The generator takes most skills, all of the spells, equipment, and spells from the core book. Features from the Cannon Companion are also in the generator, more features from other Shadowrun suplements will be added in time.</p>
             </div>
-            <div class="sr_generate_button_section">
-                <!-- window.location.reload() -->
-                <button class="sr_make_character_button" onclick="srGenerateCharacter()">Generate</button>
+            <div class="sr_generate_button_section">                
+                <button class="sr_make_character_button" onclick="srGenerateCharacter()">Generate</button> <!-- window.location.reload() -->
             </div>
         </div>
         <div class="sr_character_sheet">
@@ -849,9 +848,15 @@
                             </div>
                             <div id="sr_armor_information_block_placer">
                                 <div class="sr_information_block_spacer">
-                                    <p id="sr_armor_name" class="sr_skill_name">Vest with Plates</p>
-                                    <p id="sr_armor_rating" class="sr_skill_rating">5/3</p>
+                                    <p id="sr_armor_name" class="sr_skill_name"></p>
+                                    <p id="sr_armor_rating" class="sr_skill_rating"></p>
                                 </div>
+                            </div>
+                            <div id="sr_armor_cyber_bonus_placer" >
+                                <div class="sr_name_rating_spacer flex">
+                                    <p id="sr_cyber_bonus_name" class="sr_skill_name"></p>
+                                    <p id="sr_cyber_bonus_rating" class="sr_skill_rating"></p>
+                                </div>                                
                             </div>
                             <div class="sr_divider_bar"></div>
                             <div class="sr_name_rating_spacer flex">
