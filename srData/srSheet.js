@@ -78,6 +78,8 @@ const srEdgeFlawRightPlacer = document.getElementById("sr_edge_flaw_right_side_i
 const srEdgeFlawRightName = document.getElementById("sr_edge_flaw_right_name");
 const srEdgeFlawRightRating = document.getElementById("sr_edge_flaw_right_rating");
 
+const srWeaponsPlacer = document.getElementById("sr_weapons_placer");
+
 const srWeaponName = document.getElementById("sr_weapons_name");
 const srWeaponType = document.getElementById("sr_weapons_type");
 const srWeaponConceal = document.getElementById("sr_weapons_conceal");
@@ -113,7 +115,7 @@ const srSectionDiv = document.createElement("div");
 const srNameP = document.createElement("p");
 const srRatingP = document.createElement("p");
 
-const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer, srArmorCyberBonusPlacer, srCyberBonusName, srCyberBonusRating, srArmorBlockPlacer, srArmorName, srArmorRating, srTotalArmorRatings, srEquipmentPlacer];
+const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer, srArmorCyberBonusPlacer, srCyberBonusName, srCyberBonusRating, srArmorBlockPlacer, srArmorName, srArmorRating, srTotalArmorRatings, srEquipmentPlacer, srWeaponsPlacer, srWeaponName, srWeaponType, srWeaponConceal, srWeaponReach, srWeaponMode, srWeaponAmmo, srWeaponShort, srWeaponMed, srWeaponLong, srWeaponExtreme, srWeaponDamage, srWeaponMods];
 
 function srClearAll(){
     for (let i = 0; i < srResetAllArray.length; i++) {

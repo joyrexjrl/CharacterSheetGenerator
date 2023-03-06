@@ -53,7 +53,6 @@ function srArmorPicker(){
             </div>`;
         srResourceAmount -= mediumArmor.cost;
         srEquipmentPlacer.innerHTML += mediumArmorName + "<br>";
-        console.log("medium armor cost: " + mediumArmor.cost);
     }
 
     if(srResourceAmount > lightArmor.cost){
@@ -64,7 +63,6 @@ function srArmorPicker(){
             </div>`;
         srResourceAmount -= lightArmor.cost;
         srEquipmentPlacer.innerHTML += lightArmorName + "<br>";
-        console.log("light armor cost: " + lightArmor.cost);
     }
     console.log("cash after armor: " + srResourceAmount);
 

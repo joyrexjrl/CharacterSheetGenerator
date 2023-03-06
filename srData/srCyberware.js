@@ -13,7 +13,7 @@ const srCyberware = [
     {cyberware: "Dermal Plating", essenceCost: 0, price: 0, newObject: function(){ return srDermalPlating()}},
     {cyberware: "Filtration", essenceCost: 0, price: 0, newObject: function(){ return srFiltration()}},
     {cyberware: "Vehicle Control Rig", essenceCost: 0, price: 0, newObject: function(){ return srVCR()}},
-    {cyberware: "Cyber Limb", essenceCost: 1, price: 0, newObject: function(){ return srCyberLimbs()}},
+    {cyberware: "Cyber Limb", essenceCost: 0, price: 0, newObject: function(){ return srCyberLimbs()}},
     {cyberware: "Cyber Eyes", essentCost: 0, price: 0, newObject: function(){ return srCyberEyes()}},
     {cyberware: "Cyber Ears", essentCost: 0, price: 0, newObject: function(){ return srCyberEars()}}
 ];
@@ -40,6 +40,22 @@ function srCyberwarePlacer(){
     let chosenCyberware = [];
     let cyberwareName = "";
     let currentEssence = 600;
+
+    if(srArchtype === "Decker"){
+        const deckerDatajack = srCyberware[1];
+        const cyberDiv = document.createElement('div');
+            cyberDiv.innerHTML += `
+            <div class="sr_information_block_spacer">
+                <p id="sr_cyber_bio_name" class="sr_skill_name">${deckerDatajack.cyberware}</p>
+                <p id="sr_cyber_bio_rating" class="sr_skill_rating">${deckerDatajack.essenceCost/100}</p>
+            </div>
+            `;
+        srCyberwareParentDiv.appendChild(cyberDiv);
+        chosenCyberware.push(deckerDatajack.cyberware);
+        cyberwareEssence = deckerDatajack.essenceCost;
+        currentEssence -= cyberwareEssence;
+        console.log("ignored cyberware " + chosenCyberware);
+    }
 
     while(currentEssence > 1){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
