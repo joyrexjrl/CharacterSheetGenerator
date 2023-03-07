@@ -365,6 +365,7 @@ function srVCR(){
             break;
     }
     cyberRank += randomRoll;
+    isRiggerWithVCR = true;
     return {cyberware: cyberwareName, essenceCost: essenceCost, price: cost};
 }
 

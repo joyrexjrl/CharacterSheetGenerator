@@ -2,13 +2,14 @@ const srSkills = [
     {skillAttribute: "Body", skillOptions: ["Athletics", "Diving"]},
     {skillAttribute: "Strength", skillOptions: ["Edged Weapons", "Clubs", "Pole Arms/ Staffs", "Cyber-Implant Combat", "Unarmed Combat", "Throwing Weapons", "Projectile Weapons", "Heavy Weapons", "Underwater Combat"]},
     {skillAttribute: "Quickness", skillOptions: ["Pistols", "Submachine Guns", "Rifles", "Assault Rifles", "Shotguns", "Laser Weapons", "Whips", "Stealth"]},
-    {skillAttribute: "Intelligence", skillOptions: ["Aura Reading", "Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair"]},
+    {skillAttribute: "Intelligence", skillOptions: ["Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair"]},
     {skillAttribute: "Charisma", skillOptions: ["Etiquette", "Instruction", "Interrogation", "Intimidation", "Leadership", "Negotiation"]},    
     {skillAttribute: "Reaction", skillOptions: ["Bike", "Car", "Hovercraft", "Motorboat", "Ship", "Sailboat", "Winged Aircraft", "Rotor Aircraft", "Vector Thrust Aircraft", "LTA Aircraft", "Submarine"]}
 ];
 
 const srCasterSkills = [
-    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Sorcery"]}
+    {skillAttribute: "Willpower", skillOptions: ["Conjuring", "Sorcery"]},
+    {skillAttribute: "Intelligence", skillOptions: ["Aura Reading"]}
 ]
 
 const srSkillSpecializations = [
@@ -96,9 +97,25 @@ function srRandomSkillPlacer(skillPoints){
                 if(isSpecialized) srSkillsName.textContent = optionPlusSpecialization;
                 else srSkillsName.textContent = option;
 
+                if(option === "Aura Reading"){
+                    skillRating = oseDieRoller(1, 6);
+                    srSkillsRating.classList.add("sr_skill_rating");
+                    if(isSpecialized){
+                        let lowerByOne = skillRating - 1;
+                        let raiseByOne = skillRating + 1;
+                        if(lowerByOne < 1) lowerByOne = 1;
+                        srSkillsRating.textContent = lowerByOne + " (" + raiseByOne + ")";
+                    }else srSkillsRating.textContent = skillRating;
+                }else{
+                    skillRating = 6;
+                    srSkillsRating.classList.add("sr_skill_rating");
+                    if(isSpecialized) srSkillsRating.textContent = "5 (7)";
+                    else srSkillsRating.textContent = skillRating;
+                } 
+
                 srSkillsRating.classList.add("sr_skill_rating");
                 if(isSpecialized) srSkillsRating.textContent = "5 (7)";
-                else srSkillsRating.textContent = 6;
+                else srSkillsRating.textContent = skillRating;
 
                 isSpecialized = false;
 
@@ -109,7 +126,7 @@ function srRandomSkillPlacer(skillPoints){
 
                 skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === skillAttribute).Current
 
-                skillRating = 6;
+                
 
                 if(skillRating <= skillAttributeSoftCap){
                     skillPoints -= skillRating;
@@ -163,8 +180,6 @@ function srRandomSkillPlacer(skillPoints){
                 skillPoints -= skillCost;
             }            
         }
-
-        //console.log("skill: " + option + " base skill rating: " + skillRating);
 
         if(isSpecialized){
             let lowerByOne = skillRating - 1;

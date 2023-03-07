@@ -124,6 +124,8 @@ function srClearAll(){
 
     isCyberAluminum = false;
     isCyberTitanium = false;
+    isDeckerWithJack = false;
+    isRiggerWithVCR = false;
 
     usedOptions = [];
 

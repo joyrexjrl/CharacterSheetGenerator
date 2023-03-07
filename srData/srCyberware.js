@@ -20,6 +20,8 @@ const srCyberware = [
 
 var isCyberAluminum = false;
 var isCyberTitanium = false;
+var isDeckerWithJack = false;
+var isRiggerWithVCR = false;
 
 function srCyberwarePlacer(){
     const srCyberwareParentDiv = document.getElementById("sr_cyberware_bioware_information_block_placer");
@@ -40,26 +42,6 @@ function srCyberwarePlacer(){
     let chosenCyberware = [];
     let cyberwareName = "";
     let currentEssence = 600;
-
-    if(srArchtype === "Decker"){
-        const deckerDatajack = srCyberware[1];
-        const cyberDiv = document.createElement('div');
-            cyberDiv.innerHTML += `
-            <div class="sr_information_block_spacer">
-                <p id="sr_cyber_bio_name" class="sr_skill_name">${deckerDatajack.cyberware}</p>
-                <p id="sr_cyber_bio_rating" class="sr_skill_rating">${deckerDatajack.essenceCost/100}</p>
-            </div>
-            `;
-        srCyberwareParentDiv.appendChild(cyberDiv);
-        chosenCyberware.push(deckerDatajack.cyberware);
-        cyberwareEssence = deckerDatajack.essenceCost;
-        currentEssence -= cyberwareEssence;
-        console.log("ignored cyberware " + chosenCyberware);
-    }
-
-    if(srArchtype === "Rigger"){
-        
-    }
 
     while(currentEssence > 10){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
@@ -120,7 +102,9 @@ function srCyberwarePlacer(){
                 cyberInitiativeBonus = "";
                 cyberReactionBonus = 0;
                 cyberRank = 0;  
-            }           
+            }
+
+            if(cyberwareName.includes("Datajack") && srArchtype === "Decker") isDeckerWithJack = true;
 
             const cyberDiv = document.createElement('div');
             cyberDiv.innerHTML += `
@@ -155,6 +139,8 @@ function srCyberwarePlacer(){
                     isCyberAluminum = true;
                 }
             }
+
+            console.log("decker with jack: " + isDeckerWithJack + " rigger with VCR: " + isRiggerWithVCR);
 
             srCyberBonusResets();
 
