@@ -61,7 +61,7 @@ function srCyberwarePlacer(){
         
     }
 
-    while(currentEssence > 1){
+    while(currentEssence > 10){
         const cyberToAdd = srCyberware.filter(cyber => !chosenCyberware.includes(cyber));
         const cyberware = cyberToAdd[Math.floor(Math.random() * cyberToAdd.length)];
         srCyberBonusResets();
