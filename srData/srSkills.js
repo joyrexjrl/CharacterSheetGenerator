@@ -77,6 +77,10 @@ function srRandomSkillPlacer(skillPoints){
     let isSpecialized = false;
     let optionPlusSpecialization = "";
 
+    if(srIsCaster){
+        selectedSkills.push("Cyber-Implant Combat");
+    }
+
     if(srIsCaster && srCasterType !== "Adept"){
         for (let i = 0; i < srCasterSkills.length; i++) {
             const {skillAttribute, skillOptions} = srCasterSkills[i];
@@ -125,9 +129,7 @@ function srRandomSkillPlacer(skillPoints){
                 srSkillsParent.appendChild(srSkillsSection);
 
                 skillAttributeSoftCap = srAttributesCurrentMax.find(attr => attr.attribute === skillAttribute).Current
-
                 
-
                 if(skillRating <= skillAttributeSoftCap){
                     skillPoints -= skillRating;
                 }else if(skillRating > skillAttributeSoftCap && skillRating <= skillPoints){
