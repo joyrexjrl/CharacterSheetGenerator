@@ -61,6 +61,8 @@ const srSkillSpecializations = [
     {skillName: "Winged Aircraft", skillSpecialization: ["Remote Operations", "Cessna C750"]},
 ];
 
+var srWeaponSpecializationFocus = [];
+
 function srSkillsRandomizer(){            
     let skillAttributeLink = srSkills[Math.floor(Math.random() * srSkills.length)].skillAttribute;
     let skillOptionChosen = srSkills.find(skill => skill.skillAttribute === skillAttributeLink).skillOptions[Math.floor(Math.random() *
@@ -208,7 +210,15 @@ function srSkillSpecialPicker(skillName){
             break;
         }
     }
-
+    
     var skillSpecialization = specializationOptions[Math.floor(Math.random() * specializationOptions.length)];
+
+    if(skillName === "Assault Rifles" || skillName === "Clubs" || skillName === "Edged Weapons" || skillName === "Gunnery" || 
+    skillName === "Heavy Weapons" || skillName === "Laser Weapons" || skillName === "Launch Weapons" || skillName === "Pistols" || 
+    skillName === "Pole Arms/ Staffs" || skillName === "Projectile Weapons" || skillName === "Rifles" || skillName === "Shotguns" || 
+    skillName === "Submachine Guns" || skillName === "Throwing Weapons" || skillName === "Whips"){
+        srWeaponSpecializationFocus.push(skillSpecialization);
+    } 
+    
     return skillName + " (" + skillSpecialization + ")";
 }

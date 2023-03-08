@@ -128,6 +128,7 @@ function srClearAll(){
     isRiggerWithVCR = false;
 
     usedOptions = [];
+    srWeaponSpecializationFocus = [];
 
     srAttributePoints = 0;
     srSkillPoints = 0;
