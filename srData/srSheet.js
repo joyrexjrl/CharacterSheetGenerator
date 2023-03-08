@@ -181,5 +181,5 @@ function srGenerateCharacter(){
     srArmorPicker();
 }
 
-
+srWeaponsPicker();
 

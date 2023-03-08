@@ -66,3 +66,59 @@ const srFirearmWeapons = [
     {weaponName: "Missile Launchers", ammo: "", mode: "", damage: "", cost: 0, newObject: function(){return allTheFunctionsHere()}}
 ];
 
+const srWeaponsToChooseFromArray = [srMeleeWeapons, srProjectileWeapons, srFirearmWeapons];
+
+var nameOfWeapon = "";
+var typeOfWeapon = "";
+var concealOfWeapon = "";
+var reachOfWeapon = "";
+var modeOfWeapon = "";
+var ammoOfWeapon = "";
+
+var weaponRangeShort = "";
+var weaponRangeMedium = "";
+var weaponRangeLong = "";
+var weaponRangeExtreme = "";
+
+var damageOfWeapon = "";
+var modifiersOfWeapon ="";
+
+function srWeaponsPicker(){
+    let totalWeaponCost = 0;
+    
+    let weaponType = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];    
+    let chosenWeapon = weaponType[Math.floor(Math.random() * weaponType.length)].weaponName;
+
+    if(weaponType == srMeleeWeapons){
+        weaponRangeShort = "-";
+        weaponRangeMedium = "-";
+        weaponRangeLong = "-";
+        weaponRangeExtreme = "-";
+    }
+
+    if(chosenWeapon.newObject){
+        //make new const newChosenWeapon = chosenWeapon.newObject(); here
+        //pass all values newChosenWeapon.whatever values here etc
+    }else{
+        //pass all other values here
+    }
+
+    if(srResourceAmount > totalWeaponCost){
+        srResourceAmount -= totalWeaponCost;
+        //create HTML placer here
+        srWeaponInfoClearAll()
+    }else{
+        srWeaponInfoClearAll()
+        return;
+    }        
+}
+
+function srWeaponInfoClearAll(){
+    const clearAllInfoArray = [nameOfWeapon, typeOfWeapon, concealOfWeapon, reachOfWeapon,
+        modeOfWeapon, ammoOfWeapon, weaponRangeShort, weaponRangeMedium, weaponRangeLong,
+        weaponRangeExtreme, damageOfWeapon, modifiersOfWeapon];
+
+    for (let i = 0; i < clearAllInfoArray.length; i++) {
+        clearAllInfoArray[i] = "";        
+    }
+}
