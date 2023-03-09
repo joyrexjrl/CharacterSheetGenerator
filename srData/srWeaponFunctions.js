@@ -91,7 +91,7 @@ function srWeaponRangeFinder(weaponType){
             long = "451-1200";
             extreme = "1201-3000";
         break;
-        case "Bow":
+        case "Standard Bow":
             short = "0-STR";
             medium = "To STRx10";
             long = "To STRx30";
@@ -159,7 +159,7 @@ function srWeaponBuilder(weaponType, weaponName){
             srWeaponAmmo = "-";
             srWeaponDamage = "(STR " + bowStrMin+2 + ")M";
             srWeaponMods = "STR Min " + bowStrMin+1;
-            srWeaponCost = bowStrMin*100; 
+            srWeaponCost += bowStrMin*100; 
         break;
         case "Ranger-X Bow":
             bowStrMin = oseDieRoller(1, 4);
@@ -169,7 +169,9 @@ function srWeaponBuilder(weaponType, weaponName){
             srWeaponAmmo = "-";
             srWeaponDamage = "(STR " + bowStrMin+4 + ")M";
             srWeaponMods = "STR Min " + bowStrMin+2;
-            srWeaponCost = bowStrMin*120; 
+            srWeaponCost += bowStrMin*120; 
+        break;
+        case "Slingshot":
         break;
         case "Light Crossbow":
         break;

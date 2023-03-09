@@ -24,7 +24,7 @@ var isDeckerWithJack = false;
 var isRiggerWithVCR = false;
 
 function srCyberwarePlacer(){
-    const srCyberwareParentDiv = document.getElementById("sr_cyberware_bioware_information_block_placer");
+    const srCyberwareParentDiv = srCyberBioBlockPlacer;
 
     let bodyCyberAttributeBonus = parseInt(srAttributeBody.textContent);
     let quicknessCyberAttributeBonus = parseInt(srAttributeQuickness.textContent);
