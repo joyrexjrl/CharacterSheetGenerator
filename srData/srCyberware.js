@@ -61,7 +61,7 @@ function srCyberwarePlacer(){
         var availableEssence = currentEssence - cyberwareEssence;
         var availableYen = srResourceAmount - totalCost;
 
-        if(availableEssence < 0 || availableYen < 0){
+        if(availableEssence <= 10 || availableYen < 0){
             cyberwareEssence = 0;
             break;
         }else{
