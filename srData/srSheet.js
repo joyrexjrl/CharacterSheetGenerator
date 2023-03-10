@@ -179,7 +179,8 @@ function srGenerateCharacter(){
         srCyberwarePlacer();
     }
     srArmorPicker();
+    srWeaponsPicker();
 }
 
-srWeaponsPicker();
+
 

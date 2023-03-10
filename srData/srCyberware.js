@@ -140,8 +140,6 @@ function srCyberwarePlacer(){
                 }
             }
 
-            console.log("decker with jack: " + isDeckerWithJack + " rigger with VCR: " + isRiggerWithVCR);
-
             srCyberBonusResets();
 
             srCyberwareParentDiv.appendChild(cyberDiv);

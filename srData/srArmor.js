@@ -64,7 +64,6 @@ function srArmorPicker(){
         srResourceAmount -= lightArmor.cost;
         srEquipmentPlacer.innerHTML += lightArmorName + "<br>";
     }
-    console.log("cash after armor: " + srResourceAmount);
 
     srArmorParentDiv.appendChild(armorDiv);
 

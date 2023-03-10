@@ -58,14 +58,9 @@ function srWeaponsPicker(){
     const weaponsDamagePlacer = srWeaponDamage;
     const weaponsModsPlacer = srWeaponMods;
     
-    //let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
-    //let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;
-    //let weaponName = weaponArrayChoice.find(type => type.type === weaponType).name[Math.floor(Math.random() * weaponArrayChoice.find(type => type.type === weaponType).name.length)];
-
-    weaponType = "Standard Bow";
-    weaponName = "Bow";
-
-    console.log("weapon type: " + weaponType + " weapon name: " + weaponName);
+    let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
+    let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;
+    let weaponName = weaponArrayChoice.find(type => type.type === weaponType).name[Math.floor(Math.random() * weaponArrayChoice.find(type => type.type === weaponType).name.length)];
 
     let rolledWeaponOfChoise = srWeaponBuilder(weaponType, weaponName);
     console.log("returned weapon info: " + rolledWeaponOfChoise.name + " " + rolledWeaponOfChoise.type + " " + rolledWeaponOfChoise.conceal + " " + rolledWeaponOfChoise.reach + " " + rolledWeaponOfChoise.mode + " " + rolledWeaponOfChoise.ammo + " " + rolledWeaponOfChoise.rangeShort + " " + rolledWeaponOfChoise.rangeMedium + " " + rolledWeaponOfChoise.rangeLong + " " + rolledWeaponOfChoise.rangeExtreme + " " + rolledWeaponOfChoise.damage + " " + rolledWeaponOfChoise.modifiers);
@@ -79,57 +74,69 @@ function srWeaponsPicker(){
         `;
         const weaponsTypeDiv = document.createElement('div');
         weaponsTypeDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.type}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.type}</p></div>
         `;
         const weaponsConealDiv = document.createElement('div');
         weaponsConealDiv.innerHTML += `
-        <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.conceal}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.conceal}</p></div>
         `;
         const weaponsReachDiv = document.createElement('div');
         weaponsReachDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.reach}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.reach}</p></div>
         `;
         const weaponsModeDiv = document.createElement('div');
         weaponsModeDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.mode}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.mode}</p></div>
         `;
         const weaponsAmmoDiv = document.createElement('div');
         weaponsAmmoDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.ammo}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.ammo}</p></div>
         `;
         const weaponsShortDiv = document.createElement('div');
         weaponsShortDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeShort}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeShort}</p></div>
         `;
-        const weaponsNMedDiv = document.createElement('div');
-        weaponsNMedDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeMedium}</p></div>
+        const weaponsMedDiv = document.createElement('div');
+        weaponsMedDiv.innerHTML += `
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeMedium}</p></div>
         `;
         const weaponsLongDiv = document.createElement('div');
         weaponsLongDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeLong}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeLong}</p></div>
         `;
         const weaponsExtremeDiv = document.createElement('div');
         weaponsExtremeDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeExtreme}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeExtreme}</p></div>
         `;
         const weaponsDamageDiv = document.createElement('div');
         weaponsDamageDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.damage}</p></div>
+            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.damage}</p></div>
         `;
         const weaponsModsDiv = document.createElement('div');
         weaponsModsDiv.innerHTML += `
-        <div class="sr_weapons_info_spacer_large"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.modifiers}</p></div>
+            <div class="sr_weapons_info_spacer_large"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.modifiers}</p></div>
         `;
 
-        //weaponsDivPlacer.appendChild(weaponsDiv);
+        weaponsNamePlacer.appendChild(weaponsNameDiv);
+        weaponsTypePlacer.appendChild(weaponsTypeDiv);
+        weaponsConealPlacer.appendChild(weaponsConealDiv);
+        weaponsReachPlacer.appendChild(weaponsReachDiv);
+        weaponsModePlacer.appendChild(weaponsModeDiv);
+        weaponsAmmoPlacer.appendChild(weaponsAmmoDiv);
+        weaponsShortPlacer.appendChild(weaponsShortDiv);
+        weaponsMedPlacer.appendChild(weaponsMedDiv);
+        weaponsLongPlacer.appendChild(weaponsLongDiv);
+        weaponsExtremePlacer.appendChild(weaponsExtremeDiv);
+        weaponsDamagePlacer.appendChild(weaponsDamageDiv);
+        weaponsModsPlacer.appendChild(weaponsModsDiv);
+        //srWeaponInfoClearAll()
 
-        //srWeaponInfoClearAll()        
     }else{
         //srWeaponInfoClearAll()
         srWeaponCost = 0;
         return;
-    }        
+    }
+    srWeaponCost = 0;
 }
 
 function srWeaponInfoClearAll(){
