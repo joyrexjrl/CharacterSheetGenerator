@@ -10,7 +10,7 @@ const srProjectileWeapons = [
 
 const srFirearmWeapons = [
     {type: "Hold-Out", name: ["Streetline Special", "Walther Palm Pistol", "Cavalier Scout", "Morrissey Elan", "Raecor Sting", "Tiffani Needler", "Tiffani Self-Defender"]},
-    {type: "Light", name: ["Beretta Model 101T", "Colt American L36", "Fichetti Security 500", "Fichetti Security 500a", "Ares Light Fire 70", "Beretta 200ST", "Ceska vz/120", "Colt Asp", "Executive Action", "Hammeril Model 610S", "SA Puzzler", "Seco LD-120", "Taurus Multi-6", "Walther PB-120"]},
+    {type: "Light Pistols", name: ["Beretta Model 101T", "Colt American L36", "Fichetti Security 500", "Fichetti Security 500a", "Ares Light Fire 70", "Beretta 200ST", "Ceska vz/120", "Colt Asp", "Executive Action", "Hammeril Model 610S", "SA Puzzler", "Seco LD-120", "Taurus Multi-6", "Walther PB-120"]},
     {type: "Machine Pistols", name: ["Ceska Black Scorpion", "Ares Crusader", "Steyr TMP"]},
     {type: "Heavy Pistols", name: ["Ares Predator", "Ares Viper Silvergun", "Browning Max-Power", "Remington Roomsweeper", "Ruger Super Warhawk", "Ares Predator II", "Ares Predator III", "Browning Ultra-Power", "Cavalier Deputy", "Colt Manhunter", "Elchiro Hatamoto II", "FN 5-7C", "Morrissey Alta", "Morrissey Elite", "Ruger Thunderbolt", "Savalette Guardian", "WW Infiltrator", "Ares Redline"]},
     {type: "Taser", name: ["Defiance Super Shock", "Yamaha Pulsar"]},
@@ -69,9 +69,13 @@ function srWeaponsPicker(){
 
     console.log("returned weapon info: " + rolledWeaponOfChoise.name + " " + rolledWeaponOfChoise.type + " " + rolledWeaponOfChoise.conceal + " " + rolledWeaponOfChoise.reach + " " + rolledWeaponOfChoise.mode + " " + rolledWeaponOfChoise.ammo + " " + rolledWeaponOfChoise.rangeShort + " " + rolledWeaponOfChoise.rangeMedium + " " + rolledWeaponOfChoise.rangeLong + " " + rolledWeaponOfChoise.rangeExtreme + " " + rolledWeaponOfChoise.damage + " " + rolledWeaponOfChoise.modifiers);
     
+    console.log("weapon cost: " + srWeaponCost);
+    console.log("yen before weapon cost: " + srResourceAmount);
     
     if(srResourceAmount > srWeaponCost){
         srResourceAmount -= srWeaponCost;
+
+        console.log("yen left over after weapon cost: " + srResourceAmount);
         
         const weaponsNameDiv = document.createElement('div');
         weaponsNameDiv.innerHTML += `
@@ -79,7 +83,7 @@ function srWeaponsPicker(){
         `;
         const weaponsTypeDiv = document.createElement('div');
         weaponsTypeDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.type}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.type}</p></div>
         `;
         const weaponsConealDiv = document.createElement('div');
         weaponsConealDiv.innerHTML += `
@@ -87,39 +91,39 @@ function srWeaponsPicker(){
         `;
         const weaponsReachDiv = document.createElement('div');
         weaponsReachDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.reach}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.reach}</p></div>
         `;
         const weaponsModeDiv = document.createElement('div');
         weaponsModeDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.mode}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.mode}</p></div>
         `;
         const weaponsAmmoDiv = document.createElement('div');
         weaponsAmmoDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.ammo}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.ammo}</p></div>
         `;
         const weaponsShortDiv = document.createElement('div');
         weaponsShortDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeShort}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeShort}</p></div>
         `;
         const weaponsMedDiv = document.createElement('div');
         weaponsMedDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeMedium}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeMedium}</p></div>
         `;
         const weaponsLongDiv = document.createElement('div');
         weaponsLongDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeLong}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeLong}</p></div>
         `;
         const weaponsExtremeDiv = document.createElement('div');
         weaponsExtremeDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeExtreme}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.rangeExtreme}</p></div>
         `;
         const weaponsDamageDiv = document.createElement('div');
         weaponsDamageDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_small"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.damage}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.damage}</p></div>
         `;
         const weaponsModsDiv = document.createElement('div');
         weaponsModsDiv.innerHTML += `
-            <div class="sr_weapons_info_spacer_large"><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.modifiers}</p></div>
+            <div><p class="sr_inner_section_title sr_center_text">${rolledWeaponOfChoise.modifiers}</p></div>
         `;
 
         weaponsNamePlacer.appendChild(weaponsNameDiv);
@@ -134,10 +138,12 @@ function srWeaponsPicker(){
         weaponsExtremePlacer.appendChild(weaponsExtremeDiv);
         weaponsDamagePlacer.appendChild(weaponsDamageDiv);
         weaponsModsPlacer.appendChild(weaponsModsDiv);
-        //srWeaponInfoClearAll()
+
+        srEquipmentPlacer.innerHTML += rolledWeaponOfChoise.name + "<br>"
+        srWeaponInfoClearAll()
 
     }else{
-        //srWeaponInfoClearAll()
+        srWeaponInfoClearAll()
         srWeaponCost = 0;
         return;
     }

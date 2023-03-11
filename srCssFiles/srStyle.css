@@ -398,8 +398,9 @@
 
 /*weapons section start*/
 
-.sr_inner_block_container{
-    gap: var(--sr_gap_spacer);
+.sr_weapons_inner_block_container{
+    padding: var(--sr_padding);
+    gap: .3rem;
     justify-content: space-between;
 }
 

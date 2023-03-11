@@ -14,14 +14,15 @@ function srWeaponRangeFinder(weaponType, weaponName){
             long = "-";
             extreme = "-";
         break;
-        case "Hold-out":
-            type = "HP"
+        case "Hold-Out":
+            type = "HoP"
             short = "0-5";
             medium = "6-15";
             long = "16-30";
             extreme = "31-50";
         break;
-        case "Light Pistol":
+        case "Machine Pistols":
+        case "Light Pistols":
             type = "LP"
             short = "0-5";
             medium = "6-15";
@@ -49,7 +50,7 @@ function srWeaponRangeFinder(weaponType, weaponName){
             long = "11-12";
             extreme = "13-15";
         break;
-        case "Shotgun":
+        case "Shotguns":
             type = "Shot"
             short = "0-10";
             medium = "11-20";
@@ -105,14 +106,14 @@ function srWeaponRangeFinder(weaponType, weaponName){
             long = "301-900";
             extreme = "901-2400";
         break;
-        case "Grenade Launcher":
+        case "Grenade Launchers":
             type = "GLaunch"
             short = "5-50";
             medium = "51-100";
             long = "101-150";
             extreme = "151-300";
         break;
-        case "Missile Launcher":
+        case "Missile Launchers":
             type = "MisLaun"
             short = "20-150";
             medium = "151-450";
