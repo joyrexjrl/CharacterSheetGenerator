@@ -57,6 +57,9 @@ function srWeaponsPicker(){
     const weaponsExtremePlacer = srWeaponExtreme;
     const weaponsDamagePlacer = srWeaponDamage;
     const weaponsModsPlacer = srWeaponMods;
+
+    console.log("weapon based skills: " + srWeaponSkillFocus);
+    console.log("weapons in the specialization skills: " + srWeaponSpecializationFocus);
     
     let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
     let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;

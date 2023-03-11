@@ -62,6 +62,7 @@ const srSkillSpecializations = [
 ];
 
 var srWeaponSpecializationFocus = [];
+var srWeaponSkillFocus = [];
 
 function srSkillsRandomizer(){            
     let skillAttributeLink = srSkills[Math.floor(Math.random() * srSkills.length)].skillAttribute;
@@ -153,6 +154,13 @@ function srRandomSkillPlacer(skillPoints){
         const srSkillsRating = document.createElement("p");
 
         let randomNumber = oseDieRoller(1, 10);
+
+        if(option === "Assault Rifles" || option === "Clubs" || option === "Edged Weapons" || option === "Gunnery" || 
+            option === "Heavy Weapons" || option === "Laser Weapons" || option === "Launch Weapons" || option === "Pistols" || 
+            option === "Pole Arms/ Staffs" || option === "Projectile Weapons" || option === "Rifles" || option === "Shotguns" || 
+            option === "Submachine Guns" || option === "Throwing Weapons" || option === "Whips"){
+            srWeaponSkillFocus.push(option);
+        }
 
         if(randomNumber < 3){
             isSpecialized = true;

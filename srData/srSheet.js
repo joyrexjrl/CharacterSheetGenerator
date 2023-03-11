@@ -129,6 +129,7 @@ function srClearAll(){
 
     usedOptions = [];
     srWeaponSpecializationFocus = [];
+    srWeaponSkillFocus = [];
 
     srAttributePoints = 0;
     srSkillPoints = 0;
