@@ -21,10 +21,10 @@ const srFirearmWeapons = [
     {type: "Assault Rifle", name: ["AK-97", "AK-98", "FN HAR", "Ares Alpha", "Ares HVAR", "Colt M22A2", "Colt M-23", "HK G12A3z", "HK G38 Assault Rifle", "HK G38 Carbine Rifle", "HK G38 LMG", "Semopal vz/88V", "Steyr AUG-CSL Assault Rifle", "Steyr AUG-CSL Carbine", "Steyr AUG-CSL SMG", "Steyr AUG-CSL LMG"]},
     {type: "Light Machine Guns", name: ["Ingram Valiant", "Ares HV MP-LMG", "Ares MP-LMG"]},
     {type: "Medium Machine Guns", name: ["FN MAG-5 MMG", "Ultimax MMG"]},
-    {type: "Heavy Machine Guns", name: ["RPK HMG" , "Vindicator Minigun", "Stoner-Ares M107"]},
+    {type: "Heavy Machine Guns", name: ["RPK HMG", "Vindicator Minigun", "Stoner-Ares M107"]},
     {type: "Assault Cannon", name: ["Vigorous Assault Cannon", "Panther Cannon"]},
     {type: "Grenade Launchers", name: ["Ares Antioch", "ArmTech MGL-6", "ArmTech MGL-12"]},
-    {type: "Missile Launchers", name: ["M-12 Portable", "IWS Multi-Launcher", "Aztechnology Lasher4", "Spike", "Arbelast II MAW", "Ballista MK I", "Ballista MK II", "Ballista MK III", "Great Dragon ATGM", "M79B1 LAW", "Vogeljager Missile"]}
+    {type: "Missile Launchers", name: ["M-12 Portable", "IWS Multi-Launcher", "Aztechnology Lasher", "Spike", "Arbelast II MAW", "Ballista MK I", "Ballista MK II", "Ballista MK III", "Great Dragon ATGM", "M79B1 LAW", "Vogeljager Missile"]}
 ];
 
 const srWeaponsToChooseFromArray = [srMeleeWeapons, srProjectileWeapons, srFirearmWeapons];
@@ -62,9 +62,14 @@ function srWeaponsPicker(){
     let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;
     let weaponName = weaponArrayChoice.find(type => type.type === weaponType).name[Math.floor(Math.random() * weaponArrayChoice.find(type => type.type === weaponType).name.length)];
 
-    let rolledWeaponOfChoise = srWeaponBuilder(weaponType, weaponName);
-    console.log("returned weapon info: " + rolledWeaponOfChoise.name + " " + rolledWeaponOfChoise.type + " " + rolledWeaponOfChoise.conceal + " " + rolledWeaponOfChoise.reach + " " + rolledWeaponOfChoise.mode + " " + rolledWeaponOfChoise.ammo + " " + rolledWeaponOfChoise.rangeShort + " " + rolledWeaponOfChoise.rangeMedium + " " + rolledWeaponOfChoise.rangeLong + " " + rolledWeaponOfChoise.rangeExtreme + " " + rolledWeaponOfChoise.damage + " " + rolledWeaponOfChoise.modifiers);
+    console.log("passed weapon type: " + weaponType);
+    console.log("passed weapon name: " + weaponName);
 
+    let rolledWeaponOfChoise = srWeaponBuilder(weaponType, weaponName);
+
+    console.log("returned weapon info: " + rolledWeaponOfChoise.name + " " + rolledWeaponOfChoise.type + " " + rolledWeaponOfChoise.conceal + " " + rolledWeaponOfChoise.reach + " " + rolledWeaponOfChoise.mode + " " + rolledWeaponOfChoise.ammo + " " + rolledWeaponOfChoise.rangeShort + " " + rolledWeaponOfChoise.rangeMedium + " " + rolledWeaponOfChoise.rangeLong + " " + rolledWeaponOfChoise.rangeExtreme + " " + rolledWeaponOfChoise.damage + " " + rolledWeaponOfChoise.modifiers);
+    
+    
     if(srResourceAmount > srWeaponCost){
         srResourceAmount -= srWeaponCost;
         
