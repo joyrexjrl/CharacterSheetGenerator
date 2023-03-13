@@ -156,7 +156,7 @@ function srRandomSkillPlacer(skillPoints){
         let randomNumber = oseDieRoller(1, 10);
 
         if(option === "Assault Rifles" || option === "Clubs" || option === "Edged Weapons" || option === "Gunnery" || 
-            option === "Heavy Weapons" || option === "Laser Weapons" || option === "Launch Weapons" || option === "Pistols" || 
+            option === "Heavy Weapons" || option === "Launch Weapons" || option === "Pistols" || 
             option === "Pole Arms/ Staffs" || option === "Projectile Weapons" || option === "Rifles" || option === "Shotguns" || 
             option === "Submachine Guns" || option === "Throwing" || option === "Whips"){
             srWeaponSkillFocus.push(option);
@@ -222,7 +222,7 @@ function srSkillSpecialPicker(skillName){
     var skillSpecialization = specializationOptions[Math.floor(Math.random() * specializationOptions.length)];
 
     if(skillName === "Assault Rifles" || skillName === "Clubs" || skillName === "Edged Weapons" || skillName === "Gunnery" || 
-    skillName === "Heavy Weapons" || skillName === "Laser Weapons" || skillName === "Launch Weapons" || skillName === "Pistols" || 
+    skillName === "Heavy Weapons" || skillName === "Launch Weapons" || skillName === "Pistols" || 
     skillName === "Pole Arms/ Staffs" || skillName === "Projectile Weapons" || skillName === "Rifles" || skillName === "Shotguns" || 
     skillName === "Submachine Guns" || skillName === "Throwing" || skillName === "Whips"){
         srWeaponSpecializationFocus.push(skillSpecialization);
