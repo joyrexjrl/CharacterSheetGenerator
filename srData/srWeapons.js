@@ -99,6 +99,7 @@ function srWeaponsPicker(){
     }else if(srWeaponSkillFocus.length > 0 && srWeaponSpecializationFocus.length == 0){
         for (let i = 0; i < srWeaponSkillFocus.length; i++) {
             const matchingSkillType = srWeaponsBySkill.find(obj => obj.skillType === srWeaponSkillFocus[i]);
+            console.log("skill type to match: " + matchingSkillType);
             let weaponToAdd;
             let weaponsType;
             let selectedWeaponToAdd;
@@ -116,23 +117,28 @@ function srWeaponsPicker(){
             }else{
                 const weaponType = matchingSkillType.weaponType[0];
                 let possibleWeapons;
+                console.log("non specialized weapon search, looking for type: " + weaponType);
                 switch(weaponType){
                     case "Personal Weapons":
+                        console.log("entered personal weapons section");
                         possibleWeapons = srMeleeWeapons;
                     break;
                     case "Standard Bow":
                     case "Crossbow":
+                        console.log("entered Standard Bow and Crossbow section section");
                         possibleWeapons = srProjectileWeapons;
                     break;
                     default:
+                        console.log("entered all other sections");
                         possibleWeapons = srFirearmWeapons;
                 }
                 const matchingWeapons = possibleWeapons.filter(obj => obj.type === weaponType);
                 const randomIndex = Math.floor(Math.random() * matchingWeapons.length)
                 const weaponInfo = matchingWeapons[randomIndex];
                 weaponToAdd = weaponInfo.name;
+                console.log("trying to add a weapon from this array: " + weaponToAdd);
                 selectedWeaponToAdd = weaponToAdd[Math.floor(Math.random() * weaponToAdd.length)];
-                weaponsType = weaponInfo.type;
+                weaponsType = weaponInfo.type;                
                 console.log("weapon to add without weaponsAvailable option:");
                 console.log("weapon: " + selectedWeaponToAdd);
                 console.log("weapon type: " + weaponsType);
