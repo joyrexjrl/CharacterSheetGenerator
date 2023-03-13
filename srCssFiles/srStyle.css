@@ -130,6 +130,10 @@
     position: relative;
 }
 
+.sr_character_general_info_container{
+    min-width: 16rem;
+}
+
 .sr_general_info_notes_text,
 .sr_character_notes_text,
 .sr_vehicle_notes_text,
