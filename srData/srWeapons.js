@@ -97,8 +97,10 @@ function srWeaponsPicker(){
                     }                    
                 }
                 if(weaponTypeToAdd) break;
+                
             }            
         }
+        if(!specializedWeaponRolledAndPlaced && srWeaponSkillFocus.length > 0) generalWeaponSkill();
     }else if(srWeaponSkillFocus.length > 0 && srWeaponSpecializationFocus.length == 0){
         generalWeaponSkill();
     }else{
