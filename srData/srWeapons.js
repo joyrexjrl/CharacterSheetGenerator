@@ -100,6 +100,16 @@ function srWeaponsPicker(){
             }            
         }
     }else if(srWeaponSkillFocus.length > 0 && srWeaponSpecializationFocus.length == 0){
+        generalWeaponSkill();
+    }else{
+        let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
+        let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;
+        let weaponName = weaponArrayChoice.find(type => type.type === weaponType).name[Math.floor(Math.random() * weaponArrayChoice.find(type => type.type === weaponType).name.length)];
+
+        weaponsPlacer(weaponType, weaponName);
+    }
+
+    function generalWeaponSkill(){
         for (let i = 0; i < srWeaponSkillFocus.length; i++) {
             const matchingSkillType = srWeaponsBySkill.find(obj => obj.skillType === srWeaponSkillFocus[i]);
             console.log("skill type to match: " + matchingSkillType);
@@ -150,12 +160,6 @@ function srWeaponsPicker(){
                 weaponsPlacer(weaponsType, selectedWeaponToAdd);
             }
         }
-    }else{
-        let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
-        let weaponType = weaponArrayChoice[Math.floor(Math.random() * weaponArrayChoice.length)].type;
-        let weaponName = weaponArrayChoice.find(type => type.type === weaponType).name[Math.floor(Math.random() * weaponArrayChoice.find(type => type.type === weaponType).name.length)];
-
-        weaponsPlacer(weaponType, weaponName);
     }
 
     //console.log("weapon based skills: " + srWeaponSkillFocus);
