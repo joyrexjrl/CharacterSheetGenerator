@@ -126,6 +126,7 @@ function srClearAll(){
     isCyberTitanium = false;
     isDeckerWithJack = false;
     isRiggerWithVCR = false;
+    weaponRolledAndPlaced = false;
 
     usedOptions = [];
     srWeaponSpecializationFocus = [];

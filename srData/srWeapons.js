@@ -62,6 +62,8 @@ var weaponRangeExtreme = "";
 var damageOfWeapon = "";
 var modifiersOfWeapon ="";
 
+var weaponRolledAndPlaced = false;
+
 function srWeaponsPicker(){
     const weaponsNamePlacer = srWeaponName;
     const weaponsTypePlacer = srWeaponType;
@@ -162,11 +164,12 @@ function srWeaponsPicker(){
     //console.log("weapon based skills: " + srWeaponSkillFocus);
     //console.log("weapons in the specialization skills: " + srWeaponSpecializationFocus);
     
-    function weaponsPlacer(weaponType, weaponName){
-
+    function weaponsPlacer(weaponType, weaponName){        
         let rolledWeaponOfChoise = srWeaponBuilder(weaponType, weaponName);
         console.log("weapon cost: " + srWeaponCost);
         console.log("yen before weapon cost: " + srResourceAmount);
+
+        if(weaponRolledAndPlaced) return;
         
         if(srResourceAmount > srWeaponCost){
             srResourceAmount -= srWeaponCost;
@@ -236,6 +239,7 @@ function srWeaponsPicker(){
             weaponsModsPlacer.appendChild(weaponsModsDiv);
 
             srEquipmentPlacer.innerHTML += rolledWeaponOfChoise.name + "<br>";
+            weaponRolledAndPlaced = true;
             srWeaponInfoClearAll();
 
         }else{
