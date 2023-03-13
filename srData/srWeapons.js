@@ -12,11 +12,11 @@ const srFirearmWeapons = [
     {type: "Hold-Out", name: ["Streetline Special", "Walther Palm Pistol", "Cavalier Scout", "Morrissey Elan", "Raecor Sting", "Tiffani Needler", "Tiffani Self-Defender"]},
     {type: "Light Pistols", name: ["Beretta Model 101T", "Colt American L36", "Fichetti Security 500", "Fichetti Security 500a", "Ares Light Fire 70", "Beretta 200ST", "Ceska vz/120", "Colt Asp", "Executive Action", "Hammeril Model 610S", "SA Puzzler", "Seco LD-120", "Taurus Multi-6", "Walther PB-120"]},
     {type: "Machine Pistols", name: ["Ceska Black Scorpion", "Ares Crusader", "Steyr TMP"]},
-    {type: "Heavy Pistols", name: ["Ares Predator", "Ares Viper Silvergun", "Browning Max-Power", "Remington Roomsweeper", "Ruger Super Warhawk", "Ares Predator II", "Ares Predator III", "Browning Ultra-Power", "Cavalier Deputy", "Colt Manhunter", "Elchiro Hatamoto II", "FN 5-7C", "Morrissey Alta", "Morrissey Elite", "Ruger Thunderbolt", "Savalette Guardian", "WW Infiltrator", "Ares Redline"]},
+    {type: "Heavy Pistols", name: ["Ares Predator", "Ares Viper Silvergun", "Browning Max-Power", "Remington Roomsweeper", "Ruger Super Warhawk", "Ares Predator II", "Ares Predator III", "Browning Ultra-Power", "Cavalier Deputy", "Colt Manhunter", "Elchiro Hatamoto II", "FN 5-7C", "Morrissey Alta", "Morrissey Elite", "Ruger Thunderbolt", "Savalette Guardian", "WW Infiltrator"]},
     {type: "Taser", name: ["Defiance Super Shock", "Yamaha Pulsar"]},
     {type: "SMGs", name: ["AK-97 SMG/Carbine", "Heckler & Koch HK227", "HK227-S", "Ingram Smartgun", "Uzi III", "Beretta Model 70", "Colt Cobra TZ-110", "Colt Cobra TZ-115", "Colt Cobra TZ-118", "Colt Water Carbine", "HK MP-5 TX", "Ingram SuperMach 100", "Ingram Warrior-10", "Sandler TMP", "SCK model 100"]},
-    {type: "Sporting Rifle", name: ["Remington 750", "Remington 950", "Ruger 100", "Laser III"]},
-    {type: "Sniper Rifle", name: ["Ranger Arms SM-3", "Barret Model 121", "Walther MA-2100", "Heavy Laser Plus"]},
+    {type: "Sporting Rifle", name: ["Remington 750", "Remington 950", "Ruger 100"]},
+    {type: "Sniper Rifle", name: ["Ranger Arms SM-3", "Barret Model 121", "Walther MA-2100"]},
     {type: "Shotguns", name: ["Defiance T-250", "Enfield AS-7", "Franchi SPAS-22", "Mossberg CMDT", "Mossberg SM-SMDT", "Remington 990", "Street Sweeper"]},
     {type: "Assault Rifle", name: ["AK-97", "AK-98", "FN HAR", "Ares Alpha", "Ares HVAR", "Colt M22A2", "Colt M-23", "HK G12A3z", "HK G38 Assault Rifle", "HK G38 Carbine Rifle", "HK G38 LMG", "Semopal vz/88V", "Steyr AUG-CSL Assault Rifle", "Steyr AUG-CSL Carbine", "Steyr AUG-CSL SMG", "Steyr AUG-CSL LMG"]},
     {type: "Light Machine Guns", name: ["Ingram Valiant", "Ares HV MP-LMG", "Ares MP-LMG"]},
@@ -33,7 +33,6 @@ const srWeaponsBySkill = [
     {skillType: "Edged Weapons", weaponType: ["Personal Weapons"], weaponsAvailable: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Sai", "Claymore", "No-dachi"]},
     {skillType: "Gunnery", weaponType: ["Assault Cannon"]},
     {skillType: "Heavy Weapons", weaponType: ["Light Machine Guns", "Medium Machine Guns", "Heavy Machine Guns"]},
-    {skillType: "Laser Weapons", weaponType: ["Laser"], weaponsAvailable: ["Heavy Laser Plus", "Laser III", "Ares Redline"]},
     {skillType: "Launch Weapons", weaponType: ["Grenade Launchers", "Missile Launchers"]},
     {skillType: "Pistols", weaponType: ["Hold-Out", "Light Pistols", "Machine Pistols", "Heavy Pistols", "Taser"]},
     {skillType: "Pole Arms/ Staffs", weaponType: ["Personal Weapons"], weaponsAvailable: ["Combat Axe", "Pole Arm", "Staff", "Rattan Stick", "Bo Staff", "Harpoon", "Javelin", "Spear", "Telescoping Staff"]},
@@ -132,11 +131,7 @@ function srWeaponsPicker(){
                     case "Throwing Weapons":
                         console.log("entered Standard Bow, Crossbow, and Throwing weapons section");
                         possibleWeapons = srProjectileWeapons;
-                    break;
-                    case "Laser":
-                        console.log("entering laser section");
-                        possibleWeapons = srFirearmWeapons;
-                    break;
+                    break;                    
                     default:
                         console.log("entered all other sections");
                         possibleWeapons = srFirearmWeapons;
