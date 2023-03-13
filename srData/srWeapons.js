@@ -29,7 +29,7 @@ const srFirearmWeapons = [
 
 const srWeaponsBySkill = [
     {skillType: "Assault Rifles", weaponType: ["Assault Rifle"]},
-    {skillType: "Clubs", weaponType: ["Personal Weapons"], weaponsAvailable: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ-150 Stun Baton"]},
+    {skillType: "Clubs", weaponType: ["Personal Weapons"], weaponsAvailable: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ - 150 Stun Baton"]},
     {skillType: "Edged Weapons", weaponType: ["Personal Weapons"], weaponsAvailable: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Sai", "Claymore", "No-dachi"]},
     {skillType: "Gunnery", weaponType: ["Assault Cannon"]},
     {skillType: "Heavy Weapons", weaponType: ["Light Machine Guns", "Medium Machine Guns", "Heavy Machine Guns"]},

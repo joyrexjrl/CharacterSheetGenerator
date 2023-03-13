@@ -14,7 +14,7 @@ const srCasterSkills = [
 
 const srSkillSpecializations = [
     {skillName: "Assault Rifles", skillSpecialization: ["AK-97", "AK-98", "FN HAR", "Ares Alpha", "Ares HVAR", "Colt M22A2", "Colt M-23", "HK G12A3z", "HK G38 Assault Rifle", "HK G38 Carbine Rifle", "HK G38 LMG", "Semopal vz/88V", "Steyr AUG-CSL Assault Rifle", "Steyr AUG-CSL Carbine", "Steyr AUG-CSL SMG", "Steyr AUG-CSL LMG"]},
-    {skillName: "Clubs", skillSpecialization: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ-150 Stun Baton"]},
+    {skillName: "Clubs", skillSpecialization: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ - 150 Stun Baton"]},
     {skillName: "Cyber-Implant Combat", skillSpecialization: ["Hand Blade", "Hand Razors", "Spur"]},
     {skillName: "Edged Weapons", skillSpecialization: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Sai", "Claymore", "No-dachi"]},
     {skillName: "Gunnery", skillSpecialization: ["Vigorous Assault Cannon", "Panther Cannon"]},
