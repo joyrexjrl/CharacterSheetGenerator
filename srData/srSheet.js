@@ -170,6 +170,9 @@ function srGenerateCharacter(){
         }
         srCasterAbilitys(srCasterType);    
     }
+    srArmorPicker();
+    srWeaponsPicker();
+
     if(srArchtype === "Rigger"){
         srCyberwarePlacer();
     }
@@ -178,9 +181,7 @@ function srGenerateCharacter(){
     }
     if(srArchtype === "Street Samurai"){
         srCyberwarePlacer();
-    }
-    srArmorPicker();
-    srWeaponsPicker();
+    }    
 }
 
 
