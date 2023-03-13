@@ -102,6 +102,7 @@ function srWeaponsPicker(){
             let weaponToAdd;
             let weaponsType;
             let selectedWeaponToAdd;
+            
             if(matchingSkillType.weaponsAvailable){
                 const weaponsAvailable = matchingSkillType.weaponsAvailable;
                 const randomIndex = Math.floor(Math.random() * weaponsAvailable.length)
