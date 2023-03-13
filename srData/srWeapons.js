@@ -27,6 +27,24 @@ const srFirearmWeapons = [
     {type: "Missile Launchers", name: ["M-12 Portable", "IWS Multi-Launcher", "Aztechnology Lasher", "Spike", "Arbelast II MAW", "Ballista MK I", "Ballista MK II", "Ballista MK III", "Great Dragon ATGM", "M79B1 LAW", "Vogeljager Missile"]}
 ];
 
+const srWeaponsBySkill = [
+    {skillType: "Assault Rifles", weaponType: ["Assault Rifle"]},
+    {skillType: "Clubs", weaponType: ["Personal Weapons"], weaponsAvailable: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ-150 Stun Baton"]},
+    {skillType: "Edged Weapons", weaponType: ["Personal Weapons"], weaponsAvailable: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Sai", "Claymore", "No-dachi"]},
+    {skillType: "Gunnery", weaponType: ["Assault Cannon"]},
+    {skillType: "Heavy Weapons", weaponType: ["Light Machine Guns", "Medium Machine Guns", "Heavy Machine Guns"]},
+    {skillType: "Laser Weapons", weaponType: ["Laser"], weaponsAvailable: ["Heavy Laser Plus", "Laser III", "Ares Redline"]},
+    {skillType: "Launch Weapons", weaponType: ["Grenade Launchers", "Missile Launchers"]},
+    {skillType: "Pistols", weaponType: ["Hold-Out", "Light Pistols", "Machine Pistols", "Heavy Pistols", "Taser"]},
+    {skillType: "Pole Arms/ Staffs", weaponType: ["Personal Weapons"], weaponsAvailable: ["Combat Axe", "Pole Arm", "Staff", "Rattan Stick", "Bo Staff", "Harpoon", "Javelin", "Spear", "Telescoping Staff"]},
+    {skillType: "Projectile Weapons", weaponType: ["Standard Bow", "Crossbow"]},
+    {skillType: "Rifles", weaponType: ["Sporting Rifle", "Sniper Rifle"]},
+    {skillType: "Shotguns", weaponType: ["Shotguns"]},
+    {skillType: "Submachine Guns", weaponType: ["SMGs"]},
+    {skillType: "Throwing Weapons", weaponType: ["Throwing Weapons"]},
+    {skillType: "Whips", weaponType: ["Personal Weapons"], weaponsAvailable: ["Monofilament Whip", "Whip", "Kusarigama", "Manriki-gusari", "Morning Star", "Nunchaku", "Three-section Staff"]}
+];
+
 const srWeaponsToChooseFromArray = [srMeleeWeapons, srProjectileWeapons, srFirearmWeapons];
 
 var nameOfWeapon = "";
@@ -61,7 +79,7 @@ function srWeaponsPicker(){
     //srWeaponSpecializationFocus
     //srWeaponSkillFocus
 
-    console.log("specialized weapon skills: " + srWeaponSpecializationFocus + " general weapon skills: " + srWeaponSkillFocus);
+    //console.log("specialized weapon skills: " + srWeaponSpecializationFocus + " general weapon skills: " + srWeaponSkillFocus);
 
     if(srWeaponSpecializationFocus.length > 0){        
         for (let i = 0; i < srWeaponSpecializationFocus.length; i++) {            
@@ -79,20 +97,36 @@ function srWeaponsPicker(){
             }            
         }
     }else if(srWeaponSkillFocus.length > 0 && srWeaponSpecializationFocus.length == 0){
-        console.log("into skilled only weapon picker");
         for (let i = 0; i < srWeaponSkillFocus.length; i++) {
-            let weaponType = srWeaponSkillFocus[i];
-            let weaponToAdd = "";
-            for (let j = 0; j < srSkillSpecializations.length; j++) {
-                for (let k = 0; k < srSkillSpecializations[j].length; k++) {
-                    let type = srSkillSpecializations[j][k].type
-                    if(type.includes(weaponType)){
-                        weaponToAdd = srSkillSpecializations[j][Math.floor(Math.random() * srSkillSpecializations.name.length)].name;
-                        console.log("weapon chosen in skilled only section: " + weaponToAdd);
-                    }
+            const matchingSkillType = srWeaponsBySkill.find(obj => obj.skillType === srWeaponSkillFocus[i]);
+            let weaponToAdd;
+            let weaponsType;
+            if (matchingSkillType.weaponsAvailable) {
+                const weaponsAvailable = matchingSkillType.weaponsAvailable;
+                const randomIndex = Math.floor(Math.random() * weaponsAvailable.length);
+                weaponToAdd = weaponsAvailable[randomIndex].name;
+                weaponsType = weaponsAvailable[randomIndex].type;
+                console.log("weapon to add with weaponsAvailable option in object: " + weaponToAdd + " weapon type: " + weaponsType);
+            } else {
+                const weaponType = matchingSkillType.weaponType[0];
+                let possibleWeapons;
+                switch (weaponType) {
+                    case "Personal Weapons":
+                    possibleWeapons = srMeleeWeapons;
+                    break;
+                    case "Standard Bow":
+                    case "Crossbow":
+                    possibleWeapons = srProjectileWeapons;
+                    break;
+                    default:
+                    possibleWeapons = srFirearmWeapons;
                 }
-                if(weaponToAdd) break;                
-            }            
+                const matchingWeapons = possibleWeapons.filter(obj => obj.type === weaponType);
+                const randomIndex = Math.floor(Math.random() * matchingWeapons.length);
+                weaponToAdd = matchingWeapons[randomIndex].name;
+                weaponsType = matchingWeapons[randomIndex].type;
+                console.log("weapon to add without weaponsAvailable option: " + weaponToAdd + " weapon type: " + weaponsType);
+            }
         }
     }else{
         let weaponArrayChoice = srWeaponsToChooseFromArray[Math.floor(Math.random() * srWeaponsToChooseFromArray.length)];
