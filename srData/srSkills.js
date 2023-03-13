@@ -17,7 +17,7 @@ const srSkillSpecializations = [
     {skillName: "Clubs", skillSpecialization: ["Club", "Sap", "Stun Baton", "Extendable Baton", "Mace", "Spiked Mace", "AZ-150 Stun Baton"]},
     {skillName: "Cyber-Implant Combat", skillSpecialization: ["Hand Blade", "Hand Razors", "Spur"]},
     {skillName: "Edged Weapons", skillSpecialization: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Sai", "Claymore", "No-dachi"]},
-    {skillName: "Gunnery", skillSpecialization: ["Ares Vermicide Autocannon", "Water Cannon", "Vigorous Assault Cannon", "Panther Cannon"]},
+    {skillName: "Gunnery", skillSpecialization: ["Vigorous Assault Cannon", "Panther Cannon"]},
     {skillName: "Heavy Weapons", skillSpecialization: ["Ingram Valiant", "RPK HMG", "Ultimax MMG", "Ares HV MP-LMG", "Ares MP-LMG", "FN MAG-5 MMG", "Vindicator Minigun", "Stoner-Ares M107"]},
     {skillName: "Laser Weapons", skillSpecialization: ["Heavy Laser Plus", "Laser III", "Ares Redline"]},
     {skillName: "Launch Weapons", skillSpecialization: ["Ares Antioch", "IWS Multi-Launcher", "Aztechnology Lasher", "Spike", "Arbelast II MAW", "Ballista MK I", "Ballista MK II", "Ballista MK III", "Great Dragon ATGM", "M79B1 LAW", "Vogeljager Missile", "ArmTech MGL-6", "ArmTech MGL-12", "M-12 Portable"]},
