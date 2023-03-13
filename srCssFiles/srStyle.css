@@ -471,6 +471,7 @@
 
 .sr_vehicle_type_text{
     font-weight: normal !important;
+    line-height: 1;
 }
 
 .sr_vehicle_condition_grid{

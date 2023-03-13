@@ -81,8 +81,6 @@ function srWeaponsPicker(){
     //srWeaponSpecializationFocus
     //srWeaponSkillFocus
 
-    //console.log("specialized weapon skills: " + srWeaponSpecializationFocus + " general weapon skills: " + srWeaponSkillFocus);
-
     if(srWeaponSpecializationFocus.length > 0){        
         for (let i = 0; i < srWeaponSpecializationFocus.length; i++) {            
             let weaponToAdd = srWeaponSpecializationFocus[i];
@@ -96,8 +94,7 @@ function srWeaponsPicker(){
                         else weaponsPlacer(weaponTypeToAdd, weaponToAdd);
                     }                    
                 }
-                if(weaponTypeToAdd) break;
-                
+                if(weaponTypeToAdd) break;                
             }            
         }
         if(!specializedWeaponRolledAndPlaced && srWeaponSkillFocus.length > 0) generalWeaponSkill();
@@ -163,9 +160,6 @@ function srWeaponsPicker(){
             }
         }
     }
-
-    //console.log("weapon based skills: " + srWeaponSkillFocus);
-    //console.log("weapons in the specialization skills: " + srWeaponSpecializationFocus);
     
     function weaponsPlacer(weaponType, weaponName){        
         let rolledWeaponOfChoise = srWeaponBuilder(weaponType, weaponName);

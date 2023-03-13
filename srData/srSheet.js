@@ -115,7 +115,7 @@ const srSectionDiv = document.createElement("div");
 const srNameP = document.createElement("p");
 const srRatingP = document.createElement("p");
 
-const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer, srArmorCyberBonusPlacer, srCyberBonusName, srCyberBonusRating, srArmorBlockPlacer, srArmorName, srArmorRating, srTotalArmorRatings, srEquipmentPlacer, srWeaponName, srWeaponType, srWeaponConceal, srWeaponReach, srWeaponMode, srWeaponAmmo, srWeaponShort, srWeaponMed, srWeaponLong, srWeaponExtreme, srWeaponDamage, srWeaponMods];
+const srResetAllArray = [srGeneralCharName, srGeneralCharAge, srGeneralCharDescription, srGeneralCharRace, srGeneralCharSex, srGeneralCharNotes, srPriorityA, srPriorityB, srPriorityC, srPriorityD, srPriorityE, srPriorityAAmount, srPriorityBAmount, srPriorityCAmount, srPriorityDAmount, srPriorityEAmount, srAttributeBody, srAttributeQuickness, srAttributeStrength, srAttributeCharisma, srAttributeIntelligence, srAttributeWillpower, srAttributeMagic, srAttributeEssence, srReaction, srInitiative, srDamageOverflow, srKarmaPool, srCombatPool, srPoolType1, srPoolType1Dice, srPoolType2, srPoolType2Dice, srPoolType3, srPoolType3Dice, srSkillsBlockPlacer, srSkillName, srSkillRating, srCyberBioBlockPlacer, srCyberBioName, srCyberBioRating, srSpellsSectionNonadept, srSpellName, srSpellForce, srSpellDrain, srAdeptSpellsSection, srSpellAdeptAbilityPlacer, srSpellAdeptLevelPlacer, srCharNotesPlacer, srArmorCyberBonusPlacer, srCyberBonusName, srCyberBonusRating, srArmorBlockPlacer, srArmorName, srArmorRating, srTotalArmorRatings, srEquipmentPlacer, srWeaponName, srWeaponType, srWeaponConceal, srWeaponReach, srWeaponMode, srWeaponAmmo, srWeaponShort, srWeaponMed, srWeaponLong, srWeaponExtreme, srWeaponDamage, srWeaponMods, srVehicleNotes];
 
 function srClearAll(){
     for (let i = 0; i < srResetAllArray.length; i++) {
@@ -155,6 +155,16 @@ function srClearAll(){
     srPriorityC.innerHTML = "C: ";
     srPriorityD.innerHTML = "D: ";
     srPriorityE.innerHTML = "E: ";
+
+    srVehicleType.innerHTML = "";
+    srVehicleHandling.innerHTML = 0;
+    srVehicleSpeed.innerHTML = 0;
+    srVehicleBody.innerHTML = 0;
+    srVehicleArmor.innerHTML = 0;
+    srVehicleSignature.innerHTML = 0;        
+    srVehicleAutopilot.innerHTML = 0;
+    srVehicleFirmpoints.innerHTML = 0;
+    srVehicleHardpoints.innerHTML = 0;
 }
 
 function srGenerateCharacter(){
@@ -183,7 +193,8 @@ function srGenerateCharacter(){
     }
     if(srArchtype === "Street Samurai"){
         srCyberwarePlacer();
-    }    
+    }
+    srVehiclePlacer()
 }
 
 
