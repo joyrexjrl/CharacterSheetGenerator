@@ -41,7 +41,7 @@ const srWeaponsBySkill = [
     {skillType: "Rifles", weaponType: ["Sporting Rifle", "Sniper Rifle"]},
     {skillType: "Shotguns", weaponType: ["Shotguns"]},
     {skillType: "Submachine Guns", weaponType: ["SMGs"]},
-    {skillType: "Throwing Weapons", weaponType: ["Throwing Weapons"]},
+    {skillType: "Throwing", weaponType: ["Throwing Weapons"]},
     {skillType: "Whips", weaponType: ["Personal Weapons"], weaponsAvailable: ["Monofilament Whip", "Whip", "Kusarigama", "Manriki-gusari", "Morning Star", "Nunchaku", "Three-section Staff"]}
 ];
 
@@ -102,7 +102,7 @@ function srWeaponsPicker(){
             let weaponToAdd;
             let weaponsType;
             let selectedWeaponToAdd;
-            
+
             if(matchingSkillType.weaponsAvailable){
                 const weaponsAvailable = matchingSkillType.weaponsAvailable;
                 const randomIndex = Math.floor(Math.random() * weaponsAvailable.length)

@@ -1,6 +1,6 @@
 const srSkills = [
     {skillAttribute: "Body", skillOptions: ["Athletics", "Diving"]},
-    {skillAttribute: "Strength", skillOptions: ["Edged Weapons", "Clubs", "Pole Arms/ Staffs", "Cyber-Implant Combat", "Unarmed Combat", "Throwing Weapons", "Projectile Weapons", "Heavy Weapons", "Underwater Combat"]},
+    {skillAttribute: "Strength", skillOptions: ["Edged Weapons", "Clubs", "Pole Arms/ Staffs", "Cyber-Implant Combat", "Unarmed Combat", "Throwing", "Projectile Weapons", "Heavy Weapons", "Underwater Combat"]},
     {skillAttribute: "Quickness", skillOptions: ["Pistols", "Submachine Guns", "Rifles", "Assault Rifles", "Shotguns", "Laser Weapons", "Whips", "Stealth"]},
     {skillAttribute: "Intelligence", skillOptions: ["Demolitions", "Gunnery", "Launch Weapons", "Computer", "Electronics", "Biotech", "Build/Repair"]},
     {skillAttribute: "Charisma", skillOptions: ["Etiquette", "Instruction", "Interrogation", "Intimidation", "Leadership", "Negotiation"]},    
@@ -27,7 +27,7 @@ const srSkillSpecializations = [
     {skillName: "Rifles", skillSpecialization: ["Remington 750", "Remington 950", "Ranger Arms SM-3", "Ruger 100", "Barret Model 121", "Walther MA-2100"]},
     {skillName: "Shotguns", skillSpecialization: ["Defiance T-250", "Enfield AS-7", "Franchi SPAS-22", "Mossberg CMDT", "Mossberg SM-SMDT", "Remington 990", "Street Sweeper"]},
     {skillName: "Submachine Guns", skillSpecialization: ["AK-97 SMG/Carbine", "Heckler & Koch HK227", "HK227-S", "Ingram Smartgun", "Uzi III", "Beretta Model 70", "Colt Cobra TZ-110", "Colt Cobra TZ-115", "Colt Cobra TZ-118", "Colt Water Carbine", "HK MP-5 TX", "Ingram SuperMach 100", "Ingram Warrior-10", "Sandler TMP", "SCK model 100"]},
-    {skillName: "Throwing Weapons", skillSpecialization: ["Throwing Knife", "Shuriken"]},
+    {skillName: "Throwing", skillSpecialization: ["Throwing Knife", "Shuriken"]},
     {skillName: "Unarmed Combat", skillSpecialization: ["Subduing Combat", "Martial Arts Technique", "Fists", "Head Butts", "Kicks", "Shock Glove"]},
     {skillName: "Underwater Combat", skillSpecialization: ["Unarmed Attack", "Armed Attack"]},
     {skillName: "Whips", skillSpecialization: ["Monofilament Whip", "Whip", "Kusarigama", "Manriki-gusari", "Morning Star", "Nunchaku", "Three-section Staff"]},
@@ -44,7 +44,7 @@ const srSkillSpecializations = [
     {skillName: "Leadership", skillSpecialization: ["Political", "Military", "Commercial", "Strategy", "Tactics", "Morale"]},
     {skillName: "Negotiation", skillSpecialization: ["Bargain", "Bribe", "Con", "Fast Talk"]},
     {skillName: "Biotech", skillSpecialization: ["Cybertechnology Implantation", "Extended Care", "First Aid", "Organ Culture & Growth", "Surgery", "Transplant Surgery"]},
-    {skillName: "Build/Repair", skillSpecialization: ["Armor", "Assault Rifles", "Clubs Weapons", "Computer", "Cybernetics", "Cyber Implant Weapons", "Diving Equipment", "Edged Weapons", "Electronics", "Security Systems", "Gunnery Equipment", "Heavy Weapons", "Laser Weapons", "Launch Weapons", "Pistols", "Pole Arms/Staffs", "Projectile Weapons", "Rifles", "Shotguns", "Submachine Guns", "Throwing Weapons", "Whips", "Bike", "Car", "Fixed Wing Aircraft", "Hovercraft", "LTA Aircraft", "Motorboat", "Rotor Aircraft", "Sailboat", "Ship", "Submarine", "Vector thrust Aircraft"]},
+    {skillName: "Build/Repair", skillSpecialization: ["Armor", "Assault Rifles", "Clubs Weapons", "Computer", "Cybernetics", "Cyber Implant Weapons", "Diving Equipment", "Edged Weapons", "Electronics", "Security Systems", "Gunnery Equipment", "Heavy Weapons", "Laser Weapons", "Launch Weapons", "Pistols", "Pole Arms/Staffs", "Projectile Weapons", "Rifles", "Shotguns", "Submachine Guns", "Throwing", "Whips", "Bike", "Car", "Fixed Wing Aircraft", "Hovercraft", "LTA Aircraft", "Motorboat", "Rotor Aircraft", "Sailboat", "Ship", "Submarine", "Vector thrust Aircraft"]},
     {skillName: "Computer", skillSpecialization: ["Hardware", "Decking", "Programming", "Cybernetics"]},
     {skillName: "Demolitions", skillSpecialization: ["Commercial Explosives", "Plastic Explosives", "Improvised Explosives"]},
     {skillName: "Electronics", skillSpecialization: ["Control Systems", "Electronic Warfare", "Maglocks", "Linking between Devices", "Diagnostics", "Cybertechnology"]},
@@ -158,7 +158,7 @@ function srRandomSkillPlacer(skillPoints){
         if(option === "Assault Rifles" || option === "Clubs" || option === "Edged Weapons" || option === "Gunnery" || 
             option === "Heavy Weapons" || option === "Laser Weapons" || option === "Launch Weapons" || option === "Pistols" || 
             option === "Pole Arms/ Staffs" || option === "Projectile Weapons" || option === "Rifles" || option === "Shotguns" || 
-            option === "Submachine Guns" || option === "Throwing Weapons" || option === "Whips"){
+            option === "Submachine Guns" || option === "Throwing" || option === "Whips"){
             srWeaponSkillFocus.push(option);
         }
 
@@ -224,7 +224,7 @@ function srSkillSpecialPicker(skillName){
     if(skillName === "Assault Rifles" || skillName === "Clubs" || skillName === "Edged Weapons" || skillName === "Gunnery" || 
     skillName === "Heavy Weapons" || skillName === "Laser Weapons" || skillName === "Launch Weapons" || skillName === "Pistols" || 
     skillName === "Pole Arms/ Staffs" || skillName === "Projectile Weapons" || skillName === "Rifles" || skillName === "Shotguns" || 
-    skillName === "Submachine Guns" || skillName === "Throwing Weapons" || skillName === "Whips"){
+    skillName === "Submachine Guns" || skillName === "Throwing" || skillName === "Whips"){
         srWeaponSpecializationFocus.push(skillSpecialization);
     } 
     
