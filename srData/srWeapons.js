@@ -1,5 +1,5 @@
 const srMeleeWeapons = [
-    {type: "Personal Weapons", name: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Club", "Sap", "Stun Baton", "Combat Axe", "Pole Arm", "Staff", "Monofilament Whip", "Shock Glove", "Whip", "Cougar Fineclade Knife (short)", "Cougar Fineclade Knife (Long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Extendable Baton", "Mace", "Spiked Mace", "Rattan Stick", "Sai", "AZ - 150 Stun Baton", "Bo Staff", "Claymore", "Harpoon", "Javelin", "No-Dachi", "Spear", "Telescoping Staff", "Kusarigama", "Manriki-gusari", "Morning Star", "Nunchaku", "Three-section Staff"]}
+    {type: "Personal Weapons", name: ["Forearm Snap Blades", "Katana", "Knife", "Sword", "Survival Knife", "Club", "Sap", "Stun Baton", "Combat Axe", "Pole Arm", "Staff", "Monofilament Whip", "Shock Glove", "Whip", "Cougar Fineblade Knife (short)", "Cougar Fineblade Knife (Long)", "Katar", "Kris", "Laser Crescent Axe", "Macauitl", "Ares Monosword", "Tomahawk", "Vibro Knife", "Vibro Sword", "Extendable Baton", "Mace", "Spiked Mace", "Rattan Stick", "Sai", "AZ - 150 Stun Baton", "Bo Staff", "Claymore", "Harpoon", "Javelin", "No-Dachi", "Spear", "Telescoping Staff", "Kusarigama", "Manriki-gusari", "Morning Star", "Nunchaku", "Three-section Staff"]}
 ];
 
 const srProjectileWeapons = [

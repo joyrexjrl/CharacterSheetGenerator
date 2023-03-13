@@ -406,7 +406,7 @@ function srWeaponBuilder(weaponType, weaponName){
             srWeaponMods = "";
             srWeaponCost += 300;
         break;
-        case "Cougar Fineclade Knife (short)":
+        case "Cougar Fineblade Knife (short)":
             srWeaponConceal = "8";
             srWeaponReach = "-";
             srWeaponMode = "-";
@@ -415,7 +415,7 @@ function srWeaponBuilder(weaponType, weaponName){
             srWeaponMods = "";
             srWeaponCost += 800;
         break;
-        case "Cougar Fineclade Knife (Long)":
+        case "Cougar Fineblade Knife (Long)":
             srWeaponConceal = "5";
             srWeaponReach = "-";
             srWeaponMode = "-";
