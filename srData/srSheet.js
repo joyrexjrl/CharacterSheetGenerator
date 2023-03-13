@@ -127,6 +127,7 @@ function srClearAll(){
     isDeckerWithJack = false;
     isRiggerWithVCR = false;
     weaponRolledAndPlaced = false;
+    specializedWeaponRolledAndPlaced = false;
 
     usedOptions = [];
     srWeaponSpecializationFocus = [];

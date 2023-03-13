@@ -63,6 +63,7 @@ var damageOfWeapon = "";
 var modifiersOfWeapon ="";
 
 var weaponRolledAndPlaced = false;
+var specializedWeaponRolledAndPlaced = false;
 
 function srWeaponsPicker(){
     const weaponsNamePlacer = srWeaponName;
@@ -92,7 +93,8 @@ function srWeaponsPicker(){
                     let weapon = srWeaponsToChooseFromArray[j][k].name;
                     if(weapon.includes(weaponToAdd)){
                         weaponTypeToAdd = srWeaponsToChooseFromArray[j][k].type;
-                        weaponsPlacer(weaponTypeToAdd, weaponToAdd);
+                        if(specializedWeaponRolledAndPlaced) break;
+                        else weaponsPlacer(weaponTypeToAdd, weaponToAdd);
                     }                    
                 }
                 if(weaponTypeToAdd) break;
@@ -240,6 +242,7 @@ function srWeaponsPicker(){
 
             srEquipmentPlacer.innerHTML += rolledWeaponOfChoise.name + "<br>";
             weaponRolledAndPlaced = true;
+            specializedWeaponRolledAndPlaced = true;
             srWeaponInfoClearAll();
 
         }else{
