@@ -101,31 +101,42 @@ function srWeaponsPicker(){
             const matchingSkillType = srWeaponsBySkill.find(obj => obj.skillType === srWeaponSkillFocus[i]);
             let weaponToAdd;
             let weaponsType;
-            if (matchingSkillType.weaponsAvailable) {
+            let selectedWeaponToAdd;
+            if(matchingSkillType.weaponsAvailable){
                 const weaponsAvailable = matchingSkillType.weaponsAvailable;
-                const randomIndex = Math.floor(Math.random() * weaponsAvailable.length);
-                weaponToAdd = weaponsAvailable[randomIndex].name;
-                weaponsType = weaponsAvailable[randomIndex].type;
-                console.log("weapon to add with weaponsAvailable option in object: " + weaponToAdd + " weapon type: " + weaponsType);
-            } else {
+                const randomIndex = Math.floor(Math.random() * weaponsAvailable.length)
+                weaponToAdd = weaponsAvailable[randomIndex];
+                weaponsType = matchingSkillType.weaponType[0];
+                console.log("weapon to add with weaponsAvailable option in object:");
+                console.log("weapon: " + weaponToAdd);
+                console.log("weapon type: " + weaponsType);
+                console.log("-------------------------");
+                weaponsPlacer(weaponsType, weaponToAdd);
+            }else{
                 const weaponType = matchingSkillType.weaponType[0];
                 let possibleWeapons;
-                switch (weaponType) {
+                switch(weaponType){
                     case "Personal Weapons":
-                    possibleWeapons = srMeleeWeapons;
+                        possibleWeapons = srMeleeWeapons;
                     break;
                     case "Standard Bow":
                     case "Crossbow":
-                    possibleWeapons = srProjectileWeapons;
+                        possibleWeapons = srProjectileWeapons;
                     break;
                     default:
-                    possibleWeapons = srFirearmWeapons;
+                        possibleWeapons = srFirearmWeapons;
                 }
                 const matchingWeapons = possibleWeapons.filter(obj => obj.type === weaponType);
-                const randomIndex = Math.floor(Math.random() * matchingWeapons.length);
-                weaponToAdd = matchingWeapons[randomIndex].name;
-                weaponsType = matchingWeapons[randomIndex].type;
-                console.log("weapon to add without weaponsAvailable option: " + weaponToAdd + " weapon type: " + weaponsType);
+                const randomIndex = Math.floor(Math.random() * matchingWeapons.length)
+                const weaponInfo = matchingWeapons[randomIndex];
+                weaponToAdd = weaponInfo.name;
+                selectedWeaponToAdd = weaponToAdd[Math.floor(Math.random() * weaponToAdd.length)];
+                weaponsType = weaponInfo.type;
+                console.log("weapon to add without weaponsAvailable option:");
+                console.log("weapon: " + selectedWeaponToAdd);
+                console.log("weapon type: " + weaponsType);
+                console.log("-------------------------");
+                weaponsPlacer(weaponsType, selectedWeaponToAdd);
             }
         }
     }else{
