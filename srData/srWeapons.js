@@ -129,6 +129,10 @@ function srWeaponsPicker(){
                         console.log("entered Standard Bow, Crossbow, and Throwing weapons section");
                         possibleWeapons = srProjectileWeapons;
                     break;
+                    case "Laser":
+                        console.log("entering laser section");
+                        possibleWeapons = srFirearmWeapons;
+                    break;
                     default:
                         console.log("entered all other sections");
                         possibleWeapons = srFirearmWeapons;
