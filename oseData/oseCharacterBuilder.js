@@ -127,11 +127,23 @@ function osePrimeReqExpBonus(primeStat){
 }
 
 function oseHitPointRoller(dieType){
-    let tempHp = parseInt(oseDieRoller(1, dieType));
-    tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
-    if(tempHp < 1) tempHp = 1;
-    oseCharacterMaxHP.innerHTML = tempHp;
-    oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
+    let tempHp = 0;
+    if(oseCharacterRace.innerHTML.valueOf("Human")){
+        let humanHpRoll = parseInt(oseDieRoller(1, dieType));
+        tempHp = humanHpRoll;
+        let secondHpRoll = parseInt(oseDieRoller(1, dieType));
+        if(secondHpRoll > tempHp) tempHp = secondHpRoll;
+        tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
+        if(tempHp < 1) tempHp = 1;
+        oseCharacterMaxHP.innerHTML = tempHp;
+        oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
+    }else{
+        tempHp = parseInt(oseDieRoller(1, dieType));
+        tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
+        if(tempHp < 1) tempHp = 1;
+        oseCharacterMaxHP.innerHTML = tempHp;
+        oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
+    }    
 }
 
 function oseCharacterMaxLevel(charRace, charClass){
