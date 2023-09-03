@@ -196,6 +196,3 @@ function srGenerateCharacter(){
     }
     srVehiclePlacer()
 }
-
-
-
