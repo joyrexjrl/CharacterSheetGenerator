@@ -134,7 +134,7 @@ function oseHitPointRoller(dieType){
         let secondHpRoll = parseInt(oseDieRoller(1, dieType));
         if(secondHpRoll > tempHp) tempHp = secondHpRoll;        
     }else tempHp = parseInt(oseDieRoller(1, dieType));
-    
+
     tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
     if(tempHp < 1) tempHp = 1;
     oseCharacterMaxHP.innerHTML = tempHp;
@@ -398,7 +398,7 @@ function oseArmourClassCalculator(armourWornValue){
 
     let acDexBonus = parseInt(oseCharacterDEXBonusToAC.textContent);
     if(armourWornValue == 0){
-        oseCharacterCurrentAC.innerHTML = oseCharacterUnarmouredAC.innerHTML;
+        oseCharacterCurrentAC.innerHTML = oseCharacterUnarmouredAC.textContent;
     }
     else if(armourWornValue == 1){
         let shieldOnlyAC = 10 + armourWornValue;        

@@ -102,7 +102,7 @@ function magicUserBuilder(characterClass){
     classSpellsArray = magicUserLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
-    oseArmourPicker(armourAllowed, true);
+    oseArmourClassCalculator(0);
     characterAlingment = ["Law", "Neutral", "Chaos"];
     oseAlingmentPicker(characterAlingment);
     oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
@@ -179,7 +179,7 @@ function illusionistBuilder(characterClass){
     classSpellsArray = illusionistLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
-    oseArmourPicker(armourAllowed, true);
+    oseArmourClassCalculator(0);
     characterAlingment = ["Law", "Neutral", "Chaos"];
     oseAlingmentPicker(characterAlingment);
     oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
@@ -220,7 +220,7 @@ function necromancerBuilder(characterClass){
     classSpellsArray = necromancerLevelOneSpells;
     classSkillsAndAbilitiesDisplayer(classSkillsArray);
     oseCharacterWeaponProficiencyPicker(martialType, weaponLimitations);
-    oseArmourPicker(armourAllowed, true);
+    oseArmourClassCalculator(0);
     characterAlingment = ["Law", "Neutral", "Chaos"];
     oseAlingmentPicker(characterAlingment);
     oseCharacterPrimeStatBonusToEXP.innerHTML = osePrimeReqExpBonus(parseInt(oseCharacterINT.textContent));
