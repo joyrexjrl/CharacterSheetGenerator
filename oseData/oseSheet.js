@@ -89,7 +89,7 @@ function oseStatBonusAssigner(){
 
     oseCharacterListenDoorExplore.innerHTML = 1;
     oseCharacterOpenDoorExplore.innerHTML = oseStatBonus(oseCharacterSTR.textContent);
-    if(oseCharacterOpenDoorExplore.textContent < 0) oseCharacterOpenDoorExplore.innerHTML = 0;
+    if(oseCharacterOpenDoorExplore.textContent <= 0) oseCharacterOpenDoorExplore.innerHTML = 1;
     oseCharacterSecretDoorExplore.innerHTML = 1;
     oseCharacterFindTrapExplore.innerHTML = 1;
     

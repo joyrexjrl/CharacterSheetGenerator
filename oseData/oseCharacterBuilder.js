@@ -132,18 +132,13 @@ function oseHitPointRoller(dieType){
         let humanHpRoll = parseInt(oseDieRoller(1, dieType));
         tempHp = humanHpRoll;
         let secondHpRoll = parseInt(oseDieRoller(1, dieType));
-        if(secondHpRoll > tempHp) tempHp = secondHpRoll;
-        tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
-        if(tempHp < 1) tempHp = 1;
-        oseCharacterMaxHP.innerHTML = tempHp;
-        oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
-    }else{
-        tempHp = parseInt(oseDieRoller(1, dieType));
-        tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
-        if(tempHp < 1) tempHp = 1;
-        oseCharacterMaxHP.innerHTML = tempHp;
-        oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
-    }    
+        if(secondHpRoll > tempHp) tempHp = secondHpRoll;        
+    }else tempHp = parseInt(oseDieRoller(1, dieType));
+    
+    tempHp += parseInt(oseCharacterCONBonusToHP.textContent);
+    if(tempHp < 1) tempHp = 1;
+    oseCharacterMaxHP.innerHTML = tempHp;
+    oseCharacterCurrentHP.innerHTML = oseCharacterMaxHP.textContent;
 }
 
 function oseCharacterMaxLevel(charRace, charClass){
