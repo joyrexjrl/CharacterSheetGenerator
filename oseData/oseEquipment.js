@@ -118,6 +118,12 @@ function oseItemPicker(){
     let itemTotalCost = 0;
     let goldAfterItemcost;
 
+    if(oseCharacterClass.textContent === "Cleric" || oseCharacterClass.textContent === "Druid" || oseCharacterClass.textContent === "Paladin"){
+        itemTotalCost += oseItems[5].cost;
+        oseCharacterEquipment.innerHTML += "<span class='bold'>" + oseItems[5].item + "</span>" + "<br>";
+        oseCharacterEquipment.innerHTML += oseItems[5].description + "<br>";  
+    }
+
     for (let i = 0; i < itemsAmount; i++) {
         randomRoll = oseDieRoller(1, oseItems.length)-1;
         itemTotalCost += oseItems[randomRoll].cost;
