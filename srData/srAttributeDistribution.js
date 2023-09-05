@@ -109,17 +109,13 @@ function srRacialPointAdjuster(attPoints, charRace){
 function srAttributePointRandomizer(attPoints) {
     let maxPoints = srAttributesCurrentMax.map(att => att.Max - att.Current).reduce((acc, val) => acc + val);
 
-    if (attPoints > maxPoints) {
-        attPoints = maxPoints;
-    }
+    if (attPoints > maxPoints) attPoints = maxPoints;
 
     while (attPoints > 0) {
         srAttributesCurrentMax = shuffleArray(srAttributesCurrentMax);
 
         for (let i = 0; i < srAttributesCurrentMax.length; i++) {
-            if (attPoints <= 0) {
-                break;
-            }
+            if (attPoints <= 0) break;
 
             let att = srAttributesCurrentMax[i];
             let maxPointsToAdd = att.Max - att.Current;

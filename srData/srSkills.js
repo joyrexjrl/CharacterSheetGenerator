@@ -80,9 +80,7 @@ function srRandomSkillPlacer(skillPoints){
     let isSpecialized = false;
     let optionPlusSpecialization = "";
 
-    if(srIsCaster){
-        selectedSkills.push("Cyber-Implant Combat");
-    }
+    if(srIsCaster) selectedSkills.push("Cyber-Implant Combat");
 
     if(srIsCaster && srCasterType !== "Adept"){
         for (let i = 0; i < srCasterSkills.length; i++) {
@@ -176,21 +174,17 @@ function srRandomSkillPlacer(skillPoints){
 
         skillRating = oseDieRoller(1,6);
 
-        if(skillRating > skillPoints){
-            skillRating = skillPoints;
-        }
+        if(skillRating > skillPoints) skillRating = skillPoints;
         
-        if(skillRating <= skillAttributeSoftCap){
-            skillPoints -= skillRating;
-        }else if(skillRating > skillAttributeSoftCap){
+        if(skillRating <= skillAttributeSoftCap) skillPoints -= skillRating;
+        else if(skillRating > skillAttributeSoftCap){
             let pointsOver = 2 * (skillRating - skillAttributeSoftCap);
             let skillCost = (skillAttributeSoftCap) + (pointsOver);
             if(skillCost >= skillPoints){
                 skillRating = skillAttributeSoftCap + Math.floor((skillPoints - 1) / 2);
                 skillPoints = 0;
-            }else{
-                skillPoints -= skillCost;
-            }            
+            }
+            else skillPoints -= skillCost;            
         }
 
         if(isSpecialized){
